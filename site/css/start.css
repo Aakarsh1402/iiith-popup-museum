@@ -96,6 +96,8 @@
   .coin-wrap { order: -1; margin: 1rem 0 2.5rem; }
   .coin-stage { --size: min(70vw, 420px); }
   .roots-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .roots-svg { display: none; }
+  .roots { padding-top: 1.5rem; }
 }
 @media (max-width: 560px) {
   .roots-grid { grid-template-columns: 1fr; }
