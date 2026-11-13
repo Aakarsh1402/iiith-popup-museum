@@ -7,7 +7,7 @@
   var st = null;
 
   /* Editor's notes shown inside transcripts (we never change the transcript text itself). */
-  var SIC = { "P-PJN": [ { re: /Talon[’']s Print/g, note: "we think this is TalentSprint" } ] };
+  var SIC = { "P-PJN": [ { re: /Talon[\u2019']s Print/g, note: "we think this is TalentSprint" } ] };
 
   /* ---------- transcript rendering (tiny, safe markdown: **b**, *i*, `code`) ---------- */
   function inline(text) {
