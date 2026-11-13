@@ -148,3 +148,4 @@
 .tl-list-item summary::-webkit-details-marker { display: none; }
 .tl-list-item .tl-title { -webkit-line-clamp: unset; font-size: 1rem; }
 .tl-list-body { padding: 0 .9rem .9rem; display: grid; gap: .6rem; }
+.tl-d-comic { margin: .4rem 0 1.2rem; }

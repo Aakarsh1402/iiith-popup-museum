@@ -266,6 +266,7 @@
       el("p", { class: "tl-d-sum" }, e.summary),
       imgs.length ? el("div", { class: ["tl-d-imgs", imgs.length === 1 ? "one" : ""] }, imgs.slice(0, 6).map(function (id) { return M.ui.imageFigure(id, { gallery: imgs, caption: imgs.length <= 2, ratio: imgs.length === 1 ? null : "4/3" }); })) : null,
       e.body ? el("p", { class: "tl-d-body" }, e.body) : null,
+      e.id === "e-1998-booth" && M.pages.voices && M.pages.voices.comic ? el("div", { class: "tl-d-comic" }, M.pages.voices.comic({ compact: true })) : null,
       conflict ? el("a", { class: "tl-d-conflict", href: U.href("how-we-know", conflict.id) },
         M.ui.icon("alert"), el("span", null, el("b", null, "Sources disagree. "), conflict.question || "See how the accounts differ."), M.ui.icon("arrow-right")) : null,
       el("dl", { class: "tl-d-facts" },
