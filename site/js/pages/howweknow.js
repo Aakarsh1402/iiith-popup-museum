@@ -128,10 +128,10 @@
     var docs = (M.documents || []).filter(function (d) { return d.id !== "curriculum"; }).length;
     var stats = [[n, n === 1 ? "interview" : "interviews"], [docs, "old documents"], [(M.images || []).length, "photos"], [(M.conflicts || []).length, "disagreements"]];
     var steps = [
-      { t: "We listened", b: "We recorded interviews with " + n + " people who built IIIT or keep it running: staff, faculty and the librarian. Everyone here agreed to be recorded and quoted." },
-      { t: "We checked", b: "We read what they told us against the c.2001 prospectus, the 2002 layout plan, the lab floor plans, a Ping article and our own photos." },
-      { t: "We showed our working", b: "Where sources disagree, we show every side, say what we think and what would settle it. Where we were wrong, we say so. One interview reached us as a polished write-up, so we use its facts but never quote it as his words." },
-      { t: "We're sharing it", b: "This history isn't only ours to tell. We're putting the documents and interviews in the open so others can correct and add to them. Historians call this shared authority." }
+      { t: "We listened", b: n + " interviews with people who built IIIT or keep it running. All agreed to be recorded and quoted." },
+      { t: "We checked", b: "Against the c.2001 prospectus, the 2002 plan, the lab floor plans, a Ping article and our photos." },
+      { t: "We showed our working", b: "We show every side, and say where we were wrong. One interview came as a polished write-up, so we never quote it as his words." },
+      { t: "We're sharing it", b: "The documents and interviews go in the open, so others can correct and add to them (shared authority)." }
     ];
     return el("div", { class: "hwk-worked" },
       el("div", { class: "hwk-stats" }, stats.map(function (s) { return el("div", { class: "hwk-stat" }, el("b", null, String(s[0])), el("span", null, s[1])); })),
@@ -195,14 +195,14 @@
       var page = el("section", { class: "page hwk" }, el("div", { class: "wrap" },
         el("div", { class: "page-pad" },
           el("header", { class: "hwk-hero" },
-            el("div", { class: "kicker" }, "Board 4"),
+            el("div", { class: "kicker" }, "Board 4 / How we know"),
             el("h1", null, "How we know"),
-            el("p", { class: "lede" }, "Oral history runs on memory, and memories disagree. So we checked what people told us against documents, photos and each other. Here is where they clash, where they line up, and where we got it wrong ourselves."),
+            el("p", { class: "lede" }, "Memories disagree. We checked them against documents, photos and each other."),
             el("nav", { class: "hwk-jump", "aria-label": "Sections on this page" }, jump.map(function (j) {
               return el("button", { type: "button", class: "chip", on: { click: function () { scrollTo(document.getElementById("hwk-sec-" + j[0])); } } }, j[1]);
             }))),
 
-          sectionHead("disagree", "A", "Sources disagree", "Each card is a question our sources answer differently. Read the accounts, decide who you believe, then flip the card."),
+          sectionHead("disagree", "A", "Sources disagree", "Decide who you believe, then flip the card."),
           el("div", { class: "hwk-legend" }, ["oral", "document", "web"].map(function (t) {
             return el("span", { style: { "--c": "var(--s-" + t + ")" } }, UI.icon(KIND_ICON[t]), KIND_LABEL[t] === "Web" ? "Website" : KIND_LABEL[t]);
           })),
@@ -210,7 +210,7 @@
           minor.length ? el("div", { class: "hwk-minor" }, el("h3", { class: "hwk-minor-title" }, "Smaller disagreements"),
             el("div", { class: "hwk-flips hwk-flips--minor" }, minor.map(conflictCard))) : null,
 
-          sectionHead("checked", "B", "Checked and confirmed", "Sometimes a memory and a document, made years apart by different people, say the same thing. That's as close to sure as we get."),
+          sectionHead("checked", "B", "Checked and confirmed", "A memory and a document, made years apart, that say the same thing."),
           el("div", { class: "hwk-chains" }, (M.verified || []).map(verifiedRow)),
 
           sectionHead("wrong", "C", "We got it wrong", "Historians correct themselves. Here is one of ours."),

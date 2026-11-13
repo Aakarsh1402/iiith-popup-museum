@@ -96,3 +96,8 @@
   .voices-events a { grid-template-columns: 5rem 1fr; }
   .voices-search { top: calc(var(--nav-h) + .3rem); }
 }
+
+/* the full interview opens on request (or when the visitor searches) */
+.voices-tr-toggle { margin: .2rem 0 1rem; }
+.voices-howto > summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; }
+.voices-howto > p { margin: .6rem 0 0; }

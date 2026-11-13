@@ -3,7 +3,7 @@
 window.M = window.M || {};
 M.quiz = {
   title: "Do you know your institute?",
-  intro: "8 questions. Take it now, then again at the exit.",
+  intro: "8 questions. Try it now, and again after the exhibit.",
   questions: [
     { id: "q1", q: "Where were the first classes held in 1998?",
       options: ["Himalaya", "Nilgiri", "Vindhya", "The guest house"], answer: 1,

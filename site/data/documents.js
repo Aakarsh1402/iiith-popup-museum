@@ -32,7 +32,7 @@ window.M = window.M || {};
       ]),
       highlights: [
         { id: "period-piece", pages: [4, 5, 6], title: "Curriculum as a period piece",
-          text: "Around 2001 you could take E-Commerce Technologies, Internet Appliances, Data Warehousing and Digital Design with VHDL: very dot-com. You could also take Vedanta, Navya-Nyaya and Panini's Ashtadhyayi. The research centres included IT for Railways and IT for Indian Society.",
+          text: "Around 2001 you could study E-Commerce Technologies and Internet Appliances, and also Vedanta and Panini's Ashtadhyayi.",
           sources: ["S-PROSP", "S-CURRSHOTS"] }
       ],
       extras: [

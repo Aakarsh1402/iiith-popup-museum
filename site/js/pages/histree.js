@@ -69,7 +69,7 @@
           el("div", { class: "ht-hero-text" },
             el("div", { class: "kicker" }, "Board 3 / HISTREE"),
             el("h1", null, "Even the trees were moved here and took root"),
-            el("p", { class: "lede" }, X.intro || ""),
+            el("p", { class: "lede" }, "SLN Shastry saved four banyans from a road widening by moving them."),
             el("div", { class: "ht-hero-links" },
               el("a", { class: "btn btn--green", href: "#/map?layer=trees" }, UI.icon("pin"), "See the trees on the map"),
               el("a", { class: "btn btn--ghost", href: U.href("voices", "P-SLN") }, "SLN Shastry's interview")),

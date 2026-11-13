@@ -5,7 +5,7 @@
 window.M = window.M || {};
 M.way = {
   title: "Borrow, share, take back, build your own",
-  intro: "IIIT's logo is a banyan. A banyan often starts life on another tree, then sends down roots of its own until it stands by itself. IIIT grew the same way. Scroll down to see how.",
+  intro: "Like its banyan logo, IIIT started on borrowed support, then grew roots of its own.",
   sources: ["S-PJN", "S-GOPI", "S-PROSP", "S-WIKI-OLD"],
 
   chapters: [

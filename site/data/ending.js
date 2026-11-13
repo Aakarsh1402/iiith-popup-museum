@@ -4,7 +4,7 @@ window.M = window.M || {};
 M.ending = {
   kicker: "Then and now",
   title: "Every generation here thought it had run out of room.",
-  intro: "Each of these problems felt stuck to the people living through it. Here is how each one got solved.",
+  intro: "Each of these felt stuck at the time. Each one got solved.",
   rows: [
     { when: "1998", problem: "No university status, so no degree to promise. 49 students joined anyway, for a diploma.",
       solved: "IIIT became a deemed university in 2001.", sources: ["S-PJN", "S-GOPI"] },
@@ -27,14 +27,14 @@ M.ending = {
   ],
   now: {
     kicker: "Now",
-    text: "Today rooms are shared by three, and summer interns sleep six to a room. Batches are close to 300. And the New Academic Block is going up on the same spot where the first batch lived in 1998. The library is set to move in.",
+    text: "Rooms shared by three, batches near 300, and the New Academic Block going up where the first batch lived in 1998.",
     sources: ["S-SRIDHAR", "S-PRAB", "S-PJN", "S-MURALI", "S-PHOTOS"],
     image: "img-14",
     images: ["img-09", "img-10", "img-11", "img-12", "img-13", "img-14"],
     imagesNote: "The New Academic Block site in satellite images. Dates are not shown on the screenshots."
   },
   closing: "Every problem on this wall felt permanent to the people living through it. None of them were.",
-  prompt: "Which problem on campus today will be a story in ten years? Write it on a sticky note, add your batch, and put it on the wall.",
+  prompt: "Which problem on campus today will be a story in ten years? Tell one of us.",
   thanksLead: "Thank you to everyone who told us their IIIT:",
   todo: "TODO(team): confirm space and crowding is the current issue we want to end on."
 };

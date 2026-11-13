@@ -206,3 +206,13 @@
 @media (prefers-reduced-motion: reduce) {
   .way-bar { animation: none; }
 }
+
+/* "Read more" behind each chapter's first sentence */
+.way-more { margin: -.4rem 0 .8rem; }
+.way-more > summary { display: inline-flex; align-items: center; gap: .35rem; cursor: pointer; list-style: none; font: 600 .78rem/1 var(--font-mono); letter-spacing: .04em; color: var(--soil); padding: .4rem 0; }
+.way-more > summary::-webkit-details-marker { display: none; }
+.way-more > summary::after { content: "+"; font-size: 1rem; }
+.way-more[open] > summary::after { content: "\2212"; }
+.way-more-close, .way-more[open] .way-more-open { display: none; }
+.way-more[open] .way-more-close { display: inline; }
+.way-ch--civil .way-more > summary { color: #e3a07f; }

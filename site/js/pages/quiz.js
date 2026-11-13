@@ -31,11 +31,11 @@
     screen(el("div", { class: "quiz-start" },
       el("div", { class: "kicker" }, "Entry and exit quiz"),
       el("h1", null, (M.quiz && M.quiz.title) || "Do you know your institute?"),
-      el("p", { class: "lede" }, (M.quiz && M.quiz.intro) || (qs().length + " questions. Take it now, then again at the exit.")),
+      el("p", { class: "lede" }, (M.quiz && M.quiz.intro) || (qs().length + " questions. Try it now, and again after the exhibit.")),
       first ? el("p", { class: "quiz-prev" }, UI.icon("clock"), "Your first try on this device: " + first.score + " of " + first.total + ".") : null,
       seg,
       el("button", { type: "button", class: "btn btn--green quiz-go", on: { click: function () { st.answers = []; question(0); } } }, "Start the quiz", UI.icon("arrow-right")),
-      el("p", { class: "muted small quiz-paper" }, "Prefer paper? Ask a guide for a quiz card. It has the same questions.")));
+      el("p", { class: "muted small quiz-paper" }, "The flashcards at the entry use the same questions.")));
   }
 
   /* ---------- question ---------- */

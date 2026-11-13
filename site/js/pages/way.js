@@ -198,6 +198,20 @@
   var VISUALS = { photos: vPhotos, schools: vSchools, evidence: vEvidence, takebacks: vTakebacks, himalaya: vHimalaya, leased: vLeased, list: vList, civil: vCivil };
 
   /* ---------- chapters ---------- */
+  /* One sentence up front, the rest behind "Read more" (team rule: minimal text, details behind a click). */
+  var ABBR = /(?:^|\s)(?:Mr|Mrs|Ms|Dr|Prof|Rs|St|c|vs|[A-Z])$/;
+  function firstSentence(text) {
+    var re = /[.!?]["')]?\s+/g, m;
+    while ((m = re.exec(text))) { if (!ABBR.test(text.slice(0, m.index))) return [text.slice(0, m.index + m[0].length).trim(), text.slice(m.index + m[0].length)]; }
+    return [text, ""];
+  }
+  function leadMore(text, cls) {
+    var parts = firstSentence(text || "");
+    if (!parts[1]) return el("p", { class: cls }, parts[0]);
+    return el("div", { class: "way-lead" }, el("p", { class: cls }, parts[0]),
+      el("details", { class: "way-more" }, el("summary", null, el("span", { class: "way-more-open" }, "Read more"), el("span", { class: "way-more-close" }, "Show less")), el("p", { class: cls }, parts[1])));
+  }
+
   function chapter(ch, i) {
     var links = [];
     if (ch.conflictId) links.push(UI.confidenceTag("contested", ch.conflictId));
@@ -205,7 +219,7 @@
     var text = el("div", { class: "way-text" },
       el("div", { class: "way-kicker" }, el("span", { class: "way-num mono" }, String(i + 1).padStart(2, "0")), el("span", { class: "kicker" }, ch.kicker)),
       el("h2", { id: "way-h-" + ch.id }, ch.title),
-      el("p", { class: "way-body" }, ch.body),
+      leadMore(ch.body, "way-body"),
       ch.ask ? el("p", { class: "way-ask" }, ch.ask) : null,
       links.length ? el("div", { class: "way-links" }, links) : null,
       ch.visual !== "schools" && ch.visual !== "civil" && ch.docs ? el("div", { class: "way-docs" }, ch.docs.map(docThumb)) : null,
@@ -295,7 +309,7 @@
         }));
       st.intro = el("header", { class: "way-intro", id: "way-intro", dataset: { ch: "intro" } },
         el("div", { class: "way-intro-text" },
-          el("div", { class: "kicker" }, "Board 2 / Borrowed branches"),
+          el("div", { class: "kicker" }, "Board 2 / The IIIT Way"),
           el("h1", null, W.title),
           el("p", { class: "lede" }, W.intro),
           el("ol", { class: "way-verbs" }, ["Borrow", "Share", "Take back", "Build your own"].map(function (v, i) { return el("li", null, el("span", { class: "mono" }, String(i + 1)), v); })),

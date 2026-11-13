@@ -129,14 +129,14 @@
       el("header", { class: "voices-hero" },
         el("div", { class: "kicker" }, "Board 4 / Voices"),
         el("h1", null, (n <= 10 ? NUM[n].charAt(0).toUpperCase() + NUM[n].slice(1) : n) + " people told us their IIIT"),
-        el("p", { class: "lede" }, "Staff, faculty and the librarian. Some have been here since the first batch in 1998. Most of what you see in this exhibit started as something one of them remembered."),
+        el("p", { class: "lede" }, "Most of this exhibit started as something one of them remembered."),
         el("p", { class: "voices-consent" }, UI.icon("check"), "Everyone here agreed to be recorded and quoted.")),
       el("h2", { class: "voices-sub" }, "When they arrived"),
       strip,
       grid,
-      el("aside", { class: "callout voices-howto" },
-        el("h3", null, "How to read these interviews"),
-        el("p", null, "Most of the texts are write-ups made from the recordings, not word-for-word transcripts. Prof. Narayanan's came to us as a polished write-up, so we use its facts but never quote its wording as his. Prof. Rajan's is a set of notes from an automatic transcript. Where we cut a line, the text says so."))))));
+      el("details", { class: "callout voices-howto" },
+        el("summary", null, "How to read these interviews"),
+        el("p", null, "Most texts are write-ups of the recordings, not word for word. Prof. Narayanan's came as a polished write-up, so we never quote its wording as his. Prof. Rajan's is notes from an automatic transcript. Where we cut a line, the text says so."))))));
   }
 
   /* ---------- person page ---------- */
@@ -194,7 +194,14 @@
       var prev = el("button", { class: "icon-btn", type: "button", "aria-label": "Previous match", on: { click: function () { step(-1); } } }, UI.icon("chevron-up"));
       var next = el("button", { class: "icon-btn", type: "button", "aria-label": "Next match", on: { click: function () { step(1); } } }, UI.icon("chevron-down"));
       var marks = [], cur = -1;
+      var toggle = el("button", { type: "button", class: "btn btn--ghost voices-tr-toggle", "aria-expanded": "false", on: { click: function () { setOpen(body.hidden); } } });
+      var setOpen = function (open) {
+        body.hidden = !open;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.textContent = open ? "Hide the interview" : "Read the full interview";
+      };
       var draw = function (q) {
+        if (q && q.trim().length >= 2) setOpen(true);
         body.textContent = "";
         transcriptBlocks(t, p.id).forEach(function (n) { body.appendChild(n); });
         marks = highlight(body, q); cur = -1;
@@ -227,7 +234,8 @@
           el("p", { class: "mono small muted" }, t.title)),
         t.note ? el("p", { class: "callout voices-note" }, t.note) : (src.note ? el("p", { class: "voices-note-plain muted small" }, src.note) : null),
         el("div", { class: "voices-search" }, UI.icon("search"), input, count, prev, next),
-        body));
+        toggle, body));
+      setOpen(false);
       draw(query.q || "");
     } else {
       right.appendChild(el("p", { class: "empty" }, "Transcript not available."));
