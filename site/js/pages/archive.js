@@ -65,6 +65,7 @@
   /* ---------- photo archive ---------- */
   function renderPhotos(root, groupId) {
     var gs = groups(), active = groupId && gs.some(function (g) { return g.id === groupId; }) ? groupId : "all";
+    st.group = active;
     var list = el("div", { class: "arc-photo-groups" });
     function draw() {
       list.textContent = "";
@@ -76,7 +77,7 @@
       });
     }
     var chips = UI.chips([{ id: "all", label: "All photos" }].concat(gs.map(function (g) { return { id: g.id, label: g.label.replace(/:.*$/, "").replace(/ \(.*\)$/, "") }; })), active, function (id) {
-      active = id; chips.setActive(id); draw();
+      active = id; st.group = id; chips.setActive(id); draw();
       M.router.replace(id === "all" ? U.href("archive", "photos") : U.href("archive", "photos", id));
     });
     draw();
@@ -190,7 +191,7 @@
       el("h3", null, "About this document"),
       el("p", null, d.about),
       UI.sourceBadges(d.sources || [d.sourceId]),
-      el("a", { class: "arc-full", href: pg.file, target: "_blank", rel: "noopener" }, UI.icon("expand"), "Open the page image on its own")));
+      M.kiosk && M.kiosk.screen() ? null : el("a", { class: "arc-full", href: pg.file, target: "_blank", rel: "noopener" }, UI.icon("expand"), "Open the page image on its own")));
   }
 
   function onKey(e) {
@@ -223,7 +224,7 @@
     },
     update: function (params) {
       if (st.doc && params[0] === st.doc.id) { var n = parseInt(params[1], 10) || 1; if (n !== st.page) show(n); return; }
-      if (params[0] === "photos" && st.key === "photos") return; /* chip changes only replace the URL */
+      if (params[0] === "photos" && st.key === "photos" && (params[1] || "all") === st.group) return; /* our own chip change */
       st.key = params[0] || "";
       draw(params);
       window.scrollTo(0, 0);
