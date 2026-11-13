@@ -1,0 +1,219 @@
+/* boards.css: print styles for the physical boards. Owner: aakarsh-claude (A7). */
+@font-face { font-family: 'Fraunces'; font-weight: 300 800; src: url('../site/assets/fonts/Fraunces-normal-300_800.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 300 600; src: url('../site/assets/fonts/Fraunces-italic-300_600.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson'; font-weight: 400; src: url('../site/assets/fonts/AtkinsonHyperlegible-normal-400.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson'; font-weight: 700; src: url('../site/assets/fonts/AtkinsonHyperlegible-normal-700.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson'; font-style: italic; font-weight: 400; src: url('../site/assets/fonts/AtkinsonHyperlegible-italic-400.woff2') format('woff2'); }
+@font-face { font-family: 'JBMono'; font-weight: 400 700; src: url('../site/assets/fonts/JetBrainsMono-normal-400.woff2') format('woff2'); }
+
+@page a2p { size: 420mm 594mm; margin: 0; }
+@page a3p { size: 297mm 420mm; margin: 0; }
+@page a3l { size: 420mm 297mm; margin: 0; }
+@page a4p { size: 210mm 297mm; margin: 0; }
+@page a4l { size: 297mm 210mm; margin: 0; }
+@page a5p { size: 148mm 210mm; margin: 0; }
+@page a5l { size: 210mm 148mm; margin: 0; }
+@page a6l { size: 148mm 105mm; margin: 0; }
+
+:root {
+  --paper: #FBF7EF; --paper-2: #F1EADC; --ink: #26241F; --ink-2: #57524A; --ink-3: #7A7366; --rule: #D8CCB2;
+  --banyan: #2F5D3A; --leaf: #6E9B5A; --soil: #A9502C; --ochre: #C9962E; --ochre-ink: #85600F; --slate: #3E5C76; --plum: #6B4E71; --teal: #2D7A78; --warn: #B7791F; --ok: #2F7D4F;
+  --disp: 'Fraunces', Georgia, serif; --body: 'Atkinson', 'Segoe UI', sans-serif; --mono: 'JBMono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; background: #8d877b; }
+body { font-family: var(--body); color: var(--ink); }
+#root { display: flex; flex-direction: column; align-items: center; gap: 12mm; padding: 12mm 0; }
+@media print { html, body { background: none; } #root { display: block; padding: 0; } }
+
+.sheet { position: relative; overflow: hidden; background: var(--paper); break-after: page; page-break-after: always; box-shadow: 0 4mm 12mm rgba(0,0,0,.35); }
+@media print { .sheet { box-shadow: none; } }
+.a2p { page: a2p; width: 420mm; height: 594mm; }
+.a3p { page: a3p; width: 297mm; height: 420mm; }
+.a3l { page: a3l; width: 420mm; height: 297mm; }
+.a4p { page: a4p; width: 210mm; height: 297mm; }
+.a4l { page: a4l; width: 297mm; height: 210mm; }
+.a5p { page: a5p; width: 148mm; height: 210mm; }
+.a5l { page: a5l; width: 210mm; height: 148mm; }
+.a6l { page: a6l; width: 148mm; height: 105mm; }
+
+/* footer with cut info (tiny, at the very edge) */
+.foot { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; padding: 0 5mm 2.2mm; font: 6.5pt var(--mono); color: var(--ink-3); letter-spacing: .04em; }
+.band { position: absolute; left: 0; right: 0; top: 0; height: 6mm; background: var(--c, var(--soil)); }
+.kicker { font: 700 9pt var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--c, var(--soil)); }
+h1, h2, h3 { font-family: var(--disp); margin: 0; line-height: 1.04; letter-spacing: -0.01em; font-weight: 650; }
+p { margin: 0 0 .7em; }
+.src { font: 8.5pt/1.4 var(--mono); color: var(--ink-2); border-top: .3mm solid var(--rule); padding-top: 2.5mm; }
+.src b { color: var(--ink); }
+.photo { position: relative; background: var(--paper-2); overflow: hidden; border-radius: 2mm; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo figcaption, .cap { font-size: 8.5pt; color: var(--ink-2); line-height: 1.35; margin-top: 1.5mm; }
+.stamp { display: inline-block; font: 700 9pt var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--c, var(--ok)); border: .7mm solid currentColor; border-radius: 1.2mm; padding: .8mm 2.5mm; transform: rotate(-3deg); }
+
+/* ---------- title board ---------- */
+.title-board { padding: 26mm 26mm 22mm; display: flex; flex-direction: column; background: radial-gradient(120% 70% at 80% 0%, rgba(201,150,46,.16), transparent 60%), var(--paper); }
+.title-board .top { display: flex; justify-content: space-between; align-items: flex-start; }
+.title-board .kick { font: 700 15pt var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--soil); }
+.title-board h1 { font-size: 170pt; line-height: .86; letter-spacing: -0.035em; margin: 10mm 0 3mm; font-variation-settings: 'opsz' 144; }
+.title-board .sub { font: italic 400 50pt var(--disp); color: var(--banyan); margin-bottom: 12mm; }
+.title-board .arg { font-size: 22pt; line-height: 1.45; color: var(--ink-2); max-width: 300mm; }
+.title-board .arg b { color: var(--ink); }
+.title-board .tree { position: relative; margin: 8mm -10mm 0; height: 205mm; }
+.title-board .tree img { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 330mm; }
+.root-label { position: absolute; bottom: 0; width: 82mm; padding: 4mm 5mm; border-radius: 3mm; background: #fff; border: .6mm solid var(--c); box-shadow: 0 1mm 3mm rgba(0,0,0,.12); }
+.root-label b { display: block; font: 700 10pt var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.root-label span { font: 650 19pt var(--disp); }
+.title-board .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 12mm; }
+.qr { width: 70mm; height: 70mm; border: 1mm dashed var(--ink-3); border-radius: 3mm; display: grid; place-items: center; text-align: center; font: 11pt var(--mono); color: var(--ink-3); padding: 5mm; }
+.team { font-size: 15pt; color: var(--ink-2); line-height: 1.5; }
+.team b { font-family: var(--disp); font-size: 22pt; color: var(--ink); }
+.coin-img { width: 64mm; filter: drop-shadow(0 2mm 3mm rgba(60,40,10,.35)); }
+
+/* ---------- board header ---------- */
+.header-sheet { padding: 22mm 24mm; display: grid; grid-template-columns: 1fr 120mm; gap: 14mm; align-items: center; }
+.header-sheet .num { font: 700 160pt/0.8 var(--disp); color: var(--c); opacity: .18; position: absolute; right: 18mm; top: 14mm; }
+.header-sheet h1 { font-size: 66pt; margin: 4mm 0 6mm; }
+.header-sheet .q { font: italic 400 28pt/1.25 var(--disp); color: var(--c); margin-bottom: 8mm; }
+.header-sheet .intro { font-size: 17pt; line-height: 1.5; color: var(--ink-2); max-width: 200mm; }
+.header-sheet .screen { margin-top: 8mm; display: inline-flex; align-items: center; gap: 4mm; padding: 3mm 6mm; border-radius: 10mm; background: var(--ink); color: var(--paper); font-size: 12pt; }
+.header-sheet .side img { width: 100%; border-radius: 3mm; }
+.header-sheet .side .cap { margin-top: 2mm; }
+
+/* ---------- panel (A3 portrait) ---------- */
+.panel { padding: 22mm 20mm 16mm; display: flex; flex-direction: column; }
+.panel h2 { font-size: 40pt; margin: 3mm 0 7mm; }
+.panel .lede { font: italic 400 19pt/1.35 var(--disp); color: var(--c); margin-bottom: 7mm; }
+.panel .body { font-size: 15.5pt; line-height: 1.55; color: var(--ink); }
+.panel .photos { display: grid; gap: 4mm; margin: 6mm 0; }
+.panel .photos.two { grid-template-columns: 1fr 1fr; }
+.panel .photos .photo { height: 105mm; }
+.panel .photos.one .photo { height: 150mm; }
+.panel .grow { flex: 1; }
+.panel table { width: 100%; border-collapse: collapse; font-size: 12.5pt; margin: 4mm 0 6mm; }
+.panel th { text-align: left; font: 700 9pt var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); border-bottom: .5mm solid var(--ink); padding: 2mm; }
+.panel td { border-bottom: .3mm solid var(--rule); padding: 2.6mm 2mm; vertical-align: top; }
+.bars { display: grid; gap: 2.4mm; margin: 4mm 0 6mm; }
+.bar { display: grid; grid-template-columns: 52mm 1fr 26mm; align-items: center; gap: 3mm; font-size: 12pt; }
+.bar i { display: block; height: 7mm; border-radius: 1mm; background: var(--c); }
+.bar span:last-child { font: 10pt var(--mono); text-align: right; color: var(--ink-2); }
+.callout { border-left: 1.5mm solid var(--c); background: rgba(0,0,0,.035); padding: 4mm 5mm; margin: 4mm 0; font-size: 13.5pt; }
+.list { margin: 0; padding-left: 6mm; font-size: 15pt; line-height: 1.55; }
+.list li { margin-bottom: 2mm; }
+.tip { margin-top: 5mm; display: flex; gap: 3mm; align-items: center; font-size: 12pt; color: var(--ink-2); background: #fff; border: .4mm dashed var(--rule); border-radius: 2mm; padding: 3mm 4mm; }
+
+/* ---------- cards ---------- */
+.card { padding: 10mm 10mm 9mm; display: flex; flex-direction: column; }
+.card h3 { font-size: 20pt; margin: 2mm 0 4mm; }
+.card .body { font-size: 11pt; line-height: 1.5; }
+.card .grow { flex: 1; }
+.journey-card .stops { list-style: none; margin: 2mm 0 4mm; padding: 0 0 0 7mm; border-left: .8mm solid var(--c); }
+.journey-card .stops li { position: relative; margin-bottom: 3.5mm; }
+.journey-card .stops li::before { content: attr(data-n); position: absolute; left: -11.3mm; top: -.4mm; width: 6.5mm; height: 6.5mm; border-radius: 50%; background: var(--c); color: #fff; font: 700 8pt/6.5mm var(--mono); text-align: center; }
+.journey-card .when { font: 700 8pt var(--mono); color: var(--c); letter-spacing: .06em; }
+.journey-card .lab { font: 650 11.5pt var(--disp); display: block; }
+.journey-card .txt { font-size: 9.5pt; color: var(--ink-2); line-height: 1.4; }
+.voice-card .who { display: flex; align-items: center; gap: 5mm; margin: 2mm 0 5mm; }
+.voice-card .av { width: 24mm; height: 24mm; border-radius: 50%; display: grid; place-items: center; font: 700 16pt var(--disp); color: var(--c); background: color-mix(in srgb, var(--c) 16%, #fff); border: .8mm solid color-mix(in srgb, var(--c) 45%, transparent); flex: none; }
+.voice-card h3 { margin: 0; }
+.voice-card .role { font-size: 10pt; color: var(--ink-2); }
+.voice-card .yrs { font: 700 9pt var(--mono); color: var(--c); }
+.voice-card .quote { font: italic 400 15pt/1.35 var(--disp); margin: 2mm 0 5mm; }
+.voice-card ul { margin: 0 0 4mm; padding-left: 5mm; font-size: 10pt; line-height: 1.45; }
+.voice-card .qrbox { width: 24mm; height: 24mm; border: .5mm dashed var(--ink-3); display: grid; place-items: center; font: 7pt var(--mono); color: var(--ink-3); text-align: center; }
+
+.conflict { padding: 14mm 14mm 12mm; display: flex; flex-direction: column; }
+.conflict h2 { font-size: 30pt; margin: 2mm 0 2mm; }
+.conflict .who-right { font: italic 400 16pt var(--disp); color: var(--warn); margin-bottom: 6mm; }
+.accounts { display: grid; gap: 4mm; }
+.account { border-radius: 3mm; padding: 4mm 5mm; background: #fff; border: .4mm solid var(--rule); border-left: 2mm solid var(--c); }
+.account b { display: block; font: 700 9pt var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--c); margin-bottom: 1mm; }
+.account p { margin: 0; font-size: 12pt; line-height: 1.45; }
+.account small { display: block; margin-top: 1.5mm; font: 8pt var(--mono); color: var(--ink-3); }
+.lift { margin-top: auto; text-align: center; font: 700 10pt var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); border-top: .4mm dashed var(--ink-3); padding-top: 3mm; }
+.inside h3 { font-size: 22pt; margin: 6mm 0 3mm; }
+.inside p { font-size: 13.5pt; line-height: 1.5; }
+
+.verified .chain { display: grid; gap: 4mm; margin: 5mm 0; }
+.node { display: grid; grid-template-columns: 34mm 1fr; gap: 4mm; align-items: center; background: #fff; border: .4mm solid var(--rule); border-radius: 3mm; padding: 3mm; }
+.node .photo { height: 26mm; }
+.node .k { font: 700 8pt var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--teal); }
+.node p { margin: 1mm 0 0; font-size: 11.5pt; line-height: 1.4; }
+.node.text-only { grid-template-columns: 1fr; }
+
+.correction { background: #fff; }
+.correction .before { font: 400 20pt/1.35 var(--disp); color: var(--ink-3); text-decoration: line-through; text-decoration-color: #C0392B; text-decoration-thickness: .9mm; }
+.correction .after { font: italic 500 22pt/1.35 var(--disp); color: #B03A2E; margin: 5mm 0 6mm; padding-left: 6mm; border-left: 1.5mm solid #C0392B; }
+.correction .stamp { --c: #C0392B; font-size: 14pt; }
+
+.game-card { display: grid; place-items: center; text-align: center; padding: 10mm; }
+.game-card .ev { font: 650 19pt/1.2 var(--disp); }
+.game-card .hint { font: 8pt var(--mono); color: var(--ink-3); margin-top: 4mm; letter-spacing: .08em; text-transform: uppercase; }
+.game-card.back { background: var(--ink); color: var(--paper); }
+.game-card.back .yr { font: 700 52pt var(--disp); color: var(--ochre); }
+.game-card.back .ev2 { font-size: 10pt; opacity: .8; margin-top: 2mm; }
+
+.quiz-card { padding: 10mm 11mm 9mm; }
+.quiz-card h3 { font-size: 19pt; margin: 1mm 0 1mm; }
+.quiz-card ol { margin: 3mm 0 0; padding-left: 6mm; font-size: 9.6pt; line-height: 1.35; }
+.quiz-card ol li { margin-bottom: 2.4mm; }
+.quiz-card .opts { display: block; color: var(--ink-2); font-size: 9pt; }
+.quiz-card .scores { display: flex; gap: 6mm; margin-top: 3mm; }
+.quiz-card .scores div { flex: 1; border: .5mm solid var(--ink); border-radius: 2mm; padding: 2mm 3mm; font: 700 8pt var(--mono); letter-spacing: .08em; text-transform: uppercase; height: 15mm; }
+
+.exit-panel { padding: 26mm 24mm; display: flex; flex-direction: column; }
+.exit-panel h1 { font-size: 64pt; line-height: 1.02; margin: 4mm 0 10mm; }
+.exit-rows { display: grid; gap: 4mm; }
+.exit-row { display: grid; grid-template-columns: 34mm 1fr 1fr; gap: 6mm; align-items: start; padding: 4mm 0; border-bottom: .4mm solid var(--rule); font-size: 13.5pt; line-height: 1.4; }
+.exit-row .when { font: 700 13pt var(--mono); color: var(--soil); }
+.exit-row .solved { color: var(--banyan); }
+.exit-row .solved::before { content: 'Solved: '; font-weight: 700; }
+.exit-now { margin-top: 10mm; display: grid; grid-template-columns: 1fr 140mm; gap: 10mm; align-items: center; }
+.exit-now p { font-size: 17pt; line-height: 1.5; }
+.exit-prompt { margin-top: auto; padding: 8mm 10mm; background: var(--ink); color: var(--paper); border-radius: 4mm; font: italic 400 26pt/1.3 var(--disp); }
+
+.strip { padding: 14mm 16mm; display: flex; flex-direction: column; }
+.strip h2 { font-size: 34pt; margin: 2mm 0 4mm; }
+.strip .row { display: grid; gap: 3mm; margin: 4mm 0; }
+.strip .row .photo { height: 58mm; }
+.strip.dark { background: #1E1D1A; color: #EDE6D8; }
+.strip.dark .cap, .strip.dark .src { color: #B9B1A2; border-color: #3b3934; }
+.strip.dark .src b { color: #EDE6D8; }
+
+.model-label { padding: 9mm; display: flex; flex-direction: column; justify-content: center; background: var(--c); color: #fff; }
+.model-label .blk { font: 700 46pt var(--disp); }
+.model-label .fund { font-size: 15pt; line-height: 1.35; }
+.model-label .role { font: 10pt var(--mono); opacity: .85; margin-top: 3mm; }
+
+/* ---------- layout plans ---------- */
+.layout { padding: 14mm 16mm; }
+.layout h2 { font-size: 26pt; margin-bottom: 2mm; }
+.layout .meta { font: 9pt var(--mono); color: var(--ink-2); margin-bottom: 5mm; }
+.board-plan { position: relative; background: #E9DCC0; border: 1.2mm solid #8b6b3a; border-radius: 2mm; }
+.board-plan .item { position: absolute; border: .45mm solid var(--c, var(--ink)); background: color-mix(in srgb, var(--c, #fff) 14%, #fff); border-radius: .8mm; padding: 1.2mm 1.6mm; font-size: 7.5pt; line-height: 1.2; overflow: hidden; }
+.board-plan .item b { display: block; font: 700 6.5pt var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--c, var(--ink)); }
+.layout .legend { margin-top: 5mm; font-size: 9.5pt; color: var(--ink-2); columns: 2; }
+
+/* ---- size tuning (A3 panels read from about 1 m; A4 panels a bit closer) ---- */
+.a3p.panel { padding: 24mm 22mm 16mm; }
+.a3p.panel h2 { font-size: 50pt; }
+.a3p.panel .lede { font-size: 25pt; }
+.a3p.panel .body { font-size: 19.5pt; line-height: 1.5; }
+.a3p.panel .photos.two .photo { height: 135mm; }
+.a3p.panel .photos.one .photo { height: 190mm; }
+.a3p.panel .callout { font-size: 16pt; }
+.a4p.panel { padding: 16mm 15mm 13mm; }
+.a4p.panel h2 { font-size: 30pt; }
+.a4p.panel .lede { font-size: 17pt; }
+.a4p.panel .body { font-size: 13.5pt; }
+.a4p.panel table { font-size: 11.5pt; }
+.a4p.panel .bar { grid-template-columns: 38mm 1fr 24mm; font-size: 10.5pt; }
+.a4p.panel .tip { font-size: 11pt; }
+.title-board .arg { font-size: 29pt; max-width: 368mm; }
+.title-board .tree { height: 250mm; margin-top: 10mm; }
+.title-board .tree img { width: 390mm; }
+.title-board .root-label { width: 88mm; padding: 5mm 6mm; }
+.title-board .root-label span { font-size: 23pt; }
+.title-board .team { font-size: 17pt; }
+.title-board .team b { font-size: 28pt; }
+.header-sheet .intro { font-size: 19pt; }
+.header-sheet .q { font-size: 31pt; }
