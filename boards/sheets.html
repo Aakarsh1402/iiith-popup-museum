@@ -1,0 +1,655 @@
+<!doctype html>
+<!-- boards/sheets.html: the printed board sheets for 14 Nov (final layout, context.md section 14). Owner: saharsh-claude.
+     Every <section class="sheet"> is one PDF page at its real paper size. Build the PDF with: bash boards/build.sh -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HISTREE board sheets</title>
+<style>
+@font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 400; src: url('../site/assets/fonts/AtkinsonHyperlegible-normal-400.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 700; src: url('../site/assets/fonts/AtkinsonHyperlegible-normal-700.woff2') format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-style: italic; font-weight: 400; src: url('../site/assets/fonts/AtkinsonHyperlegible-italic-400.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-weight: 300 800; src: url('../site/assets/fonts/Fraunces-normal-300_800.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 300 600; src: url('../site/assets/fonts/Fraunces-italic-300_600.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 400 700; src: url('../site/assets/fonts/JetBrainsMono-normal-400.woff2') format('woff2'); }
+
+@page a3 { size: A3 portrait; margin: 0; }
+@page a4 { size: A4 portrait; margin: 0; }
+@page a4l { size: A4 landscape; margin: 0; }
+
+:root {
+  --ink: #26241F; --ink-2: #57524A; --ink-3: #7A7366; --rule: #CFC2A6; --paper: #F4EEE2; --paper-2: #EAE1CF;
+  --banyan: #2F5D3A; --leaf: #6E9B5A; --soil: #A9502C; --ochre: #C9962E; --slate: #3E5C76; --plum: #6B4E71; --orange: #C46A1C;
+  --todo: #C0392B;
+  --display: 'Fraunces', Georgia, serif; --body: 'Atkinson Hyperlegible', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: var(--body); color: var(--ink); background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@media screen { body { background: #8a857c; padding: 20px 0; } .sheet { margin: 0 auto 20px; box-shadow: 0 6px 30px rgba(0,0,0,.35); } }
+
+.sheet { position: relative; overflow: hidden; break-after: page; background: #fff; display: flex; flex-direction: column; --ac: var(--ink); }
+.a3 { page: a3; width: 297mm; height: 420mm; padding: 20mm 18mm 13mm; font-size: 19.5pt; }
+.a4 { page: a4; width: 210mm; height: 297mm; padding: 15mm 13mm 10mm; font-size: 13.8pt; }
+.grow { flex: 1 1 0; min-height: 20mm; }
+figure.grow .ph, .grid.grow > figure .ph { flex: 1 1 0; min-height: 15mm; }
+.grid.grow { grid-template-rows: minmax(0, 1fr); }
+.grid.grow > figure { min-height: 0; }
+.hb.grow { grid-template-rows: 1fr 1fr; }
+.a4l { page: a4l; width: 297mm; height: 210mm; padding: 12mm 13mm 9mm; font-size: 10pt; }
+.sheet::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4.5mm; background: var(--ac); }
+.b1 { --ac: var(--soil); } .b2 { --ac: var(--banyan); } .b3 { --ac: var(--slate); } .tree { --ac: var(--banyan); } .entry { --ac: var(--ochre); }
+.tag { position: absolute; top: 6.5mm; right: 8mm; font: 600 6.5pt/1 var(--mono); color: #9a9386; letter-spacing: .04em; }
+
+.kicker { font: 600 .6em/1.2 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ac); }
+h1 { font-family: var(--display); font-weight: 650; font-size: 2.55em; line-height: 1.0; letter-spacing: -.012em; margin: .18em 0 .45em; font-variation-settings: 'opsz' 144; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.35em; line-height: 1.08; margin: 0 0 .3em; }
+p { margin: 0 0 .5em; line-height: 1.32; }
+.lede { font-size: 1.08em; line-height: 1.3; max-width: 34em; }
+.who { color: var(--ink-3); font-size: .78em; white-space: nowrap; }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 1.6mm; min-height: 0; }
+figure .ph { position: relative; overflow: hidden; border-radius: 1.5mm; background: var(--paper-2); }
+figure .ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+figure .ph.contain { background: #fff; border: .3mm solid var(--rule); }
+figure .ph.contain img { object-fit: contain; }
+figcaption { font-size: .6em; line-height: 1.3; color: var(--ink-2); }
+figcaption b { color: var(--ink); }
+
+.pts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .55em; }
+.pts li { position: relative; padding-left: 1.05em; line-height: 1.28; }
+.pts li::before { content: ""; position: absolute; left: 0; top: .42em; width: .5em; height: .5em; border-radius: 50%; background: var(--ac); }
+.pts li b.y { color: var(--ac); font-family: var(--mono); font-size: .82em; margin-right: .3em; }
+
+.big { font-family: var(--display); font-weight: 700; color: var(--ac); line-height: .95; font-size: 3.2em; letter-spacing: -.02em; }
+.bigline { display: flex; align-items: flex-end; gap: .5em; }
+.bigline p { margin: 0 0 .25em; }
+.note { font-size: .72em; color: var(--ink-2); font-style: italic; }
+.box { border: .35mm solid var(--rule); border-radius: 2mm; padding: .7em .85em; background: #fbf8f1; }
+
+.src { margin-top: auto; padding-top: 2.2mm; border-top: .25mm solid var(--rule); font-size: .52em; line-height: 1.35; color: var(--ink-3); }
+.src b { color: var(--ink-2); }
+
+.add { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1mm; border: .6mm dashed var(--todo); border-radius: 2mm; color: var(--todo); font: 700 .62em/1.3 var(--mono); text-transform: uppercase; letter-spacing: .08em; text-align: center; padding: 3mm; background: #fff7f5; }
+.add small { font: 400 .95em/1.3 var(--body); text-transform: none; letter-spacing: 0; color: #a3473a; }
+.draft { position: absolute; top: 9mm; left: 50%; transform: translateX(-50%) rotate(-2deg); border: .8mm solid var(--todo); color: var(--todo); font: 700 11pt/1 var(--mono); letter-spacing: .1em; padding: 2mm 4mm; background: #fff; z-index: 2; }
+
+.grid { display: grid; gap: 4mm; }
+.g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: 1fr 1fr 1fr; } .g4 { grid-template-columns: repeat(4, 1fr); }
+
+/* timeline strip (where students lived, IMS) */
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.steps li { display: grid; grid-template-columns: 4.2em 1fr; gap: .7em; padding: .45em 0; border-top: .25mm solid var(--rule); align-items: baseline; }
+.steps li:first-child { border-top: 0; }
+.steps .when { font: 700 .85em/1.2 var(--mono); color: var(--ac); }
+.steps .what { line-height: 1.28; }
+
+/* journeys (moving rooms) */
+.jr { display: grid; grid-template-columns: 1fr; gap: 0; }
+.jr-row { display: grid; grid-template-columns: 6.6em 1fr; gap: .8em; padding: .55em 0; border-top: .3mm solid var(--rule); align-items: center; }
+.jr-row:first-child { border-top: 0; }
+.jr-name { font-family: var(--display); font-weight: 650; font-size: 1.02em; line-height: 1.05; }
+.jr-stops { display: flex; flex-wrap: wrap; align-items: center; gap: .3em .25em; font-size: .78em; }
+.jr-stop { border: .35mm solid var(--ac); border-radius: 99px; padding: .18em .6em; line-height: 1.2; background: #fff; }
+.jr-stop i { font-style: normal; font-family: var(--mono); font-size: .8em; color: var(--ac); margin-left: .3em; }
+.jr-stop.next { border-style: dashed; color: var(--ink-2); }
+.jr-arrow { color: var(--ac); font-weight: 700; }
+
+/* the IIIT Way steps */
+.way { display: flex; flex-direction: column; gap: 0; flex: 1; min-height: 0; }
+.way-step { display: grid; grid-template-columns: 1fr 1.05fr; gap: 6mm; padding: 4.5mm 0; border-top: .4mm solid var(--rule); align-items: center; }
+.way-step:first-child { border-top: 0; padding-top: 0; }
+.way-word { font-family: var(--display); font-weight: 700; font-size: 1.75em; line-height: 1; color: var(--ac); margin-bottom: .15em; }
+.way-word span { font: 600 .36em/1 var(--mono); color: var(--ink-3); letter-spacing: .08em; margin-left: .5em; vertical-align: middle; }
+.way-text { line-height: 1.28; }
+.chips { display: flex; flex-wrap: wrap; gap: 2mm; }
+.chip { border-radius: 2mm; padding: 2mm 3mm; background: #f3f7f2; border: .35mm solid var(--banyan); font-size: .78em; line-height: 1.2; }
+.chip b { display: block; font: 700 1.1em/1.1 var(--mono); color: var(--banyan); }
+
+/* Himalaya */
+.hb { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.hb div { border-radius: 2.5mm; padding: 3.5mm 4mm; color: #fff; min-height: 34mm; display: flex; flex-direction: column; gap: 1mm; }
+.hb b { font-family: var(--display); font-size: 1.45em; line-height: 1; }
+.hb span { font-size: .82em; line-height: 1.25; }
+.hb em { font-style: normal; font: 700 .58em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .1em; opacity: .85; }
+
+/* civil (dark) */
+.dark { background: #131211; color: #E8E2D6; --ac: #D2694A; }
+.dark::before { background: #3a1f17; }
+.dark h1 { font-style: italic; font-weight: 500; color: #F1EBDF; }
+.dark .src { border-color: #3b3732; color: #8f877a; } .dark .src b { color: #b8afa1; }
+.dark figcaption { color: #b8afa1; } .dark figcaption b { color: #F1EBDF; }
+.dark figure .ph { background: #222; }
+.dark figure .ph img { filter: saturate(.55) contrast(1.08) brightness(.92); }
+.dark figure .ph::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 14mm rgba(0,0,0,.65); pointer-events: none; }
+.dark figure .ph.doc img { filter: none; }
+.dark figure .ph.doc::after { box-shadow: none; }
+.dark .tag { color: #6f685e; }
+.door figcaption { font: 700 .6em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: #D2694A; text-align: center; }
+.mark { position: absolute; border: .7mm solid #D2694A; border-radius: 1mm; box-shadow: 0 0 0 100vmax rgba(0,0,0,.0); }
+.ask { border: .5mm dashed #D2694A; border-radius: 2mm; padding: .7em .9em; font-family: var(--display); font-size: 1.15em; line-height: 1.2; color: #F1EBDF; }
+
+/* index + layout pages */
+.idx table { width: 100%; border-collapse: collapse; font-size: .66em; }
+.idx th, .idx td { text-align: left; vertical-align: top; padding: 1.3mm 1.6mm; border-bottom: .25mm solid var(--rule); line-height: 1.25; }
+.idx th { font: 700 .9em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); border-bottom: .5mm solid var(--ink); }
+.idx td.pg { font: 700 1.05em/1.2 var(--mono); }
+.idx td.sz b { white-space: nowrap; display: inline-block; font: 700 .95em/1 var(--mono); padding: .8mm 1.4mm; border-radius: 1mm; color: #fff; background: var(--ink); }
+.idx td.sz b.s3 { background: var(--soil); }
+.idx tr.grp td { background: var(--paper); font: 700 .85em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+.idx .todo { color: var(--todo); font-weight: 700; }
+.idx ul { margin: 0; padding-left: 4.5mm; font-size: .7em; line-height: 1.4; }
+.lay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; flex: 1; }
+.board { border: .5mm solid var(--ink); border-radius: 2mm; padding: 3mm; display: flex; flex-direction: column; gap: 2mm; background: #fbf8f1; }
+.board h3 { margin: 0; font-family: var(--display); font-size: 1.25em; }
+.board .cols { display: flex; gap: 2mm; align-items: flex-start; justify-content: center; flex: 1; }
+.board .col { display: flex; flex-direction: column; gap: 2mm; align-items: center; }
+.board .col > small { font: 700 .62em/1 var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: .1em; }
+.pp { border: .4mm solid var(--ac, var(--ink)); background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 1mm; font-size: .68em; line-height: 1.15; }
+.pp b { font: 700 .95em/1 var(--mono); color: var(--ac, var(--ink)); }
+.pp.A3 { width: 26.7mm; height: 37.8mm; } .pp.A4 { width: 18.9mm; height: 26.7mm; }
+.pp.sug { border-style: dashed; }
+
+/* flashcards: two A5 cards on one A4, cut along the dashed line */
+.fc-page { padding: 0; }
+.fc-page::before { display: none; }
+.fc { height: 148.5mm; padding: 11mm 14mm 8mm; display: flex; flex-direction: column; position: relative; }
+.fc + .fc { border-top: .4mm dashed #b3ab9c; }
+.fc .kicker { color: var(--ochre); }
+.fc h2 { font-size: 1.85em; margin: .3em 0 .55em; }
+.fc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; font-size: 1.2em; }
+.fc ol li { display: flex; gap: .55em; align-items: baseline; }
+.fc ol li span { font: 700 .8em/1 var(--mono); border: .4mm solid var(--ink); border-radius: 50%; width: 1.55em; height: 1.55em; display: inline-grid; place-items: center; flex: none; }
+.fc .ans { margin-top: auto; transform: rotate(180deg); font-size: .66em; color: var(--ink-2); border-top: .25mm solid var(--rule); padding-top: 2mm; line-height: 1.3; }
+.fc .ans b { color: var(--ink); }
+.fc .qr { position: absolute; right: 14mm; top: 11mm; width: 24mm; height: 24mm; font-size: .45em; padding: 1.5mm; }
+.fc .scissors { position: absolute; left: 3mm; top: -2.6mm; font-size: 9pt; color: #9a9386; background: #fff; }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. INDEX ============ -->
+<section class="sheet a4 idx entry">
+  <span class="tag">PAGE 1 · A4 · FOR THE TEAM, NOT THE BOARD</span>
+  <div class="kicker">HISTREE · Team CakedUp · 14 Nov 2026</div>
+  <h1 style="font-size:2.1em">Board sheets: what to print</h1>
+  <p style="font-size:.78em; margin-bottom:3mm">Print every page at <b>100% / "Actual size"</b> on the paper size shown. Each sheet has a few big photos and 3 or 4 short points. Those points are what you explain to visitors. The grey code in the top right corner says where each sheet goes.</p>
+  <table>
+    <thead><tr><th>Page</th><th>Size</th><th>Where</th><th>Sheet: the point to explain</th></tr></thead>
+    <tbody>
+      <tr><td class="pg">2</td><td class="sz"><b>A4 L</b></td><td>for you</td><td><b>How the three boards are laid out.</b> Left, middle and right, drawn to scale.</td></tr>
+      <tr class="grp"><td colspan="4">Board 1 · Setting the scene (1998-2002) · monitor: old photo slideshow</td></tr>
+      <tr><td class="pg">3</td><td class="sz"><b class="s3">A3</b></td><td>B1</td><td><b>Gachibowli in 1998.</b> A village with one road in. 6 companies at Cyber Towers, about 1,000 by 2007-08.</td></tr>
+      <tr><td class="pg">4</td><td class="sz"><b>A4</b></td><td>B1</td><td><b>Borrowed buildings.</b> IIIT started in two government buildings it was lent. Only two floors of Nilgiri were in use.</td></tr>
+      <tr><td class="pg">5</td><td class="sz"><b>A4</b></td><td>B1</td><td><b>A diploma on trust.</b> 49 of 50 joined for a diploma, trusting IIIT to become a university. It did in 2001.</td></tr>
+      <tr><td class="pg">6</td><td class="sz"><b class="s3">A3</b></td><td>B1</td><td><b>Where students lived.</b> A bungalow, then bunks in Vindhya, then hostels. Single rooms then, triple sharing now.</td></tr>
+      <tr class="grp"><td colspan="4">Board 2 · The IIIT Way · monitor: building-change slideshow</td></tr>
+      <tr><td class="pg">7</td><td class="sz"><b>A4</b></td><td>B2 left</td><td><b>Himalaya and its four blocks.</b> A 22 crore loan, paid off in 6 of 10 years. Who paid for each block.</td></tr>
+      <tr><td class="pg">8</td><td class="sz"><b class="s3">A3</b></td><td>B2 middle</td><td><b>The IIIT Way.</b> The board's argument: borrow, share, take back, build your own. IIIT was a landlord too.</td></tr>
+      <tr><td class="pg">9</td><td class="sz"><b>A4</b></td><td>B2 right</td><td><b>Civil 1 (dark).</b> Padlocked civil labs and a concrete mixer on a CS and ECE campus.</td></tr>
+      <tr><td class="pg">10</td><td class="sz"><b>A4</b></td><td>B2 right</td><td><b>Civil 2 (dark).</b> The paper trail. Then ask: does anyone know when it closed?</td></tr>
+      <tr><td class="pg">11</td><td class="sz"><b>A4</b></td><td>B2 <span class="todo">?</span></td><td><b>Fun facts.</b> Motorola's granite floor. First in Hyderabad to go fully online, says Sridhar. <span class="todo">Size not set: can be cut into 2 A5 cards.</span></td></tr>
+      <tr class="grp"><td colspan="4">Board 3 · Institutional changes · monitor: interactive map</td></tr>
+      <tr><td class="pg">12</td><td class="sz"><b>A4</b></td><td>B3 left</td><td><span class="todo">DRAFT.</span> <b>Attendance, then and now.</b> Fill in when the team's info arrives.</td></tr>
+      <tr><td class="pg">13</td><td class="sz"><b>A4</b></td><td>B3 left</td><td><b>IMS.</b> Paper files to IMS (2017), one process at a time. Some records stay on paper. Don't call IMS "the first fully digital college".</td></tr>
+      <tr><td class="pg">14</td><td class="sz"><b class="s3">A3</b></td><td>B3 middle</td><td><b>Moving rooms.</b> Six rooms that moved: library, mess, lecture hall, Block D, server room, cricket ground. <span class="todo">Size not set: made A3.</span></td></tr>
+      <tr><td class="pg">15</td><td class="sz"><b>A4</b></td><td>B3 right</td><td><b>Trees 1.</b> Four banyans saved from road widening. Navjeevan's three stops.</td></tr>
+      <tr><td class="pg">16</td><td class="sz"><b>A4</b></td><td>B3 right</td><td><b>Trees 2 (optional).</b> Jagruthi the tree, Jagruti the mascot. The PGDIT-2002 neem.</td></tr>
+      <tr class="grp"><td colspan="4">Entry table</td></tr>
+      <tr><td class="pg">17-20</td><td class="sz"><b>A4</b></td><td>Entry</td><td><b>Quiz flashcards, Q1 to Q8.</b> Two per page: cut each page in half to get A5 cards. The answer is upside down at the bottom for the host.</td></tr>
+    </tbody>
+  </table>
+  <div class="grid g2" style="margin-top:4mm; gap:6mm">
+    <div>
+      <div class="kicker" style="color:var(--todo); margin-bottom:1.5mm">Add before printing</div>
+      <ul>
+        <li>This morning's photos: banyans (p.15, 16), Motorola granite (p.11). Dashed red boxes mark where.</li>
+        <li>Attendance info (p.12).</li>
+        <li>The QR code needs the website link (p.17-20, entry). The site isn't online yet.</li>
+        <li>Check the granite spot: our source says Vindhya A1 and B2. Is that near CSTAR?</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker" style="margin-bottom:1.5mm">Good to know</div>
+      <ul>
+        <li>Dropped as the team decided: the comic, "borrowed teachers", the printed Board 4 cards.</li>
+        <li>Pages 9 and 10 are dark on purpose (spooky). They use a lot of ink.</li>
+        <li>Photo numbers match <span style="font-family:var(--mono)">raw/photos</span> and context.md section 12.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. LAYOUT ============ -->
+<section class="sheet a4l entry">
+  <span class="tag">PAGE 2 · A4 LANDSCAPE · FOR THE TEAM, NOT THE BOARD</span>
+  <div class="kicker">How the boards are laid out</div>
+  <h1 style="font-size:2.3em; margin-bottom:.3em">Left, middle, right</h1>
+  <p style="font-size:.95em">Paper sizes are to scale with each other. Solid = what the team decided. <b>Dashed = our suggestion</b>, move it if it doesn't fit your board.</p>
+  <div class="lay">
+    <div class="board" style="--ac: var(--soil)">
+      <h3>Board 1 · Setting the scene</h3>
+      <div class="cols">
+        <div class="col"><small>left</small><div class="pp A3 sug"><b>p.3 A3</b>Gachibowli in 1998</div></div>
+        <div class="col"><small>middle</small><div class="pp A4 sug"><b>p.4 A4</b>Borrowed buildings</div><div class="pp A4 sug"><b>p.5 A4</b>Diploma on trust</div></div>
+        <div class="col"><small>right</small><div class="pp A3 sug"><b>p.6 A3</b>Where students lived</div></div>
+      </div>
+      <p style="font-size:.85em; margin:0">The team didn't fix positions for Board 1, so this follows the story order: place, buildings, students, housing.</p>
+    </div>
+    <div class="board" style="--ac: var(--banyan)">
+      <h3>Board 2 · The IIIT Way</h3>
+      <div class="cols">
+        <div class="col"><small>left</small><div class="pp A4"><b>p.7 A4</b>Himalaya</div><div class="pp A4 sug"><b>p.11 A4</b>Fun facts</div></div>
+        <div class="col"><small>middle</small><div class="pp A3"><b>p.8 A3</b>The IIIT Way</div></div>
+        <div class="col"><small>right</small><div class="pp A4"><b>p.9 A4</b>Civil 1</div><div class="pp A4"><b>p.10 A4</b>Civil 2</div></div>
+      </div>
+      <p style="font-size:.85em; margin:0">Fun facts have no fixed spot. Under Himalaya keeps the middle clear.</p>
+    </div>
+    <div class="board" style="--ac: var(--slate)">
+      <h3>Board 3 · Institutional changes</h3>
+      <div class="cols">
+        <div class="col"><small>left</small><div class="pp A4"><b>p.12 A4</b>Attendance</div><div class="pp A4"><b>p.13 A4</b>IMS</div></div>
+        <div class="col"><small>middle</small><div class="pp A3 sug"><b>p.14 A3</b>Moving rooms</div></div>
+        <div class="col"><small>right</small><div class="pp A4"><b>p.15 A4</b>Trees 1</div><div class="pp A4 sug"><b>p.16 A4</b>Trees 2</div></div>
+      </div>
+      <p style="font-size:.85em; margin:0">Trees: 1 or 2 A4 sheets. Page 16 is the optional second one.</p>
+    </div>
+  </div>
+  <p style="font-size:.85em; margin:3mm 0 0">Board 4 has no printed panels: it's a monitor (How We Know, then a website tour), with the 2002 layout plan and the scanned floor plans you already printed on a board behind it.</p>
+</section>
+
+<!-- ============ BOARD 1 ============ -->
+<!-- 3. Gachibowli in 1998 (A3) -->
+<section class="sheet a3 b1">
+  <span class="tag">B1 · A3 · PAGE 3</span>
+  <div class="kicker">Board 1 · Setting the scene</div>
+  <h1>What was here in 1998?</h1>
+  <figure class="grow" style="margin-bottom:5mm"><div class="ph"><img src="img/02-crop.jpg" alt=""></div>
+    <figcaption><b>The road to OBH in the early years.</b> Look how empty the land is.</figcaption></figure>
+  <div class="grid g2" style="gap:5mm; margin-bottom:7mm">
+    <figure><div class="ph" style="height:74mm"><img src="img/01-crop.jpg" alt=""></div>
+      <figcaption><b>The early main gate.</b> The sign says "Indian Institute of Information Technology". Today the I stands for International.</figcaption></figure>
+    <figure><div class="ph" style="height:74mm"><img src="img/04-crop.jpg" alt=""></div>
+      <figcaption><b>The guest house on bare red soil,</b> with newly planted trees.</figcaption></figure>
+  </div>
+  <ul class="pts" style="margin-bottom:6mm">
+    <li>A village with forest-like land. Bullock carts on the path. Bears, pigs and monkeys strayed in. <span class="who">Mr. Gopi</span></li>
+    <li>One district road from Mehdipatnam was the only way in. <span class="who">Prof. K. S. Rajan</span></li>
+  </ul>
+  <div class="grid g2" style="gap:6mm">
+    <div class="bigline"><div class="big">6</div><p>companies at Cyber Towers in 1998.</p></div>
+    <div class="bigline"><div class="big">~1,000</div><p>in the IT corridor by <span style="white-space:nowrap">2007-08.</span> <span class="who">Rajan</span></p></div>
+  </div>
+  <div class="src"><b>Sources:</b> interviews with Mr. Gopi and Prof. K. S. Rajan (2026); stills from IIIT's 20-year video (photos 01, 02, 04).</div>
+</section>
+
+<!-- 4. Borrowed buildings (A4) -->
+<section class="sheet a4 b1">
+  <span class="tag">B1 · A4 · PAGE 4</span>
+  <div class="kicker">Board 1 · Setting the scene</div>
+  <h1>A college in borrowed buildings</h1>
+  <figure class="grow" style="margin-bottom:4mm"><div class="ph"><img src="img/03-crop.jpg" alt=""></div>
+    <figcaption><b>An early classroom.</b></figcaption></figure>
+  <ul class="pts" style="margin-bottom:5mm">
+    <li><b class="y">1997-98</b> The state gave IIIT land and two government buildings it already had.</li>
+    <li><b>Vindhya</b> was the old district collectorate. <b>Nilgiri</b> was the old district court. <span class="who">Gopi</span></li>
+    <li>In 1998 only Nilgiri's first two floors were in use: classrooms, labs, offices and exam halls. <span class="who">Prof. P. J. Narayanan</span></li>
+    <li>The one big lecture hall was SH-1 in Vindhya. <span class="who">PJN</span></li>
+  </ul>
+  <div class="grid" style="grid-template-columns: 1fr 1.1fr; gap:5mm; align-items:center">
+    <figure><div class="ph" style="height:48mm"><img src="img/prosp-building.jpg" alt=""></div>
+      <figcaption>A campus building in the prospectus, around 2001.</figcaption></figure>
+    <p class="note" style="margin:0">Memories differ: SLN Shastry remembers Nilgiri as an unfinished government building that was lent for classrooms and labs.</p>
+  </div>
+  <div class="src"><b>Sources:</b> interviews with Mr. Gopi, Prof. P. J. Narayanan and SLN Shastry (2026); IIIT prospectus (c.2001); still from IIIT's 20-year video (photo 03).</div>
+</section>
+
+<!-- 5. A diploma on trust (A4) -->
+<section class="sheet a4 b1">
+  <span class="tag">B1 · A4 · PAGE 5</span>
+  <div class="kicker">Board 1 · Setting the scene</div>
+  <h1>A diploma on trust</h1>
+  <figure class="grow" style="margin-bottom:3mm"><div class="ph"><img src="../raw/photos/07_gdit-first-batch-inauguration.jpeg" alt=""></div>
+    <figcaption><b>Inauguration of the first batch of GDIT students.</b></figcaption></figure>
+  <div class="bigline" style="margin:2mm 0 5mm"><div class="big">49</div><p style="font-size:1.05em">of 50 seats filled in the first batch, 2 Sep 1998. <span class="who">Gopi</span></p></div>
+  <ul class="pts" style="margin-bottom:5mm">
+    <li>IIIT wasn't a university yet, so it couldn't promise a degree. They signed up for a <b>Graduate Diploma in IT (GDIT)</b>. <span class="who">PJN</span></li>
+    <li>Student emails ended in <b>@gdit.iiit.net</b>. Faculty had @iiit.net. <span class="who">PJN</span></li>
+    <li><b class="y">2001</b> IIIT became a deemed university. Degrees at last.</li>
+  </ul>
+  <figure><div class="ph" style="height:58mm"><img src="../raw/photos/08_early-lecture-audience.jpeg" alt=""></div>
+    <figcaption>Students listen to a panel, probably at the same event.</figcaption></figure>
+  <div class="src"><b>Sources:</b> interviews with Mr. Gopi and Prof. P. J. Narayanan (2026); IIIT prospectus (c.2001); stills from IIIT's 20-year video (photos 07, 08).</div>
+</section>
+
+<!-- 6. Where students lived (A3) -->
+<section class="sheet a3 b1">
+  <span class="tag">B1 · A3 · PAGE 6</span>
+  <div class="kicker">Board 1 · Setting the scene</div>
+  <h1>Where did the first students sleep?</h1>
+  <ol class="steps" style="margin-bottom:6mm">
+    <li><span class="when">1998</span><span class="what">The <b>District Collector's bungalow and three flats</b>. <span class="who">PJN</span></span></li>
+    <li><span class="when">1999</span><span class="what">A whole batch on <b>two-tier bunk beds inside Vindhya</b>, army style. <span class="who">PJN</span></span></li>
+    <li><span class="when">2000</span><span class="what"><b>Palash, Parijat, then Kadamb</b> open. The bunks come down. <span class="who">PJN</span></span></li>
+    <li><span class="when">c.2001</span><span class="what">Every student gets a single room. <span class="who">prospectus</span></span></li>
+    <li><span class="when">Now</span><span class="what"><b>Triple sharing.</b> Visiting interns six to a room in the holidays. <span class="who">Sridhar Kora</span></span></li>
+  </ol>
+  <figure style="margin-bottom:7mm"><div class="ph contain" style="height:30mm; padding:2mm 4mm"><img src="img/prosp-hostels.jpg" alt=""></div>
+    <figcaption><b>The prospectus, around 2001:</b> "All students are provided with single room accommodation."</figcaption></figure>
+  <h2 style="font-size:1.05em; margin-bottom:2.5mm">The bungalow stood where the New Academic Block is going up now. <span class="who">PJN</span></h2>
+  <div class="grid g2 grow" style="gap:5mm; margin-bottom:5mm">
+    <figure><div class="ph"><img src="../raw/photos/09_new-academic-block-1.jpeg" alt=""></div>
+      <figcaption><b>Before:</b> the NAB site before building work, from above.</figcaption></figure>
+    <figure><div class="ph"><img src="../raw/photos/14_new-academic-block-6.jpeg" alt=""></div>
+      <figcaption><b>Later:</b> the same spot in the latest satellite image we have.</figcaption></figure>
+  </div>
+  <p class="note">Memories differ: SLN Shastry says boys stayed in Vindhya and girls in the Judge's Quarters at first.</p>
+  <div class="src"><b>Sources:</b> interviews with Prof. P. J. Narayanan, SLN Shastry and Sridhar Kora (2026); IIIT prospectus (c.2001); satellite images (photos 09, 14).</div>
+</section>
+
+<!-- ============ BOARD 2 ============ -->
+<!-- 7. Himalaya (A4, left) -->
+<section class="sheet a4 b2">
+  <span class="tag">B2 LEFT · A4 · PAGE 7</span>
+  <div class="kicker">Board 2 · The IIIT Way</div>
+  <h1>Himalaya: one loan, four blocks</h1>
+  <div class="bigline" style="margin-bottom:6mm"><div class="big">22 cr</div><p style="font-size:1.05em">loan to build it. 10 years to pay back. <b>Paid off in 6.</b> <span class="who">PJN</span></p></div>
+  <p style="font-size:.9em; margin-bottom:3mm">The blocks arrived as bare shells. Each one was fitted out differently:</p>
+  <div class="hb grow" style="margin-bottom:6mm">
+    <div style="background: var(--banyan)"><em>Block C</em><b>IIIT's own money</b><span>Lecture halls and the exam centre.</span></div>
+    <div style="background: var(--orange)"><em>Block A</em><b>TalentSprint</b><span>Fitted out with TalentSprint. IIIT bought it out in 2018. Admin today.</span></div>
+    <div style="background: var(--slate)"><em>Kohli Research Block</em><b>TCS</b><span>Built with TCS. Research.</span></div>
+    <div style="background: var(--plum)"><em>Block D</em><b>T-Hub, 2015-2022</b><span>The state's startup incubator. Back to IIIT in 2022: research labs now.</span></div>
+  </div>
+  <ul class="pts">
+    <li>Only Block C was fitted out with IIIT's own money.</li>
+    <li>Himalaya stands on the old cricket ground, where faculty and students played together. <span class="who">Prabhakar M</span></li>
+  </ul>
+  <p class="note" style="margin-top:4mm">The boxes show who paid, not where each block stands.</p>
+  <div class="src"><b>Sources:</b> interviews with Prof. P. J. Narayanan and Prabhakar M (2026); Telangana Today (2022) and Wikipedia: T-Hub.</div>
+</section>
+
+<!-- 8. The IIIT Way (A3, middle) -->
+<section class="sheet a3 b2">
+  <span class="tag">B2 MIDDLE · A3 · PAGE 8</span>
+  <div class="kicker">Board 2 · The IIIT Way</div>
+  <h1 style="margin-bottom:.35em">Borrow, share, take back, build your own</h1>
+  <div class="way">
+    <div class="way-step">
+      <div><div class="way-word">Borrow<span>1998</span></div><p class="way-text">IIIT started in government buildings lent by the state: Vindhya and Nilgiri.</p></div>
+      <figure><div class="ph" style="height:52mm"><img src="img/prosp-lawn.jpg" alt=""></div><figcaption>The campus in the prospectus, around 2001.</figcaption></figure>
+    </div>
+    <div class="way-step">
+      <div><div class="way-word">Share<span>1998-2007</span></div><p class="way-text">Six company schools ran inside Vindhya. The 2002 campus plan calls it the "Corporate Schools" building.</p></div>
+      <div class="grid g2" style="gap:3mm">
+        <figure><div class="ph" style="height:46mm"><img src="../raw/photos/19_corporate-schools-collage.jpeg" alt=""></div><figcaption>IBM, Oracle, Motorola and Cisco labs.</figcaption></figure>
+        <figure><div class="ph contain" style="height:46mm; padding:1.5mm"><img src="img/prosp-partners.jpg" alt=""></div><figcaption>The list in the prospectus.</figcaption></figure>
+      </div>
+    </div>
+    <div class="way-step">
+      <div><div class="way-word">Take back</div><p class="way-text">Then IIIT took its space back, one building at a time.</p></div>
+      <div class="chips">
+        <div class="chip"><b>2007</b>Vindhya, from the company schools</div>
+        <div class="chip"><b>2018</b>Himalaya Block A, from TalentSprint</div>
+        <div class="chip"><b>2022</b>Himalaya Block D, from T-Hub</div>
+      </div>
+    </div>
+    <div class="way-step">
+      <div><div class="way-word">Build your own</div><p class="way-text">Himalaya, on its own loan. Its own servers in Nilgiri, still running. Its own office system, IMS (2017).</p></div>
+      <div class="chips">
+        <div class="chip"><b>22 crore</b>Himalaya loan, paid off in 6 years</div>
+        <div class="chip"><b>1998</b>first server room, Nilgiri</div>
+        <div class="chip"><b>2017</b>IMS</div>
+      </div>
+    </div>
+    <div class="way-step">
+      <div><div class="way-word">Landlord too</div><p class="way-text">IIIT also rented out its own space: <b>67,118 sq ft</b> to RGUKT, TalentSprint, SBH and others.</p></div>
+      <figure><div class="ph contain" style="height:44mm; padding:1.5mm"><img src="img/fp-leased.jpg" alt=""></div><figcaption>"Leased Spaces", from an undated floor-space table.</figcaption></figure>
+    </div>
+  </div>
+  <div class="src"><b>Sources:</b> interviews with Prof. P. J. Narayanan, Prabhakar M and Prof. K. S. Rajan (2026); IIIT prospectus (c.2001); campus layout plan (2002); lab floor plans and floor-space tables (undated); Telangana Today (2022); team photos (19).</div>
+</section>
+
+<!-- 9. Civil 1 (A4, right, dark) -->
+<section class="sheet a4 dark">
+  <span class="tag">B2 RIGHT · A4 · PAGE 9</span>
+  <div class="kicker">Board 2 · A branch that was cut</div>
+  <h1>Why does a computer college have a concrete mixer?</h1>
+  <figure class="grow" style="margin-bottom:4mm"><div class="ph"><img src="../raw/photos/39_civil-dept-concrete-mixer.jpeg" alt=""></div>
+    <figcaption><b>An old concrete mixer</b> in the abandoned civil engineering department, on our campus.</figcaption></figure>
+  <div class="grid g4 door" style="gap:3mm; margin-bottom:5mm; --dh:62mm">
+    <figure><div class="ph" style="height:var(--dh)"><img src="../raw/photos/42_civil-dept-hydraulics-lab.jpeg" alt=""></div><figcaption>Hydraulics Lab</figcaption></figure>
+    <figure><div class="ph" style="height:var(--dh)"><img src="../raw/photos/46_civil-dept-soil-mechanics-lab.jpeg" alt=""></div><figcaption>Soil Mechanics Lab</figcaption></figure>
+    <figure><div class="ph" style="height:var(--dh)"><img src="../raw/photos/43_civil-dept-building-materials-lab.jpeg" alt=""></div><figcaption>Building Materials Lab</figcaption></figure>
+    <figure><div class="ph" style="height:var(--dh)"><img src="../raw/photos/41_civil-dept-engineering-workshop.jpeg" alt=""></div><figcaption>Engineering Workshop</figcaption></figure>
+  </div>
+  <ul class="pts">
+    <li>Four labs. Every door padlocked.</li>
+    <li>IIIT today teaches CS and ECE, and does research. So who used these labs?</li>
+  </ul>
+  <div class="src"><b>Sources:</b> team photos from the abandoned civil engineering department (photos 39, 41, 42, 43, 46).</div>
+</section>
+
+<!-- 10. Civil 2 (A4, right, dark) -->
+<section class="sheet a4 dark">
+  <span class="tag">B2 RIGHT · A4 · PAGE 10</span>
+  <div class="kicker">Board 2 · A branch that was cut</div>
+  <h1>The paper trail</h1>
+  <div class="grid g2" style="gap:4mm; margin-bottom:3mm">
+    <figure><div class="ph doc" style="aspect-ratio: 910 / 690; background:#fff"><img src="img/prosp-programs.jpg" alt=""><span class="mark" style="left:5%; top:60%; width:94%; height:14.5%"></span></div>
+      <figcaption><b>Prospectus, around 2001:</b> an M.Tech in IT for Building Sciences, "for architects and civil engineers".</figcaption></figure>
+    <figure><div class="ph doc" style="aspect-ratio: 890 / 570; background:#fff"><img src="img/prosp-centres.jpg" alt=""><span class="mark" style="left:.5%; top:85%; width:34%; height:9.5%"></span></div>
+      <figcaption><b>Same prospectus:</b> a research centre for Intelligent Buildings.</figcaption></figure>
+  </div>
+  <figure class="grow" style="margin-bottom:3mm"><div class="ph doc contain" style="padding:1.5mm"><img src="img/fp-eerc.jpg" alt=""></div>
+    <figcaption><b>A floor plan of Vindhya (undated):</b> EERC, with a CASE Lab, a Material Testing Lab and a models display hall.</figcaption></figure>
+  <div class="grid g2" style="gap:4mm; margin-bottom:4mm">
+    <figure><div class="ph" style="height:40mm"><img src="../raw/photos/47_civil-dept-lab-through-glass.jpeg" alt=""></div><figcaption>A lab, seen through the glass.</figcaption></figure>
+    <figure><div class="ph" style="height:40mm"><img src="../raw/photos/40_civil-dept-old-noticeboard.jpeg" alt="" style="object-position:center 30%"></div><figcaption>Still pinned up: old Telugu newspaper clippings.</figcaption></figure>
+  </div>
+  <div class="ask">When did it start? When did it close? We couldn't find out. <b>Do you know? Tell us.</b></div>
+  <div class="src"><b>Sources:</b> IIIT prospectus (c.2001); lab floor plans and floor-space tables (undated); team photos (40, 47).</div>
+</section>
+
+<!-- 11. Fun facts (A4, two cards) -->
+<section class="sheet a4 b2">
+  <span class="tag">B2 · A4 (OR CUT INTO 2 A5) · PAGE 11</span>
+  <div class="kicker">Board 2 · Fun facts</div>
+  <h1 style="font-size:2.2em">Did you know?</h1>
+  <div class="box grow" style="margin-bottom:6mm; display:flex; flex-direction:column; gap:3mm">
+    <div class="big" style="font-size:2.2em">Look down</div>
+    <p style="font-size:1.12em; margin:0">The black granite floor in Vindhya A1 and B2 was put in by <b>Motorola's</b> company school. It's still there. <span class="who">PJN</span></p>
+    <div class="add" style="flex:1">Add this morning's granite photo<small>Check the spot: our source says A1 and B2. Is that near CSTAR?</small></div>
+  </div>
+  <div class="box" style="display:flex; flex-direction:column; gap:3mm">
+    <div class="big" style="font-size:2.2em">First online</div>
+    <p style="font-size:1.12em; margin:0">When COVID shut the campus, classes and exams moved to <b>CodeTantra</b>. Sridhar Kora says IIIT was the first institution in Hyderabad to go fully online.</p>
+    <p class="note" style="margin:0">One person told us this. If you know otherwise, tell us.</p>
+  </div>
+  <div class="src"><b>Sources:</b> interviews with Prof. P. J. Narayanan and Sridhar Kora (2026).</div>
+</section>
+
+<!-- ============ BOARD 3 ============ -->
+<!-- 12. Attendance (A4, left) DRAFT -->
+<section class="sheet a4 b3">
+  <span class="tag">B3 LEFT · A4 · PAGE 12</span>
+  <div class="draft">DRAFT: NEEDS THE TEAM'S INFO</div>
+  <div class="kicker">Board 3 · Institutional changes</div>
+  <h1>How did attendance work?</h1>
+  <div class="grid g2" style="gap:5mm; flex:1; margin-bottom:5mm">
+    <div style="display:flex; flex-direction:column; gap:3mm">
+      <h2 style="color:var(--slate)">Then</h2>
+      <div class="add" style="flex:1">The team is sending this<small>How attendance used to work, who told us, and a photo of an old register if there is one.</small></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:3mm">
+      <h2 style="color:var(--slate)">Now</h2>
+      <div class="box" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:3mm">
+        <div class="big" style="font-size:2.4em">Biometric</div>
+        <p style="margin:0">Attendance in every class is taken with a biometric system.</p>
+      </div>
+      <div class="add" style="height:55mm">Add a photo of the biometric machine</div>
+    </div>
+  </div>
+  <div class="src"><b>Sources:</b> <span style="color:var(--todo)">to add: who told us how it used to work, and the team's own experience for "now".</span></div>
+</section>
+
+<!-- 13. IMS (A4, left) -->
+<section class="sheet a4 b3">
+  <span class="tag">B3 LEFT · A4 · PAGE 13</span>
+  <div class="kicker">Board 3 · Institutional changes</div>
+  <h1>From paper files to one system</h1>
+  <svg viewBox="0 0 400 128" style="width:100%; height:auto; margin-bottom:4mm" aria-hidden="true">
+    <g transform="translate(18,12)">
+      <path d="M0 18 h38 l8 -10 h50 v86 h-96 z" fill="#d9c7a0" stroke="#26241F" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="8" y="28" width="80" height="58" rx="2" fill="#efe4c9" stroke="#26241F" stroke-width="2"/>
+      <path d="M18 42 h60 M18 54 h60 M18 66 h44" stroke="#8a7a5a" stroke-width="2.5"/>
+      <path d="M48 86 v10" stroke="#a9502c" stroke-width="3"/>
+    </g>
+    <text x="66" y="124" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#57524A">CLOTH AND CARD FOLDERS</text>
+    <path d="M150 55 h92" stroke="#3E5C76" stroke-width="4" stroke-dasharray="8 7"/>
+    <path d="M240 43 l16 12 l-16 12 z" fill="#3E5C76"/>
+    <text x="196" y="45" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="700" fill="#3E5C76">2017</text>
+    <g transform="translate(272,8)">
+      <rect x="0" y="0" width="112" height="74" rx="6" fill="#fff" stroke="#26241F" stroke-width="2.5"/>
+      <rect x="8" y="8" width="96" height="58" rx="2" fill="#e6edf3"/>
+      <path d="M16 20 h40 M16 32 h70 M16 44 h56 M16 56 h30" stroke="#3E5C76" stroke-width="4" stroke-linecap="round"/>
+      <path d="M44 74 l-8 16 h40 l-8 -16" fill="#fff" stroke="#26241F" stroke-width="2.5" stroke-linejoin="round"/>
+    </g>
+    <text x="328" y="124" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#57524A">IMS</text>
+  </svg>
+  <ol class="steps" style="margin-bottom:5mm">
+    <li><span class="when">Before</span><span class="what">All office work on paper, in government-style cloth and card file folders. <span class="who">Rajan</span></span></li>
+    <li><span class="when">2016</span><span class="what">Prabhakar starts digitising hostel registers, reports, and electricity and water bills. <span class="who">Prabhakar M</span></span></li>
+    <li><span class="when">2017</span><span class="what"><b>IMS</b>, the institute management system. Hostel room allocation and room shifting go first. <span class="who">Prabhakar M</span></span></li>
+    <li><span class="when">Then</span><span class="what">Office work moves over <b>one process at a time</b>. <span class="who">Rajan</span></span></li>
+    <li><span class="when">Today</span><span class="what">Most paperwork goes through IMS. Some records stay on paper, because audit rules need hard copies. <span class="who">Rajan</span></span></li>
+  </ol>
+  <div class="grid g2 grow" style="gap:4mm">
+    <div class="add">Optional: photo of an old file folder<small>Rajan showed us these folders.</small></div>
+    <div class="add">Optional: an IMS screenshot<small>Hide names and roll numbers.</small></div>
+  </div>
+  <div class="src"><b>Sources:</b> interviews with Prof. K. S. Rajan and Prabhakar M (2026).</div>
+</section>
+
+<!-- 14. Moving rooms (A3, middle) -->
+<section class="sheet a3 b3">
+  <span class="tag">B3 MIDDLE · A3 (SIZE NOT FIXED) · PAGE 14</span>
+  <div class="kicker">Board 3 · Institutional changes</div>
+  <h1>Rooms that moved</h1>
+  <p class="lede" style="margin-bottom:5mm">Most rooms on campus have had more than one home. Find them on the map on the screen.</p>
+  <div class="grid grow" style="grid-template-columns: 1fr 1fr 1fr; gap:4mm; margin-bottom:6mm">
+    <figure><div class="ph"><img src="../raw/photos/37_saranga-hall-entrance-former-library.jpeg" alt=""></div><figcaption><b>Saranga Hall,</b> the first library.</figcaption></figure>
+    <figure><div class="ph"><img src="img/04-crop.jpg" alt=""></div><figcaption><b>The guest house:</b> its old sign says "Mess &amp; Lounge".</figcaption></figure>
+    <figure><div class="ph"><img src="../raw/photos/30_guest-house-lobby-former-mess.jpeg" alt=""></div><figcaption><b>The lobby today</b> is where the mess was.</figcaption></figure>
+  </div>
+  <div class="jr" style="margin-bottom:4mm">
+    <div class="jr-row"><div class="jr-name">The library</div><div class="jr-stops">
+      <span class="jr-stop">Nilgiri 119, now Saranga Hall<i>1998</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop">Vindhya A6<i>2001</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop">plus the upper floor<i>2016</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop next">New Academic Block<i>next</i></span></div></div>
+    <div class="jr-row"><div class="jr-name">Where you eat</div><div class="jr-stops">
+      <span class="jr-stop">the guest house<i>1998</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop">hostel messes<i>1999-2001</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop">four messes<i>2005</i></span></div></div>
+    <div class="jr-row"><div class="jr-name">The big lecture hall</div><div class="jr-stops">
+      <span class="jr-stop">SH-1, Vindhya<i>1998</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop">H105<i>today</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop next">New Academic Block<i>next</i></span></div></div>
+    <div class="jr-row"><div class="jr-name">Himalaya Block D</div><div class="jr-stops">
+      <span class="jr-stop">T-Hub<i>2015-2022</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop">research labs<i>2022</i></span></div></div>
+    <div class="jr-row"><div class="jr-name">The server room</div><div class="jr-stops">
+      <span class="jr-stop">Nilgiri<i>1998, still running</i></span><span class="jr-arrow">→</span>
+      <span class="jr-stop next">Vindhya IT wing<i>moving now</i></span></div></div>
+    <div class="jr-row"><div class="jr-name">The cricket ground</div><div class="jr-stops">
+      <span class="jr-stop">faculty vs students cricket</span><span class="jr-arrow">→</span>
+      <span class="jr-stop">the Himalaya complex</span></div></div>
+  </div>
+  <p class="note">Next, the New Academic Block takes the library and the big lecture hall.</p>
+  <div class="src"><b>Sources:</b> interviews with G. Muralidhar, Mr. Gopi, Prof. P. J. Narayanan and Prabhakar M (2026); Ping! magazine, "Echoes: The Library" (c.2016); Telangana Today (2022); team photos (04, 30, 37).</div>
+</section>
+
+<!-- 15. Trees 1 (A4, right) -->
+<section class="sheet a4 b3 tree">
+  <span class="tag">B3 RIGHT · A4 · PAGE 15</span>
+  <div class="kicker">Board 3 · HISTREE</div>
+  <h1>Even the trees were moved here</h1>
+  <p class="lede" style="margin-bottom:4mm">Road widening in front of the campus threatened four banyans. SLN Shastry got them moved instead of cut down. <span class="who">SLN Shastry</span></p>
+  <div class="grid g2" style="gap:3mm; margin-bottom:5mm; font-size:.92em">
+    <div class="box"><b>Navjeevan</b>, moved three times</div>
+    <div class="box"><b>Jagruthi</b></div>
+    <div class="box">one in the <b>Judge's Quarters</b> area</div>
+    <div class="box">one near <b>Buddha Nivas</b></div>
+  </div>
+  <h2 style="font-size:1.1em">Navjeevan's three stops</h2>
+  <svg viewBox="0 0 400 100" style="width:100%; height:auto; margin-bottom:4mm" aria-hidden="true">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#A9502C"/></marker></defs>
+    <path d="M86 52 Q143 10 192 52" fill="none" stroke="#A9502C" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ar)"/>
+    <path d="M226 52 Q283 10 332 52" fill="none" stroke="#A9502C" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ar)"/>
+    <g font-family="Fraunces" font-weight="650" font-size="15" text-anchor="middle" fill="#26241F">
+      <circle cx="60" cy="58" r="22" fill="#fff" stroke="#2F5D3A" stroke-width="3"/><text x="60" y="96">Main road</text>
+      <circle cx="209" cy="58" r="22" fill="#fff" stroke="#2F5D3A" stroke-width="3"/><text x="209" y="96">Bakul Nivas</text>
+      <circle cx="350" cy="58" r="22" fill="#2F5D3A" stroke="#2F5D3A" stroke-width="3"/><text x="350" y="96">OBH, today</text>
+    </g>
+    <g fill="#6E9B5A" stroke="#1F3F28" stroke-width="2"><path d="M50 60 q10 -22 20 0 q-10 6 -20 0z"/><path d="M199 60 q10 -22 20 0 q-10 6 -20 0z"/><path d="M340 60 q10 -22 20 0 q-10 6 -20 0z" fill="#a9d18e" stroke="#fff"/></g>
+  </svg>
+  <div class="grid g2 grow" style="gap:4mm">
+    <figure><div class="ph"><img src="img/05-crop.jpg" alt=""></div><figcaption><b>OBH in the early years,</b> with a young banyan.</figcaption></figure>
+    <div class="add">Add: Navjeevan at OBH today<small>This morning's photo.</small></div>
+  </div>
+  <div class="src"><b>Sources:</b> interview with SLN Shastry (2026); still from IIIT's 20-year video (photo 05). We don't know the year of the road widening yet.</div>
+</section>
+
+<!-- 16. Trees 2 (A4, right, optional) -->
+<section class="sheet a4 b3 tree">
+  <span class="tag">B3 RIGHT · A4 (OPTIONAL) · PAGE 16</span>
+  <div class="kicker">Board 3 · HISTREE</div>
+  <h1>Jagruthi, and Jagruti</h1>
+  <div class="grid" style="grid-template-columns: 1fr auto 1fr; gap:4mm; align-items:center; margin-bottom:4mm">
+    <div class="box"><div class="kicker" style="color:var(--ink-3)">The tree</div><div class="big" style="font-size:1.9em">Jagruthi</div><p style="margin:0; font-size:.85em">One of the four banyans SLN Shastry saved.</p></div>
+    <div class="big" style="font-size:2.4em; color:var(--ochre)">=</div>
+    <div class="box"><div class="kicker" style="color:var(--ink-3)">The mascot</div><div class="big" style="font-size:1.9em">Jagruti</div><p style="margin:0; font-size:.85em">IIIT's mascot, "the banyan tree", on Wikipedia.</p></div>
+  </div>
+  <p style="margin-bottom:5mm">Same name, one letter apart. Was the tree named after the mascot, or the other way round? <b>We don't know yet.</b></p>
+  <div class="grid g3 grow" style="gap:3mm; margin-bottom:3mm">
+    <div class="add">Add: Jagruthi today</div>
+    <figure><div class="ph"><img src="../raw/photos/26_framed-photo-banyan-meditation.jpeg" alt=""></div><figcaption>A framed photo of someone meditating under a campus banyan.</figcaption></figure>
+    <figure><div class="ph"><img src="../raw/photos/49_neem-tree-pgdit-2002.jpeg" alt=""></div><figcaption>A neem planted by the PGDIT-2002 students.</figcaption></figure>
+  </div>
+  <p class="lede" style="font-family:var(--display); font-size:1.2em; margin-top:2mm">IIIT's logo is a banyan. It put down its own roots, and so did its trees.</p>
+  <div class="src"><b>Sources:</b> interview with SLN Shastry (2026); Wikipedia: IIIT Hyderabad (infobox: "Mascot: Jagruti - The Banyan Tree"); team photos (26, 49).</div>
+</section>
+
+<!-- ============ ENTRY: flashcards (filled from site/data/quiz.js) ============ -->
+<div id="flashcards"></div>
+
+<script>window.M = {};</script>
+<script src="../site/data/sources.js"></script>
+<script src="../site/data/quiz.js"></script>
+<script>
+(function () {
+  var Q = (M.quiz && M.quiz.questions) || [], host = document.getElementById("flashcards");
+  var src = function (ids) { return (ids || []).map(function (id) { var s = M.sources && M.sources[id]; return s ? s.short : id; }).join("; "); };
+  for (var i = 0; i < Q.length; i += 2) {
+    var page = document.createElement("section");
+    page.className = "sheet a4 entry fc-page";
+    page.innerHTML = '<span class="tag">ENTRY · A4, CUT INTO 2 A5 · PAGE ' + (17 + i / 2) + '</span>';
+    [Q[i], Q[i + 1]].forEach(function (q, k) {
+      if (!q) return;
+      var n = i + k + 1, card = document.createElement("div");
+      card.className = "fc";
+      card.innerHTML = (k ? '<span class="scissors">&#9986;</span>' : '') +
+        '<div class="kicker">Do you know your institute? · Question ' + n + ' of ' + Q.length + '</div>' +
+        '<div class="add qr">QR code<small>all the questions</small></div>' +
+        '<h2 style="max-width:78%">' + q.q + '</h2>' +
+        '<ol>' + q.options.map(function (o, j) { return '<li><span>' + String.fromCharCode(97 + j) + '</span>' + o + '</li>'; }).join("") + '</ol>' +
+        '<div class="ans"><b>Answer: ' + String.fromCharCode(97 + q.answer) + ') ' + q.options[q.answer] + '.</b> ' + (q.explain || "") + ' <i>Source: ' + src(q.sources) + '</i></div>';
+      page.appendChild(card);
+    });
+    host.appendChild(page);
+  }
+})();
+</script>
+</body>
+</html>
