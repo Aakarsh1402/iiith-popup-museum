@@ -500,7 +500,7 @@ Was "Moving Rooms". Moving rooms is now one part of it.
 | HISTREE: the trees | A4 | 1 or 2 | Board 3, right |
 | 2002 layout plan + scanned floor plans | already printed | - | Behind Board 4 |
 
-`print/boards.html` (Aakarsh, A7) still makes the old set of sheets. Either it gets updated to this list, or the team builds these sheets by hand.
+`print/boards.html` (Aakarsh, A7) still makes the old set of sheets. The sheets for this list are being made by saharsh-claude as one PDF in `boards/` (each page at its real size, with an index page that says which page is which size).
 
 ### 14.8 On the day
 - **Roles:** one host at the entry (flashcards + QR code), one guide each for Boards 1 to 3, one person at Board 4 giving website tours. TODO(team): names.
