@@ -15,7 +15,7 @@
   ];
   var MIN_YEAR = 1994.6, MAX_YEAR = 2031;
   var DOT_MAX = 105, FULL_MIN = 380;          // px-per-year thresholds for dots / compact / full
-  var CARD = { compact: { w: 240, h: 80 }, full: { w: 310, h: 118 } };
+  var CARD = { compact: { w: 244, h: 78 }, full: { w: 310, h: 118 } };   // replaced in measure() with sizes in rem, so text never clips
 
   var S = null; // page state
 
@@ -56,7 +56,7 @@
   /* ---------- lane packing (depends on zoom + filter, not on pan) ---------- */
   function packLanes() {
     var m = mode(), card = CARD[m === "full" ? "full" : "compact"];
-    var gapY = 12, above = S.axisY - 40 - 50, below = S.trackH - S.axisY - 40 - S.rangeH - 6;
+    var gapY = m === "full" ? 12 : 10, above = S.axisY - 40 - 46, below = S.trackH - S.axisY - 40 - S.rangeH - 6;
     var nA = Math.max(1, Math.floor(above / (card.h + gapY))), nB = Math.max(1, Math.floor(below / (card.h + gapY)));
     var order = [];
     for (var i = 0; i < Math.max(nA, nB); i++) { if (i < nA) order.push({ side: -1, i: i }); if (i < nB) order.push({ side: 1, i: i }); }
@@ -88,8 +88,12 @@
       var l = sx(er.from), r = sx(er.to), node = S.eraEls[i];
       node.style.transform = "translateX(" + l.toFixed(1) + "px)";
       node.style.width = Math.max(0, r - l).toFixed(1) + "px";
-      var lab = node.firstChild, labW = lab.offsetWidth || 120;
-      var pad = U.clamp(-l + 16, 16, Math.max(16, r - l - labW - 16));
+      var lab = node.firstChild, bw = r - l;
+      if (!er._nameW) { er._nameW = lab.firstChild.offsetWidth || 90; er._fullW = lab.offsetWidth || 160; }
+      var fit = bw >= er._fullW + 40 ? "" : (bw >= er._nameW + 28 ? "name" : "none");
+      if (lab.dataset.fit !== fit) lab.dataset.fit = fit;
+      var labW = fit === "" ? er._fullW : er._nameW;
+      var pad = U.clamp(-l + 16, 16, Math.max(16, bw - labW - 16));
       lab.style.transform = "translateX(" + pad.toFixed(1) + "px)";
     });
     // ticks
@@ -266,7 +270,6 @@
       el("p", { class: "tl-d-sum" }, e.summary),
       imgs.length ? el("div", { class: ["tl-d-imgs", imgs.length === 1 ? "one" : ""] }, imgs.slice(0, 6).map(function (id) { return M.ui.imageFigure(id, { gallery: imgs, caption: imgs.length <= 2, ratio: imgs.length === 1 ? null : "4/3" }); })) : null,
       e.body ? el("p", { class: "tl-d-body" }, e.body) : null,
-      e.id === "e-1998-booth" && M.pages.voices && M.pages.voices.comic ? el("div", { class: "tl-d-comic" }, M.pages.voices.comic({ compact: true })) : null,
       conflict ? el("a", { class: "tl-d-conflict", href: U.href("how-we-know", conflict.id) },
         M.ui.icon("alert"), el("span", null, el("b", null, "Sources disagree. "), conflict.question || "See how the accounts differ."), M.ui.icon("arrow-right")) : null,
       el("dl", { class: "tl-d-facts" },
@@ -429,7 +432,7 @@
     }
     var chips = M.ui.chips([{ id: "all", label: "All" }].concat(M.ui.CATEGORIES), filter, function (id) { filter = id; chips.setActive(id); draw(); });
     root.appendChild(el("section", { class: "page wrap page-pad tl-phone" },
-      el("div", { class: "kicker" }, "Boards 1 and 2"), el("h1", null, "Timeline"),
+      el("h1", null, "Timeline"),
       el("p", { class: "lede" }, "Tap an event to open it."), chips, box));
     draw();
   }
@@ -499,8 +502,8 @@
       S.track = track;
       S.root = el("section", { class: "page tl-page" },
         el("div", { class: "tl-head wrap" },
-          el("div", { class: "tl-head-l" }, el("div", { class: "kicker" }, "Boards 1 and 2"), el("h1", null, "Timeline"),
-            el("p", { class: "tl-lede" }, "Twenty-eight years of IIIT, from a village road to the New Academic Block. ", S.count, ".")),
+          el("div", { class: "tl-head-l" }, el("h1", null, "Timeline"),
+            el("p", { class: "tl-lede" }, S.count, " from 1998 to today.")),
           el("div", { class: "tl-head-r" }, eraBtns)),
         el("div", { class: "tl-tools wrap" }, chips, contestedBtn, el("span", { class: "grow" }), zoomCtl),
         track,
@@ -511,6 +514,11 @@
       function measure() {
         var r = track.getBoundingClientRect();
         S.w = r.width; S.trackH = r.height; S.axisY = Math.round(S.trackH * 0.5);
+        var rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 18;
+        CARD = { compact: { w: Math.round(12 * rem), h: Math.round(4.2 * rem) }, full: { w: Math.round(15.6 * rem), h: Math.round(6.1 * rem) } };
+        track.style.setProperty("--ccw", CARD.compact.w + "px"); track.style.setProperty("--cch", CARD.compact.h + "px");
+        track.style.setProperty("--fcw", CARD.full.w + "px"); track.style.setProperty("--fch", CARD.full.h + "px");
+        if (window.innerWidth > 760) S.sheet.el.style.top = Math.max(0, Math.round(r.top)) + "px";
         track.style.setProperty("--axis", S.axisY + "px");
         S.dirty = true; clampView(); layout();
       }

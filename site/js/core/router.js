@@ -51,20 +51,28 @@
   R.onChange = function (fn) { listeners.push(fn); return function () { listeners = listeners.filter(function (f) { return f !== fn; }); }; };
   R._emit = function () { listeners.forEach(function (fn) { try { fn(current); } catch (e) { console.error(e); } }); };
 
+  var pending = 0; // a view-transition swap is queued; it reads location.hash when it runs
+
   R._handle = function (force) {
     force = force || R._forceNext; R._forceNext = false;
-    var t = table(), p = R.parse(location.hash), page = t[p.route];
-    if (!page) { history.replaceState(null, "", "#/start"); p = R.parse("#/start"); page = t.start; }
-    var ctx = { params: p.params, query: p.query, route: p.route };
+    var t = table();
+    if (!t[R.parse(location.hash).route]) history.replaceState(null, "", "#/start");
     M.state.route = location.hash || "#/start";
+    if (pending) { pending = 2; return; }   // fast second click: the queued swap picks up the newest hash
+    var p = R.parse(location.hash), page = t[p.route];
     if (current && current.page === page && !force && typeof page.update === "function") {
       current.params = p.params; current.query = p.query; current.hash = location.hash;
       try { page.update(p.params, p.query); } catch (e) { console.error("[router] update failed", e); }
       R._emit();
       return;
     }
-    var app = document.getElementById("app");
+    var app = document.getElementById("app"), token = {};
+    R._token = token;
     function swap() {
+      if (R._token !== token) return;          // a newer swap already ran
+      R._token = null; pending = 0;
+      p = R.parse(location.hash); page = t[p.route] || t.start;
+      var ctx = { params: p.params, query: p.query, route: p.route };
       if (current && current.page && current.page.destroy) { try { current.page.destroy(); } catch (e) { console.error("[router] destroy failed", e); } }
       if (M.ui && M.ui.closeTop) { while (M.ui.closeTop()) { /* close overlays from the old page */ } }
       app.textContent = "";
@@ -73,15 +81,17 @@
       document.body.dataset.page = page.id;
       current = { page: page, route: p.route, params: p.params, query: p.query, hash: location.hash };
       try { page.render(app, ctx); } catch (e) { console.error("[router] render failed", e); app.appendChild(M.ui.el("div", { class: "wrap stub" }, M.ui.el("p", null, "Something went wrong on this page."))); }
-      document.title = (page.title ? page.title + " | " : "") + "HISTREE | Do You Know Your Institute?";
+      document.title = (page.title ? page.title + " | " : "") + "Do You Know Your Institute?";
       window.scrollTo(0, 0);
       try { app.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
       R._emit();   // after the swap, so the nav marks the page that is actually showing
     }
     var first = !current;
     if (!first && document.startViewTransition && !U.prefersReducedMotion()) {
+      pending = 1;
       var vt = document.startViewTransition(swap);
-      [vt.ready, vt.finished, vt.updateCallbackDone].forEach(function (pr) { if (pr && pr.catch) pr.catch(function () { /* skipped by a newer transition: fine */ }); });
+      [vt.ready, vt.finished, vt.updateCallbackDone].forEach(function (pr) { if (pr && pr.catch) pr.catch(function () { /* skipped: fine */ }); });
+      setTimeout(function () { if (R._token === token) swap(); }, 1200);   // safety net if the browser never runs the callback
     } else {
       swap();
       if (!first && !U.prefersReducedMotion()) { app.classList.add("fade-in"); }

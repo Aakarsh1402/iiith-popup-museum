@@ -39,6 +39,12 @@
 .tl-range { position: absolute; left: 0; top: 0; height: 6px; border-radius: 3px; opacity: .55; transition: opacity var(--t-fast), height var(--t-fast); }
 .tl-range:hover { opacity: 1; height: 8px; }
 .tl-range.hide { opacity: 0; pointer-events: none; }
+.tl-track[data-mode="full"] .tl-range:not(.hide) { opacity: .22; height: 4px; }
+.tl-era-label[data-fit="name"] span { display: none; }
+.tl-era-label[data-fit="none"] { opacity: 0; }
+/* overflow markers (no room for a card at this zoom): small, so a busy year doesn't turn into a smear */
+.tl-track:not([data-mode="dot"]) .tl-ev.as-dot .tl-dot { width: 10px; height: 10px; left: -5px; top: -5px; }
+.tl-track:not([data-mode="dot"]) .tl-ev.as-dot.contested .tl-dot { box-shadow: 0 0 0 2px rgba(183, 121, 31, .45); }
 
 /* ---------- events ---------- */
 .tl-ev { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
@@ -52,7 +58,7 @@
 
 .tl-card {
   position: absolute; left: -18px; top: 0; display: flex; align-items: stretch; gap: .6rem;
-  width: 240px; height: 80px; padding: .5rem .6rem .5rem .85rem; border-radius: 10px;
+  width: var(--ccw, 244px); height: var(--cch, 78px); padding: .45rem .6rem .4rem .85rem; border-radius: 10px;
   background: var(--card); border: 1px solid var(--rule); box-shadow: var(--shadow-1); text-align: left; overflow: hidden;
   transition: width 420ms var(--ease-out), height 420ms var(--ease-out), opacity 320ms var(--ease-out), transform 420ms var(--ease-out), box-shadow var(--t-fast), border-color var(--t-fast);
   transform-origin: 18px 50%;
@@ -61,14 +67,14 @@
 .tl-card-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--c); }
 .tl-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .12rem; }
 .tl-date { font-family: var(--font-mono); font-size: .64rem; color: var(--c); font-weight: 700; letter-spacing: .03em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; filter: brightness(.85); }
-.tl-title { font-family: var(--font-display); font-weight: 600; font-size: .84rem; line-height: 1.18; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-variation-settings: 'opsz' 24; }
+.tl-title { font-family: var(--font-display); font-weight: 600; font-size: .8rem; line-height: 1.24; padding-bottom: .1em; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-variation-settings: 'opsz' 24; }
 .tl-meta { display: none; align-items: center; gap: .3rem; margin-top: auto; }
 .tl-meta .cat-dot { width: .5rem; height: .5rem; }
 .tl-flag { font-family: var(--font-mono); font-size: .56rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .05rem .35rem; border-radius: 3px; border: 1px solid currentColor; }
 .tl-flag.contested { color: var(--warn-ink); }
 .tl-flag.ok { color: var(--ok); }
 .tl-flag.todo { color: var(--todo); border-style: dashed; }
-.tl-thumb { display: none; flex: none; width: 86px; border-radius: 6px; overflow: hidden; background: var(--paper-2); }
+.tl-thumb { display: none; flex: none; width: 4.3rem; border-radius: 6px; overflow: hidden; background: var(--paper-2); }
 .tl-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
 /* stems link a card to its point on the axis (own layer, behind every card) */
@@ -83,7 +89,7 @@
 .tl-track[data-mode="dot"] .tl-stem2 { opacity: 0 !important; }
 
 /* full cards */
-.tl-track[data-mode="full"] .tl-card { width: 310px; height: 118px; padding: .6rem .6rem .6rem .9rem; }
+.tl-track[data-mode="full"] .tl-card { width: var(--fcw, 310px); height: var(--fch, 118px); padding: .6rem .6rem .6rem .9rem; }
 .tl-track[data-mode="full"] .tl-title { font-size: 1rem; -webkit-line-clamp: 2; }
 .tl-track[data-mode="full"] .tl-meta { display: flex; }
 .tl-track[data-mode="full"] .tl-thumb { display: block; }
@@ -100,7 +106,7 @@
 .tl-ev.dim { opacity: .22; filter: grayscale(.7); transition: opacity var(--t-med), filter var(--t-med); }
 .tl-ev.dim:hover { opacity: .8; filter: none; }
 .tl-ev.sel .tl-card { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 35%, transparent), var(--shadow-2); }
-.tl-ev.sel .tl-dot { transform: scale(1.4); }
+.tl-track[data-mode="dot"] .tl-ev.sel .tl-dot, .tl-ev.as-dot.sel .tl-dot { transform: scale(1.4); }
 .tl-ev.contested .tl-card { background: linear-gradient(0deg, rgba(183,121,31,.06), rgba(183,121,31,.06)), var(--card); }
 
 .tl-hint { position: absolute; left: 50%; bottom: 1rem; transform: translate(-50%, 12px); display: inline-flex; align-items: center; gap: .5rem; padding: .5rem 1rem; border-radius: 999px; background: rgba(38, 36, 31, .82); color: var(--paper); font-size: .8rem; opacity: 0; transition: opacity var(--t-med), transform var(--t-med) var(--ease-out); pointer-events: none; }
@@ -148,4 +154,3 @@
 .tl-list-item summary::-webkit-details-marker { display: none; }
 .tl-list-item .tl-title { -webkit-line-clamp: unset; font-size: 1rem; }
 .tl-list-body { padding: 0 .9rem .9rem; display: grid; gap: .6rem; }
-.tl-d-comic { margin: .4rem 0 1.2rem; }
