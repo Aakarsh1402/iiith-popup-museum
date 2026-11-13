@@ -350,8 +350,9 @@
     function maxS() { return (opts.maxScale || 4) * Math.max(fitScale(), .05) / Math.min(1, fitScale() || 1) ; }
     function bound(s) {
       var r = host.getBoundingClientRect(), cw = W * s.s, ch = H * s.s;
-      if (cw <= r.width) s.x = (r.width - cw) / 2; else s.x = U.clamp(s.x, r.width - cw - pad, pad);
-      if (ch <= r.height) s.y = (r.height - ch) / 2; else s.y = U.clamp(s.y, r.height - ch - pad, pad);
+      // small content may slide (e.g. out from under a side panel) but at least half of it stays in view
+      if (cw <= r.width) s.x = U.clamp(s.x, -cw * 0.45, r.width - cw * 0.55); else s.x = U.clamp(s.x, r.width - cw - pad, pad);
+      if (ch <= r.height) s.y = U.clamp(s.y, -ch * 0.45, r.height - ch * 0.55); else s.y = U.clamp(s.y, r.height - ch - pad, pad);
       return s;
     }
     function apply() {
@@ -431,11 +432,11 @@
     host.addEventListener("pointercancel", onUp);
     host.addEventListener("click", onClickCapture, true);
     host.addEventListener("dblclick", onDbl);
-    var ro = ("ResizeObserver" in window) ? new ResizeObserver(U.debounce(function () { if (st.s < minS()) api.fit(false); else set(st, false); }, 60)) : null;
+    var ro = ("ResizeObserver" in window) ? new ResizeObserver(U.debounce(function () { if (st.s <= minS() * 1.001) api.fit(false); else set(st, false); }, 60)) : null;
     if (ro) ro.observe(host);
 
     var api = {
-      fit: function (anim) { var s = minS(); set({ s: s, x: 0, y: 0 }, anim); },
+      fit: function (anim) { var s = minS(), r = host.getBoundingClientRect(); set({ s: s, x: (r.width - W * s) / 2, y: (r.height - H * s) / 2 }, anim); },
       zoomBy: function (f, cx, cy, anim) { var r = host.getBoundingClientRect(); zoomAt(f, cx == null ? r.width / 2 : cx, cy == null ? r.height / 2 : cy, anim !== false); },
       zoomTo: function (s, x, y, anim) { set({ s: s, x: x, y: y }, anim); },
       /** Animate so content rect (x, y, w, h) fills the view. */
