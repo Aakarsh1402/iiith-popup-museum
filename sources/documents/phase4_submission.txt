@@ -1,0 +1,697 @@
+Do You Know Your Institute?
+
+
+
+
+Do You Know Your Institute?
+Phase 4: Exhibition Text and Promotional Material · Team CakedUp
+
+
+Overview
+This document gives the final text for every panel, label and interactive in our pop-up
+museum, followed by the promotional material we will use to bring visitors in. It follows
+the floor plan and grouping from Phase 3: an entry panel, three groups (A Land and
+Buildings, B Life on Campus, C Campus Systems), and a memory and exit station.
+
+Writing rules we followed
+
+       Length: group panels under 60 words; A3 panels under 120 words; object labels under
+       30 words.
+       Voice: each panel opens with a question or a surprising fact, then gives the answer in
+       plain language. No jargon a first-year would not know.
+       Voices of the campus: where we have them, we let staff and faculty speak in short
+       quotes, credited by name. Every quote will be shown to the speaker before printing
+       (see Phase 3, Permissions).
+       Sources: each A3 panel ends with a one-line source note.
+
+Changes since Phase 3
+
+       Exhibition date: 14 November 2026.
+       Where it began: first classes are now placed on the first two floors of Nilgiri, with SH-
+       1 in Vindhya as the only large hall (Prof. P. J. Narayanan).
+       New panels in Group A: the GDIT diploma and 2001 university status; the Vindhya
+       corporate schools and the 2007 reclaim; the Himalaya complex, its 22 crore loan and T-
+       Hub; Gachibowli from 6 to about 1,000 companies (Prof. K. S. Rajan).
+       Group B rewritten: the housing story now runs from the Collector's bungalow (1998)
+       to bunk beds in Vindhya (1999) to Palash, Parijat and Kadamb Nivas (2000). Added the
+       2005 four-mess system and Yuktahar, and faculty and students living side by side until
+       2010.
+       Group C rewritten: the self-run Nilgiri server room and email, shared computers (1:3),
+       paper files to IMS (around 2017), the substation on IIIT land, and a new panel on
+       records, rules and the dual degree.
+       New object: a blank government-style file folder from the office.
+
+
+
+
+                                                                                         Page 1 of 13
+Do You Know Your Institute?
+
+
+
+
+Entry
+
+Entry panel (2 × 3 ft)
+Do You Know Your Institute? The buildings, people and systems behind IIIT Hyderabad,
+1998 to today
+
+You walk past these buildings every day. But did you know that the first classes fit on two
+floors of Nilgiri? That one batch slept on bunk beds inside Vindhya? That a corner of
+Himalaya was once the state's startup incubator?
+
+This exhibition tells the story of how IIIT-H was built and how it keeps running. Start with
+the quiz at the table. Then walk left to right through three parts: Land and Buildings, Life
+on Campus and Campus Systems. At the end, add your own memory and take the quiz
+again.
+
+Team CakedUp · Understanding Public and Digital History · 14 November 2026
+
+
+Entry and exit quiz (Table 1)
+Printed on one card. Visitors circle answers, keep the card, and score it at the exit. The
+same ten questions are used at entry and exit.
+
+   1. In which building were the first classes held in 1998? a) Himalaya · b) Nilgiri · c)
+       Vindhya
+   2. What did the first batch enrol for? a) B.Tech · b) A Graduate Diploma in IT (GDIT) · c)
+       M.Tech
+   3. Where did the 1999 batch sleep? a) In a hotel · b) On bunk beds inside Vindhya · c) In
+      Parijat Nivas
+   4. Of the 50 seats in the first batch, how many students joined? a) 30 · b) 45 · c) 49
+   5. Which company ran a training school inside Vindhya? a) Google · b) Motorola · c)
+      Infosys
+   6. The Himalaya complex was built with a 22 crore loan. How long did IIIT take to repay it?
+      a) 6 years · b) 10 years · c) 15 years
+   7. Which building housed T-Hub, Telangana's startup incubator, from 2015 to 2022? a)
+       Nilgiri · b) KRB · c) Himalaya Block D
+   8. Why was Yuktahar mess started? a) A new hostel opened · b) Students demanded it ·
+       c) A sponsor funded it
+   9. Until about when did the office run on paper files? a) 2005 · b) 2017 · c) 2023
+10. Does IIIT-H have a hostel curfew? a) Yes, 10 pm · b) Yes, midnight · c) No
+
+Answer key printed on the back of the exit score board. Correct answers are in bold here
+only.
+
+
+
+                                                                                             Page 2 of 13
+Do You Know Your Institute?
+
+
+
+
+Group A: Land and Buildings
+
+Group panel (2 × 3 ft)
+A. Land and Buildings How did two floors of one building become a 66-acre campus?
+
+IIIT-H moved into buildings made for someone else, shared them with companies,
+borrowed money to build more, and lent a building to the state. Follow how the campus
+grew, one building at a time.
+
+
+A1. It began on two floors of Nilgiri
+On 2 September 1998, fifty students began classes in buildings put up for the Ranga
+Reddy district Collectorate and courts. The state gave them to the new institute at a
+nominal rent, and in about 100 days offices became classrooms and labs.
+
+Only the first two floors of Nilgiri were in use. They held the classrooms, labs, offices and
+exam halls. The only large hall was SH-1, next door in Vindhya.
+
+There were just five or six faculty. Professors from the University of Hyderabad came in to
+teach the basic sciences and humanities.
+
+Sources: interview with Prof. P. J. Narayanan (2026); 25 Years of IIITH, IIIT blog (2023).
+
+
+A2. A diploma on trust
+The first batch did not join for a degree. They enrolled for a Graduate Diploma in
+Information Technology (GDIT).
+
+IIIT was not yet a university, so it could not award one. Students joined trusting that the
+institute would get that status. It did in 2001, when IIIT-H became a deemed university.
+
+The diploma left a trace online: students' early email addresses ended in @gdit.iiit.net,
+while faculty used @iiit.net. Both later moved to iiit.ac.in.
+
+Source: interview with Prof. P. J. Narayanan (2026).
+
+
+A3. Companies in the classroom
+In the late 1990s, Oracle, IBM, Motorola and Satyam ran their own schools inside Vindhya.
+The idea was that company trainers would bring industry experience and make up for the
+shortage of professors.
+
+It did not work. The trainers taught company tools and basic Java, not the theory the
+institute wanted. IIIT went back to faculty-led teaching, and in 2007 took full control of
+Vindhya. The company rooms became research labs.
+
+
+
+
+                                                                                         Page 3 of 13
+Do You Know Your Institute?
+
+
+
+
+Look down in Vindhya blocks A1 and B2: the black granite floor and furniture were put in
+by Motorola.
+
+Some people stayed. Venu Gopal and Shekhar, two of the earliest staff, started at the IBM
+centre.
+
+Sources: interview with Prof. P. J. Narayanan (2026); Meet the Unseen Pillars of IIIT-H, IIIT
+blog (2018).
+
+
+A4. Himalaya: a loan, a startup hub and a buyback
+To build the Himalaya complex, IIIT took a loan of 22 crore rupees, about 70 crore today. It
+had ten years to repay it and finished in six.
+
+The four blocks arrived as bare concrete shells, and each was finished differently:
+
+
+  Block          How it was finished                What happened next
+
+  C              Fitted out with IIIT's own funds   Lecture halls and exam centre
+
+  A              Fitted out with TalentSprint       IIIT bought it out in 2018; now admin
+
+  KRB            Built with TCS                     Kohli Research Block
+
+  D              Given to the Telangana             T-Hub incubator, 2015–22; reclaimed in 2022 for
+                 government                         research labs
+
+
+Source: interview with Prof. P. J. Narayanan (2026).
+
+
+A5. The Games next door
+In 2003, Hyderabad hosted the 1st Afro-Asian Games at the stadium in Gachibowli, right
+next to our campus. According to Mr. Gopi, the official press meets for the Games were
+held in the IIIT guest house.
+
+The Games also changed the map. About 30 acres of land were later given up for the
+stadium's expansion.
+
+    "[Short quote from Mr. Gopi about the press meets, approved by him]"
+
+
+Sources: interview with Mr. Gopi (2026); Engineering Office.
+
+
+A6. From 6 companies to 1,000
+What was outside the gate in 1998? Almost nothing.
+
+
+
+
+                                                                                              Page 4 of 13
+Do You Know Your Institute?
+
+
+
+
+Cyber Towers in HITEC City opened in 1998 with about six companies. By a 2007–08 study
+for the state government, there were close to 1,000. In the 1990s, one district road from
+Mehdipatnam was the only way to Gachibowli and the University of Hyderabad. Past
+Tolichowki there was hardly a building until IIIT. By 2002 it had become a four-lane road.
+
+The first shops nearby, a Reliance Fresh and a Spencer's, opened around 2007–08.
+
+[Google Maps timeline: Gachibowli around 2005 and 2010, side by side]
+
+Source: interview with Prof. K. S. Rajan (2026).
+
+
+A7. Then and now (photo pairs)
+Each pair is framed side by side with one caption underneath. Caption format:
+
+[Place], then ([year]) and now (2026). [One sentence on what changed.]
+
+Example: Himalaya Block D, then (2016) and now (2026). Once T-Hub, Telangana's startup
+incubator, it now houses the robotics and other research labs.
+
+[7–8 pairs. Candidates: Nilgiri, Vindhya SH-1, Vindhya A1 granite lab, Himalaya Block D, the
+Gachibowli road, Palash or Parijat Nivas.]
+
+
+Group B: Life on Campus
+
+Group panel (2 × 3 ft)
+B. Life on Campus Where did students eat, sleep and spend their free time?
+
+Forty-nine students arrived in 1998. Today there are thousands. Here is how the hostels,
+messes and hangout spots changed to keep up, told by the people who were there.
+
+
+B1. Bungalow, bunk beds, then hostels
+Where does a new institute put its students?
+
+       1998: the first batch lived in a District Collector's bungalow and three flats in the old
+       court complex, where the new academic block is going up today.
+       1999: with 99 of 100 seats filled, the new batch slept army-style on two-tier bunk beds
+       inside Vindhya, where block A4 and the library are now.
+       2000: with government help, Palash Nivas and Parijat Nivas opened, followed by
+       Kadamb Nivas. The bunk beds came down.
+
+Once the hostels opened, faculty moved into the bungalow and flats the students had
+left.
+
+Sources: interview with Prof. P. J. Narayanan (2026); interview with Mr. Gopi (2026).
+
+
+
+                                                                                           Page 5 of 13
+Do You Know Your Institute?
+
+
+
+
+B2. Faculty next door
+For the first twelve years, there was no separate faculty housing. Faculty lived beside the
+hostels and ate at the same mess tables as students.
+
+One professor living near Kadamb says he followed televised cricket matches without a
+TV. He just listened for the students' cheers across the courtyard.
+
+Dedicated faculty quarters opened in 2010.
+
+Source: interview with Prof. P. J. Narayanan (2026).
+
+
+B3. From one mess to four
+In 1998 there was exactly one mess, and before the hostels were ready the guest house
+served as the dining hall. Mr. Gopi managed it. His unofficial duties included chasing away
+wild boars, deer and buffaloes, which wandered in because the campus had no fence.
+
+By 2005 IIIT had settled on a system of four messes, each with its own regional menu.
+Students could register and cancel flexibly from the start.
+
+The newest, Yuktahar, exists because students campaigned for clean, wholesome food
+based on Ayurvedic principles.
+
+
+    "[Short quote from Mr. Gopi on the early mess, approved by him]"
+
+Sources: interviews with Mr. Gopi and Prof. P. J. Narayanan (2026); Meet the Unseen Pillars
+of IIIT-H, IIIT blog (2018).
+
+
+B4. Why no curfew?
+Many colleges in India lock hostel gates at night. IIIT-H does not. Why?
+
+[Answer from the hostel in-charge or early faculty. Fallback: quotes from IIIT blog articles
+on student life.]
+
+Vote: Drop a token in one jar. Should IIIT-H keep its no-curfew rule? Yes / No / Not sure
+
+Sources: [hostel office interview].
+
+
+B5. Where did you hang out?
+Every batch has its spots: a canteen, a bench, a terrace, a corner of the library.
+
+Place a sticker on the map where you spend (or spent) your free time. Use the colour for
+when you joined:
+
+       Red: before 2005
+
+
+
+
+                                                                                       Page 6 of 13
+Do You Know Your Institute?
+
+
+
+
+       Yellow: 2005–2014
+       Green: 2015–2022
+       Blue: 2023 or later
+
+By the end of the day, the map will show how hangouts have moved over the years.
+
+
+B6. Canteens and favourite spots
+Today, most students grab a snack at the canteen near Vindhya or the one near the
+basketball court. It was not always so.
+
+In 2000, before mobile phones were common, Mr. Gopi ran an STD/ISD phone booth on
+campus. For two years it was where students went to call home.
+
+What our survey found: [top 3 favourite spots of current students, with counts, from our
+survey of N students]
+
+What alumni remembered: [2–3 short alumni quotes on old hangout spots]
+
+Sources: student survey (2026); alumni and staff interviews (2026); Meet the Unseen
+Pillars of IIIT-H, IIIT blog (2018).
+
+
+Group C: Campus Systems
+
+Group panel (2 × 3 ft)
+C. Campus Systems What keeps the campus running when no one is looking?
+
+The servers, the computers, the paperwork, the water and the power. Each was built by
+someone, and most of it used to work very differently.
+
+
+C1. A network the institute ran itself
+IIIT's first server room is in Nilgiri, and its servers are still running.
+
+From the start, the institute wanted to own its systems. It bought bare server hardware
+and ran its own email on Zimbra, instead of paying an outside company. Students worked
+alongside IT staff as system administrators. Email later moved to Microsoft.
+
+Now, after nearly 25 years in Nilgiri, the server room is moving to the IT wing in Vindhya.
+
+[Photo: the Nilgiri server room, with permission from IT Services]
+
+Sources: interview with Prof. P. J. Narayanan (2026); IT Services.
+
+
+C2. One computer for three students
+Could you study computer science without your own computer?
+
+
+                                                                                       Page 7 of 13
+Do You Know Your Institute?
+
+
+
+
+Early students did. B.Tech students shared workstations on the library's second floor,
+three to a machine. M.Tech students shared one between five, and some used their own.
+First-year students were not allowed to bring a personal computer at all.
+
+The shared system was slowly replaced by three open-access workspaces, and the TL-1
+lab opened before COVID.
+
+Look at the hardware on Table 2. Can you guess what each one was used for? Turn the
+label over to check.
+
+Source: interview with Prof. P. J. Narayanan (2026).
+
+
+C3. From paper files to IMS
+Before portals, everything moved on paper.
+
+The office ran on government-style cloth and card file folders, like the one on the table.
+Staff carried news of class changes to students in person. Around 2017, work began
+moving into IMS, one process at a time.
+
+Most paperwork now runs through IMS. But some records are still kept on paper, because
+official and audit rules require hard copies.
+
+Object: Blank file folder of the kind used in the IIIT office before IMS. Most students today
+have never seen one.
+
+Sources: interview with Prof. K. S. Rajan (2026); Meet the Unseen Pillars of IIIT-H, IIIT blog
+(2018).
+
+
+C4. Water and power
+Where does the campus get its power? Partly from its own land.
+
+An electricity substation stands on IIIT land, leased to the power utility, and it is the
+institute's main source of power. Water comes from the city water board (HMWSSB).
+
+When the power fails, electricians Mallesh and Naidu, here since 2005 and 2006, get the
+call. In 2007, construction workers near a hostel damaged the substation cable and a fire
+broke out. Naidu shut off the main panel, and the team worked past midnight to restore
+power.
+
+Sources: interview with Prof. K. S. Rajan (2026); Meet the Unseen Pillars of IIIT-H, IIIT blog
+(2018).
+
+
+
+
+                                                                                            Page 8 of 13
+Do You Know Your Institute?
+
+
+
+
+C5. Records, rules and how decisions get made
+Which papers matter most to an institute's history? Not the grants or the power permits.
+The Memorandum of Association that set up IIIT and the land papers are kept under lock
+and key, and many now have digital copies.
+
+Rules from bodies like UGC and AICTE are adopted as they are, and changes never apply
+backwards: students partway through a programme are not made to redo courses.
+
+One habit has lasted since 1998: decisions are made by consulting widely. Once everyone
+sat in one room. Now it runs through committees and representatives.
+
+Then and now: curriculum documents from before 2008, 2008 and 2018, side by side.
+
+Source: interview with Prof. K. S. Rajan (2026); IIIT curriculum archive.
+
+
+C6. The research bet: the dual degree
+IIIT's first dual degree let B.Tech students switch from a four-year programme to a five-
+year one with research built in. It was planned around 2000–01.
+
+It set IIIT apart as a research university. Early on, many students converted. Today the
+number is in single digits.
+
+[Add numbers and a quote from Prof. P. J. Narayanan's interview.]
+
+Sources: interview with Prof. K. S. Rajan (2026); interview with Prof. P. J. Narayanan [to
+come].
+
+
+Interactives, Labels and Exit
+
+Timeline sorting game (Table 2)
+Header card: Put IIIT-H in order. Lay these cards from oldest to newest, then flip them to
+check.
+
+Each card has the event on the front and the year on the back.
+
+
+  Front of card                                        Back
+
+  First classes, on two floors of Nilgiri              1998
+
+  Cyber Towers opens with about six companies          1998
+
+  A new batch sleeps on bunk beds inside Vindhya       1999
+
+  Palash and Parijat Nivas open                        2000
+
+
+
+
+                                                                                        Page 9 of 13
+Do You Know Your Institute?
+
+
+
+
+  Front of card                                        Back
+
+  IIIT becomes a deemed university                     2001
+
+  The first batch graduates                            2002
+
+  Afro-Asian Games press meets held in the guest       2003
+  house
+
+  The four-mess system begins                          2005
+
+  IIIT takes back Vindhya from the company schools     2007
+
+  Faculty quarters open                                2010
+
+  T-Hub opens in Himalaya Block D                      2015
+
+  Office work starts moving to IMS                     around 2017
+
+  IIIT reclaims Block D for research labs              2022
+
+
+
+Hangout map (wall, Group B)
+Title on map: Where did you hang out? Legend: Red before 2005 · Yellow 2005–2014 ·
+Green 2015–2022 · Blue 2023 or later Note at bottom: One sticker per person, please.
+Write your spot's nickname on the margin if it has one.
+
+
+Curfew vote (Group B)
+Three jars labelled Yes, No and Not sure, under the question: Should IIIT-H keep its no-
+curfew rule? Tokens are on the table. Running totals are posted at the end of each hour.
+
+
+QR code labels
+One small card per clip, next to the panel it belongs to:
+
+       Scan to hear Mr. Gopi on the first mess and the Afro-Asian Games (2 min)
+       Scan to hear Mr. Gopal Rao on the companies that worked on campus (2 min)
+       [One card per further interview clip]
+
+
+Object labels (hardware, Table 2)
+Front: What was this used for? Back:
+
+[Object name], [year or period] [One sentence on what it did and where on campus it was
+used.] On loan from [owner]. Please do not lift.
+
+
+
+
+                                                                                     Page 10 of 13
+Do You Know Your Institute?
+
+
+
+
+Memory board (Table 2)
+Header: Add your memory. Prompt: Write one thing about campus life that you think will
+have changed in 10 years. Add your batch year.
+
+Question box label: Something we got wrong, or something we missed? Drop it here. We
+read every note.
+
+
+Exit (Table 1)
+Score board header: Take the quiz again. How did you do? Columns: Entry score · Exit
+score. Visitors add a tally mark under their two scores.
+
+Thank-you card: Thank you for visiting. This exhibition was made possible by Prof. P. J.
+Narayanan, Prof. K. S. Rajan, Mr. Gopi, Mr. Gopal Rao, [other interviewees], the Engineering
+Office, IT Services and everyone who added a memory. — Team CakedUp
+
+
+Promotional Material
+The exhibition is on Saturday, 14 November 2026. We will promote it through a printed
+poster, a campus-wide email, WhatsApp groups and Instagram. The hook in every channel
+is the quiz: you think you know this place, so prove it.
+
+
+  Channel                     Where                                     When
+
+  A3 poster (6                Mess notice boards, Himalaya and          Mon 9 Nov
+  copies)                     Vindhya entrances, library
+
+  Email                       Students and faculty mailing lists (via   Wed 11 Nov
+                              course instructor)
+
+  Instagram                   Team and club pages, stories              Wed 11 Nov, and on the day
+
+  WhatsApp                    Batch groups, club groups                 Thu 12 Nov, and morning of
+                                                                        14 Nov
+
+
+
+Poster (A3)
+DO YOU KNOW YOUR INSTITUTE?
+
+The first classes fit on two floors of Nilgiri. One batch slept on bunk beds in Vindhya. Part
+of Himalaya was a startup incubator.
+
+A pop-up museum on how IIIT-H was built, and how it keeps running.
+
+Take the quiz · Find your hangout on the map · See an office file from before IMS
+
+
+
+
+                                                                                            Page 11 of 13
+Do You Know Your Institute?
+
+
+
+
+Saturday, 14 November · [Time] · [Room]
+
+Team CakedUp · Understanding Public and Digital History
+
+[Visual: a then-and-now photo split down the middle, e.g. Himalaya Block D as T-Hub and as
+it is today]
+
+
+Email
+Subject: Where did IIIT-H hold its first classes? Find out on 14 November
+
+Hi all,
+
+IIIT-H's first batch had 49 students. Their classes fit on two floors of Nilgiri, and the next
+batch slept on bunk beds inside Vindhya.
+
+On Saturday, 14 November, from [time] in [room], our team is running a small pop-up
+museum on how the campus was built and how it keeps running: the buildings, the
+messes, the hostels, the servers, and the people behind them.
+
+It takes about 15 minutes. Take a quiz on the way in and see if you do better on the way
+out.
+
+See you there, Team CakedUp (Understanding Public and Digital History)
+
+
+WhatsApp message
+Do you know which building IIIT-H's first classes were held in?
+
+Pop-up museum on IIIT-H's history, Sat 14 Nov, [time], [room]. 15 minutes, a quiz, a hangout
+map, and stories from people who've been here since 1998. Come find out how well you
+know this place.
+
+
+Instagram
+Post (carousel, 4 slides):
+
+   1. "Do you know your institute?" over a campus photo
+   2. "1998: the first classes fit on two floors of Nilgiri."
+   3. "1999: one batch slept on bunk beds inside Vindhya."
+   4. "Sat 14 Nov · [time] · [room]. Take the quiz. Prove it."
+
+Caption: IIIT-H turned 25 in 2023, but most of us don't know how it began. Our pop-up
+museum tells the story of the buildings, messes, hostels and systems that make this
+campus work. Sat 14 Nov · [time] · [room]
+
+Stories (on the day): a poll sticker with one quiz question ("Where did the 1999 batch
+sleep?"), then a photo of the hangout map filling up through the day.
+
+
+
+                                                                                         Page 12 of 13
+Do You Know Your Institute?
+
+
+
+
+Materials and Sources
+
+Materials to collect before 14 November
+       Blank government-style file folder (Prof. Rajan's office)
+       Digitised pre-2010 campus maps
+       Curriculum documents: before 2008, 2008 and 2018
+       Documents and maps picked out by Durga
+       Photos for the then-and-now pairs and the Nilgiri server room
+       Signed consent from everyone quoted, recorded or photographed
+
+
+Sources
+       Interview with Prof. P. J. Narayanan, IIIT Hyderabad (2026): Nilgiri, GDIT, corporate
+       schools, Himalaya, T-Hub, hostels, messes, server room, computing ratios.
+       Interview with Prof. K. S. Rajan, IIIT Hyderabad (2026): Gachibowli growth, roads,
+       utilities, paper files and IMS, records, rules, decision-making, dual degree.
+       Interview with Mr. Gopi, guest house caretaker, IIIT Hyderabad (2026).
+       Interview with Mr. Gopal Rao, IIIT Hyderabad (2026).
+       25 Years of IIITH: An Unconventional Start, Compelling Vision and Maximal Impact, IIIT
+       blog (2023).
+       Meet the Unseen Pillars of IIIT-H, IIIT blog (2018).
+       IIIT Hyderabad Infrastructure page.
+       IIIT curriculum documents, before 2008, 2008 and 2018 (online archive).
+       Student survey and alumni interviews (2026, to be completed).
+
+
+
+
+                                                                                         Page 13 of 13
+

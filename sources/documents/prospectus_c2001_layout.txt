@@ -1,0 +1,542 @@
+                               International Institute of Information Technology
+
+
+
+
+                                               INTERNATIONAL
+
+                                                   INSTITUTE
+
+                                                        OF
+
+                                                INFORMATION
+
+                                                TECHNOLOGY
+
+
+
+
+                                                   Gachibowli
+                                                Hyderabad 500019
+For Enquiries please contact                         INDIA
+       ugc@iiit.net
+                                                http://www.iiit.net
+
+
+             1
+                                                                                                                                       International Institute of Information Technology
+
+
+
+
+                                                                                                                                            Programs
+                                                                    People
+                                                                                                                                            The students are selected through an all India entrance
+                                                                                                                                            examination conducted at all major cities in the country. The
+                                                                    IIIT, Hyderabad is led by the vision and guidance of eminent
+                                                                                                                                            following is the list of programmes being conducted in the
+                                                                    personalities in the field of computer science.
+                                                                                                                                            institute at present.
+                                                                    Prof. Raj Reddy,
+                                                                    Chairman, Governing Council,                                                Four year B.Tech program.
+                                                                    IIIT, Hyderabad.                                                            Five year Dual Degree M.Tech program
+                                                                                                                                                M.Tech in IT for Building Sciences (for architects and civil
+                                                                                                                                                 engineers)
+                                                                    Dr. Raj Reddy is the Herbert A.
+                                                                                                                                                One year Post Graduate Diploma program
+                                                                    Simon University Professor of
+                                                                                                                                                Two year M.Tech. program
+                                                                    Computer Science and Robotics in
+The International Institute of Information Technology is an                                                                                     One year Post Graduate Diploma in Bioinformatics.
+                                                                    the School of Computer Science at
+autonomous, self-supporting institution established in 1998 with    Carnegie Mellon University. He                                              Ph.D. program
+seed support from the Government of Andhra Pradesh to fulfil        heads the governing council of International Institute of
+the aim of being a pioneer in IT education. The institute has       Information Technology, which is the highest decision making
+been conferred Deemed-to-be-University status by the                body in the Institute. This council is responsible for the
+Government of India.                                                                          Institute’s mission and charter.
+The institute aims to impart not just broad and interdisciplinary
+IT education of the highest academic quality but also train
+people whom the society will be proud of. The overall                                                          Dr. Narendra Ahuja,
+development of each student is achieved through an integrated                                                      IIIT, Hyderabad.
+curriculum that consists of a diverse set of IT courses, relevant
+IT research projects, day to day interaction with industry, and                                  Dr. Narendra Ahuja is the Donald
+preparation in entrepreneurship and personality development                                      Biggar Willet Professor in the
+and humanities courses. Research centres, aimed at                                               Department of Electrical and
+developing IT for specific problems, provide students with
+opportunities to get involved in IT problem solving and                                          Computer Engineering, University
+innovation. Major national and international IT companies are       of Illinois at Urbana-Champaign. As a visiting professor, he has        Faculty
+actively involved in the institute’s academic programme through     been spending increasing amounts of time at the International
+their corporate schools on the campus. These include IBM,           Institute of Information Technology. He has been involved in            The institute has highly qualified and experienced faculty
+CISCO, Motorola, Signal Tree, Oracle and Satyam.                    setting up various research centres at this Institute. His              members drawn from the best institutions worldwide with
+                                                                    guidance has been invaluable in giving a greater research               Research and Teaching experience in various areas. At present
+                                                                                                                                            there are 16 permanent and 12 visiting faculty members.
+                                                                    oriented perspective to the Institute.                                  Experienced R&D experts from Corporate Schools are active
+                                                                                                                                            participants in education development and training.
+
+
+
+
+                                                                                                   2
+                                                                                                                                         International Institute of Information Technology
+
+
+
+Reputed academicians and renowned people from the industry         Four Year Undergraduate Program                                            Salient Features of the Curriculum
+regularly conduct workshops and guest lectures.
+                                                                   The main aim of the UG program is to provide an environment                The curriculum has been designed in keeping with the spirit of
+                                                                   wherein a student has the flexibility to choose course work that           the preamble.
+Partner Companies                                                  would enable the student to achieve his or her goals. The
+                                                                   student can take courses in cutting edge technologies to                   The following distribution of academic work in different
+Major national and multi-national IT companies are participating   prepare for jobs in IT, or choose a stream of study with                   categories shows the minimum number of credits in each
+in the institute’s academic programmes through their corporate     advanced courses to prepare for higher studies and research,               category. (Also shown is the typical number of courses that it
+schools and research labs on the campus. These include:            or both. Through projects, students develop a better                       translates to. However, the number of courses is only
+                                                                   understanding of the subject and also gain insight that enables            indicative. The formal requirement is in terms of credits only.) A
+IBM School of Enterprise-wide Computing                            them to contribute to the development of technology and                    student is required to complete a minimum of 175 credits to
+Oracle School of Advanced Software Technology                      society in the long run.                                                   receive a Bachelors degree in Computer Sciences and
+Satyam School of Applied Information Systems                                                                                                  Engineering.
+Motorola School of Communication Technology                        During their UG days, students are encouraged to be involved               Category                         Minimum            Minimum
+Signal Tree School of Excellence in Software Development           in R&D activity. There are two benefits:                                                                    Courses            Credits
+Methodologies                                                                                                                                 Basic Sciences (compulsory: 5.5                     22
+CISCO Academy Training Centre                                      It is a unique experience for the students. They learn how new             Phy, EE ,Math)
+                                                                   ideas evolve, and how large systems get designed and                       HSSM (3 compulsory, 3 6                             24
+                                                                   implemented.                                                               elective)
+                                                                                                                                              Experimental methods             1                  4
+                                                                   Research groups benefit when bright students work with them                Open Electives                   3                  12
+                                                                   and contribute to their activities. Some of the Under Graduates            CS related Compulsory 10                            43
+                                                                   might be inspired to take up their M.Tech. and Ph.D. studies               (scheduled)
+                                                                   with the research groups.                                                  IT related Compulsory (flexi- 6                     29
+                                                                                                                                              scheduled '*')
+                                                                   The curriculum makes it possible for the students to get                   I.T. Electives (incl. semi-core) 5                  20
+                                                                   involved and earn academic credits for their participation in              Project (3 course equiv.)        3                  10
+                                                                   R&D. To achieve "deep" involvement of a student in R&D                     TOTAL                            38.5               164
+                                                                   activities, he or she is allowed to get involved in such activities
+                                                                   at the earliest possible opportunity. This requires flexibility for        The concept of a 'module' has been incorporated. A module
+                                                                   such a student in scheduling his or her courses. Some of the               may typically run for a month or two and a suitable number of
+                                                                   courses, which are compulsory, could be taken up in a later                lectures per week are decided and its credit units are allocated
+                                                                   year. This flexibility in scheduling courses turns out to be               accordingly. The purpose of a module is to allow specific
+                                                                   beneficial for both the student and the Institute. The presence            exposure or skill acquisition in an area, which does not require
+                                                                   of corporate schools on the campus provides means and                      a full semester course. It can also be used to allow short
+                                                                   opportunities for students to get involved in projects which give          duration intensive courses to be taken by the students, when an
+                                                                   them exposure to cutting-edge technologies.                                eminent visitor is available for short time periods. Such courses
+                                                                                                                                              by visitors may run for a few weeks, but with double the normal
+                                                                                                                                              number of lectures in a week.
+
+
+
+
+                                                                                                   3
+                                                                                                                                           International Institute of Information Technology
+
+
+
+The curriculum contains                                               of course work in this way. This limit exists to ensure that
+    A set of compulsory courses which should be taken in             students get sufficient breadth. Besides these mini projects,             Second Year Second Semester
+     specific semesters.                                              every student is required to undertake a year-long project in the         Course Number     Course Name                        Credits
+    A set of courses which are compulsory, but with some             final year.                                                               CS3105            Theory of Computation              3-1-0-4
+     flexibility as to which semester the student wishes to take                                                                                ET2052            Digital Circuits                   3-1-3-5
+     them in (as advised by the academic advisor).                    Every course is assigned requisite number of lectures, tutorials          CS3400 *          Database Mgmt Sys                  3-0-3-5
+    A set of semi - core courses, many of which must be              and lab hours. In the notation a-b-c-d, a is the number of lecture        CS3350 *          Computer Networks                  3-0-3-5
+     taken.                                                           hours per week, b is the number of tutorials per week, c is the           CS3500/CS2959 Computer Graphics/Project              3-0-2-4
+    Open electives: These are non-CS and non-HSSM                    number of lab hours per week and d is the total number of
+     courses.                                                         credits which are calculated by the formula d = a + (b + c)*0.5 .
+                                                                                                                                                Third Year First Semester
+    Elective courses (left to the student's choice as advised by                                                                               Course Number       Course Name                      Credits
+     academic advisor).                                               First Year First Semester
+                                                                                                                                                SC2250              Life Science & Genetics          3-1-0-4
+                                                                      Course Number        Course Name                      Credits
+                                                                                                                                                CS3155              Compilers                        3-0-3-5
+There are two major reasons for providing flexibility to the          MA1000               Maths I                          3-1-0-4
+                                                                                                                                                CS2005              Java & OOAD                      3-0-3-4
+student in scheduling courses.                                        SC1000               Physics I                        3-1-0-4
+                                                                                                                                                CS3750              Digital Image Processing         3-1-0-4
+                                                                      CS1000               Computer Programming             3-1-3-5
+                                                                                                                                                ET3305              Communication Theory             3-1-0-4
+Compulsory courses with some flexibility in their scheduling are      SC1390               Applied Mechanics                3-1-0-4
+                                                                                                                                                CS3705              Artificial Intelligence          3-1-0-4
+designed to allow the focused students to work on the areas of        CS1010               IT Wkshp-1: Comp. Sys &          1-0-2-2
+their interest, early on. This allows them to be involved in R&D                           Env
+as well as technology development projects, for longer                                                                                          Third Year Second Semester
+                                                                      LN1000               English                          3-1-0-4
+durations.                                                                                                                                      Course Number      Course Name                       Credits
+                                                                                                                                                CS5152             Programming Languages             3-0-3-5
+                                                                      First Year Second Semester
+Semi-core courses are relatively important. However, not all are                                                                                CS3105             Algorithms                        3-0-3-5
+                                                                      Course Number       Course Name                       Credits             MG3400             Entrepreneurial      Skills   &   3-1-0-4
+compulsory. It is an attempt to keep the core small, at the same
+time indicating to the student that it would be in his interest to    MA1010               Maths II                         3-1-0-4                                Management
+register for the courses in this list. If all the semi-core courses   SC1001               Physics II                       3-1-0-4             CS4760             Multimedia Systems                3-1-0-4
+were made compulsory, very little scope would be left for             CS2100               Data Structures                  3-1-3-5             CS3725             Natural Language Processing I     3-1-0-4
+choosing electives. One of the major strengths of the IIIT is the                                                                               ET3100             Digital Signal Processing         3-1-0-4
+                                                                      CS2200               Computer Organization            3-1-0-4
+presence of corporate schools on campus and the industry-                                                                                       ET3306             Advanced          Communication   3-1-0-4
+oriented courses and perspective that they offer. Students can        ET1001               Basic Electrical Science         3-1-0-4                                Theory
+take these courses only if there are sufficient elective slots in     HS2000/LN1001        Philosophy/English               3-1-0-4                                Distributed DBMS                  3-0-1-4
+the curriculum, which would perhaps not be available if the                                                                                     CS3108             Distributed Computing             3-0-1-2
+semi-core courses are made compulsory.
+                                                                      Second Year First Semester
+                                                                      Course Number       Course Name                           Credits         Fourth Year First Semester
+Students can also undertake an ‘Independent Study’ or a ‘Mini                                                                                   Course Number       Course Name                      Credits
+                                                                      MA3200              Mathematics III (Discrete Math)       3-1-0-4
+Project’ whenever they can accommodate it in their course                                                                                       CS3600              Software Engineering             3-0-3-5
+plan. This allows students to get involved in the research and        ET2055 *            Electric Analog Circuits              3-1-3-5
+                                                                      CS3300              Operating Systems                     3-0-3-5         MG3000              Organizational Behaviour         3-1-0-4
+consultancy projects undertaken by the Institute. However,                                                                                      CS4775              Soft Computing                   3-1-0-4
+students are allowed to undertake a maximum of 8 credit units         CS1015              Programming Utilities & Scripts       2-0-3-4
+                                                                      MG2100              Economics (HSS)                       3-1-0-4         ET3600              Introduction to VLSI             3-1-0-4
+
+
+
+
+                                                                                                      4
+                                                                                                                                     International Institute of Information Technology
+
+
+
+ET3601             Digital Design with VHDL             3-1-0-4         semester, to an earlier semester (under an elective slot)         Networking
+CS4358             Performance Evaluation of            3-1-0-4         to fulfil the minimum HSSM requirement.                           Course     Course Names                         Credits
+                   Computer Networks                                    An open course is defined to be a course outside the I.T.        Numbers
+CS4405             Data Warehousing & Data              3-1-0-4         and HSSM areas.                                                   CS4358     Performance Evaluation of Computer   3-1-0-4
+                   Mining                                                                                                                            Networks
+ET3290             Embedded         Systems &           2-0-3-4    UG Elective Courses                                                    IT3355     Network Management                   3-1-0-4
+                   Appliances                                                                                                             IT3336     Network Services Management          3-1-0-4
+CS4975             Major Project I                      0-2-6-4    Visual Information Technology                                          CS3360     Mobile Communications and            3-1-0-4
+                                                                   Course      Course Names                             Credits                      Networks
+Fourth Year Second Semester                                        Numbers
+Course Number      Course Name                          Credits    CS3750      Digital Image Processing                 3-1-0-4           Data Engineering
+                                                                   CS4770      Multimedia Systems                       3-1-0-4           Course     Course Names                         Credits
+                   Elective                             3-1-0-4
+                                                                   CS3755      Computer Vision and Pattern              3-1-0-4           Numbers
+                   Elective [Open/IT]                   3-1-0-4                Recognition                                                CS4401     Distributed Database & Management    3-1-0-4
+CS4976             Major Project II                     0-0-12-    CS3500      Computer Graphics                        3-1-0-4                      Systems
+                                                        6          CS3760      Advanced Signal and Image                3-1-0-4           CS4405     Data Warehousing and Data Mining     3-1-0-4
+                   HSSM                                 3-1-0-4                Processing                                                 CS3401     Advanced Database Systems            3-1-0-4
+                                                                   CS4500      Advanced Computer Graphics               3-1-0-4           CS4405     Distributed Database Systems         3-1-0-4
+                                                                   CS3501      Basics of Computer Graphics (Half        3-1-0-2           CS4401     Data Warehousing and Data Mining     3-1-0-4
+   Courses annotated with a * are compulsory but may be
+                                                                               Course)                                                    CS4475     E-Commerce Technologies              3-1-0-4
+    taken later/earlier by the student. The schedule indicated
+                                                                   CS4760      Advanced Computer Vision                 3-1-0-4           CS3450     Web Information Systems              3-1-0-4
+    here is only a suggested one. The slot is actually an
+    elective slot.                                                 CS4766      Soft Computing                           3-1-0-4           CS3490     Information Systems Security         3-1-0-4
+                                                                                                                                          CS4775     Multi-Agent Systems                  3-1-0-4
+   An elective slot may be filled by choosing a Semi-core
+    course, an IT elective, an open elective or an HSSM            Artificial Intelligence and Natural Language Processing                CS3480     Workflow Management Systems          3-1-0-2
+    (Humanities, Social Sciences and Management) course            Course        Course Names                         Credits                        (Half-Course)
+    as long as the minimum requirements in each of the             Numbers                                                                CS3481     E-Services and E-Contracts (Half-    3-1-0-2
+    categories is satisfied.                                       CS3725        Natural Language Processing I        3-1-0-4                        Course)
+   The minimum number of credit units required for obtaining      CS3726        Natural Language Processing II       3-1-0-4             CS3290     Internet Appliances                  3-1-0-4
+    a Bachelor of Technology in Computer Sciences and              CS4370        Grammar based Processing             3-1-0-4             CS4410     Spatial Database Systems and GIS     3-1-0-4
+    Engineering is 175.                                            CS4745        Natural Language Semantics *         3-1-0-4             CS3400     Introduction to Data Management      3-1-1-2
+   A student can opt for a full semester of project work in the   CS4740        Statistical Methods in NLP           3-1-0-4                        (Half Course)
+    final semester to do substantial work at an industry or at a   CS4748        Speech Processing                    3-1-0-4
+    research centre (possibly away from IIIT). However,            HS4890        Navya-Nyaya (Half Course)            3-1-0-2             Digital Signal Processing and Communications
+    he/she should ensure that he/she does fulfil the minimum       HS4895        Panini’s Ashtadhayi (Half Course)    3-1-0-2             Course      Course Names                        Credits
+    course requirements in each category (such as HSSM,                                                                                   Numbers
+    open electives, etc.). In particular, the student must                                                                                ET3305      Communication Theory                3-1-0-4
+    schedule the HSSM course, normally taken in the final                                                                                 ET3306      Advanced Communication Theory       3-1-0-4
+                                                                                                                                          ET3100      Digital Signal Processing           3-1-0-4
+
+
+
+
+                                                                                                 5
+                                                                                                                             International Institute of Information Technology
+
+
+
+ET3105    Signals & Systems                  3-1-0-4   Research                                                                   Many students have submitted research papers at reputed
+CS4110    Cryptography                       3-1-0-4                                                                              conferences.
+ET3310    Digital Communications             3-1-0-4   The institute believes in research that is relevant to solving real
+ET6300    Error Control Coding               3-1-0-4   life problems. Each of the several research centres at the                 Research Centres
+ET6320    Data Compression                   3-1-0-4   institute aims at interdisciplinary research with focus on
+MA4500    Stochastic Processes               3-1-0-4   problems in a selected domain. This provides students with                 Center for Visual Information Technologies
+                                                       opportunities to get involved in current research requiring                Information Security
+VLSI and Embedded Systems                              considerable creativity and innovation. Each centre comprises              Data Engineering
+Course    Course Names                       Credits   of institute faculty, research staff, students and visiting domain         VLSI and Embedded systems
+Numbers                                                experts from collaborating organizations.                                  Digital Signal Processing and Communications
+ET3600    Introduction to VLSI               3-1-0-4                                                                              Language Technologies Research Centre
+ET3601    Digital Design with VLSI           3-1-0-4                                                                              IT for Education
+                                                                                                                                  IT for Indian society
+ET3650    VHDL                               3-1-0-4
+                                                                                                                                  IT for Railways
+ET3602    Architecture and Programming of    3-1-0-4
+                                                                                                                                  Intelligent Buildings
+          CPLDs/FPGAs
+                                                                                                                                  Electronic Commerce
+ET3102    Application of DSP                 3-1-0-4
+ET3603    Verification and Testing           3-1-0-4
+ET3604    Analog and Mixed Signal Design     3-1-0-4
+ET3290    Embedded Systems and Appliances    2-0-3-4
+
+Humanities, Social Sciences and Management
+Course     Course Names                      Credits
+Numbers
+HS2000     Philosophy                        3-1-0-4
+HS2780     Science Technology & Society      3-1-0-4
+MG2100 Economics                             3-1-0-4   Projects at the IIIT
+HS2280     History & Social Sciences         3-1-0-4
+HS2550     Hypermedia Art & Fiction          3-1-0-4     What sets the IIIT apart is the encouragement it gives
+MG3000 Conventional Management               3-1-0-4   students to undertake projects that have social relevance. Real
+HS2051     Vedanta                           3-1-0-4   life problems are identified and students are encouraged to
+MG3001 Organizational Behaviour              3-1-0-4   engineer innovative solutions to solve them, so as to contribute
+                                                       to society in a direct and effective manner.
+                                                       A number of research projects are also undertaken at the IIIT,             Infrastructure
+                                                       which aim at developing cutting edge technologies and
+                                                       expertise.                                                                 The institute is located on a campus of 62 acres. It is fully
+                                                       Students have the opportunity to take up internship                        residential in nature and hence is a self-contained unit. There
+                                                       programmes at various firms in course of their study, giving               are 6 buildings that house the corporate schools. In addition to
+                                                       them a feel for working on projects in an industry environment.            this, the academic building has lecture halls, tutorial rooms,
+
+
+
+
+                                                                                       6
+                                                                                                                International Institute of Information Technology
+
+
+
+computer and electronics labs and offices of the administration     Faculty                                          Rajeev Sangal, Professor
+and faculty.                                                                                                         Ph. D. University Pennsylvania, USA, 1980.
+All students are provided with single room accommodation.           Amba P Kulkarni
+Two hostels for men and one for women have a total of about         M.Tech. IIT, Kanpur                              Sivaswamy Jayanthi
+700 rooms. An optical fibre network connects all the buildings                                                       Ph.D. Syracuse University, USA (1992)
+on the campus.                                                      B.Krishnarajulu Naidu.
+All classrooms are equipped with Over Head Projectors and           Ph.D., IIT Kanpur, 1978                          Sushma M Bendre
+multimedia projectors. Seminar Halls facilitate the organization                                                     Ph.D. University of Poona in Statistics
+of symposiums, seminars, student-industry interactions and          C.N.Kaul, Professor                              1986
+guest lectures.                                                     Ph.D. IIT, Kharagpur
+                                                                                                                     Vineet Chaitanya
+Computational Resources                                             C.V.Jawahar, Assistant Professor                 Ph. D. IIT Kanpur
+                                                                    Ph.D. IIT Kharagpur
+The institute has well-equipped, air-conditioned computer                                                            Vishal Garg, Assistant Professor
+laboratories. The computer laboratories are equipped with the       Dipti Misra Sharma                               Ph.D. IIT Delhi
+latest in both hardware and software. The PC to student ratio is    Ph.D. Delhi University
+1:2. All terminals are part of an intranet (100Mbps LAN). The                                                        V.Ch.Venkaiah,
+institute has high bandwidth Internet connectivity round the        Ghosal Jayati                                    Ph.D. IISc, Bangalore
+clock. Students and researchers have 24-hour access to the          Ph.D. Indian Statistical Institute, 1998.
+computational facilities. Research Centres and Corporate                                                             Guest Faculty
+Schools provide high-end, specialised equipments for research       Garimella Rama Murthy
+and development. There is a Digital Library, which is an online     Ph.D. Purdue University, USA 1989.               Arun Agarwal
+archive of useful software, tutorials, text books and reference                                                      Madhavi Indraganti
+material. Some lectures are recorded and put online for the         Kamal Karlapalem                                 A.K.Kapoor
+benefit of students, especially those who might have missed         Ph. D. Georgia Tech., USA, 1992.                 Dakshinamurthy Kolluru
+classes.                                                                                                             Meera Marathe
+                                                                    Mandadi Ventakeswarlu                            Sudhakar Marathe
+Library                                                             Ph.D. University of Waterloo, Canada.            S.R.Parimi
+                                                                                                                     Rameshwar Rao
+The institute has a well-stocked air-conditioned library with a     M.B.Srinivas,                                    K.V. Ramana Reddy.
+large collection of textbooks and reference material. Apart from    Ph.D. IISc, 1991
+books, students have access to the latest magazines,
+international journals, and research papers. The library also has   P.J.Narayanan
+a huge collection of educational CD-ROMs and copies of earlier      Ph. D. University Of Maryland, USA, 1992.
+issues of important periodicals. A new air conditioned library
+with 20,000-sqft floor space is under construction.                 R.Govindarajulu, Professor
+                                                                    Ph.D. IIT Kanpur, 1980
+
+
+
+
+                                                                                                   7
+                                                                                                                                       International Institute of Information Technology
+
+
+
+Faculty Profiles                                                    C. V. Jawahar, P. K. Biswas and A. K. Ray, ``Analysis of Fuzzy          in 1995 International Symposium on Circuits and Systems,
+                                                                    Thresholding Schemes'', Pattern Recognition 33(8) (2000)                Seattle. Submitted for Publication in the IEEE Transactions
+C.N. Kaul, Visiting Professor                                       1339-1349.                                                              on Information Theory.
+                                                                    C. V. Jawahar and P. J. Narayanan., ``Generalised Correlation
+Education                                                           for Stereo Correspondence'', Fourth Asian Conf. On Computer
+                                                                    Vision, (Jan 2000), Taiwan.
+Ph.D. IIT, Kharagpur
+                                                                                                                                            Jayanthi Sivaswamy, Associate Professor
+Research Interests
+Guided research of four scholars for their Ph.D. degree             Garimella Rama Murthy, Assistant Professor                              Education
+                                                                                                                                            PhD, (EE) 1992 Syracuse University, USA
+Work Experience                                                     Education
+                                                                    Ph.D.   Computer         Engineering,     Purdue     University         Research Interests
+1995-98 Visiting Professor University of Hyderabad
+1992-94 Emeritus Professor IIT, Kharagpur                           December 1989                                                           Computer and biological vision, representations for object
+1975-92 Professor          Dept. of Maths, IIT, Kharagpur                                                                                   recognition, medical image processing.
+                                                                    Research Interests                                                      Completed 2 Industry (NZ) sponsored projects
+                                                                    Computer Networks, Neural Networks, Linguistics, Signal
+Representative Journal Publications
+A two sided iterative method for real roots of f(x) =0              Processing, Number Theory                                               Work Experience
+Jour.Math.And Phys.Sci. 23,6,1989, 567-571                                                                                                  Associate Professor, IIIT, Hyderabad (July 2001 – till now).
+Two sided iteration with generalized bisection technique for real   Work Experience                                                         Lecturer (Tenured), Dept. of Electrical & Electronic Engineering,
+roots of f(x) =0 Jour.Math.and Phys Sci., (1991)                    July 2001- Present     Visiting Assistant Professor, IIIT               The University of Auckland, New Zealand, (Jan. 1993 - June
+A note on interval-fixed point Sam, 1993                            Feb 2000- May 2001     Manager, Hellosoft                               2001).
+                                                                    July 1994- Jan 2000    Defended the Mathematical Theory of              Visiting Faculty, DISAM, Universidad Politécnica de Madrid,
+                                                                    Cybernetics                                                             Spain, (Apr. - July 1998).
+C. V. Jawahar, Assistant Professor
+                                                                    Representative Research Publications                                    Recent Research Publications
+Education                                                           G. Rama Murthy, “Multi/Infinite Dimensional Neural Networks,            Chan W, Coghill.G. & Sivaswamy, J. (2001) A simple
+                                                                    Multi/Infinite Dimensional Logic Theory, Logic Synthesis “              mechanism for curvature detection, Pattern Recognition
+PhD 1997, Indian Institute of Technology, Kharagpur.
+                                                                    Published in 1995 International Symposium on Circuits and               Letters, Volume 22 No. 6-7, 731-739.
+                                                                    Systems, Seattle. Submitted for Publication in the IEEE                 Lee, M & Sivaswamy, J. (2001) Edge detection in a hexagonal-
+Research Interests                                                  Transactions on Neural Networks.                                        image processing framework, to appear in Image and Vision
+Computer Vision, Multimedia systems, Pattern Recognition
+                                                                    G. Rama Murthy, “ Multi/Infinite Dimensional Coding Theory:             Computing.
+                                                                    Multi/Infinite Dimensional Neural Networks: Constrained                 Sivaswamy.J., Salcic.Z. & Ling, K.L (2001) A real-time
+Work Experience                                                     Static Optimization, “ Published in 1995 International                  implementation of non-linear unsharp masking with FPLDs,
+Scientist Ass. Prof., IIIT Hyderabad Dec. 2000 -- present           Symposium on Circuits and Systems, Seattle. Submitted                   Journal of Real-time Imaging vol.7, no.2, April 2001 pp.195-
+CAIR Mar. 1998 -- Dec. 2000                                         for Publication in the IEEE Transactions on Information Theory.         202.
+                                                                    G. Rama         Murthy , “Unified      Theory     of    Control,
+Representative Research Publications                                Communication and Computation-Part 2, Multi/Infinite
+C. V. Jawahar and A. K. Ray, ``Fuzzy Statistics of Digital          Dimensional System Theory: Linear/Non-Linear Dynamical
+Images’’, IEEE Signal Proc. Letters 3(1996) 225-227.                Systems: Tensor State Space Representation, “ Published
+
+
+
+
+                                                                                                   8
+                                                                                                                                  International Institute of Information Technology
+
+
+
+Jayati Ghoshal, Visiting Assistant Professor                                                                                           1996-1997 UGC Research Fellow, School of Physics,
+                                                                Work Experience                                                        University of Hyderabad.
+Education                                                       Dec 2000 - Present, Associate Professor, IIIT, Hyderabad
+PhD (C Sc) 1998, Indian Statistical Institute, Calcutta.        July 1999 - Nov 2000, Associate Professor, HKUST, Hong                 Representative Research Publications
+                                                                Kong, China                                                            About 10 publications in refereed international journals, 15
+Research Interests                                              Dec 1992 - June 1999, Assistant Professor, HKUST, Hong                 publications in refereed international conferences and four
+Fuzzy Logic, neural nets, generic algorithms, pattern           Kong, China                                                            publications in non-refereed conferences
+recognition, image processing, automated theorem power,
+computer networks.                                              Representative Research Publications
+                                                                H. Gurnani and K. Karlapalem, Optimal Pricing Strategies for
+Work Experience                                                 Internet-based Software Dissemination, in Journal of                   P. J. Narayanan, Associate Professor
+2001, July - present Visiting Assistant Professor, IIIT         Operational Research Society, January 2001.
+Hyderabad                                                       P. C. K. Hung, K. Karlapalem and J. Gray III, Least Privilege          Education
+2000, Dec - 2001, June       Visiting TIFR, Mumbai              Security in CapBasED-AMS, in International Journal of                  PhD (CCS) 1992, University of Maryland USA.
+2000, July - August Visiting Programming Logic Group, Max       Cooperative Information Systems, Volume 8, Number 2-3,
+Planck Institute, Saarbruecken, Germany.                        pages 139-168, June/September 1999.                                    Research Interests
+2000, Jan - June Lecturer, Department of Computer Sc,           J. Yang, K. Karlapalem and Q. Li, Algorithms for Materialized          Computer Graphics, Virtual Reality, Image Processing,
+University of California at Davis, USA                          View Design in Data Warehousing Environments, in                       Computer Vision
+                                                                Proceedings of 23rd International Conference on Very Large
+Representative Research Publications                            Databases (VLDB'97), Athens, Greece, pages 136-145, 1997.              Work Experience
+Neuro-Linguistic Approach to Pattern Recognition, Fuzzy Sets                                                                           Dec 2000 onwards: IIIT, Hyderabad.
+and Systems, 74(1995), pp. 277-305.                                                                                                    Sep 1996 - Dec 2000: Centre for Artificial Intelligence and
+A neuro fuzzy approach for pattern recognition, Neural          M. B. Srinivas, Associate Professor                                    Robotics (CAIR), Bangalore
+networks, 10(1997), pp. 161-182.                                                                                                       Oct 1992 - Aug 1996: Robotics Institute, Carnegie Mellon
+A neurogenetic approach to multidimensional fuzzy reasoning     Education                                                              University.
+for pattern        classification, Fuzzy Sets and System, 112   PhD in High Voltage Engineering, Indian Institute of Science,
+(2000), p. 449 - 483.                                           Bangalore                                                              Representative Research Publications
+                                                                                                                                       Generalised Correlation for Multi-Feature Correspondence.
+                                                                Research interests                                                     (With C. V. Jawahar). Pattern Recognition. To appear in 2001.
+Kamal Karlapalem, Associate Professor                           Diagnostic Testing of Electrical Power Apparatus Neural                Virtualized Reality: Constructing Virtual Worlds from Real
+                                                                Networks for Condition Monitoring of Equipment Neural                  Scenes with Takeo Kanade and Peter Rander. IEEE
+Education                                                       Hardware for Pattern Recognition in Real Time                          Multimedia, 1997.
+Dec 1992 Ph.D. in Database Systems, Georgia Institute of                                                                               Replicated Data Algorithms in Image Processing. (With Larry
+Technology, USA.                                                Work Experience                                                        Davis) CVGIP: Image Understanding. 1992.
+                                                                1998-2001 Guest Faculty in Electronics, School of Physics,
+Research Interests                                              University of Hyderabad.
+Database Design Methodologies and Tool Kits, Workflow           1997-1998 Visiting Professor, Centre for Integrated Research in
+Management Systems: Security, Exception Handling and            Science and Engineering, Nagoya University, Japan.
+Speed-Up, Agent Technologies
+
+
+
+
+                                                                                              9
+                                                                                                                                    International Institute of Information Technology
+
+
+
+Rajeev Sangal, Director LTRC                                    Programming Languages and Systems, Microprocessors and                   Inference based on Order Statistics, Outliers, Data Modelling
+                                                                Computer Architecture, Computer Networks                                 and Analysis, Regression Techniques and Diagnostics.
+Education                                                                                                                                Statistical consultation activities and collaborative research in
+1980, Ph.D., University of Pennsylvania, Computer and Info.     Work Experience                                                          applications of Statistics with other scientists working in
+Sc.                                                             Nov, 2001- present Professor, IIIT, and Hyderabad                        different areas.
+                                                                Visiting Professor, IIIT, Hyderabad since 1998                           Work Experience
+Research Interests                                              Oct, 2000 – Oct, 2001              Director   R&D,      Essemm           1996-present, Reader, Dept of Maths and Statistics, University
+NLP, Machine Translation, Speech processing, AI.                Information Systems, Visakhapatnam                                       of Hyderabad
+                                                                Jan, 1998- Oct, 2000: Principal, IBM School of Enterprise Wide           1991-96 Asst.Professor Applied Statistics Unit, ISI, Calcutta
+Work Experience                                                 Computing, IIIT, Hyd.                                                    1985-1991 Lecturer, Dept. of Statistics, University of Bombay
+June 1998 - present Director, LTRC, and IIIT                    Jan, 1996- Dec, 1997:              Dean, Faculty of Science and
+Hyderabad/Satyam                                                Engineering, Kakatiya University, Warangal.                               Representative Research Publications
+May 1980 - June 1998 Faculty member, Dept. of Computer          1984-1998 Professor, CSE at Regional Engineering College,                Bendre, S.M. and Kale, B.K. (1985) Masking Effect on Tests for
+Sc., IIT Kanpur                                                 Warangal, AP.                                                            Outliers in Exponential Models, Jr. American Statistical
+March 1980 - June 1982      Research Staff, LCS, MIT,           1974-1984 Asst. Professor in Electronics and Communication               Association, 80, 1020-1025
+Cambridge, USA                                                  Engineering, REC, Warangal.                                              Bendre, S.M. and Kale, B.K. (1987), Masking Effect on Tests
+                                                                1967-74 Lecturer in Telecomm. Engg. College of                           for Outliers in Normal Samples, Biometrika, 74, 891-896
+                                                                Engineering, Kakinada.                                                   Bendre, S.M. (1995) Discordant Observations in Regression
+Representative Research Publications
+                                                                 Has a teaching experience of 35 years and has contributed               Analysis. In Regression Diagnostics: Lecture Notes on the
+Bharati, Akshar, Vineet Chaitanya and Rajeev Sangal, "Natural
+                                                                significantly in starting various academic programs and setting          Workshop on Regression Diagnostics, 1995, ISI, Calcutta.
+Language Processing: A Paninian Perspective", Prentice-Hall
+                                                                up the computer centre at REC, Warangal.
+of India, New Delhi, 1995. (Book)
+Sangal, Rajeev, "LISP Programming", Tata-McGraw Hill, New                                                                                Vishal Garg, Assistant Professor
+Delhi, 1995. (Book)                                             Representative Research Publications
+Bharati, Akshar, Ashok Gupta and Rajeev Sangal, "Parsing with   Rajulu, R.G and Rajaraman, V., “Execution time Analysis of               Education
+Nesting Constraints", Proc of 3rd NLP Pacific Rim Symposium,    Process Control Algorithms for Microcomputers”, IEEE                      Ph.D., Energy Studies, IIT Delhi, January 2000
+4-6 December 1995, Seoul, S. Korea.                             Transactions on Industrial Electronics, Vol.IE-29, No.4, Nov, 82,         B.E., Civil Engineering, MBM Engg. College, 1995
+Bharati, Akshar and Rajeev Sangal, "Parsing Free Word Order     pp 312-319.
+Languages in the Paninian Framework", ACL93: Proc. of           Rajulu, R.G and Rajaraman.V., “Estimation of Execution time of            Research Interests
+Annual Meeting of Association for Computational Linguistics,    Process control Algorithms for Microcomputers”, IEEE                     Task control of lighting, heating, air-conditioning using fuzzy
+Association for Computational Linguistics, New Jersey, 1993a,   Transactions on Industrial Electronics , Vol. IE-31, No.1, Feb           logic. Smart occupancy sensors.
+pp. 105-111.                                                    84, pp. 56-60.                                                           Fuzzy Logic based protocol for wireless sensors network.
+                                                                                                                                         Intelligent Buildings.
+R. Govindarajulu, Professor                                     Sushma M Bendre
+                                                                                                                                         Work Experience
+Education                                                       Education                                                                Asst. Professor. IIIT Hyderabad. March 2001 -
+                                                                 1986      Ph.D. from University of Poona in Statistics
+1980. Ph.D., IIT Kanpur.
+                                                                                                                                         Representative Research Publications
+Research Interests                                              Research Interests                                                       Smart Occupancy Sensors to Reduce Energy Consumption:
+                                                                                                                                         Vishal Garg and N.K.Bansal, Energy and Building, July 2000
+
+
+
+
+                                                                                              10
+                                                                                                                                    International Institute of Information Technology
+
+
+
+Use of Intelligent Algorithms and Machine Learning in Building   Venkateswarlu Mandadi, Professor
+Automation Systems, H. Warudkar, V. Garg, Proceedings of
+IEEE Annual Convention and Exhibition, Mumbai, December          Education
+2000                                                             Ph.D., Systems Design, University of Waterloo, Canada, 1977
+Building Automation and Energy Savings: Vishal Garg,
+Proceedings of International Seminar on Environment              Research Interests
+Sustainability through Architecture and Energy Management in     Discrete Systems: Applications of digital signal processing
+Buildings, New Delhi, April 1999                                 techniques to structural systems particularly in the filed of
+                                                                 structural dynamics
+                                                                 Wave phenomena in solid media.
+V. Ch. Venkaiah, Visiting Professor                              Finite element models
+                                                                 Probability, statistics, and stochastic processes in engineering
+Education                                                        applications
+Ph.D., Scientific Computing, Indian Institute of Science,
+Bangalore, September, 1988.                                      Work Experience
+                                                                 Courses on Engineering Mechanics, Linier Algebra, Structural
+Research Interests                                               Dynamics, Theory of Elements, Probability and Statistics, Data
+Designing and developing algorithms in the areas of Data         Structures, Linier analysis of Discrete Systems.
+Compression, Cryptography, Digital Signal Processing,
+Combinatorial Optimization, Computational Number Theory,         Research Publications
+Mathematical Programming, and Linear Algebra. Interested in      Published 6 papers along with Prof. K. Husseyein, U of W
+design and development of communication systems especially       Canada on the general Theory of stability of systems.
+modems.
+
+Work Experience
+Visiting Professor at IIIT, Hyderabad on leave from IIT Delhi.
+
+Representative Research Publications
+V. Ch. Venkaiah, Deriving Karmarkar’s LP algorithm Using
+Angular Projection Matrix, Proceedings of Indian Academy of
+Sciences (Mathematical Sciences), Vol.106, No.1, pp. 69-77,
+1996.
+V. Ch. Venkaiah and. Paulraj, Subspace Rotation Using
+Modified Householder Transforms and Projection Matrices –
+Robustness of DOA Algorithms, Signal Processing, Vol.36,
+No.1, pp. 91-98, 1994.
+V. Ch. Venkaiah, A Theory of Quadratic Congruence’s,
+Technical Report, TR-CRL-ISG-26, Central Research
+Laboratory, Bharat Electronics, Bangalore, 1993.
+
+
+
+
+                                                                                               11
+

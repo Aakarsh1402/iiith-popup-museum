@@ -1,0 +1,10 @@
+# Raw interview files stay off the public repo (privacy). Cleaned texts live in sources/transcripts/.
+raw/interviews_corpus/
+raw/interviews_corpus.zip
+# raw/photos.zip duplicates raw/photos/
+raw/photos.zip
+qa/
+node_modules/
+.DS_Store
+*.pyc
+__pycache__/

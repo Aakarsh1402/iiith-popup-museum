@@ -1,0 +1,4 @@
+HANDOFF.md merge=union
+*.jpg binary
+*.png binary
+*.pdf binary
