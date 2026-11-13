@@ -47,16 +47,19 @@ IIIT's logo is a banyan, and its mascot, Jagruti, is a banyan too. A banyan ofte
 
 ## 3. Sub-themes, boards and monitors (overview)
 
-| Zone | Board title | Sub-theme | Monitor default view (website route) |
-|---|---|---|---|
-| Entry table | Do You Know Your Institute? | Hook: quiz + fun facts | QR code card (printed); phones open `#/quiz` |
-| Board 1 | Borrowed Ground (1998-2002) | Founding: land, buildings, first batch, early life | `#/timeline?era=founding` (auto-scroll) |
-| Board 2 | Borrowed Branches: the IIIT Way | Corporate schools, take-backs, Himalaya, what IIIT built itself, the cut branch (Civil) | `#/way` |
-| Board 3 | Moving Rooms | Buildings and room journeys, HISTREE trees, satellite change | `#/map` |
-| Board 4 | How We Know | Voices, conflicts, verification, our own correction, the archive | `#/voices` |
-| Exit wall | Every generation thought it had run out of room | Hope ending + visitor memories | `#/ending` (if a spare screen exists) |
+**Final layout (updated 14 Nov from Saharsh; details in section 14, which replaces the earlier plan):**
 
-**Monitors (updated 14 Nov):** we plan for 2 or 3. With 3: `?screen=history` (between Boards 1 and 2: timeline, then The IIIT Way), `?screen=map` (Board 3: map, then HISTREE), `?screen=evidence` (Board 4 + exit: How We Know, Voices, Then and Now). With 2: `?screen=left` and `?screen=right`. Every monitor can reach every page with the mouse; after 90 s idle each one goes back to its home view and cycles a short playlist (see `site/data/config.js`). The table above shows each board's main page.
+| Zone | Board title | What's on it (printed) | Monitor |
+|---|---|---|---|
+| Entry table | Do You Know Your Institute? | Title board, about 8 quiz flashcards (1 or 2 per visitor), QR code to the full quiz | None. Visitors' phones open `#/quiz` |
+| Board 1 | Setting the scene (1998-2002) | Where students lived (A3), Gachibowli in 1998 (A3), Borrowed buildings (A4), A diploma on trust (A4) | Slideshow of old campus photos, 1998-2002 (no timeline) |
+| Board 2 | The IIIT Way | Left: Himalaya and its four blocks (A4). Middle: The IIIT Way (A3). Right: Civil, the branch that was cut (2 x A4, spooky). Fun facts | Slideshow of building evolutions (satellite sequences: NAB, Bakul Nivas, ...) |
+| Board 3 | Institutional changes | Left: attendance then and now (A4) + IMS (A4). Middle: moving rooms. Right: HISTREE trees (1 or 2 x A4) | Interactive map `#/map` |
+| Board 4 | How we know | Nothing printed. A board behind holds the 2002 layout plan and scanned floor-plan prints | Conflict and verified cards (`#/how-we-know`), then a guided website tour |
+
+Out: the phone-booth comic (board and website), the borrowed-teachers panel on Board 1, every printed Board 4 card. The exit wall and Table 2 aren't in the final layout (TODO(team): confirm they're out).
+
+**Monitors (updated 14 Nov, second time):** 4 monitors, one per board (TODO(team): confirm we have 4 laptops). Monitors 1 and 2 play slideshows on their own. Monitor 3 is the interactive map. Monitor 4 opens on How We Know and is used for the website tour. The screens in `site/data/config.js` (`history`, `map`, `evidence`, `left`, `right`) are from the old 2-3 monitor plan and need updating (Aakarsh).
 
 ## 4. Rules for all visitor-facing text (site and boards)
 
@@ -64,7 +67,7 @@ IIIT's logo is a banyan, and its mascot, Jagruti, is a banyan too. A banyan ofte
 - Each panel opens with a question or a surprising fact, then answers it.
 - Length: board header under 60 words; panel under 120 words; label or card under 30 words. Site text can be longer in detail views, but each screen's first view should follow the same limits.
 - Every panel and site item ends with a one-line source note: "Source: interview with Mr. Gopi (2026)" etc.
-- Credit people by name only where they agreed to be named and quoted (consent was taken for interviews; **TODO(team):** confirm consent covers putting full transcripts on a website, and confirm Gopi is fine with the phone-booth comic).
+- Credit people by name only where they agreed to be named and quoted (consent was taken for interviews; **TODO(team):** confirm consent covers putting full transcripts on a website. The phone-booth comic is out as of 14 Nov, so Gopi's OK for it is no longer needed).
 - Quotes: only use wording that appears in a transcript. The PJN dossier is AI-polished (see 6.2). Do not put its phrasing in quote marks as PJN's words.
 - Mark uncertainty honestly: "about", "around", "according to", "to confirm".
 - Dates: write "1998", "around 2002", "c.2001". Never invent a precise date.
@@ -338,7 +341,7 @@ These go on Board 4 and the `#/how-we-know` page. Each card: question, the compe
 | Floor plans' year | Undated | "undated, probably early 2010s" |
 | First graduating batch year | Unconfirmed | TODO(team) |
 | The sensitive sentence removed from Sridhar's interview | Removed for privacy | Never show or paraphrase |
-| Gopi's bribe story | Fine to show (official unnamed) | Get Gopi's OK for the comic; never name or draw an identifiable official |
+| Gopi's bribe story | Fine to show (official unnamed) | The comic is out (14 Nov). Never name or draw an identifiable official |
 
 ## 11. Room and space journeys (for the Map page and Board 3)
 
@@ -377,7 +380,7 @@ Each journey is a short ordered list of stops: place, years, what it was, source
 | 21-25, 28 | guest house interiors | Kitchen, pantry, dining hall, twin room, meeting room, balcony room | Guest house page gallery |
 | 26 | framed-photo-banyan-meditation | Framed photo of a woman meditating under a campus banyan | HISTREE |
 | 27 | narendra-ahuja-guest-house-room | Room the first Director used | Guest house, people |
-| 29 | gopi-room-former-phone-booth | Gopi's room = old phone booth | Comic, Board 1 |
+| 29 | gopi-room-former-phone-booth | Gopi's room = old phone booth | Gopi's page, guest house (the comic is out) |
 | 30 | guest-house-lobby-former-mess | Lobby = old mess | V1 |
 | 31-32 | amphitheatre-1..2 | Satellite; 32 dated 14 Mar 2018 | Map |
 | 33-36 | bakul-nivas-1..4 | Satellite sequence (construction) | Map, Navjeevan journey |
@@ -414,84 +417,94 @@ Closing line (draft): "Every problem on this wall felt permanent to the people l
 
 ## 14. Physical exhibit build plan
 
-Assumes the Phase 3 layout (entry table, boards along the walls, two tables) and 3-4 monitors with laptops. Adjust to the room on the day. Print in colour where photos are involved; A3 for panels, A4 for cards. Use cardboard backing + foam tape so panels stand off the softboard.
+**Updated 14 Nov 2026 from Saharsh, after the team's final layout call. This replaces the earlier plan. The old version is in git history (`git show 15c1ef9:context.md`).**
+
+Who does what:
+- **Saharsh + one teammate:** choose, make and print the A4 / A3 sheets for Boards 1 to 3 and put the boards up.
+- **Aakarsh:** the website, the monitor slideshows (Boards 1 and 2), the interactive map (Board 3) and the website tour (Board 4).
+
+Boards 1 to 3 are printed boards with a monitor each. Board 4 has no printed panels: it is a monitor. Section 4 still applies to every sheet (plain voice, a source line at the bottom, no em dashes). Print in colour where photos are involved. Cardboard backing + foam tape.
 
 ### 14.1 Entry (Table 1)
-- **Title board (2x3 ft):** "HISTREE: How IIIT Put Down Its Own Roots" / "Do You Know Your Institute?" / 2-line argument / big QR code to the quiz (QR target TODO until hosting; print a placeholder sticker spot) / "Team CakedUp, UPDH, 14 Nov 2026". Draw or print a banyan with labelled roots (Borrowed Ground, Borrowed Branches, Moving Rooms, How We Know): the roots act as the visitor's route map.
-- **Quiz cards (paper fallback), ~40 copies, A5:** 8 questions, entry score + exit score boxes. Answer key on the back of the exit scoreboard, not on the card.
-- **Exit scoreboard (A2 or chart paper):** two columns, entry score and exit score; visitors add tally marks.
-- **Monitor (optional) or tablet:** fun-fact loop `#/start`.
+- Mostly as discussed before. Title board: "HISTREE: How IIIT Put Down Its Own Roots" / "Do You Know Your Institute?" / the 2-line argument / QR code / "Team CakedUp, UPDH, 14 Nov 2026".
+- **Quiz flashcards:** about 8 cards, one question per card. Use the 8 questions in `site/data/quiz.js`, with the same order and options. Each visitor gets 1 or 2 cards, so about 4 visitors can play at once. Put the answer on the back, or the host reads it out. Size: TODO(team), A5 suggested.
+- **QR code to the extended quiz:** visitors scan it to play all the questions on their phone (`#/quiz`). The site has 8 questions now. TODO(team): do we want a 9th?
+- **The QR code needs the site online.** GitHub Pages is not on for the repo yet, and only the repo owner (Aakarsh) can switch it on. TODO(team): before it goes public, confirm the interview consent covers putting full transcripts on a public website.
+- No monitor at the entry.
 
-### 14.2 Board 1: Borrowed Ground (1998-2002)
-- Header card (A3): question + 50-word intro.
-- Panels (A3, each under 120 words + 1-2 photos):
-  1. "Gachibowli, 1998": village, one road, bears and bullock carts, 6 companies at Cyber Towers. Photos 02, 01. [S-GOPI, S-RAJAN]
-  2. "A college in borrowed buildings": collectorate and court, Nilgiri's two floors, SH-1, 5-6 faculty + University of Hyderabad professors. Photo 03. [S-PJN, S-GOPI, S-SLN]
-  3. "A diploma on trust": 49 of 50, GDIT, @gdit.iiit.net, deemed 2001. Photos 07, 08. [S-PJN, S-GOPI]
-  4. "Where did they sleep?": bungalow, Judge's Quarters, bunks in Vindhya, hostels 2000. [S-PJN, S-SLN]
-- **Comic strip (4 x A4 panels, hand-drawn is fine and looks better):** the phone booth story (section 7). Rules: the official is a faceless silhouette, never named; Gopi drawn kindly; caption under each panel; source line "As told by Mr. Gopi (2026)". Photo 29 pinned next to it: "This is the room today."
-- Monitor: timeline, founding years.
+### 14.2 Board 1: Setting the scene (1998-2002)
+Was "Borrowed Ground". Same content as the founding years on the website.
 
-### 14.3 Board 2: Borrowed Branches (the IIIT Way)
-- Header: "Borrow, share, take back, build your own."
-- Panels:
-  1. "Companies in the classroom": six corporate schools (prospectus list), photo 19, a print of the prospectus page listing them, the Ping page-1 image of "IIIT CORPORATE OFFERS". [S-PROSP, S-PING]
-  2. "Vindhya then and now" table (PJN). Sticky note arrow: "Go look at the floor in A1 and B2: Motorola's granite is still there." [S-PJN]
-  3. "Who stayed": Govindarajulu evidence trio (Gopi quote-paraphrase, prospectus profile crop, Ping mention). [V3]
-  4. "Himalaya: a loan and four blocks" + **cardboard model**: 4 boxes arranged like Himalaya, each colour-coded: C green "IIIT's own money", A orange "TalentSprint, bought out 2018", KRB blue "built with TCS", D purple "T-Hub 2015-22, back to IIIT 2022". Label: "22 crore loan, paid off in 6 of 10 years." [S-PJN]
-  5. "IIIT the landlord": leased-spaces table from the floor-plan file (RGUKT, TalentSprint, SBH, Xerox, Milk & Water...). [S-FLOORPLANS]
-  6. "What IIIT built itself": servers in Nilgiri, self-hosted email, IMS (2017), first fully online in Hyderabad (2020). [S-PJN, S-PRAB, S-SRIDHAR]
-- **Bottom strip, "A branch that was cut":** 4-6 civil department photos (39, 42, 43, 46, 40, 44) in a row on black card, with one panel: prospectus "M.Tech in IT for Building Sciences" + EERC/CASE lab floor-plan crop + "IIIT is now CS, ECE and research only." Dates TODO; if unknown, say "We couldn't find out when it closed. Do you know? Tell us." (turns a gap into participation).
-- Monitor: `#/way`.
+| Sheet | Size | What goes on it | Photos | Sources |
+|---|---|---|---|---|
+| Where students lived | A3 | Collector's bungalow + 3 flats and the Judge's Quarters (1998); a batch on bunks inside Vindhya (1999); Palash, Parijat and Kadamb by 2000 | TODO(team): pick. The inventory (section 12) has no hostel photo from 1998-2000 | S-PJN, S-SLN, S-GOPI |
+| Gachibowli in 1998 | A3 | A village, one road, bears and bullock carts, 6 companies at Cyber Towers | 02, 01 | S-GOPI, S-RAJAN |
+| Borrowed buildings | A4 | The old Ranga Reddy collectorate and court buildings; only Nilgiri's first two floors in use; SH-1 in Vindhya the only big hall | 03 | S-PJN, S-GOPI, S-SLN |
+| A diploma on trust | A4 | 49 of 50 joined for a diploma (GDIT); @gdit.iiit.net email addresses; deemed university in 2001 | 07, 08 | S-PJN, S-GOPI |
 
-### 14.4 Board 3: Moving Rooms
-- Centrepiece: **2002 layout plan printed big (A2 or A1)**, with coloured pins on buildings, and red thread from each pin to a journey card around the edge.
-- Journey cards (A5 flash cards, 6 to 8): library, big lecture hall, where you eat, where you sleep, Vindhya's rooms, server room, cricket ground to Himalaya, Block D. Each is a vertical strip of stops with years (section 11). Library card gets the Saranga Hall photos (37, 38).
-- **HISTREE strip** (green card): four banyans with tomorrow's photos; Navjeevan's three moves drawn as a mini map; photo 05 (young banyan at OBH), photo 26 (framed banyan photo), photo 49 (PGDIT-2002 neem). Line: "Even the trees were moved here and took root."
-- **Satellite flip book or strip:** NAB 09-14, Bakul 33-36, Felicity ground 15-18.
-- **Hangout sticker map** (from Phase 4): a current campus print with coloured dot stickers by joining year (red before 2005, yellow 2005-14, green 2015-22, blue 2023 on). Keep it if a current map print is available; otherwise drop.
-- Monitor: `#/map`.
+- **Out:** "Borrowed teachers" (5 or 6 faculty + University of Hyderabad professors). Keep it off the Borrowed buildings sheet too. The phone-booth comic is fully out, on the board and on the website, and so is the photo 29 card.
+- Board header card (A3): TODO(team): keep it or not?
+- **Monitor 1:** a slideshow of the old campus photos from 1998-2002, playing on its own in the background. It replaces the timeline. Candidates: photos 01-08 and 19, plus the photos from the prospectus (the archive's "extras"). TODO(team): final list and order.
 
-### 14.5 Board 4: How We Know
-- **Voices wall:** 7 cards (A5) with name, role, years at IIIT, one-line "what they told us", and a QR/short link to their page `#/voices/<id>` (QR TODO with hosting). Big number: "7 interviews". Consent note: "Everyone here agreed to be recorded and quoted."
-- **Conflict flip cards (A4 on cardboard, hinged with tape):** C1, C2, C4 (and C3 if space). Front: the question + "Who's right?" + the competing accounts in two colours. Lift the flap: what we think, what would settle it.
-- **Verified cards:** V1 (Gopi's words + photo 04 + photo 30, joined by red thread), V2, V3.
-- **Correction card:** "We got it wrong" (section 9), printed in red ink style.
-- **Archive table (or bottom of board):** physical prints of: floor-space table (p.1), 2 or 3 lab floor plans (LTRC, RRC, EERC/CASE), prospectus pages with the curriculum highlights ("Curriculum as a period piece": Vedanta, Navya-Nyaya, Panini, IT for Railways, E-Commerce, VHDL, Internet Appliances), the Ping article, and the blank government-style file folder (if Rajan's office gave it). Card: "This should not live only on our website. We want these on Wikimedia Commons / Internet Archive. Got an old photo or document? Add it." + a "drop box" for notes.
-- Monitor: `#/voices` (and `#/how-we-know`).
+### 14.3 Board 2: The IIIT Way
+Was "Borrowed Branches". Line: "Borrow, share, take back, build your own."
 
-### 14.6 Exit wall
-- Panel (A2): "Every generation here thought it had run out of room" table (section 13), with the NAB satellite image.
-- Sticky notes + pens: "Which problem on campus today will be a story in 10 years? Add your batch."
-- Thank-you card listing all interviewees and offices.
+| Where | Sheet | Size | What goes on it | Sources |
+|---|---|---|---|---|
+| Left | Himalaya and its four blocks | 1 x A4 | 22 crore loan, paid off in 6 of 10 years. Block C: fitted out with IIIT's own money. Block A: fitted out with TalentSprint, bought out in 2018. Kohli Research Block: built with TCS. Block D: T-Hub 2015-2022, back to IIIT in 2022. Use the block colours from `#/way/build`. Never say "Himalaya had no corporate involvement" (only Block C was self-funded). Construction years: TODO(team) | S-PJN, S-NEWS-THUB |
+| Middle | The IIIT Way | A3 (maybe) | The board's argument, in the same order as the chapters on `#/way`: borrowed ground; companies in the classroom (6 corporate schools, photo 19); Vindhya taken back in 2007; Himalaya; IIIT as a landlord; what IIIT built for itself | S-PROSP, S-PJN, S-FLOORPLANS, S-PRAB |
+| Right | A branch that was cut (Civil) | 2 x A4 | Spooky tone: dark paper and the abandoned civil department photos (39-48, plus the uncaptioned civil photos). Add the prospectus "M.Tech in IT for Building Sciences" and the EERC / CASE Lab floor-plan crop. Close with "IIIT is now CS, ECE and research only." Start and end dates are TODO(team). If we can't find them, say "We couldn't find out when it closed. Do you know? Tell us." Spooky is the look and the questions, never made-up facts | S-PROSP, S-FLOORPLANS, photos 39-48 |
+| TODO(team): where? | Fun facts | TODO(team) | (1) The black granite floor Motorola put in is still in Vindhya A1 and B2 (PJN). The team says it is near CSTAR. Check that when you take the photo: PJN's table puts CSTAR in B5. (2) During COVID, classes and exams moved to CodeTantra. Sridhar says IIIT was the first institution in Hyderabad to go fully online. Write it as "Sridhar says" (one source), and say "in Hyderabad", not "first college" | S-PJN; S-SRIDHAR |
 
-### 14.7 Table 2: hands-on
-- **Timeline card-sorting game (A6 cards, 16):** event on front, year on back. Use: 1998 first classes in Nilgiri; 1998 first books arrive in Saranga Hall; 1999 bunk beds in Vindhya; 2000 Palash and Parijat open; 2001 deemed university; 2001 library moves to Vindhya; 2002 layout plan (62 acres); 2003 Afro-Asian Games press meets in guest house; 2005 four messes; 2007 Vindhya taken back from company schools; 2010 faculty quarters; 2015 T-Hub opens in Himalaya D; 2017 IMS; 2018 UGEE starts; 2020 fully online; 2022 Block D comes back.
-- **Objects:** the file folder; any old hardware IT Services lent (if any).
+- Gone as separate panels (the IIIT Way sheet can mention them in a line): "Who stayed" (Govindarajulu), the leased-spaces table, "Vindhya then and now". TODO(team): the Himalaya cardboard model isn't in the final layout. Is it out?
+- **Monitor 2:** a slideshow of how buildings changed. Show each place oldest to newest, with its name on screen: New Academic Block (satellite 09-14), Bakul Nivas (33-36), Felicity ground (15-18), amphitheatre (31-32). It plays on its own, with no clicking.
 
-### 14.8 Print list (checklist)
-| Item | Size | Qty |
-|---|---|---|
-| Title board | 2x3 ft (or 4 A3 tiled) | 1 |
-| Board headers | A3 | 4 + exit |
-| Panels | A3 | about 16 |
-| Comic panels | A4 | 4 |
-| Journey cards | A5 | 8 |
-| Voices cards | A5 | 7 |
-| Conflict flip cards | A4 | 3-4 |
-| Verified + correction cards | A4 | 4 |
-| 2002 layout plan | A2/A1 | 1 |
-| Photos | 4x6 in or A5 | about 30 |
-| Civil photo strip | A5 | 6 |
-| Archive prints | A4 | about 8 |
-| Quiz cards | A5 | 40 |
-| Timeline game cards | A6 | 16 |
-| Ending panel | A2 | 1 |
-Plus: cardboard, foam tape, red thread, map pins, coloured dot stickers, sticky notes, markers, 4 cardboard boxes (Himalaya model), extension boards, HDMI cables, 3-4 mice.
+### 14.4 Board 3: Institutional changes
+Was "Moving Rooms". Moving rooms is now one part of it.
 
-### 14.9 On the day
-- **Roles:** one host at the entry (quiz + route), one guide per board. Rotate every hour. **TODO(team):** names.
-- **2-minute tour (for the prof/TA):** 1) "Our argument: IIIT grew like its banyan, on borrowed support, then put down its own roots." 2) Board 2 Himalaya model as the clearest example. 3) Board 4: "Memory disagrees. Here's how we checked it, and here's where we were wrong." 4) Exit wall: "Every crisis here got solved. That's why we're hopeful about today's."
-- **60-second pitch per board:** each guide opens with the board's question, gives one surprising fact, points to one object, and invites a touch (flip a card, find a building on the map).
-- **Monitors:** each laptop opens `site/index.html?screen=<id>` from a local copy (no internet needed), with `<id>` = `history`, `map`, `evidence` (3 monitors) or `left`, `right` (2 monitors). Fullscreen with F, sleep disabled, mouse attached. After 90 s idle a screen returns to its home view and cycles its playlist.
-- **Morning checklist:** banyan photos (by 7:30 am), Motorola granite photo, get Gopi's OK on the comic, print run, test every monitor, charge phones for QR testing.
+| Where | Sheet | Size | What goes on it | Sources |
+|---|---|---|---|---|
+| Left | Attendance, then and now | 1 x A4 | Now: biometric attendance in every class. Then: TODO(team), the team is sending how attendance used to work. Nothing about attendance is in the transcripts or documents yet. The "now" part needs a source too: the team's own experience can be one, if it's added to section 6 | TODO(team) |
+| Left | IMS: from paper files to one system | 1 x A4 | Before: everything on paper, in government-style cloth and card file folders. From 2017: IMS (the institute management system), which came out of the digitisation work Prabhakar describes. Hostel room allocation and room shifting moved first, then office work, one process at a time. Some records are still kept on paper because official and audit rules require hard copies | S-PRAB, S-RAJAN |
+| Middle | Moving rooms | TODO(team) | The room journeys in section 11: the library, the big lecture hall, where you eat, where you sleep, Vindhya's rooms, the server room, cricket ground to Himalaya, Block D | see section 11 |
+| Right | HISTREE: the trees | 1 or 2 x A4 | Four banyans SLN Shastry saved from the road widening. Navjeevan's three moves (main road, Bakul Nivas, OBH). The tree Jagruthi and the mascot Jagruti. Photos 05, 26 and 49, plus this morning's tree photos. Line: "Even the trees were moved here and took root." | S-SLN, S-WIKI-OLD |
+
+- **Fact check for the IMS sheet:** don't write "IIIT was the first college in Hyderabad to go fully digital". Our only "first in Hyderabad" claim is Sridhar's, and it's about going fully online during COVID (CodeTantra, 2020), not about IMS. Rajan says IMS came in one process at a time, and some records are still on paper. The COVID fact can go on this sheet as a closing line, or in Board 2's fun facts. Not both.
+- **Monitor 3:** the interactive map (`#/map`).
+
+### 14.5 Board 4: How we know (monitor only)
+- No printed panels. A board behind the monitor holds the printed 2002 layout plan and the scanned floor plans (already printed).
+- **Monitor 4:** opens on the public-history part: the conflict cards and the verified cards (`#/how-we-know`). Then a team member gives each group a guided tour of the website. Aakarsh builds the tour.
+
+### 14.6 Out of the plan
+- **Out (team decision, 14 Nov):** the phone-booth comic (board and website); the borrowed-teachers panel on Board 1; every printed Board 4 card (voices cards, conflict flip cards, verified and correction cards, archive card).
+- **Not in the final layout, so treat as out unless the team says otherwise:** the exit wall (ending panel, sticky notes, thank-you card), Table 2 (timeline card game, objects), the Himalaya cardboard model, the A5 journey cards, the satellite strip, the hangout sticker map. TODO(team): confirm. The `#/ending` page is still on the website.
+
+### 14.7 Print list
+| Item | Size | Qty | Where |
+|---|---|---|---|
+| Title board | as before | 1 | Entry |
+| Quiz flashcards | A5 (TODO) | about 8 | Entry |
+| QR code card | A5 or A6 | 1 | Entry |
+| Where students lived | A3 | 1 | Board 1 |
+| Gachibowli in 1998 | A3 | 1 | Board 1 |
+| Borrowed buildings | A4 | 1 | Board 1 |
+| A diploma on trust | A4 | 1 | Board 1 |
+| Himalaya and its four blocks | A4 | 1 | Board 2, left |
+| The IIIT Way | A3 | 1 | Board 2, middle |
+| A branch that was cut (Civil) | A4 | 2 | Board 2, right |
+| Fun facts | TODO | 1 or 2 | Board 2 |
+| Attendance, then and now | A4 | 1 | Board 3, left |
+| IMS | A4 | 1 | Board 3, left |
+| Moving rooms | TODO | TODO | Board 3, middle |
+| HISTREE: the trees | A4 | 1 or 2 | Board 3, right |
+| 2002 layout plan + scanned floor plans | already printed | - | Behind Board 4 |
+
+`print/boards.html` (Aakarsh, A7) still makes the old set of sheets. Either it gets updated to this list, or the team builds these sheets by hand.
+
+### 14.8 On the day
+- **Roles:** one host at the entry (flashcards + QR code), one guide each for Boards 1 to 3, one person at Board 4 giving website tours. TODO(team): names.
+- **2-minute tour (for the prof/TA):** 1) "Our argument: IIIT grew like its banyan, on borrowed support, then put down its own roots." 2) Board 2's Himalaya sheet as the clearest example. 3) Board 4: "Memory disagrees. Here's how we checked it, and here's where we were wrong." 4) The website tour.
+- **60-second pitch per board:** each guide opens with the board's question, gives one surprising fact and points to one photo or document.
+- **Monitors:** 4 laptops + monitors, one per board. TODO(team): confirm we have 4. Each laptop opens a local copy of `site/index.html?screen=<id>` (no internet needed). The screen ids for this 4-monitor plan are TODO(aakarsh), in `site/data/config.js`. Fullscreen with F, sleep disabled, mouse attached.
+- **Morning checklist:** banyan photos (by 7:30 am); Motorola granite photo (check whether it's near CSTAR); print run; test every monitor; test the QR code on two phones.
