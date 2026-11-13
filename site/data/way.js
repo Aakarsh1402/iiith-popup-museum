@@ -86,16 +86,16 @@ M.way = {
   ],
 
   himalaya: [
-    { id: "C", name: "Block C", role: "Lecture halls and exam centre", funding: "Fitted out with IIIT's own money", color: "own",
+    { id: "C", name: "Block C", short: "Lecture halls, exams", role: "Lecture halls and exam centre", funding: "Fitted out with IIIT's own money", color: "own",
       story: "The lecture halls and the exam centre. IIIT fitted this block out with its own money. It's the only Himalaya block IIIT finished alone.",
       sources: ["S-PJN"] },
-    { id: "A", name: "Block A", role: "Admin today", funding: "Fitted out with TalentSprint; IIIT bought it out in 2018", color: "partner",
+    { id: "A", name: "Block A", short: "Admin today", role: "Admin today", funding: "Fitted out with TalentSprint; IIIT bought it out in 2018", color: "partner",
       story: "Fitted out together with TalentSprint, which shared the block until IIIT bought it out in 2018. The admin offices are here now. The floor-space survey also lists TalentSprint renting 22,260 sq ft on campus.",
       sources: ["S-PJN", "S-FLOORPLANS"] },
-    { id: "KRB", name: "Kohli Research Block", role: "Research", funding: "Built with TCS", color: "partner2",
+    { id: "KRB", name: "Kohli Research Block", short: "Research", role: "Research", funding: "Built with TCS", color: "partner2",
       story: "The Kohli Research Block (KRB) was built in partnership with TCS, for research.",
       sources: ["S-PJN"] },
-    { id: "D", name: "Block D", role: "Research labs since 2022", funding: "T-Hub, the state's startup incubator, 2015 to 2022", color: "state",
+    { id: "D", name: "Block D", short: "Labs since 2022", role: "Research labs since 2022", funding: "T-Hub, the state's startup incubator, 2015 to 2022", color: "state",
       story: "Given to the Telangana government as T-Hub, its startup incubator, from 2015 to 2022. Some faculty worried at the time about handing academic space to the state. Since 2022 it has held research groups: RRC, LSI, HSRC, SERC, Precog and a TCS research wing.",
       sources: ["S-PJN", "S-NEWS-THUB"] }
   ],

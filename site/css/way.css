@@ -1,1 +1,208 @@
-/* way.css: owner saharsh-claude */
+/* way.css: The IIIT Way scroll story. Owner: saharsh-claude (S4). Prefix .way- */
+
+.way-layout { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+
+/* progress rail */
+.way-rail { position: sticky; z-index: 3; top: calc(var(--nav-h) + 1.5rem); display: flex; flex-direction: column; gap: .1rem; padding: 1rem .4rem 1rem 0; border-left: 2px solid var(--rule); background: rgba(244, 238, 226, .94); border-radius: 0 12px 12px 0; }
+.way-rail button { position: relative; display: grid; grid-template-columns: 2rem 1fr; gap: .4rem; align-items: start; text-align: left; padding: .45rem .6rem .45rem 1rem; min-height: 44px; font-size: .84rem; line-height: 1.25; color: var(--ink-3); border-radius: 0 8px 8px 0; transition: color var(--t-fast), background var(--t-fast); }
+.way-rail button::before { content: ""; position: absolute; left: -7px; top: .85rem; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--rule); transition: all var(--t-med) var(--ease-out); }
+.way-rail button .mono { font-size: .7rem; padding-top: .1rem; }
+.way-rail button:hover { color: var(--ink); background: rgba(38, 36, 31, .04); }
+.way-rail button[aria-current] { color: var(--ink); font-weight: 700; }
+.way-rail button[aria-current]::before { background: var(--soil); border-color: var(--soil); transform: scale(1.25); }
+
+/* intro */
+.way-intro { min-height: calc(100vh - var(--nav-h)); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 2rem; align-items: center; padding: 2rem 0; }
+.way-intro h1 { font-size: clamp(2.4rem, 4.6vw, 5rem); max-width: 14ch; }
+.way-intro .lede { max-width: 44ch; }
+.way-verbs { list-style: none; margin: 1.6rem 0 2rem; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.way-verbs li { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--font-display); font-size: clamp(1.1rem, 1.6vw, 1.6rem); font-weight: 600; padding: .35rem 1rem .35rem .4rem; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--card); }
+.way-verbs li .mono { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: .75rem; }
+.way-intro-src { margin-top: 1.5rem; }
+.way-intro-art img { width: 100%; max-height: 70vh; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(38, 36, 31, .18)); }
+
+/* chapters */
+.way-ch { min-height: calc(100vh - var(--nav-h)); display: flex; align-items: center; padding: 3.5rem 0; border-top: 1px solid var(--rule); scroll-margin-top: var(--nav-h); }
+.way-ch-inner { width: 100%; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 3vw, 3.5rem); align-items: center; }
+.way-text h2 { font-size: clamp(1.9rem, 3vw, 3.2rem); max-width: 16ch; margin-top: .4rem; }
+.way-kicker { display: flex; align-items: center; gap: .8rem; }
+.way-num { font-size: .8rem; color: var(--paper); background: var(--soil); padding: .15rem .45rem; border-radius: 4px; }
+.way-body { font-size: clamp(1.02rem, 1.15vw, 1.2rem); line-height: 1.6; max-width: 52ch; }
+.way-ask { font-family: var(--font-display); font-style: italic; font-size: clamp(1.2rem, 1.6vw, 1.6rem); color: var(--ochre); border-left: 3px solid currentColor; padding-left: 1rem; }
+.way-links { display: flex; flex-wrap: wrap; gap: .6rem; margin: .2rem 0 1rem; }
+.way-links .stamp { font-size: .7rem; padding: .3rem .6rem; }
+.way-text .source-line { margin: 1rem 0 .5rem; max-width: 60ch; }
+.way-docs { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1rem 0; }
+.way-doc { display: flex; flex-direction: column; gap: .4rem; width: 11rem; color: var(--ink); text-decoration: none; font-size: .78rem; line-height: 1.3; }
+.way-doc-img { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; border: 1px solid var(--rule); background: #fff; box-shadow: var(--shadow-1); transition: transform var(--t-med) var(--ease-out); }
+.way-doc-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.way-doc:hover .way-doc-img { transform: translateY(-3px) rotate(-1deg); }
+.way-doc-lbl { display: flex; gap: .3rem; align-items: flex-start; }
+.way-doc-lbl svg { width: 14px; height: 14px; flex: none; margin-top: .1rem; color: var(--soil); }
+
+/* photos */
+.way-photos { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; align-items: start; }
+.way-photos .way-photo--0 { grid-row: span 2; }
+.way-photos--1 { grid-template-columns: 1fr; }
+
+/* corporate schools: nameplates */
+.way-schools { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 1.2rem; align-items: start; }
+.way-schools-board { background: #2a2622; color: var(--paper); border-radius: 12px; padding: 1.2rem 1.2rem 1rem; box-shadow: var(--shadow-2); }
+.way-schools-board .badges .badge { --c: #e8c78a; background: rgba(255, 255, 255, .06); }
+.way-schools-title { font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; color: #d8c39b; margin-bottom: .8rem; }
+.way-plates { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .55rem; }
+.way-plate { font-family: var(--font-display); font-weight: 600; font-size: 1rem; line-height: 1.25; padding: .6rem .8rem; border-radius: 4px; color: #2a2116; background: linear-gradient(135deg, #e9cf92, #c9a35a 55%, #e3c587); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25), inset 0 2px 0 rgba(255, 255, 255, .45); }
+.way-schools-side { display: flex; flex-direction: column; gap: .5rem; }
+.way-schools-side .way-docs { margin: .4rem 0 0; }
+.way-schools-side .way-doc { width: calc(33% - .6rem); min-width: 7rem; }
+
+/* evidence trio */
+.way-ev-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .9rem; max-width: 46rem; }
+.way-ev { --c: var(--ink-2); position: relative; display: flex; gap: .9rem; align-items: flex-start; }
+.way-ev:not(.way-ev--end)::after { content: ""; position: absolute; left: 1.1rem; top: 2.2rem; height: calc(100% - 2.2rem + .9rem); border-left: 2px dashed var(--soil); opacity: .6; }
+.way-ev-dot { position: relative; z-index: 1; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--c); color: #fff; box-shadow: 0 0 0 4px var(--paper); }
+.way-ev-dot svg { width: 18px; height: 18px; }
+.way-ev-card { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "kind thumb" "text thumb" "src thumb"; gap: .35rem 1rem; align-items: start; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--c); border-radius: 10px; padding: .9rem 1rem; }
+.way-ev-card .way-ev-kind { grid-area: kind; } .way-ev-card p { grid-area: text; } .way-ev-card .badges { grid-area: src; } .way-ev-card .way-ev-thumb { grid-area: thumb; width: 9rem; }
+.way-ev-card p { margin: 0; font-size: 1.02rem; }
+.way-ev-kind { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c); font-weight: 700; }
+.way-ev-thumb { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; border: 1px solid var(--rule); }
+.way-ev-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.way-ev--end { padding-left: 3.1rem; }
+
+/* take-back stamps */
+.way-stamps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+.way-stamp { display: flex; flex-direction: column; align-items: center; gap: .3rem; text-align: center; padding: 1.3rem 1rem 1rem; border: 4px double var(--soil-deep); border-radius: 10px; color: var(--soil-deep); background: color-mix(in srgb, var(--soil) 6%, var(--card)); transform: rotate(var(--r, -3deg)); box-shadow: var(--shadow-1); }
+.way-stamp-top { font-size: .68rem; text-transform: uppercase; letter-spacing: .18em; }
+.way-stamp b { font-family: var(--font-display); font-size: clamp(2.6rem, 4.2vw, 4.4rem); line-height: 1; font-weight: 800; }
+.way-stamp-place { font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+.way-stamp-text { font-size: .88rem; color: var(--ink-2); }
+.way-stamp .badges { justify-content: center; margin-top: .4rem; }
+
+/* Himalaya */
+.way-ch--himalaya .way-ch-inner { grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr); }
+.way-hb { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.way-hb-stage { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 1.2rem 1.2rem .7rem; }
+.way-hb-svg { width: 100%; height: auto; overflow: visible; }
+.way-blk { cursor: pointer; outline: none; }
+.way-blk-lift { transition: transform var(--t-med) var(--ease-out), opacity var(--t-med); }
+.way-blk-front { fill: var(--c); }
+.way-blk-top { fill: color-mix(in srgb, var(--c) 62%, white); }
+.way-blk-side { fill: color-mix(in srgb, var(--c) 72%, black); }
+.way-blk-shadow { fill: rgba(38, 36, 31, .14); transition: opacity var(--t-med); }
+.way-blk-name { fill: #fff; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.way-blk-role { fill: rgba(255, 255, 255, .9); font-family: var(--font-body); font-size: 14px; }
+.way-blk:hover .way-blk-lift, .way-blk:focus-visible .way-blk-lift { transform: translateY(-6px); }
+.way-blk.on .way-blk-lift { transform: translateY(-12px); }
+.way-blk.on .way-blk-front { stroke: var(--ink); stroke-width: 3; }
+.has-sel .way-blk:not(.on) .way-blk-lift { opacity: .72; }
+.way-blk:focus-visible .way-blk-front { stroke: var(--ochre); stroke-width: 4; }
+.way-hb-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .6rem; font-size: .82rem; color: var(--ink-2); }
+.way-hb-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.way-hb-legend i { width: .9rem; height: .9rem; border-radius: 3px; display: inline-block; }
+.way-hb-note { font-size: .66rem; color: var(--ink-3); margin: .5rem 0 0; }
+.way-hb-story { --c: var(--ink-3); min-height: 9.5rem; background: color-mix(in srgb, var(--c) 8%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); border-left: 6px solid var(--c); border-radius: 12px; padding: 1.1rem 1.2rem; animation: sheet-content-in var(--t-med) var(--ease-out); }
+.way-hb-story .kicker { color: var(--ink-2); letter-spacing: .06em; text-transform: none; font-size: .8rem; }
+.way-hb-story h3 { font-size: clamp(1.3rem, 1.7vw, 1.8rem); margin: .2rem 0 .4rem; }
+.way-hb-story p { font-size: 1rem; }
+.way-loan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; align-items: stretch; }
+.way-loan-stat { display: flex; flex-direction: column; justify-content: center; padding: .8rem 1rem; border-radius: 10px; background: var(--ink); color: var(--paper); }
+.way-loan-stat b { font-family: var(--font-body); font-size: clamp(1.4rem, 2vw, 2.2rem); line-height: 1.05; font-weight: 700; white-space: nowrap; }
+.way-loan-stat span { font-size: .8rem; opacity: .85; }
+.way-loan-bar { grid-column: 1 / -1; display: flex; flex-direction: column; justify-content: center; gap: .4rem; }
+.way-loan-track { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
+.way-loan-track span { height: 1.9rem; display: grid; place-items: center; font: 600 .7rem/1 var(--font-mono); color: var(--ink-3); background: var(--paper-2); }
+.way-loan-track span:first-child { border-radius: 4px 0 0 4px; }
+.way-loan-track span:last-child { border-radius: 0 4px 4px 0; }
+.way-loan-track span.paid { background: var(--banyan); color: #fff; }
+.way-loan > .badges { grid-column: 1 / -1; }
+
+/* leased bar chart */
+.way-leased { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 1.3rem 1.4rem 1.1rem; }
+.way-leased-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1.5rem; margin-bottom: 1rem; }
+.way-hero-num { display: flex; align-items: baseline; gap: .6rem; }
+.way-hero-num b { font-size: clamp(2.6rem, 4vw, 3.6rem); font-weight: 700; line-height: 1; }
+.way-hero-num span { color: var(--ink-2); }
+.way-chart-title { margin: 0; font-weight: 700; color: var(--ink-2); font-size: .92rem; }
+.way-bars { --name: 9.5rem; position: relative; display: grid; gap: .25rem; }
+.way-bars-grid { position: absolute; top: 0; bottom: 1.6rem; left: calc(var(--name) + .8rem); right: 4.5rem; pointer-events: none; }
+.way-bars-grid span { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--paper-3); }
+.way-bar-row { display: grid; grid-template-columns: var(--name) 1fr; gap: .8rem; align-items: center; min-height: 34px; border-radius: 6px; outline: none; }
+.way-bar-row:hover, .way-bar-row:focus-visible { background: rgba(38, 36, 31, .04); }
+.way-bar-row:focus-visible { box-shadow: 0 0 0 2px var(--ochre); }
+.way-bar-name { font-size: .9rem; text-align: right; color: var(--ink); }
+.way-bar-track { position: relative; height: 22px; margin-right: 4.5rem; }
+.way-bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--soil); border-radius: 0 4px 4px 0; transform-origin: left; animation: way-grow var(--t-slow) var(--ease-out) both; }
+.way-bar--vacant { background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--soil) 30%, var(--card)) 0 5px, var(--card) 5px 9px); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--soil) 60%, transparent); }
+.way-bar-val { position: absolute; top: 50%; transform: translateY(-50%); font-size: .8rem; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+@keyframes way-grow { from { transform: scaleX(0); } }
+.way-bars-axis { display: grid; grid-template-columns: var(--name) 1fr; gap: .8rem; height: 1.6rem; }
+.way-bars-ticks { position: relative; margin-right: 4.5rem; }
+.way-bars-ticks span { position: absolute; top: .3rem; transform: translateX(-50%); font-size: .68rem; color: var(--ink-3); }
+.way-tip { position: absolute; z-index: 5; display: flex; flex-direction: column; gap: .1rem; max-width: 260px; background: var(--ink); color: var(--paper); font-size: .8rem; padding: .5rem .7rem; border-radius: 8px; box-shadow: var(--shadow-2); pointer-events: none; }
+.way-tip[hidden] { display: none; }
+.way-chart-note { margin: .8rem 0 .5rem; }
+.way-table { margin: .4rem 0 .8rem; font-size: .85rem; }
+.way-table summary { cursor: pointer; font-weight: 700; color: var(--banyan); min-height: 32px; }
+.way-table table { border-collapse: collapse; margin-top: .5rem; min-width: 18rem; }
+.way-table th, .way-table td { text-align: left; padding: .3rem .8rem .3rem 0; border-bottom: 1px solid var(--rule); }
+.way-table td:last-child, .way-table th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.way-table tr.total td { font-weight: 700; border-bottom: 0; }
+
+/* what IIIT built for itself */
+.way-own { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.way-own li { display: flex; gap: .9rem; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem 1.1rem; }
+.way-own li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.way-own-icon { flex: none; display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--banyan); color: #fff; }
+.way-own-icon svg { width: 26px; height: 26px; }
+.way-own h3 { margin: .1rem 0 .3rem; font-size: 1.15rem; }
+.way-own p { margin: 0 0 .5rem; font-size: .92rem; color: var(--ink-2); }
+.way-own-when { font-size: .7rem; color: var(--soil); }
+
+/* the branch that was cut: a dark section */
+.way-ch--civil { color: #ece5d6; border-top: 0; background: var(--night); box-shadow: 0 0 0 100vmax var(--night); clip-path: inset(0 -100vmax); }
+.way-ch--civil h2, .way-ch--civil .way-body { color: #f4eee2; }
+.way-ch--civil .kicker { color: #e0a27f; }
+.way-ch--civil .source-line, .way-ch--civil .source-line b { color: #b9b1a1; }
+.way-ch--civil .badge { --c: #d9cfbf; background: rgba(255, 255, 255, .06); }
+.way-ch--civil .stamp { --c: #e0c17f; }
+.way-civil { display: grid; gap: 1.2rem; }
+.way-civil-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+.way-civil-grid .fig-btn { filter: grayscale(.35) contrast(1.05); }
+.way-civil-grid .fig-btn:hover { filter: none; }
+.way-civil-grid figcaption { color: #b9b1a1; font-size: .72rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.way-civil-grid figcaption .credit { display: none; }
+.way-civil-docs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+.way-civil-docs h3 { grid-column: 1 / -1; margin: 0; font-size: 1rem; color: #e0a27f; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .12em; }
+.way-civil-doc { display: flex; flex-direction: column; gap: .25rem; padding: .7rem .9rem; border: 1px solid rgba(255, 255, 255, .16); border-radius: 8px; color: #f4eee2; text-decoration: none; font-size: .9rem; background: rgba(255, 255, 255, .03); }
+.way-civil-doc .mono { font-size: .66rem; color: #b9b1a1; }
+.way-civil-doc:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .way-layout { grid-template-columns: 1fr; gap: 0; }
+  .way-rail { position: sticky; top: var(--nav-h); z-index: 20; flex-direction: row; overflow-x: auto; scrollbar-width: none; border-left: 0; border-bottom: 1px solid var(--rule); padding: .4rem 0; margin: 0 calc(var(--gutter) * -1); padding-left: var(--gutter); background: rgba(244, 238, 226, .92); backdrop-filter: blur(8px); }
+  .way-rail::-webkit-scrollbar { display: none; }
+  .way-rail button { flex: none; grid-template-columns: auto auto; white-space: nowrap; border-radius: 999px; padding: .4rem .8rem; }
+  .way-rail button::before { display: none; }
+  .way-rail button[aria-current] { background: var(--ink); color: var(--paper); }
+  .way-ch-inner, .way-intro { grid-template-columns: 1fr; }
+  .way-intro-art { max-width: 26rem; }
+  .way-ch--himalaya .way-ch-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .way-ch { min-height: 0; padding: 2.5rem 0; }
+  .way-intro { min-height: 0; }
+  .way-photos, .way-schools, .way-stamps, .way-own, .way-civil-docs { grid-template-columns: 1fr; }
+  .way-photos .way-photo--0 { grid-row: auto; }
+  .way-stamp { transform: none; }
+  .way-ev-card { grid-template-columns: 1fr; grid-template-areas: "kind" "thumb" "text" "src"; }
+  .way-ev-card .way-ev-thumb { width: 100%; }
+  .way-loan-stat { padding: .6rem .7rem; }
+  .way-bars { --name: 6.5rem; }
+  .way-bar-name { font-size: .78rem; }
+  .way-civil-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .way-bar { animation: none; }
+}
