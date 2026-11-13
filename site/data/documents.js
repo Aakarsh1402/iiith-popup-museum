@@ -3,10 +3,12 @@
    doc: { id, title, date, sourceId, sources, desc, about, cover, pages: [{ n, file, thumb, note }], highlights?, extras?, todo? } */
 window.M = window.M || {};
 (function () {
-  function pages(dir, notes) {
+  /* sideways: [from, to] page range whose scans are turned 90 degrees; the viewer rotates them to read (page.rot) */
+  function pages(dir, notes, sideways) {
     return notes.map(function (note, i) {
-      var nn = String(i + 1).padStart(2, "0");
-      return { n: i + 1, file: dir + "/p-" + nn + ".jpg", thumb: dir + "/thumb/p-" + nn + ".jpg", note: note };
+      var nn = String(i + 1).padStart(2, "0"), pg = { n: i + 1, file: dir + "/p-" + nn + ".jpg", thumb: dir + "/thumb/p-" + nn + ".jpg", note: note };
+      if (sideways && i + 1 >= sideways[0] && i + 1 <= sideways[1]) pg.rot = 90;
+      return pg;
     });
   }
 
@@ -76,7 +78,7 @@ window.M = window.M || {};
         "Intel Multicore Lab, 3rd floor, Nilgiri: 529 sq ft.",
         "A longer version of the table. It adds hardware labs, MSIT, 29 classrooms, the digital library and temporary space for RGUKT.",
         "\"Leased Spaces\": RGUKT, Kidosoft, SpectraForce, SBH, Xerox, Milk & Water, TalentSprint and Prudhvi (vacant). 67,118 sq ft in all."
-      ]),
+      ], [2, 25]),
       todo: "TODO(team): ask SLN Shastry what year these floor plans are from." },
 
     { id: "layout2002", title: "Campus layout plan", date: "2002", sourceId: "S-LAYOUT2002", sources: ["S-LAYOUT2002"],

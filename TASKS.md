@@ -25,7 +25,7 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | S4 | The IIIT Way (scroll story, Himalaya diagram, leased bar chart, civil gallery, autoplay) | `site/js/pages/way.js`, `site/css/way.css` | done |
 | S5 | Quiz | `site/js/pages/quiz.js`, `site/css/quiz.css` | done |
 | S6 | Then and Now (ending) | `site/js/pages/ending.js`, `site/css/ending.css` | done |
-| S7 | Archive + document viewer | `site/js/pages/archive.js`, `site/css/archive.css` | doing |
-| S8 | HISTREE page (reads `M.trees`) | `site/js/pages/histree.js`, `site/css/histree.css` | todo |
+| S7 | Archive + document viewer | `site/js/pages/archive.js`, `site/css/archive.css` | done |
+| S8 | HISTREE page (reads `M.trees`) | `site/js/pages/histree.js`, `site/css/histree.css` | doing |
 
 \* Both sessions may edit their own rows' `status` column in this file. Nothing else in it.
