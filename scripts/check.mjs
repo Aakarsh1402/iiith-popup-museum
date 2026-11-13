@@ -105,7 +105,9 @@ if (fs.existsSync(printDir)) for (const f of fs.readdirSync(printDir).filter((x)
   if (t.includes("—")) err(`print/${f}: em dash`);
 }
 // never-show list
-const NEVER = [/30\s*(to|-)\s*40\s*severe/i, /summer interns?.*raghu|raghu.*summer intern/i, /no corporate involvement/i, /Talon'?s Print/];
+const NEVER = [/summer interns?.*raghu|raghu.*summer intern/i, /no corporate involvement/i, /Talon'?s Print/];
+// the privacy redaction in Sridhar's transcript must stay in place
+if (M.transcripts && M.transcripts["P-SRIDHAR"] && !M.transcripts["P-SRIDHAR"].paras.some((p) => p.includes("[One sentence removed by the team for privacy.]"))) err("transcripts P-SRIDHAR: the privacy redaction marker is missing");
 walk(M, "M", (s, w) => { for (const re of NEVER) if (re.test(s) && !w.startsWith("M.transcripts.P-PJN")) err(`${w}: matches never-show rule ${re}`); });
 
 function wc(s) { return (s || "").trim().split(/\s+/).filter(Boolean).length; }

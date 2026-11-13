@@ -155,7 +155,7 @@ M.events = [
     title: "Palash, Parijat and Kadamb open. The bunks come down.",
     summary: "With government help, Palash Nivas and Parijat Nivas opened in 2000, followed by Kadamb Nivas.",
     body: "Mr. Gopi remembers the New Boys Hostel and its Kadamba mess being built in the third year. We still need to match the hostel names on the 2002 plan (Old Boys, New Boys, Girls) to today's names.",
-    category: ["buildings"], places: ["nbh"], people: [], sources: ["S-PJN", "S-GOPI"], confidence: "corroborated", images: [], featured: false,
+    category: ["buildings"], places: [], people: [], sources: ["S-PJN", "S-GOPI"], confidence: "corroborated", images: [], featured: false,
     todo: "TODO(team): which current hostel names match OBH, NBH and Girls Hostel on the 2002 plan" },
 
   { id: "e-2000-dualdegree", year: 2000, dateLabel: "2000-01", era: "founding", sort: 2,

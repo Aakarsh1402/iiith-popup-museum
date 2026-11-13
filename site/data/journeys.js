@@ -26,7 +26,7 @@ M.journeys = [
     stops: [
       { place: "nab", label: "Collector's bungalow + 3 flats", when: "1998", text: "The first batch. This spot is now the New Academic Block site. SLN Shastry also remembers girls in the Judge's Quarters.", sources: ["S-PJN", "S-SLN"] },
       { place: "vindhya", label: "Bunk beds inside Vindhya", when: "1999", text: "Army-style two-tier bunks where A4 and the library are now.", sources: ["S-PJN", "S-SLN"] },
-      { place: "obh", label: "Palash, Parijat, Kadamb and OBH", when: "2000", text: "The first real hostels. The bunks came down.", sources: ["S-PJN", "S-GOPI"] },
+      { place: null, label: "Palash, Parijat, Kadamb and OBH", when: "2000", text: "The first real hostels. The bunks came down.", sources: ["S-PJN", "S-GOPI"] },
       { place: "girls-hostel", label: "About 700 single rooms", when: "c.2001", text: "\"All students are provided with single room accommodation.\"", sources: ["S-PROSP", "S-LAYOUT2002"] },
       { place: null, label: "Double, then triple sharing", when: "Now", text: "Three to a room. Summer interns six to a room on bunks.", sources: ["S-SRIDHAR"] }
     ] },

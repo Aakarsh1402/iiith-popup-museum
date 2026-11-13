@@ -12,6 +12,7 @@
   K.dev = search.dev === "1";
 
   var idleMs = ((M.config && M.config.idleSeconds) || 90) * 1000;
+  var pscale = search.pscale ? Math.max(0.01, +search.pscale) : 1;   // ?pscale=0.1 speeds playlists up for testing
   if (search.idle) idleMs = Math.max(5, +search.idle) * 1000; // ?idle=10 for testing
   var idleTimer = 0, playTimer = 0, playIndex = -1, playing = false, progressEl = null, progRaf = 0;
   var inputFns = [];
@@ -36,14 +37,17 @@
     cancelAnimationFrame(progRaf);
     (function tick(now) { var k = U.clamp((now - t0) / ms, 0, 1); bar.style.width = (k * 100) + "%"; if (k < 1 && playing) progRaf = requestAnimationFrame(tick); })(t0);
   }
-  function playNext() {
+  function playNext(skips) {
     var list = (screen && screen.playlist) || [{ route: screen.home, secs: 0 }];
     playIndex = (playIndex + 1) % list.length;
     var item = list[playIndex];
+    // a page that is still a "coming soon" stub never gets screen time
+    if (M.router.isStub(item.route) && list.length > 1 && (skips || 0) < list.length) { playNext((skips || 0) + 1); return; }
     playing = true;
     while (M.ui.closeTop()) { /* clear overlays */ }
     M.router.go(item.route, { force: true });
-    if (list.length > 1 && item.secs) { runProgress(item.secs * 1000); playTimer = setTimeout(playNext, item.secs * 1000); }
+    var ms = item.secs * 1000 * pscale;
+    if (list.length > 1 && item.secs) { runProgress(ms); playTimer = setTimeout(playNext, ms); }
     updatePill();
   }
   function onIdle() {
@@ -107,7 +111,7 @@
       resetIdle();
       M.router.onChange(updatePill);
       // Start the playlist timer straight away if we open on the home route.
-      setTimeout(function () { if (pathOf(location.hash) === pathOf(screen.home) && screen.playlist && screen.playlist.length > 1) { playIndex = 0; playing = true; runProgress(screen.playlist[0].secs * 1000); playTimer = setTimeout(playNext, screen.playlist[0].secs * 1000); } updatePill(); }, 50);
+      setTimeout(function () { if (pathOf(location.hash) === pathOf(screen.home) && screen.playlist && screen.playlist.length > 1) { playIndex = 0; playing = true; runProgress(screen.playlist[0].secs * 1000 * pscale); playTimer = setTimeout(playNext, screen.playlist[0].secs * 1000 * pscale); } updatePill(); }, 50);
     }
     if (K.dev) {
       var tag = M.ui.el("div", { class: "dev-route" });

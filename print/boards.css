@@ -185,13 +185,14 @@ p { margin: 0 0 .7em; }
 .model-label .role { font: 10pt var(--mono); opacity: .85; margin-top: 3mm; }
 
 /* ---------- layout plans ---------- */
-.layout { padding: 14mm 16mm; }
+.layout { padding: 10mm 14mm; }
 .layout h2 { font-size: 26pt; margin-bottom: 2mm; }
-.layout .meta { font: 9pt var(--mono); color: var(--ink-2); margin-bottom: 5mm; }
+.layout .meta { font: 8.5pt var(--mono); color: var(--ink-2); margin-bottom: 3mm; }
+.layout h2 { font-size: 20pt !important; }
 .board-plan { position: relative; background: #E9DCC0; border: 1.2mm solid #8b6b3a; border-radius: 2mm; }
 .board-plan .item { position: absolute; border: .45mm solid var(--c, var(--ink)); background: color-mix(in srgb, var(--c, #fff) 14%, #fff); border-radius: .8mm; padding: 1.2mm 1.6mm; font-size: 7.5pt; line-height: 1.2; overflow: hidden; }
 .board-plan .item b { display: block; font: 700 6.5pt var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--c, var(--ink)); }
-.layout .legend { margin-top: 5mm; font-size: 9.5pt; color: var(--ink-2); columns: 2; }
+.layout .legend { margin-top: 2.5mm; font-size: 8.5pt; color: var(--ink-2); }
 
 /* ---- size tuning (A3 panels read from about 1 m; A4 panels a bit closer) ---- */
 .a3p.panel { padding: 24mm 22mm 16mm; }
@@ -217,3 +218,4 @@ p { margin: 0 0 .7em; }
 .title-board .team b { font-size: 28pt; }
 .header-sheet .intro { font-size: 19pt; }
 .header-sheet .q { font-size: 31pt; }
+@media screen { .sheet.overflow { outline: 3mm solid #e0245e; } }

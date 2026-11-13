@@ -56,7 +56,7 @@ IIIT's logo is a banyan, and its mascot, Jagruti, is a banyan too. A banyan ofte
 | Board 4 | How We Know | Voices, conflicts, verification, our own correction, the archive | `#/voices` |
 | Exit wall | Every generation thought it had run out of room | Hope ending + visitor memories | `#/ending` (if a spare screen exists) |
 
-If only 3 monitors: drop Board 1's monitor. Every monitor can reach every page with the mouse, and each returns to its own default view after 90 s idle.
+**Monitors (updated 14 Nov):** we plan for 2 or 3. With 3: `?screen=history` (between Boards 1 and 2: timeline, then The IIIT Way), `?screen=map` (Board 3: map, then HISTREE), `?screen=evidence` (Board 4 + exit: How We Know, Voices, Then and Now). With 2: `?screen=left` and `?screen=right`. Every monitor can reach every page with the mouse; after 90 s idle each one goes back to its home view and cycles a short playlist (see `site/data/config.js`). The table above shows each board's main page.
 
 ## 4. Rules for all visitor-facing text (site and boards)
 
@@ -493,5 +493,5 @@ Plus: cardboard, foam tape, red thread, map pins, coloured dot stickers, sticky 
 - **Roles:** one host at the entry (quiz + route), one guide per board. Rotate every hour. **TODO(team):** names.
 - **2-minute tour (for the prof/TA):** 1) "Our argument: IIIT grew like its banyan, on borrowed support, then put down its own roots." 2) Board 2 Himalaya model as the clearest example. 3) Board 4: "Memory disagrees. Here's how we checked it, and here's where we were wrong." 4) Exit wall: "Every crisis here got solved. That's why we're hopeful about today's."
 - **60-second pitch per board:** each guide opens with the board's question, gives one surprising fact, points to one object, and invites a touch (flip a card, find a building on the map).
-- **Monitors:** each laptop opens `site/index.html?screen=<id>` from a local copy (no internet needed), browser fullscreen (F11), sleep disabled, mouse attached. Idle 90 s returns to the board's view.
+- **Monitors:** each laptop opens `site/index.html?screen=<id>` from a local copy (no internet needed), with `<id>` = `history`, `map`, `evidence` (3 monitors) or `left`, `right` (2 monitors). Fullscreen with F, sleep disabled, mouse attached. After 90 s idle a screen returns to its home view and cycles its playlist.
 - **Morning checklist:** banyan photos (by 7:30 am), Motorola granite photo, get Gopi's OK on the comic, print run, test every monitor, charge phones for QR testing.

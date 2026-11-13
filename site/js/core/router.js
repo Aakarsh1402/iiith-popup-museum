@@ -23,6 +23,10 @@
   };
 
   R.current = function () { return current; };
+  /** The page module a hash would render (or null). */
+  R.pageFor = function (hash) { return table()[R.parse(hash).route] || null; };
+  /** True while a page is still the "coming soon" placeholder. */
+  R.isStub = function (hash) { var p = R.pageFor(hash); return !p || /M\.ui\.stub\(/.test(String(p.render)); };
 
   /** Navigate. opts.force re-renders even if the page is the same. opts.replace uses replaceState. */
   R.go = function (hash, opts) {
@@ -75,7 +79,8 @@
     }
     var first = !current;
     if (!first && document.startViewTransition && !U.prefersReducedMotion()) {
-      document.startViewTransition(swap);
+      var vt = document.startViewTransition(swap);
+      [vt.ready, vt.finished, vt.updateCallbackDone].forEach(function (pr) { if (pr && pr.catch) pr.catch(function () { /* skipped by a newer transition: fine */ }); });
     } else {
       swap();
       if (!first && !U.prefersReducedMotion()) { app.classList.add("fade-in"); }

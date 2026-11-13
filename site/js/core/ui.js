@@ -462,6 +462,6 @@
   UI.stub = function (root, title, owner) {
     root.appendChild(el("section", { class: "page wrap stub" }, el("div", null,
       el("div", { class: "kicker" }, "Coming soon"), el("h1", null, title),
-      el("p", { class: "muted" }, "This page is being built" + (owner ? " by " + owner : "") + "."))));
+      el("p", { class: "muted" }, "This part of the exhibit is still being put together. Try the timeline or the map in the meantime."))));
   };
 })();

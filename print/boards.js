@@ -191,7 +191,7 @@
     var srcs = []; j.stops.forEach(function (st) { st.sources.forEach(function (x) { if (srcs.indexOf(x) < 0) srcs.push(x); }); });
     add(s, [el("div", { class: "kicker" }, "Journey  |  " + j.short), el("h3", null, j.title),
       el("ol", { class: "stops" }, j.stops.map(function (st, i) { return el("li", { "data-n": i + 1 }, el("span", { class: "when" }, st.when), el("span", { class: "lab" }, st.label), el("span", { class: "txt" }, st.text)); })),
-      id === "library" ? el("div", { style: { height: "34mm", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2mm", marginBottom: "3mm" } }, photo("img-37", false), photo("img-38", false)) : null,
+      null,
       el("div", { class: "grow" }), src(srcs)]);
   });
   (function () {
@@ -321,20 +321,54 @@
     return { placed: placed, extra: extra };
   }
   var ORDER = { a2p: 0, a3l: 1, a3p: 2, a4p: 3, a4l: 3, a5p: 4, a5l: 4, a6l: 5 };
+  // hand-placed layouts (cm from the top-left of a 120 x 90 board). [label pattern, x, y]
+  var HAND = {
+    "Board 1": [[/Board header/, 0.5, 0.5], [/comic, panel 1/, 0.5, 31.5], [/comic, panel 2/, 22, 31.5], [/comic, panel 3/, 0.5, 47], [/comic, panel 4/, 22, 47], [/Photo 29/, 0.5, 63],
+      [/Gachibowli, 1998/, 44.5, 0.5], [/borrowed buildings/, 74.7, 0.5], [/diploma on trust/, 44.5, 46], [/Where did they sleep/, 74.7, 46]],
+    "Board 3": [[/Board header/, 0.5, 0.5], [/2002 layout plan/, 43.5, 0.3], [/HISTREE strip/, 0.5, 60.1], [/Satellite strip/, 43.5, 60.1],
+      [/Journey card: The library/, 87.5, 0.5], [/big lecture/, 103.3, 0.5], [/Where you eat/, 87.5, 22], [/Where you sleep/, 103.3, 22],
+      [/Vindhya's rooms/, 87.5, 43.5], [/server room/, 103.3, 43.5], [/cricket/, 87.5, 65], [/Block D/, 103.3, 65]],
+    "Board 4": [[/Board header/, 0.5, 0.5], [/flip card C1 \(front/, 43.5, 0.5], [/flip card C2 \(front/, 65, 0.5], [/flip card C4 \(front/, 86.5, 0.5],
+      [/flip card C3 \(front/, 0.5, 31], [/Verified card V1/, 22, 31], [/Verified card V2/, 43.5, 31], [/Verified card V3/, 65, 31], [/Correction card/, 86.5, 31],
+      [/Voices card: Mr. Gopi/, 0.5, 61.5], [/SLN/, 15.8, 61.5], [/Narayanan/, 31.1, 61.5], [/Muralidhar/, 46.4, 61.5], [/Rajan/, 61.7, 61.5], [/Prabhakar/, 77, 61.5], [/Sridhar/, 92.3, 61.5]]
+  };
+  function handPack(board, items) {
+    var spec = HAND[board], placed = [], used = [];
+    spec.forEach(function (s) {
+      var it = items.filter(function (x) { return used.indexOf(x) < 0 && s[0].test(x.label); })[0];
+      if (!it) return; used.push(it);
+      var sz = SIZES[it.size]; placed.push({ it: it, x: s[1], y: s[2], w: sz[0], h: sz[1] });
+    });
+    return { placed: placed, extra: items.filter(function (x) { return used.indexOf(x) < 0; }) };
+  }
   ["Board 1", "Board 2", "Board 3", "Board 4", "Exit wall"].forEach(function (b) {
-    var items = (layoutItems[b] || []).filter(function (it) { return !/model label|Photo 29/i.test(it.label); }).slice().sort(function (a, c) { return ORDER[a.size] - ORDER[c.size]; });
-    if (b === "Board 4") items = items.filter(function (it) { return !/inside/.test(it.label); });
-    var res = shelfPack(items);
+    var items = (layoutItems[b] || []).filter(function (it) { return !/model label/i.test(it.label) && !/inside/.test(it.label); }).slice().sort(function (a, c) { return ORDER[a.size] - ORDER[c.size]; });
+    var res = HAND[b] ? handPack(b, items) : shelfPack(items.filter(function (it) { return !/Photo 29/.test(it.label); }));
     var s = el("section", { class: "sheet a4l layout" });
     if (!ONLY || ONLY === "a4l" || ONLY === "layout") root.appendChild(s);
-    var scale = 2.15; // mm per cm on paper
+    var scale = 1.62; // mm per cm on paper
     var plan = el("div", { class: "board-plan", style: { width: (BOARD.w * scale) + "mm", height: (BOARD.h * scale) + "mm" } },
       res.placed.map(function (p) { return el("div", { class: "item", style: { "--c": p.it.color || "#555", left: (p.x * scale) + "mm", top: (p.y * scale) + "mm", width: (p.w * scale) + "mm", height: (p.h * scale) + "mm" } }, el("b", null, p.it.size.toUpperCase()), p.it.label); }));
-    add(s, [el("h2", null, b + ": layout plan"), el("div", { class: "meta" }, "Softboard " + BOARD.w + " x " + BOARD.h + " cm (TODO: confirm the real size). To scale. Rearrange freely; this just shows that everything fits."),
-      plan, res.extra.length ? el("div", { class: "legend" }, el("b", null, "Doesn't fit on the board, put it on the table or a second board: "), res.extra.map(function (e) { return e.label; }).join("; ")) : null,
+    add(s, [el("h2", null, b + ": layout plan"), el("div", { class: "meta" }, "PROVISIONAL. Assumes a " + BOARD.w + " x " + BOARD.h + " cm softboard (TODO: confirm the real size). To scale. Conflict cards: tape the inside sheet behind the front as a flap."),
+      plan, res.extra.length ? el("div", { class: "legend" }, el("b", null, "Off the board (table, side panel or a second board): "), res.extra.map(function (e) { return e.label; }).join("; ")) : null,
       b === "Board 2" ? el("div", { class: "legend" }, "Himalaya cardboard model sits on a table in front: 4 boxes with the four A6 labels.") : null,
       el("div", { class: "foot" }, el("span", null, "Layout plan  |  " + b), el("span", null, "HISTREE, Team CakedUp"))]);
   });
 
-  document.fonts && document.fonts.ready.then(function () { document.body.dataset.ready = "1"; });
+  // overflow sweep: any sheet whose content is taller than the paper gets flagged (never print a clipped source line)
+  function sweep() {
+    var bad = [];
+    Array.prototype.forEach.call(document.querySelectorAll(".sheet"), function (s) {
+      if (s.scrollHeight > s.clientHeight + 2 || s.scrollWidth > s.clientWidth + 2) {
+        var label = (s.querySelector(".foot span") || {}).textContent || "?";
+        bad.push(label + " (+" + Math.round((s.scrollHeight - s.clientHeight) / 3.78) + "mm)");
+        s.classList.add("overflow");
+      }
+    });
+    document.body.dataset.overflow = bad.join(" || ");
+    if (bad.length) console.warn("OVERFLOW:", bad.join(" || "));
+  }
+  var imgs = Array.prototype.slice.call(document.images);
+  Promise.all([document.fonts ? document.fonts.ready : Promise.resolve()].concat(imgs.map(function (im) { return im.complete ? 1 : new Promise(function (r) { im.onload = im.onerror = r; }); })))
+    .then(function () { sweep(); document.body.dataset.ready = "1"; });
 })();
