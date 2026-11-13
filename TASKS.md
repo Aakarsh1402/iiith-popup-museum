@@ -20,8 +20,8 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | id | task | files owned | status |
 |---|---|---|---|
 | S1 | Story + evidence data (start now, no foundation needed) | `site/data/way.js`, `conflicts.js`, `verified.js` (+ `M.correction`), `quiz.js`, `ending.js`, `documents.js` | done |
-| S2 | How We Know (conflict flip cards, verified chains, correction, how we worked; `?autoplay=1` cycles flips) | `site/js/pages/howweknow.js`, `site/css/howweknow.css` | doing |
-| S3 | Voices index + person pages + transcript search + phone-booth comic | `site/js/pages/voices.js`, `site/css/voices.css`, `site/assets/img/silhouette.svg`, `site/assets/comic/*` | todo |
+| S2 | How We Know (conflict flip cards, verified chains, correction, how we worked; `?autoplay=1` cycles flips) | `site/js/pages/howweknow.js`, `site/css/howweknow.css` | done |
+| S3 | Voices index + person pages + transcript search + phone-booth comic | `site/js/pages/voices.js`, `site/css/voices.css`, `site/assets/img/silhouette.svg`, `site/assets/comic/*` | doing |
 | S4 | The IIIT Way (scroll story, Himalaya diagram, leased bar chart, civil gallery, autoplay) | `site/js/pages/way.js`, `site/css/way.css` | todo |
 | S5 | Quiz | `site/js/pages/quiz.js`, `site/css/quiz.css` | todo |
 | S6 | Then and Now (ending) | `site/js/pages/ending.js`, `site/css/ending.css` | todo |
