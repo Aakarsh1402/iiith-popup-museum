@@ -76,6 +76,7 @@
       document.title = (page.title ? page.title + " | " : "") + "HISTREE | Do You Know Your Institute?";
       window.scrollTo(0, 0);
       try { app.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
+      R._emit();   // after the swap, so the nav marks the page that is actually showing
     }
     var first = !current;
     if (!first && document.startViewTransition && !U.prefersReducedMotion()) {
@@ -85,7 +86,6 @@
       swap();
       if (!first && !U.prefersReducedMotion()) { app.classList.add("fade-in"); }
     }
-    R._emit();
   };
 
   R.start = function () {
