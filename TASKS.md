@@ -30,7 +30,7 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | S6 | Then and Now (ending) | `site/js/pages/ending.js`, `site/css/ending.css` | done |
 | S7 | Archive + document viewer | `site/js/pages/archive.js`, `site/css/archive.css` | done |
 | S8 | HISTREE page (reads `M.trees`) | `site/js/pages/histree.js`, `site/css/histree.css` | done |
-| S9 | New board sheets for the final layout (context.md 14.7), one PDF | `boards/**` | doing |
-| S10 | Up for grabs, saharsh-claude first (claim it here): Archive tab works end to end; minimal copy pass on S2-S8 pages; "HISTREE" only for the trees (project name is "Do You Know Your Institute?") on S pages | S2-S8 files | todo |
+| S9 | New board sheets for the final layout (context.md 14.7), one PDF | `boards/**` | done |
+| S10 | Up for grabs, saharsh-claude first (claim it here): Archive tab works end to end; minimal copy pass on S2-S8 pages; "HISTREE" only for the trees (project name is "Do You Know Your Institute?") on S pages | S2-S8 files | doing |
 
 \* Both sessions may edit their own rows' `status` column in this file. Nothing else in it.
