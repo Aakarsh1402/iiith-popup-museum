@@ -3,15 +3,9 @@
   "use strict";
   var M = window.M, el = M.ui.el, svg = M.ui.svg;
 
-  /** Small original banyan mark: wide canopy, trunk, aerial roots. */
+  /** Small HISTREE coin mark (the back of the coin, pre-rendered). */
   M.ui.banyanMark = function (cls) {
-    return svg("svg", { viewBox: "0 0 64 64", class: cls || null, "aria-hidden": "true" },
-      svg("ellipse", { cx: 32, cy: 22, rx: 27, ry: 14, fill: "var(--banyan)" }),
-      svg("ellipse", { cx: 19, cy: 19, rx: 12, ry: 9, fill: "var(--leaf)", opacity: ".55" }),
-      svg("ellipse", { cx: 42, cy: 17, rx: 11, ry: 8, fill: "var(--leaf)", opacity: ".4" }),
-      svg("path", { d: "M29 30 C29 40 27 48 24 56 H40 C37 48 35 40 35 30 Z", fill: "var(--soil)" }),
-      svg("path", { d: "M13 30 V52 M20 33 V55 M45 33 V55 M52 30 V50", stroke: "var(--soil)", "stroke-width": "2", "stroke-linecap": "round", fill: "none", opacity: ".8" }),
-      svg("path", { d: "M8 57 H56", stroke: "var(--ink)", "stroke-width": "2", "stroke-linecap": "round", opacity: ".5" }));
+    return el("img", { src: "assets/img/coin-back-128.png", alt: "", class: cls || "brand-coin", width: "40", height: "40", draggable: "false" });
   };
 
   function buildNav() {
