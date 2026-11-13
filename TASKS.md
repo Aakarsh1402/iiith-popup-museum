@@ -13,8 +13,8 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | A4 | Start page + 3D coin + banyan | `site/js/pages/start.js`, `site/css/start.css`, `site/assets/img/banyan-*.png`, `coin-*.png`, `scripts/gen_banyan.py`, `scripts/coin/*` | done |
 | A5 | Timeline (centrepiece: zoom, filters, detail panel, autoplay) | `site/js/pages/timeline.js`, `site/css/timeline.css` | done |
 | A6 | Map (2002 plan, hotspots, journeys layer, trees layer, satellite flipbooks) | `site/js/pages/map.js`, `site/css/map.css` | done |
-| A7 | Physical boards: print HTML + PDFs + board layout plans | `print/**` | doing |
-| A8 | Integration pass + QA | any file, after a HANDOFF note | todo |
+| A7 | Physical boards: print HTML + PDFs + board layout plans | `print/**` | done |
+| A8 | Integration pass + QA | any file, after a HANDOFF note | doing |
 
 ## saharsh-claude (40%)
 | id | task | files owned | status |

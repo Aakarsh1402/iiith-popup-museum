@@ -24,7 +24,7 @@
   /** Subscribe to real user input (pointer, key, wheel, touch). Pages use it to stop autoplay. Returns unsubscribe. */
   K.onInput = function (fn) { inputFns.push(fn); return function () { inputFns = inputFns.filter(function (f) { return f !== fn; }); }; };
 
-  function pathOf(hash) { return (hash || "").split("?")[0].replace(/\/$/, ""); }
+  function pathOf(hash) { return ((hash || "").split("?")[0].replace(/^#\/?/, "").split("/")[0]) || "start"; }
 
   function stopPlaylist() {
     playing = false; clearTimeout(playTimer); cancelAnimationFrame(progRaf);
