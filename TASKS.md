@@ -10,9 +10,9 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | A1 | Repo setup, coordination, asset pipeline + generated data | `CLAUDE.md`, `TASKS.md`*, `.gitignore`, `.gitattributes`, `scripts/build_assets.*`, `scripts/gen_*.py`, `site/assets/**` (not silhouette/comic), `site/data/images.js`, `site/data/transcripts.js` | done |
 | A2 | Foundation: shell, router, kiosk + idle playlists, nav, UI kit, fonts, check script, README | `site/index.html`, `site/css/base.css`, `site/css/components.css`, `site/js/core/*`, `site/data/config.js`, `site/assets/fonts/*`, `scripts/check.mjs`, `scripts/screenshot.mjs`, `README.md` | doing |
 | A3 | Core data | `site/data/sources.js`, `people.js`, `events.js`, `facts.js`, `places.js`, `journeys.js`, `trees.js` | doing |
-| A4 | Start page + banyan SVG | `site/js/pages/start.js`, `site/css/start.css`, `site/assets/img/banyan.svg` | todo |
-| A5 | Timeline (centrepiece: zoom, filters, detail panel, autoplay) | `site/js/pages/timeline.js`, `site/css/timeline.css` | todo |
-| A6 | Map (2002 plan, hotspots, journeys layer, trees layer, satellite flipbooks) | `site/js/pages/map.js`, `site/css/map.css` | todo |
+| A4 | Start page + 3D coin + banyan | `site/js/pages/start.js`, `site/css/start.css`, `site/assets/img/banyan-*.png`, `coin-*.png`, `scripts/gen_banyan.py`, `scripts/coin/*` | done |
+| A5 | Timeline (centrepiece: zoom, filters, detail panel, autoplay) | `site/js/pages/timeline.js`, `site/css/timeline.css` | done |
+| A6 | Map (2002 plan, hotspots, journeys layer, trees layer, satellite flipbooks) | `site/js/pages/map.js`, `site/css/map.css` | doing |
 | A7 | Physical boards: print HTML + PDFs + board layout plans | `print/**` | todo |
 | A8 | Integration pass + QA | any file, after a HANDOFF note | todo |
 
