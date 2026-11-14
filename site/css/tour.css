@@ -29,3 +29,4 @@ body.touring #app { padding-bottom: 7rem; }
 .speaker-note p { margin: .35rem 0 0; }
 .sn-head { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: #8a6d12; }
 @media (max-width: 760px) { .tour-bar { grid-template-columns: 1fr; gap: .8rem; } .tour-side { align-items: stretch; } }
+@media (max-width: 900px) { .nav-tour { display: none; } }

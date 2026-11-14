@@ -145,7 +145,12 @@ p { margin: 0 0 1em; }
 .nav-toggle { display: none; margin-left: auto; width: 44px; height: 44px; border-radius: 999px; align-items: center; justify-content: center; }
 .nav-toggle svg { width: 24px; height: 24px; }
 @media (max-width: 900px) {
-  .nav-toggle { display: inline-flex; }
+  .brand { min-width: 0; flex: 1 1 auto; }
+  .brand > span { min-width: 0; }
+  .brand b { font-size: 1.02rem; overflow: hidden; text-overflow: ellipsis; }
+  .brand small { display: none; }
+  .nav-tour { display: none; }
+  .nav-toggle { display: inline-flex; flex: none; }
   .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: .5rem var(--gutter) 1rem; background: var(--paper); border-bottom: 1px solid var(--rule); box-shadow: var(--shadow-2); transform: translateY(-110%); transition: transform var(--t-med) var(--ease-out); z-index: -1; }
   .nav-links.open { transform: none; }
   .nav-links a { font-size: 1.05rem; border-radius: 8px; }

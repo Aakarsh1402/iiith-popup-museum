@@ -63,9 +63,13 @@ body[data-page="photos"], body[data-page="buildings"] { background: #0b0b0a; }
 .slides[data-kind="buildings"] .sl-slide:not(.first) .sl-place { transition: none; }
 
 @media (max-width: 900px) {
-  .sl-fig { inset: 8vh 3vw 24vh; }
+  .sl-head { flex-direction: column; gap: .2rem; }
+  .sl-foot { top: auto; bottom: 1.4vh; right: 4vw; }
+  .sl-ctrl { opacity: 1; }
+  .sl-cap { bottom: 9vh; }
+  .sl-fig { inset: 10vh 3vw 26vh; }
   .sl-fig.two { flex-direction: column; --cols: 1; }
   .slides[data-kind="buildings"] .sl-fig { inset: 8vh 3vw 34vh; }
-  .sl-place { left: 4vw; right: 4vw; top: auto; bottom: 4vh; width: auto; transform: none; }
+  .sl-place { left: 4vw; right: 4vw; top: auto; bottom: 10vh; width: auto; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .sl-slide.on .sl-img img { animation: none; } .sl-slide { transition-duration: 300ms; } }
