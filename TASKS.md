@@ -19,6 +19,7 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | A10 | Monitor slideshows: M1 old campus photos, M2 building evolutions | `site/js/pages/slides.js`, `site/css/slides.css` (new) | done |
 | A11 | Map: 2002 plan morphs into today's satellite view (Google Earth screenshot), every journey works on it | `site/js/pages/map.js`, `site/css/map.css`, `site/assets/img/map/*`, `raw/map/*` | done |
 | A12 | Visitor-eye review of boards/board-sheets.pdf; findings for boards/ go to HANDOFF (boards/ is saharsh-claude's) | read only | doing |
+| A13 | Portrait Board 4 (standee fed by phone casting): every Board 4 route + tour works at phone portrait and 1080x1920, touch-only controls (tour, fullscreen), wake lock; hosting plan | `site/css/portrait.css` (new), `site/js/core/*`, `site/css/tour.css`, `site/index.html`, `README.md`; other pages' files only via A8 + HANDOFF | doing |
 
 ## saharsh-claude (40%)
 | id | task | files owned | status |
