@@ -14,7 +14,7 @@
   var idleMs = ((M.config && M.config.idleSeconds) || 90) * 1000;
   var pscale = search.pscale ? Math.max(0.01, +search.pscale) : 1;   // ?pscale=0.1 speeds playlists up for testing
   if (search.idle) idleMs = Math.max(5, +search.idle) * 1000; // ?idle=10 for testing
-  var idleTimer = 0, playTimer = 0, playIndex = -1, playing = false, progressEl = null, progRaf = 0;
+  var idleTimer = 0, playTimer = 0, playIndex = -1, playing = false, progressEl = null, progRaf = 0, tourIdle = 0;
   var inputFns = [];
 
   K.screen = function () { return screen; };
@@ -52,10 +52,10 @@
   }
   function onIdle() {
     if (!screen) return;
-    if (M.tour && M.tour.active()) { resetIdle(); return; }   // a guide talking over one step: keep the tour
+    // a guide talking over one tour step keeps the tour; a tour left alone for 10 minutes ends
+    if (M.tour && M.tour.active()) { tourIdle += idleMs; if (tourIdle < 600000) { resetIdle(); return; } M.tour.stop(); }
+    tourIdle = 0;
     if (M.tour) M.tour.toggleNotes(false);
-    var list = screen.playlist || [];
-    if (list.length === 1 && location.hash === list[0].route) { while (M.ui.closeTop()) { /* just close panels */ } return; }
     playIndex = -1;
     playNext();
   }
@@ -65,6 +65,7 @@
   function onInput(e) {
     if (e.type === "pointermove") { var now = Date.now(); if (now - lastMove < 250) return; lastMove = now; }
     if (playing) { stopPlaylist(); updatePill(); }
+    tourIdle = 0;
     resetIdle();
     inputFns.slice().forEach(function (fn) { try { fn(e); } catch (err) { console.error(err); } });
   }
@@ -116,7 +117,9 @@
     if (screen) {
       document.body.classList.add("kiosk");
       if (screen.tour) document.body.classList.add("tour-screen");
-      resetIdle();
+      // arm the idle timer only once someone touches it (or if it opened somewhere other than home),
+      // so a screen that starts on its home view doesn't restart itself 90 s later
+      if (location.hash !== screen.home) resetIdle();
       M.router.onChange(updatePill);
       // Start the playlist timer straight away if we open on the home route.
       setTimeout(function () { if (pathOf(location.hash) === pathOf(screen.home) && screen.playlist && screen.playlist.length > 1) { playIndex = 0; playing = true; runProgress(screen.playlist[0].secs * 1000 * pscale); playTimer = setTimeout(playNext, screen.playlist[0].secs * 1000 * pscale); } updatePill(); }, 50);

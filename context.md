@@ -59,7 +59,7 @@ IIIT's logo is a banyan, and its mascot, Jagruti, is a banyan too. A banyan ofte
 
 Out: the phone-booth comic (board and website), the borrowed-teachers panel on Board 1, every printed Board 4 card. The exit wall and Table 2 aren't in the final layout (TODO(team): confirm they're out).
 
-**Monitors (updated 14 Nov, second time):** 4 monitors, one per board (TODO(team): confirm we have 4 laptops). Monitors 1 and 2 play slideshows on their own. Monitor 3 is the interactive map. Monitor 4 opens on How We Know and is used for the website tour. The screens in `site/data/config.js` (`history`, `map`, `evidence`, `left`, `right`) are from the old 2-3 monitor plan and need updating (Aakarsh).
+**Monitors (updated 14 Nov, second time):** 4 monitors, one per board (TODO(team): confirm we have 4 laptops). Each laptop opens `site/index.html?screen=board1` (Board 1: old campus photo slideshow, `#/photos`), `board2` (Board 2: buildings time-lapse, `#/buildings`), `board3` (Board 3: the map, 2002 plan fading into today) or `board4` (Board 4: How we know; press T for the website tour, N for speaker notes). Press F for fullscreen.
 
 ## 4. Rules for all visitor-facing text (site and boards)
 
@@ -506,5 +506,5 @@ Was "Moving Rooms". Moving rooms is now one part of it.
 - **Roles:** one host at the entry (flashcards + QR code), one guide each for Boards 1 to 3, one person at Board 4 giving website tours. TODO(team): names.
 - **2-minute tour (for the prof/TA):** 1) "Our argument: IIIT grew like its banyan, on borrowed support, then put down its own roots." 2) Board 2's Himalaya sheet as the clearest example. 3) Board 4: "Memory disagrees. Here's how we checked it, and here's where we were wrong." 4) The website tour.
 - **60-second pitch per board:** each guide opens with the board's question, gives one surprising fact and points to one photo or document.
-- **Monitors:** 4 laptops + monitors, one per board. TODO(team): confirm we have 4. Each laptop opens a local copy of `site/index.html?screen=<id>` (no internet needed). The screen ids for this 4-monitor plan are TODO(aakarsh), in `site/data/config.js`. Fullscreen with F, sleep disabled, mouse attached.
+- **Monitors:** 4 laptops + monitors, one per board. TODO(team): confirm we have 4. Each laptop opens a local copy of `site/index.html?screen=board1` / `board2` / `board3` / `board4` (no internet needed). Fullscreen with F, sleep disabled, mouse attached. After 90 s without input a screen goes back to its home view. Board 4: T starts the 6-step website tour (a clicker's PageDown/PageUp steps it), N shows speaker notes.
 - **Morning checklist:** banyan photos (by 7:30 am); Motorola granite photo (check whether it's near CSTAR); print run; test every monitor; test the QR code on two phones.
