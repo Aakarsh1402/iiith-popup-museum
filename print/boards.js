@@ -1,5 +1,7 @@
-/* boards.js: builds every printable sheet for the physical exhibit from the site's data. Owner: aakarsh-claude (A7).
-   ?only=a3p (or a2p, a3l, a4p, a4l, a5p, a5l, a6l, layout) renders just that size, for print/build.sh. */
+/* boards.js: builds the older printable sheets from the site's data. Written by aakarsh-claude (A7); owned by saharsh-claude since S11.
+   The final layout's sheets are in boards/board-sheets.pdf (context.md 14). Every sheet here that they replace, or that is
+   not in the final layout, prints with a banner saying so (see STATUS at the bottom). The comic and the Board 4 cards are gone.
+   ?only=a3p (or a2p, a3l, a4p, a4l, a5p, a6l, layout) renders just that size, for print/build.sh. */
 (function () {
   "use strict";
   var M = window.M;
@@ -28,7 +30,7 @@
   }
   function sheet(size, board, label, color, cls) {
     var s = el("section", { class: "sheet " + size + " " + (cls || ""), style: { "--c": color || "var(--soil)" } });
-    s.appendChild(el("div", { class: "foot" }, el("span", null, board + "  |  " + label), el("span", null, size.toUpperCase().replace("P", " portrait").replace("L", " landscape") + "  |  HISTREE, Team CakedUp")));
+    s.appendChild(el("div", { class: "foot" }, el("span", null, board + "  |  " + label), el("span", null, size.toUpperCase().replace("P", " portrait").replace("L", " landscape") + "  |  Do You Know Your Institute?, Team CakedUp")));
     (layoutItems[board] = layoutItems[board] || []).push({ label: label, size: size, color: color });
     if (!ONLY || ONLY === size) root.appendChild(s);
     return s;
@@ -40,34 +42,31 @@
   /* ================= title board ================= */
   (function () {
     var s = sheet("a2p", "Entry", "Title board (print at A2, or scale up to 2 x 3 ft)", C.b1, "title-board");
-    var roots = [["Board 1", "Borrowed ground", C.b1], ["Board 2", "Borrowed branches", C.b2], ["Board 3", "Moving rooms", C.b3], ["Board 4", "How we know", C.b4]];
+    var roots = [["Board 1", "Setting the scene", C.b1], ["Board 2", "The IIIT Way", C.b2], ["Board 3", "Institutional changes", C.b3], ["Board 4", "How we know", C.b4]];
     add(s, [
-      el("div", { class: "top" }, el("div", { class: "kick" }, "Do you know your institute?"), el("img", { class: "coin-img", src: "../site/assets/img/coin-back.png", alt: "" })),
-      el("h1", null, "HISTREE"),
+      el("div", { class: "top" }, el("div", { class: "kick" }, "A pop-up museum by Team CakedUp"), el("img", { class: "coin-img", src: "../site/assets/img/coin-back.png", alt: "" })),
+      el("h1", { class: "title-long" }, "Do You Know Your Institute?"),
       el("div", { class: "sub" }, "How IIIT put down its own roots"),
       el("p", { class: "arg" }, "IIIT's logo is a banyan. A banyan often starts out leaning on another tree, then drops roots of its own until it can stand by itself. ", el("b", null, "IIIT grew the same way."), " It began in borrowed government buildings, with borrowed teachers and company schools in its classrooms. Over 25 years it took those spaces back and built its own."),
       el("div", { class: "tree" }, el("img", { src: "../site/assets/img/banyan-color.png", alt: "" }),
         roots.map(function (r, i) { return el("div", { class: "root-label", style: { "--c": r[2], left: (2 + i * 93) + "mm" } }, el("b", null, r[0]), el("span", null, r[1])); })),
       el("div", { class: "bottom" },
         el("div", { class: "team" }, el("b", null, "Team CakedUp"), el("br"), "Aakarsh Mishra, Soham Chatterjee, Yogesh Krishna, Siddharth Choudhary, Saharsh", el("br"), "UPDH (Understanding Public and Digital History), IIIT Hyderabad, 14 November 2026"),
-        el("div", { class: "qr" }, "Quiz QR code goes here. Until then: ask a guide for a quiz card."))
+        el("div", { class: "qr" }, "Scan for the full quiz. QR code goes here once the site is online."))
     ]);
   })();
 
   /* ================= board headers ================= */
   var HEADERS = [
-    { board: "Board 1", n: "1", title: "Borrowed ground", years: "1998 to 2002", color: C.b1, q: "Where do you start a college when you don't have a building?",
-      intro: "In 1998 IIIT had land, two old government buildings and 49 students. No hostels, no degree yet, and only five or six teachers of its own. This board is about those first years, when almost everything IIIT used was borrowed from someone else.",
-      screen: "The screen next to you has the full timeline. Scroll to zoom in.", img: "img-04", sources: ["S-PJN", "S-GOPI"] },
-    { board: "Board 2", n: "2", title: "Borrowed branches: the IIIT way", color: C.b2, q: "Borrow, share, take back, build your own.",
+    { board: "Board 1", n: "1", title: "Setting the scene", years: "1998 to 2002", color: C.b1, q: "Where do you start a college when you don't have a building?",
+      intro: "In 1998 IIIT had land, two old government buildings and 49 students. No hostels and no degree yet. This board is about those first years, when almost everything IIIT used was borrowed from someone else.",
+      screen: "On the screen: old photos of the campus.", img: "img-04", sources: ["S-PJN", "S-GOPI"] },
+    { board: "Board 2", n: "2", title: "The IIIT Way", color: C.b2, q: "Borrow, share, take back, build your own.",
       intro: "IIIT let company schools into its classrooms, rented space to tenants, lent a whole building to the state, and then took the space back. When it built Himalaya it borrowed the money and paid it off early. Look for the same pattern in every panel.",
-      screen: "On the screen: The IIIT way, chapter by chapter.", img: "img-19", sources: ["S-PJN", "S-PROSP", "S-FLOORPLANS"] },
-    { board: "Board 3", n: "3", title: "Moving rooms", color: C.b3, q: "Did you know the library has moved twice?",
-      intro: "Rooms at IIIT don't stay put. The library, the big lecture hall, the mess and even hostel rooms have moved, some more than once. The 2002 plan in the middle came from SLN Shastry. Follow the threads to see where things went.",
-      screen: "On the screen: the 2002 plan. Click a building, or pick a journey.", img: "img-50", sources: ["S-LAYOUT2002", "S-MURALI"] },
-    { board: "Board 4", n: "4", title: "How we know", color: C.b4, q: "What do you do when two people remember the same thing differently?",
-      intro: "We interviewed seven people. Their memories didn't always match each other, or the documents. So we checked them against an old prospectus, the 2002 plan, floor plans and photos. Here is where they agree, where they don't, and where we got it wrong ourselves.",
-      screen: "On the screen: flip the cards, and read every interview in full.", img: "img-30", sources: ["S-PROSP", "S-LAYOUT2002", "S-PHOTOS"] }
+      screen: "On the screen: how the buildings grew, seen from above.", img: "img-19", sources: ["S-PJN", "S-PROSP", "S-FLOORPLANS"] },
+    { board: "Board 3", n: "3", title: "Institutional changes", color: C.b3, q: "Did you know the library has moved twice?",
+      intro: "Rooms at IIIT don't stay put, and neither does the way it runs. The library and the big lecture hall moved, paper files gave way to IMS, and even the banyans were moved.",
+      screen: "On the screen: the map. Pick a journey.", img: "img-50", sources: ["S-LAYOUT2002", "S-MURALI", "S-RAJAN", "S-SLN"] }
   ];
   HEADERS.forEach(function (h) {
     var s = sheet("a3l", h.board, "Board header", h.color, "header-sheet");
@@ -104,27 +103,6 @@
   panel("a3p", "Board 1", C.b1, { title: "Where did they sleep?", lede: "There were no hostels in 1998.",
     body: ["Prof. Narayanan says the first batch lived in the District Collector's bungalow and three flats, on the spot where the New Academic Block is going up now. SLN Shastry remembers boys staying in Vindhya and girls in the Judge's Quarters.", "In 1999 the second batch slept army-style on two-tier bunk beds inside Vindhya, where block A4 and the library are today. In 2000 Palash, Parijat and Kadamb opened, and the bunks came down."],
     photos: ["img-05"], sources: ["S-PJN", "S-SLN"] });
-  // comic: four A5 landscape panels to draw on (or print the site's version)
-  var COMIC = [
-    "A retired Commodore who ran admin asked Gopi to run the guest house mess. Gopi felt it wasn't a one-man job, so he asked to run a phone booth instead.",
-    "The telecom officials kept delaying. One of them asked Gopi for Rs. 2,000. He paid it, and still nothing happened.",
-    "The Commodore found out. He complained to senior officials, and the booth was connected the same day.",
-    "About 100 people a day queued to call home, mostly from 8 pm to midnight when calls were cheaper. Around 2002 mobile phones took over."
-  ];
-  COMIC.forEach(function (c, i) {
-    var s = sheet("a5l", "Board 1", "Phone booth comic, panel " + (i + 1) + " of 4", C.b1, "card");
-    add(s, [el("div", { class: "kicker" }, "The phone booth  |  " + (i + 1) + " of 4"),
-      el("div", { style: { flex: "1", margin: "4mm 0", border: ".5mm dashed #b9ad94", borderRadius: "2mm", display: "grid", placeItems: "center", color: "#a39a88", font: "9pt var(--mono)", textAlign: "center", padding: "6mm" } },
-        "Draw here. Draw Gopi kindly. The official is a faceless silhouette and is never named."),
-      el("p", { style: { fontSize: "11.5pt", lineHeight: "1.45", margin: 0 } }, c),
-      i === 3 ? el("div", { class: "src", style: { marginTop: "2mm" } }, "As told by Mr. Gopi (2026)") : null]);
-  });
-  (function () {
-    var s = sheet("a5p", "Board 1", "Photo 29 card (pin next to the comic)", C.b1, "card");
-    add(s, [el("div", { class: "kicker" }, "This is the room today"), el("div", { style: { height: "120mm", margin: "3mm 0" } }, photo("img-29", false)),
-      el("h3", null, "The booth stood here."), el("p", { class: "body" }, "Gopi's room in the guest house is where the phone booth used to be."), el("div", { class: "grow" }), src(["S-GOPI", "S-PHOTOS"])]);
-  })();
-
   // Board 2 (texts from M.way, written for the site)
   var W = M.way || { chapters: [] };
   function ch(id) { return byId(W.chapters, id) || {}; }
@@ -179,9 +157,9 @@
 
   // Board 3
   (function () {
-    var s = sheet("a2p", "Board 3", "Centrepiece: the 2002 layout plan (A2, or A1 if you can)", C.b3, "panel");
-    add(s, [el("div", { class: "band" }), el("div", { class: "kicker" }, "Board 3  |  Centrepiece"), el("h2", null, "Layout plan of IIIT, Gachibowli (2002)"),
-      el("div", { class: "lede" }, "62 acres. North points down, as on the original. Pins and red thread go on the buildings."),
+    var s = sheet("a2p", "Behind Board 4", "The 2002 layout plan (A2, or A1 if you can)", C.b4, "panel");
+    add(s, [el("div", { class: "band" }), el("div", { class: "kicker" }, "Behind Board 4  |  The 2002 plan"), el("h2", null, "Layout plan of IIIT, Gachibowli (2002)"),
+      el("div", { class: "lede" }, "62 acres. North points down, as on the original."),
       el("div", { style: { flex: 1, display: "grid", placeItems: "center", margin: "4mm 0" } }, el("img", { src: "../site/assets/map/plan-2002.jpg", style: { width: "100%", border: ".5mm solid #ccc" } })),
       src(["S-LAYOUT2002"])]);
   })();
@@ -216,62 +194,6 @@
       el("p", { class: "cap" }, "Google Earth screenshots, oldest first. The dates aren't shown on them."), el("div", { style: { flex: 1 } }), src(["S-PHOTOS"])]);
   })();
 
-  // Board 4: voices
-  (M.people || []).forEach(function (p) {
-    var s = sheet("a5p", "Board 4", "Voices card: " + p.name, C.b4, "card voice-card");
-    add(s, [el("div", { class: "kicker" }, "One of 7 interviews"),
-      el("div", { class: "who" }, el("div", { class: "av", style: { "--c": "var(--slate)" } }, p.initials), el("div", null, el("h3", null, p.name), el("div", { class: "role" }, p.role), el("div", { class: "yrs" }, p.years))),
-      el("div", { class: "quote" }, p.oneLine),
-      el("ul", null, (p.toldUs || []).slice(0, 4).map(function (t) { return el("li", null, t); })),
-      el("div", { class: "grow" }),
-      el("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "4mm" } }, el("div", { class: "src", style: { flex: 1 } }, "Read the full interview on the screen: Voices > " + p.name), el("div", { class: "qrbox" }, "QR"))]);
-  });
-  (function () {
-    var s = sheet("a4p", "Board 4", "Voices header card", C.b4, "card");
-    add(s, [el("div", { class: "kicker" }, "Board 4  |  Voices"), el("div", { style: { font: "700 120pt/0.9 var(--disp)", color: "var(--slate)", margin: "8mm 0 4mm" } }, String((M.people || []).length)), el("h3", { style: { fontSize: "34pt" } }, "interviews"),
-      el("p", { class: "body", style: { fontSize: "15pt" } }, "Several of our best voices are staff, not faculty: the guest house caretaker, the librarian, the hostel office. They keep IIIT running, and they're rarely in the official story."),
-      el("p", { class: "body", style: { fontSize: "15pt" } }, "Everyone here agreed to be recorded and quoted."), el("div", { class: "grow" })]);
-  })();
-  // conflicts
-  ["C1", "C2", "C4", "C3"].forEach(function (id, k) {
-    var c = byId(M.conflicts, id); if (!c) return;
-    var cols = ["#3E5C76", "#A9502C", "#2D7A78", "#6B4E71"];
-    var f = sheet("a4p", "Board 4", "Conflict flip card " + id + " (front)", C.b4, "conflict");
-    add(f, [el("div", { class: "kicker", style: { color: "var(--warn)" } }, "Sources disagree  |  " + id), el("h2", null, c.question), el("div", { class: "who-right" }, "Who's right?"),
-      el("div", { class: "accounts" }, c.accounts.map(function (a, i) { return el("div", { class: "account", style: { "--c": cols[i % cols.length] } }, el("b", null, a.who), el("p", null, a.text), el("small", null, a.sources.map(function (sid) { return (M.sources[sid] || {}).short; }).join("; "))); })),
-      el("div", { class: "lift" }, "Lift the flap: what we think")]);
-    var b = sheet("a4p", "Board 4", "Conflict flip card " + id + " (inside)", C.b4, "conflict inside");
-    add(b, [el("div", { class: "kicker", style: { color: "var(--warn)" } }, id + "  |  inside the flap"), el("h2", { style: { fontSize: "24pt" } }, c.question),
-      el("h3", null, "What we think"), el("p", null, c.ourTake), el("h3", null, "What would settle it"), el("p", null, c.settleWith),
-      el("div", { style: { flex: 1 } }), src(c.sources || [])]);
-  });
-  // verified
-  ["V1", "V2", "V3"].forEach(function (id) {
-    var v = byId(M.verified, id); if (!v) return;
-    var s = sheet("a4p", "Board 4", "Verified card " + id, C.b4, "conflict verified");
-    var srcs = []; v.chain.forEach(function (n) { (n.sources || []).forEach(function (x) { if (srcs.indexOf(x) < 0) srcs.push(x); }); });
-    add(s, [el("div", { class: "kicker", style: { color: "var(--ok)" } }, "Checked and confirmed  |  " + id), el("h2", null, v.claim),
-      el("div", { class: "chain" }, v.chain.map(function (n) { return el("div", { class: "node" + (n.image ? "" : " text-only") }, n.image ? el("div", { class: "photo" }, el("img", { src: "../site/" + img(n.image).file })) : null, el("div", null, el("div", { class: "k" }, n.kind || "source"), el("p", null, n.text))); })),
-      el("div", null, el("span", { class: "stamp", style: { "--c": "var(--ok)", fontSize: "14pt" } }, "Corroborated")),
-      v.note ? el("p", { style: { marginTop: "5mm", fontSize: "12pt", color: "var(--ink-2)" } }, v.note) : null,
-      el("div", { style: { flex: 1 } }), src(srcs)]);
-  });
-  (function () {
-    var c = M.correction || {};
-    var s = sheet("a4p", "Board 4", "Correction card (print in red if you can)", "#C0392B", "conflict correction");
-    add(s, [el("div", null, el("span", { class: "stamp" }, c.title || "We got it wrong")), el("h2", { style: { margin: "8mm 0 6mm" } }, "We got it wrong."),
-      el("div", { class: "before" }, c.before), el("div", { class: "after" }, c.after),
-      el("p", { style: { fontSize: "14pt", lineHeight: "1.5" } }, c.how || ""), el("p", { style: { font: "italic 500 18pt var(--disp)" } }, c.lesson),
-      el("div", { style: { flex: 1 } }), src(c.sources || ["S-PHASE4", "S-GOPI"])]);
-  })();
-  (function () {
-    var s = sheet("a4p", "Board 4", "Archive card", C.b4, "card");
-    add(s, [el("div", { class: "kicker" }, "Board 4  |  The archive"), el("h3", { style: { fontSize: "28pt" } }, "This shouldn't live only on our website."),
-      el("p", { class: "body", style: { fontSize: "14pt" } }, "The prospectus, the 2002 plan, the lab floor plans, the Ping! article and our photos are all on the archive page of our site. We want to put them on Wikimedia Commons and the Internet Archive too, so they outlast this exhibit."),
-      el("p", { class: "body", style: { fontSize: "14pt" } }, "Got an old photo, document or memory of IIIT? Write it on a note and drop it in the box, or tell a guide."),
-      el("div", { class: "grow" }), src(["S-PROSP", "S-LAYOUT2002", "S-FLOORPLANS", "S-PING", "S-PHOTOS"])]);
-  })();
-
   // Exit wall
   (function () {
     var E = M.ending || {};
@@ -281,7 +203,7 @@
       el("div", { class: "exit-rows" }, (E.rows || []).map(function (r) { return el("div", { class: "exit-row" }, el("div", { class: "when" }, r.when), el("div", null, r.problem), el("div", { class: "solved" }, r.solved)); })),
       E.now ? el("div", { class: "exit-now" }, el("p", null, E.now.text), el("div", { class: "photo", style: { height: "90mm" } }, el("img", { src: "../site/" + img("img-14").file }))) : null,
       el("div", { style: { height: "8mm" } }),
-      el("div", { class: "exit-prompt" }, E.prompt || "Which problem on campus today will be a story in ten years? Add it to the wall.")]);
+      el("div", { class: "exit-prompt" }, E.prompt || "Which problem on campus today will be a story in ten years?")]);
   })();
   (function () {
     var s = sheet("a4p", "Exit wall", "Thank-you card", C.exit, "card");
@@ -301,7 +223,7 @@
   (function () {
     var Q = (M.quiz && M.quiz.questions) || [];
     var s = sheet("a5p", "Table 1", "Quiz card (print about 40)", C.table, "quiz-card");
-    add(s, [el("div", { class: "kicker" }, "Do you know your institute?"), el("h3", null, "8 questions. Now, and again at the exit."),
+    add(s, [el("div", { class: "kicker" }, "Do you know your institute?"), el("h3", null, "8 questions. Now, and again after the exhibit."),
       el("ol", null, Q.map(function (q) { return el("li", null, q.q, el("span", { class: "opts" }, q.options.map(function (o, i) { return String.fromCharCode(97 + i) + ") " + o; }).join("   "))); })),
       el("div", { class: "scores" }, el("div", null, "Entry score"), el("div", null, "Exit score"))]);
     var k = sheet("a4p", "Table 1", "Quiz answer key (stick on the back of the scoreboard)", C.table, "card");
@@ -323,14 +245,11 @@
   var ORDER = { a2p: 0, a3l: 1, a3p: 2, a4p: 3, a4l: 3, a5p: 4, a5l: 4, a6l: 5 };
   // hand-placed layouts (cm from the top-left of a 120 x 90 board). [label pattern, x, y]
   var HAND = {
-    "Board 1": [[/Board header/, 0.5, 0.5], [/comic, panel 1/, 0.5, 31.5], [/comic, panel 2/, 22, 31.5], [/comic, panel 3/, 0.5, 47], [/comic, panel 4/, 22, 47], [/Photo 29/, 0.5, 63],
+    "Board 1": [[/Board header/, 0.5, 0.5],
       [/Gachibowli, 1998/, 44.5, 0.5], [/borrowed buildings/, 74.7, 0.5], [/diploma on trust/, 44.5, 46], [/Where did they sleep/, 74.7, 46]],
     "Board 3": [[/Board header/, 0.5, 0.5], [/2002 layout plan/, 43.5, 0.3], [/HISTREE strip/, 0.5, 60.1], [/Satellite strip/, 43.5, 60.1],
       [/Journey card: The library/, 87.5, 0.5], [/big lecture/, 103.3, 0.5], [/Where you eat/, 87.5, 22], [/Where you sleep/, 103.3, 22],
-      [/Vindhya's rooms/, 87.5, 43.5], [/server room/, 103.3, 43.5], [/cricket/, 87.5, 65], [/Block D/, 103.3, 65]],
-    "Board 4": [[/Board header/, 0.5, 0.5], [/flip card C1 \(front/, 43.5, 0.5], [/flip card C2 \(front/, 65, 0.5], [/flip card C4 \(front/, 86.5, 0.5],
-      [/flip card C3 \(front/, 0.5, 31], [/Verified card V1/, 22, 31], [/Verified card V2/, 43.5, 31], [/Verified card V3/, 65, 31], [/Correction card/, 86.5, 31],
-      [/Voices card: Mr. Gopi/, 0.5, 61.5], [/SLN/, 15.8, 61.5], [/Narayanan/, 31.1, 61.5], [/Muralidhar/, 46.4, 61.5], [/Rajan/, 61.7, 61.5], [/Prabhakar/, 77, 61.5], [/Sridhar/, 92.3, 61.5]]
+      [/Vindhya's rooms/, 87.5, 43.5], [/server room/, 103.3, 43.5], [/cricket/, 87.5, 65], [/Block D/, 103.3, 65]]
   };
   function handPack(board, items) {
     var spec = HAND[board], placed = [], used = [];
@@ -341,9 +260,9 @@
     });
     return { placed: placed, extra: items.filter(function (x) { return used.indexOf(x) < 0; }) };
   }
-  ["Board 1", "Board 2", "Board 3", "Board 4", "Exit wall"].forEach(function (b) {
+  ["Board 1", "Board 2", "Board 3", "Exit wall"].forEach(function (b) {
     var items = (layoutItems[b] || []).filter(function (it) { return !/model label/i.test(it.label) && !/inside/.test(it.label); }).slice().sort(function (a, c) { return ORDER[a.size] - ORDER[c.size]; });
-    var res = HAND[b] ? handPack(b, items) : shelfPack(items.filter(function (it) { return !/Photo 29/.test(it.label); }));
+    var res = HAND[b] ? handPack(b, items) : shelfPack(items);
     var s = el("section", { class: "sheet a4l layout" });
     if (!ONLY || ONLY === "a4l" || ONLY === "layout") root.appendChild(s);
     var scale = 1.62; // mm per cm on paper
@@ -352,7 +271,28 @@
     add(s, [el("h2", null, b + ": layout plan"), el("div", { class: "meta" }, "PROVISIONAL. Assumes a " + BOARD.w + " x " + BOARD.h + " cm softboard (TODO: confirm the real size). To scale. Conflict cards: tape the inside sheet behind the front as a flap."),
       plan, res.extra.length ? el("div", { class: "legend" }, el("b", null, "Off the board (table, side panel or a second board): "), res.extra.map(function (e) { return e.label; }).join("; ")) : null,
       b === "Board 2" ? el("div", { class: "legend" }, "Himalaya cardboard model sits on a table in front: 4 boxes with the four A6 labels.") : null,
-      el("div", { class: "foot" }, el("span", null, "Layout plan  |  " + b), el("span", null, "HISTREE, Team CakedUp"))]);
+      el("div", { class: "foot" }, el("span", null, "Layout plan  |  " + b), el("span", null, "Do You Know Your Institute?, Team CakedUp"))]);
+  });
+
+  /* ================= status banners (final layout: context.md 14, boards/board-sheets.pdf) ================= */
+  var NEW = "boards/board-sheets.pdf";
+  var STATUS = [
+    [/^Layout plan/, "sup", "SUPERSEDED by " + NEW + " page 2. Don't print."],
+    [/^Board 1  \|  (Gachibowli|A college in borrowed|A diploma on trust|Where did they sleep)/, "sup", "SUPERSEDED by " + NEW + " pages 3 to 6. Don't print."],
+    [/^Board 2  \|  Himalaya model label/, "out", "NOT IN THE FINAL LAYOUT (no Himalaya model). Print only if the team brings it back."],
+    [/^Board 2  \|  (?!Board header)/, "sup", "SUPERSEDED by " + NEW + " pages 7 to 11. Don't print."],
+    [/^Board 3  \|  Satellite strip/, "sup", "SUPERSEDED: these images play on the Board 2 monitor (#/buildings). Don't print."],
+    [/^Board 3  \|  (?!Board header)/, "sup", "SUPERSEDED by " + NEW + " pages 13 to 16. Don't print."],
+    [/^Board \d  \|  Board header/, "opt", "OPTIONAL: not in the final layout. Print only if you want a header card."],
+    [/^Behind Board 4/, "opt", "The team already has this printed. Reprint only if needed."],
+    [/^Table 1  \|  Quiz card/, "sup", "SUPERSEDED by the flashcards in " + NEW + " pages 17 to 20. Don't print."],
+    [/^(Exit wall|Table 2)/, "out", "NOT IN THE FINAL LAYOUT (context.md 14.6). Print only if the team brings it back."]
+  ];
+  Array.prototype.forEach.call(document.querySelectorAll(".sheet"), function (sh) {
+    var label = ((sh.querySelector(".foot span") || {}).textContent || "").trim();
+    for (var i = 0; i < STATUS.length; i++) {
+      if (STATUS[i][0].test(label)) { sh.classList.add("status-" + STATUS[i][1]); sh.insertBefore(el("div", { class: "status-banner status-banner--" + STATUS[i][1] }, STATUS[i][2]), sh.firstChild); return; }
+    }
   });
 
   // overflow sweep: any sheet whose content is taller than the paper gets flagged (never print a clipped source line)

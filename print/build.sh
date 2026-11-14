@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Builds the board print PDFs with headless Chrome. Run from anywhere: bash print/build.sh
+# Builds the older board print PDFs and the speaker notes with headless Chrome. Run from anywhere: bash print/build.sh
+# The final layout's sheets are boards/board-sheets.pdf (bash boards/build.sh); sheets here that it replaces carry a banner.
 set -e
 cd "$(dirname "$0")"
 mkdir -p pdf
@@ -10,7 +11,8 @@ pdf "?only=a3l" "A3-landscape_board-headers_strips.pdf"
 pdf "?only=a3p" "A3-portrait_panels.pdf"
 pdf "?only=a4p" "A4-portrait_cards_conflicts_verified.pdf"
 pdf "?only=a5p" "A5-portrait_journeys_voices_quiz.pdf"
-pdf "?only=a5l" "A5-landscape_comic-panels.pdf"
 pdf "?only=a6l" "A6_timeline-game_himalaya-labels.pdf"
 pdf "?only=layout" "Layout-plans_A4.pdf"
 pdf "" "ALL_preview.pdf"
+# speaker notes for the guides (one A4 per board + the website tour)
+google-chrome --headless=new --disable-gpu --no-sandbox --no-pdf-header-footer --virtual-time-budget=6000 --run-all-compositor-stages-before-draw --print-to-pdf="pdf/Speaker-notes_A4.pdf" "file://$PWD/speaker-notes.html" 2>/dev/null; echo "pdf/Speaker-notes_A4.pdf"

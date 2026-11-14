@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- speaker-notes.html: one A4 page per board for the guides, plus the Board 4 website tour. Owner: saharsh-claude (S11).
+     Built from site/data/notes.js (M.notes, aakarsh-claude's) and config.js, so it always matches what the screens show.
+     print/build.sh turns it into pdf/Speaker-notes_A4.pdf. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Speaker notes</title>
+  <style>
+    @font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 400; src: url('../site/assets/fonts/AtkinsonHyperlegible-normal-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 700; src: url('../site/assets/fonts/AtkinsonHyperlegible-normal-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Fraunces'; font-weight: 300 800; src: url('../site/assets/fonts/Fraunces-normal-300_800.woff2') format('woff2'); }
+    @font-face { font-family: 'JetBrains Mono'; font-weight: 400 700; src: url('../site/assets/fonts/JetBrainsMono-normal-400.woff2') format('woff2'); }
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { font: 10.5pt/1.42 'Atkinson Hyperlegible', system-ui, sans-serif; color: #1d1b18; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @media screen { body { background: #8a857c; padding: 20px 0; } .page { margin: 0 auto 20px; box-shadow: 0 6px 30px rgba(0,0,0,.35); } }
+    .page { width: 210mm; height: 297mm; padding: 14mm 14mm 10mm; position: relative; overflow: hidden; background: #fff; break-after: page; display: flex; flex-direction: column; gap: 4mm; --c: #0B3563; }
+    .page::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4mm; background: var(--c); }
+    .kicker { font: 700 8pt/1.2 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+    h1 { font: 650 24pt/1.05 'Fraunces', Georgia, serif; margin: 1mm 0 0; }
+    h2 { font: 650 13pt/1.1 'Fraunces', Georgia, serif; margin: 0 0 1.5mm; }
+    .screen { border: .4mm solid var(--c); border-radius: 2mm; padding: 2.5mm 3.5mm; display: grid; grid-template-columns: auto 1fr; gap: 1mm 4mm; align-items: baseline; }
+    .screen b { font: 700 8pt 'JetBrains Mono', monospace; color: var(--c); text-transform: uppercase; letter-spacing: .08em; }
+    .screen code { font: 9pt 'JetBrains Mono', monospace; }
+    .note { border-left: 1.2mm solid var(--c); padding: 1mm 0 1mm 4mm; }
+    .note p { margin: 0 0 1.2mm; }
+    .note .route { font: 8pt 'JetBrains Mono', monospace; color: #6b665d; margin-left: 2mm; font-weight: 400; }
+    .src { font-size: 7.5pt; color: #7a7366; }
+    ul.sheets { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.6mm; }
+    ul.sheets li { display: grid; grid-template-columns: 16mm 1fr; gap: 3mm; }
+    ul.sheets li span { font: 700 8pt 'JetBrains Mono', monospace; color: var(--c); padding-top: .4mm; }
+    table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+    th, td { text-align: left; vertical-align: top; padding: 1.6mm 1.8mm; border-bottom: .25mm solid #d8d2c4; }
+    th { font: 700 7.5pt 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: #6b665d; border-bottom: .5mm solid #1d1b18; }
+    td.n { font: 700 11pt 'JetBrains Mono', monospace; color: var(--c); }
+    td small { display: block; font: 7.5pt 'JetBrains Mono', monospace; color: #7a7366; margin-top: .6mm; }
+    .keys { display: flex; flex-wrap: wrap; gap: 2mm 5mm; font-size: 9pt; }
+    kbd { font: 700 8pt 'JetBrains Mono', monospace; border: .3mm solid #1d1b18; border-bottom-width: .7mm; border-radius: 1mm; padding: .2mm 1.4mm; }
+    .foot { margin-top: auto; display: flex; justify-content: space-between; font: 7pt 'JetBrains Mono', monospace; color: #8a8577; border-top: .25mm solid #d8d2c4; padding-top: 2mm; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>window.M = {};</script>
+  <script src="../site/data/config.js"></script>
+  <script src="../site/data/sources.js"></script>
+  <script src="../site/data/notes.js"></script>
+  <script src="speaker-notes.js"></script>
+</body>
+</html>

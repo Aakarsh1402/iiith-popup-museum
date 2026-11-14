@@ -219,3 +219,12 @@ p { margin: 0 0 .7em; }
 .header-sheet .intro { font-size: 19pt; }
 .header-sheet .q { font-size: 31pt; }
 @media screen { .sheet.overflow { outline: 3mm solid #e0245e; } }
+
+/* S11: the long title, and banners on sheets that boards/board-sheets.pdf replaces or that are out of the final layout */
+.title-board h1.title-long { font-size: 74pt; line-height: .95; max-width: 360mm; }
+.status-banner { position: absolute; left: 0; right: 0; top: 0; z-index: 20; padding: 3mm 6mm; font: 700 11pt/1.25 var(--mono); letter-spacing: .03em; color: #fff; text-align: center; }
+.status-banner--sup { background: repeating-linear-gradient(45deg, #B03A2E 0 6mm, #9C3127 6mm 12mm); }
+.status-banner--out { background: #4a4a4a; }
+.status-banner--opt { background: #85600F; }
+.a6l .status-banner, .a5p .status-banner { padding: 1.4mm 3mm; font-size: 6.5pt; }
+.sheet.status-sup > :not(.status-banner):not(.foot) { opacity: .45; }
