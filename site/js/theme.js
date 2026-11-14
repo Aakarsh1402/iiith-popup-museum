@@ -1,16 +1,17 @@
 /* theme.js: picks the colour scheme before the page paints. Owner: saharsh-claude. Styles live in css/themes.css.
-   index.html?theme=navy (or banyan, sky, paper). The query sits before the #, so it stays while you move between pages.
+   index.html?theme=navy (or banyan, sky, paper, plan). The query sits before the #, so it stays while you move between pages.
    Add &themes to show a picker for comparing. Nothing is stored, so a monitor never keeps a scheme someone was trying out.
-   DEFAULT is what every screen gets without ?theme; "paper" is the original beige. */
+   DEFAULT is what every screen gets without ?theme; "plan" is the new look's own plan white (and the beige in ?look=classic). */
 (function () {
   "use strict";
   var THEMES = [
-    { id: "paper", label: "Paper (now)", swatch: "#F4EEE2" },
+    { id: "plan", label: "Plan white (now)", swatch: "#F6F7F4" },
+    { id: "paper", label: "Paper", swatch: "#F4EEE2" },
     { id: "navy", label: "IIIT navy", swatch: "#0B3563" },
     { id: "banyan", label: "Navy + banyan", swatch: "#2E6B3E" },
     { id: "sky", label: "Sky", swatch: "#2B7BD6" }
   ];
-  var DEFAULT = "paper";
+  var DEFAULT = "plan";
   var ids = THEMES.map(function (t) { return t.id; });
   var m = /[?&]theme=([a-z]+)/.exec(location.search);
   var theme = m && ids.indexOf(m[1]) >= 0 ? m[1] : DEFAULT;
