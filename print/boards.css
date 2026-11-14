@@ -228,3 +228,5 @@ p { margin: 0 0 .7em; }
 .status-banner--opt { background: #85600F; }
 .a6l .status-banner, .a5p .status-banner { padding: 1.4mm 3mm; font-size: 6.5pt; }
 .sheet.status-sup > :not(.status-banner):not(.foot) { opacity: .45; }
+.title-board .qr.qr-live { border: 0; background: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 2mm; font: 700 11pt var(--mono); color: var(--ink); text-transform: uppercase; letter-spacing: .08em; }
+.title-board .qr.qr-live img { width: 100%; height: auto; display: block; }

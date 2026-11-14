@@ -52,7 +52,7 @@
         roots.map(function (r, i) { return el("div", { class: "root-label", style: { "--c": r[2], left: (2 + i * 93) + "mm" } }, el("b", null, r[0]), el("span", null, r[1])); })),
       el("div", { class: "bottom" },
         el("div", { class: "team" }, el("b", null, "Team CakedUp"), el("br"), "Aakarsh Mishra, Soham Chatterjee, Yogesh Krishna, Siddharth Choudhary, Saharsh", el("br"), "UPDH (Understanding Public and Digital History), IIIT Hyderabad, 14 November 2026"),
-        el("div", { class: "qr" }, "Scan for the full quiz. QR code goes here once the site is online."))
+        el("div", { class: "qr qr-live" }, el("img", { src: "../boards/img/qr-quiz.svg", alt: "QR code for the quiz" }), el("span", null, "Scan for the full quiz")))
     ]);
   })();
 

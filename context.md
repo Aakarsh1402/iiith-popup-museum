@@ -429,7 +429,7 @@ Boards 1 to 3 are printed boards with a monitor each. Board 4 has no printed pan
 - Mostly as discussed before. Title board: "Do You Know Your Institute?" (the project name; "HISTREE" is only the trees part, Aakarsh 14 Nov) / the 2-line argument / QR code / "Team CakedUp, UPDH, 14 Nov 2026".
 - **Quiz flashcards:** about 8 cards, one question per card. Use the 8 questions in `site/data/quiz.js`, with the same order and options. Each visitor gets 1 or 2 cards, so about 4 visitors can play at once. Put the answer on the back, or the host reads it out. Size: TODO(team), A5 suggested.
 - **QR code to the extended quiz:** visitors scan it to play all the questions on their phone (`#/quiz`). The site has 8 questions now. TODO(team): do we want a 9th?
-- **The QR code needs the site online.** GitHub Pages is not on for the repo yet, and only the repo owner (Aakarsh) can switch it on. TODO(team): before it goes public, confirm the interview consent covers putting full transcripts on a public website.
+- **The website is live (since 14 Nov):** https://saha264.github.io/iiith-popup-museum/ (GitHub Pages from a fork on Saharsh's account, because the main repo needs admin rights for Pages; `.github/workflows/pages.yml` pulls main into the fork every 15 minutes and republishes `site/`). The quiz QR points at `#/quiz`; QR files are `boards/img/qr-quiz.svg` and `qr-site.svg`. The repo itself was already public. TODO(team): still confirm the interview consent covers full transcripts on a website.
 - No monitor at the entry.
 
 ### 14.2 Board 1: Setting the scene (1998-2002)

@@ -30,7 +30,7 @@ body { font-family: var(--body); color: var(--ink); background: #fff; -webkit-pr
 
 .sheet { position: relative; overflow: hidden; break-after: page; background: #fff; display: flex; flex-direction: column; --ac: var(--ink); }
 .a3 { page: a3; width: 297mm; height: 420mm; padding: 20mm 18mm 13mm; font-size: 19.5pt; }
-.a4 { page: a4; width: 210mm; height: 297mm; padding: 15mm 13mm 10mm; font-size: 13.8pt; }
+.a4 { page: a4; width: 210mm; height: 297mm; padding: 15mm 13mm 10mm; font-size: 14.6pt; }
 .grow { flex: 1 1 0; min-height: 20mm; }
 figure.grow .ph, .grid.grow > figure .ph { flex: 1 1 0; min-height: 15mm; }
 .grid.grow { grid-template-rows: minmax(0, 1fr); }
@@ -53,7 +53,7 @@ figure .ph { position: relative; overflow: hidden; border-radius: 1.5mm; backgro
 figure .ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
 figure .ph.contain { background: #fff; border: .3mm solid var(--rule); }
 figure .ph.contain img { object-fit: contain; }
-figcaption { font-size: .6em; line-height: 1.3; color: var(--ink-2); }
+figcaption { font-size: .7em; line-height: 1.3; color: var(--ink-2); }
 figcaption b { color: var(--ink); }
 
 .pts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .55em; }
@@ -67,11 +67,17 @@ figcaption b { color: var(--ink); }
 .note { font-size: .72em; color: var(--ink-2); font-style: italic; }
 .box { border: .35mm solid var(--rule); border-radius: 2mm; padding: .7em .85em; background: #fbf8f1; }
 
-.src { margin-top: auto; padding-top: 2.2mm; border-top: .25mm solid var(--rule); font-size: .52em; line-height: 1.35; color: var(--ink-3); }
+.src { margin-top: auto; padding-top: 2.2mm; border-top: .25mm solid var(--rule); font-size: .56em; line-height: 1.35; color: var(--ink-3); }
 .src b { color: var(--ink-2); }
 
 .add { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1mm; border: .6mm dashed var(--todo); border-radius: 2mm; color: var(--todo); font: 700 .62em/1.3 var(--mono); text-transform: uppercase; letter-spacing: .08em; text-align: center; padding: 3mm; background: #fff7f5; }
 .add small { font: 400 .95em/1.3 var(--body); text-transform: none; letter-spacing: 0; color: #a3473a; }
+.slot { position: relative; display: flex; flex-direction: column; min-height: 0; }
+.slot > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 1.5mm; }
+.slot > .add { display: none; flex: 1; }
+.slot.missing > img { display: none; }
+.slot.missing > .add { display: flex; }
+.add code { font: 700 .95em/1 var(--mono); text-transform: none; background: #fff; padding: .3mm 1mm; border-radius: .6mm; }
 .draft { position: absolute; top: 9mm; left: 50%; transform: translateX(-50%) rotate(-2deg); border: .8mm solid var(--todo); color: var(--todo); font: 700 11pt/1 var(--mono); letter-spacing: .1em; padding: 2mm 4mm; background: #fff; z-index: 2; }
 
 .grid { display: grid; gap: 4mm; }
@@ -130,15 +136,15 @@ figcaption b { color: var(--ink); }
 .ask { border: .5mm dashed #D2694A; border-radius: 2mm; padding: .7em .9em; font-family: var(--display); font-size: 1.15em; line-height: 1.2; color: #F1EBDF; }
 
 /* index + layout pages */
-.idx table { width: 100%; border-collapse: collapse; font-size: .66em; }
-.idx th, .idx td { text-align: left; vertical-align: top; padding: 1.3mm 1.6mm; border-bottom: .25mm solid var(--rule); line-height: 1.25; }
+.idx table { width: 100%; border-collapse: collapse; font-size: .6em; }
+.idx th, .idx td { text-align: left; vertical-align: top; padding: 1mm 1.5mm; border-bottom: .25mm solid var(--rule); line-height: 1.25; }
 .idx th { font: 700 .9em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); border-bottom: .5mm solid var(--ink); }
 .idx td.pg { font: 700 1.05em/1.2 var(--mono); }
 .idx td.sz b { white-space: nowrap; display: inline-block; font: 700 .95em/1 var(--mono); padding: .8mm 1.4mm; border-radius: 1mm; color: #fff; background: var(--ink); }
 .idx td.sz b.s3 { background: var(--soil); }
 .idx tr.grp td { background: var(--paper); font: 700 .85em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
 .idx .todo { color: var(--todo); font-weight: 700; }
-.idx ul { margin: 0; padding-left: 4.5mm; font-size: .7em; line-height: 1.4; }
+.idx ul { margin: 0; padding-left: 4.5mm; font-size: .64em; line-height: 1.35; }
 .lay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; flex: 1; }
 .board { border: .5mm solid var(--ink); border-radius: 2mm; padding: 3mm; display: flex; flex-direction: column; gap: 2mm; background: #fbf8f1; }
 .board h3 { margin: 0; font-family: var(--display); font-size: 1.25em; }
@@ -162,8 +168,27 @@ figcaption b { color: var(--ink); }
 .fc ol li span { font: 700 .8em/1 var(--mono); border: .4mm solid var(--ink); border-radius: 50%; width: 1.55em; height: 1.55em; display: inline-grid; place-items: center; flex: none; }
 .fc .ans { margin-top: auto; transform: rotate(180deg); font-size: .66em; color: var(--ink-2); border-top: .25mm solid var(--rule); padding-top: 2mm; line-height: 1.3; }
 .fc .ans b { color: var(--ink); }
-.fc .qr { position: absolute; right: 14mm; top: 11mm; width: 24mm; height: 24mm; font-size: .45em; padding: 1.5mm; }
+.fc .qr { position: absolute; right: 13mm; top: 10mm; width: 27mm; display: flex; flex-direction: column; align-items: center; gap: .8mm; font: 700 6.5pt/1.2 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); text-align: center; }
+.fc .qr img { width: 27mm; height: 27mm; display: block; }
 .fc .scissors { position: absolute; left: 3mm; top: -2.6mm; font-size: 9pt; color: #9a9386; background: #fff; }
+
+/* entry QR card */
+.qrcard { align-items: center; text-align: center; }
+.qrcard h1 { font-size: 2.3em; margin-bottom: .2em; }
+.qrcard .qr-big { width: 128mm; height: 128mm; margin: 5mm 0 3mm; }
+.qrcard .url { font: 700 .82em/1.2 var(--mono); color: var(--ink-2); letter-spacing: .02em; }
+.qrcard .more { margin-top: auto; display: flex; gap: 7mm; align-items: center; text-align: left; border-top: .3mm solid var(--rule); padding-top: 5mm; width: 100%; }
+.qrcard .more img { width: 40mm; height: 40mm; flex: none; }
+/* optional board header strips (A4 landscape) */
+.hdr { font-size: 14pt; display: grid; grid-template-columns: 1.15fr .85fr; grid-template-rows: minmax(0, 1fr) auto; gap: 7mm 9mm; align-items: stretch; padding: 16mm 14mm 11mm; }
+.hdr .hdr-text { display: flex; flex-direction: column; min-height: 0; }
+.hdr .hdr-num { font: 800 4.6em/.8 var(--display); color: var(--ac); opacity: .9; margin-bottom: 2mm; }
+.hdr h1 { font-size: 3em; margin: 0 0 .25em; }
+.hdr .hdr-q { font-family: var(--display); font-style: italic; font-size: 1.45em; line-height: 1.2; margin: 0 0 6mm; }
+.hdr .hdr-screen { margin-top: auto; display: flex; gap: 3mm; align-items: center; border: .5mm solid var(--ac); border-radius: 2mm; padding: 3mm 4mm; font-size: .92em; }
+.hdr .hdr-screen b { font: 700 .7em/1.2 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--ac); white-space: nowrap; }
+.hdr figure .ph { height: 100%; }
+.hdr .src { grid-column: 1 / -1; }
 </style>
 </head>
 <body>
@@ -172,8 +197,8 @@ figcaption b { color: var(--ink); }
 <section class="sheet a4 idx entry">
   <span class="tag">PAGE 1 · A4 · FOR THE TEAM, NOT THE BOARD</span>
   <div class="kicker">Do You Know Your Institute? · Team CakedUp · 14 Nov 2026</div>
-  <h1 style="font-size:2.1em">Board sheets: what to print</h1>
-  <p style="font-size:.78em; margin-bottom:3mm">Print every page at <b>100% / "Actual size"</b> on the paper size shown. Each sheet has a few big photos and 3 or 4 short points. Those points are what you explain to visitors. The grey code in the top right corner says where each sheet goes.</p>
+  <h1 style="font-size:1.8em; margin-bottom:.3em">Board sheets: what to print</h1>
+  <p style="font-size:.72em; margin-bottom:2mm">Print every page at <b>100% / "Actual size"</b> on the paper shown. The short points on each sheet are what you explain. The grey code in the top right corner says where each sheet goes.</p>
   <table>
     <thead><tr><th>Page</th><th>Size</th><th>Where</th><th>Sheet: the point to explain</th></tr></thead>
     <tbody>
@@ -196,16 +221,19 @@ figcaption b { color: var(--ink); }
       <tr><td class="pg">15</td><td class="sz"><b>A4</b></td><td>B3 right</td><td><b>Trees 1.</b> Four banyans saved from road widening. Navjeevan's three stops.</td></tr>
       <tr><td class="pg">16</td><td class="sz"><b>A4</b></td><td>B3 right</td><td><b>Trees 2 (optional).</b> Jagruthi the tree, Jagruti the mascot. The PGDIT-2002 neem.</td></tr>
       <tr class="grp"><td colspan="4">Entry table</td></tr>
-      <tr><td class="pg">17-20</td><td class="sz"><b>A4</b></td><td>Entry</td><td><b>Quiz flashcards, Q1 to Q8.</b> Two per page: cut each page in half to get A5 cards. The answer is upside down at the bottom for the host.</td></tr>
+      <tr><td class="pg">17-20</td><td class="sz"><b>A4</b></td><td>Entry</td><td><b>Quiz flashcards, Q1 to Q8.</b> Two per page: cut each page in half to get A5 cards. The answer is upside down for the host. Each card has the quiz QR.</td></tr>
+      <tr><td class="pg">21</td><td class="sz"><b>A4</b></td><td>Entry</td><td><b>QR card.</b> Big QR to the full quiz, small QR to the whole website. Put it on the entry table.</td></tr>
+      <tr class="grp"><td colspan="4">Optional, recommended: a header strip above each board</td></tr>
+      <tr><td class="pg">22-24</td><td class="sz"><b>A4 L</b></td><td>B1, B2, B3 top</td><td><b>Board headers.</b> Board number, title, the board's question and what its screen shows, so visitors know where they are.</td></tr>
     </tbody>
   </table>
-  <div class="grid g2" style="margin-top:4mm; gap:6mm">
+  <div class="grid g2" style="margin-top:2.5mm; gap:6mm">
     <div>
       <div class="kicker" style="color:var(--todo); margin-bottom:1.5mm">Add before printing</div>
       <ul>
-        <li>This morning's photos: banyans (p.15, 16), Motorola granite (p.11). Dashed red boxes mark where.</li>
+        <li>Photos: save in <span style="font-family:var(--mono)">boards/img/add/</span> as navjeevan, jagruthi, granite (and biometric, file-folder, ims) .jpg, then <span style="font-family:var(--mono)">bash boards/build.sh</span>. Each fills its red box.</li>
         <li>Attendance info (p.12).</li>
-        <li>The QR code needs the website link (p.17-20, entry). The site isn't online yet.</li>
+        <li>QR codes are live: they open saha264.github.io/iiith-popup-museum (checked on a phone-size screen). Scan one test print before printing all.</li>
         <li>Check the granite spot: our source says Vindhya A1 and B2. Is that near CSTAR?</li>
       </ul>
     </div>
@@ -214,7 +242,6 @@ figcaption b { color: var(--ink); }
       <ul>
         <li>Dropped as the team decided: the comic, "borrowed teachers", the printed Board 4 cards.</li>
         <li>Pages 9 and 10 are dark on purpose (spooky). They use a lot of ink.</li>
-        <li>Photo numbers match <span style="font-family:var(--mono)">raw/photos</span> and context.md section 12.</li>
       </ul>
     </div>
   </div>
@@ -255,7 +282,7 @@ figcaption b { color: var(--ink); }
       <p style="font-size:.85em; margin:0">Trees: 1 or 2 A4 sheets. Page 16 is the optional second one.</p>
     </div>
   </div>
-  <p style="font-size:.85em; margin:3mm 0 0">Board 4 has no printed panels: it's a monitor (How We Know, then a website tour), with the 2002 layout plan and the scanned floor plans you already printed on a board behind it.</p>
+  <p style="font-size:.85em; margin:3mm 0 0">Optional: an A4 landscape header strip (p.22 to 24) across the top of Boards 1 to 3. Board 4 has no printed panels: it's a monitor (How We Know, then a website tour), with the 2002 layout plan and the scanned floor plans you already printed on a board behind it.</p>
 </section>
 
 <!-- ============ BOARD 1 ============ -->
@@ -288,6 +315,7 @@ figcaption b { color: var(--ink); }
   <span class="tag">B1 · A4 · PAGE 4</span>
   <div class="kicker">Board 1 · Setting the scene</div>
   <h1>A college in borrowed buildings</h1>
+  <p class="lede" style="margin:-2mm 0 4mm">IIIT didn't build its first buildings. It was handed them.</p>
   <figure class="grow" style="margin-bottom:4mm"><div class="ph"><img src="img/03-crop.jpg" alt=""></div>
     <figcaption><b>An early classroom.</b></figcaption></figure>
   <ul class="pts" style="margin-bottom:5mm">
@@ -309,6 +337,7 @@ figcaption b { color: var(--ink); }
   <span class="tag">B1 · A4 · PAGE 5</span>
   <div class="kicker">Board 1 · Setting the scene</div>
   <h1>A diploma on trust</h1>
+  <p class="lede" style="margin:-2mm 0 4mm">Would you join a college that couldn't promise you a degree?</p>
   <figure class="grow" style="margin-bottom:3mm"><div class="ph"><img src="../raw/photos/07_gdit-first-batch-inauguration.jpeg" alt=""></div>
     <figcaption><b>Inauguration of the first batch of GDIT students.</b></figcaption></figure>
   <div class="bigline" style="margin:2mm 0 5mm"><div class="big">49</div><p style="font-size:1.05em">of 50 seats filled in the first batch, 2 Sep 1998. <span class="who">Gopi</span></p></div>
@@ -403,7 +432,7 @@ figcaption b { color: var(--ink); }
       </div>
     </div>
     <div class="way-step">
-      <div><div class="way-word">Landlord too</div><p class="way-text">IIIT also rented out its own space: <b>67,118 sq ft</b> to RGUKT, TalentSprint, SBH and others.</p></div>
+      <div><div class="way-word">Landlord too</div><p class="way-text">IIIT leased out space in its own buildings: an old table lists <b>67,118 sq ft</b> of leased space, to RGUKT, TalentSprint, SBH and others (some of it vacant).</p></div>
       <figure><div class="ph contain" style="height:44mm; padding:1.5mm"><img src="img/fp-leased.jpg" alt=""></div><figcaption>"Leased Spaces", from an undated floor-space table.</figcaption></figure>
     </div>
   </div>
@@ -435,6 +464,7 @@ figcaption b { color: var(--ink); }
   <span class="tag">B2 RIGHT · A4 · PAGE 10</span>
   <div class="kicker">Board 2 · A branch that was cut</div>
   <h1>The paper trail</h1>
+  <p class="lede" style="margin:-2mm 0 3mm; color:#d9cfbf">The old papers say this branch was real.</p>
   <div class="grid g2" style="gap:4mm; margin-bottom:3mm">
     <figure><div class="ph doc" style="aspect-ratio: 910 / 690; background:#fff"><img src="img/prosp-programs.jpg" alt=""><span class="mark" style="left:5%; top:60%; width:94%; height:14.5%"></span></div>
       <figcaption><b>Prospectus, around 2001:</b> an M.Tech in IT for Building Sciences, "for architects and civil engineers".</figcaption></figure>
@@ -458,8 +488,8 @@ figcaption b { color: var(--ink); }
   <h1 style="font-size:2.2em">Did you know?</h1>
   <div class="box grow" style="margin-bottom:6mm; display:flex; flex-direction:column; gap:3mm">
     <div class="big" style="font-size:2.2em">Look down</div>
-    <p style="font-size:1.12em; margin:0">The black granite floor in Vindhya A1 and B2 was put in by <b>Motorola's</b> company school. It's still there. <span class="who">PJN</span></p>
-    <div class="add" style="flex:1">Add this morning's granite photo<small>Check the spot: our source says A1 and B2. Is that near CSTAR?</small></div>
+    <p style="font-size:1.12em; margin:0">Next time you're in Vindhya A1 or B2, look at the floor. The black granite was put in by <b>Motorola's</b> company school, and it's still there. <span class="who">PJN</span></p>
+    <div class="slot" style="flex:1"><img src="img/add/granite.jpg" alt="" onerror="this.parentNode.classList.add('missing')"><div class="add">Add this morning's granite photo<small>Save it as <code>boards/img/add/granite.jpg</code>. Check the spot: our source says A1 and B2. Is that near CSTAR?</small></div></div>
   </div>
   <div class="box" style="display:flex; flex-direction:column; gap:3mm">
     <div class="big" style="font-size:2.2em">First online</div>
@@ -487,7 +517,7 @@ figcaption b { color: var(--ink); }
         <div class="big" style="font-size:2.4em">Biometric</div>
         <p style="margin:0">Attendance in every class is taken with a biometric system.</p>
       </div>
-      <div class="add" style="height:55mm">Add a photo of the biometric machine</div>
+      <div class="slot" style="height:55mm"><img src="img/add/biometric.jpg" alt="" onerror="this.parentNode.classList.add('missing')"><div class="add">Add a photo of the biometric machine<small><code>boards/img/add/biometric.jpg</code></small></div></div>
     </div>
   </div>
   <div class="src"><b>Sources:</b> <span style="color:var(--todo)">to add: who told us how it used to work, and the team's own experience for "now".</span></div>
@@ -498,12 +528,12 @@ figcaption b { color: var(--ink); }
   <span class="tag">B3 LEFT · A4 · PAGE 13</span>
   <div class="kicker">Board 3 · Institutional changes</div>
   <h1>From paper files to one system</h1>
+  <p class="lede" style="margin:-2mm 0 3mm">Until about 2017, IIIT's office ran on paper.</p>
   <svg viewBox="0 0 400 128" style="width:100%; height:auto; margin-bottom:4mm" aria-hidden="true">
     <g transform="translate(18,12)">
       <path d="M0 18 h38 l8 -10 h50 v86 h-96 z" fill="#d9c7a0" stroke="#26241F" stroke-width="2.5" stroke-linejoin="round"/>
       <rect x="8" y="28" width="80" height="58" rx="2" fill="#efe4c9" stroke="#26241F" stroke-width="2"/>
       <path d="M18 42 h60 M18 54 h60 M18 66 h44" stroke="#8a7a5a" stroke-width="2.5"/>
-      <path d="M48 86 v10" stroke="#a9502c" stroke-width="3"/>
     </g>
     <text x="66" y="124" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#57524A">CLOTH AND CARD FOLDERS</text>
     <path d="M150 55 h92" stroke="#3E5C76" stroke-width="4" stroke-dasharray="8 7"/>
@@ -525,8 +555,8 @@ figcaption b { color: var(--ink); }
     <li><span class="when">Today</span><span class="what">Most paperwork goes through IMS. Some records stay on paper, because audit rules need hard copies. <span class="who">Rajan</span></span></li>
   </ol>
   <div class="grid g2 grow" style="gap:4mm">
-    <div class="add">Optional: photo of an old file folder<small>Rajan showed us these folders.</small></div>
-    <div class="add">Optional: an IMS screenshot<small>Hide names and roll numbers.</small></div>
+    <div class="slot" style=""><img src="img/add/file-folder.jpg" alt="" onerror="this.parentNode.classList.add('missing')"><div class="add">Optional: photo of an old file folder<small>Rajan showed us these folders. <code>boards/img/add/file-folder.jpg</code></small></div></div>
+    <div class="slot" style=""><img src="img/add/ims.jpg" alt="" onerror="this.parentNode.classList.add('missing')"><div class="add">Optional: an IMS screenshot<small>Hide names and roll numbers. <code>boards/img/add/ims.jpg</code></small></div></div>
   </div>
   <div class="src"><b>Sources:</b> interviews with Prof. K. S. Rajan and Prabhakar M (2026).</div>
 </section>
@@ -536,7 +566,7 @@ figcaption b { color: var(--ink); }
   <span class="tag">B3 MIDDLE · A3 (SIZE NOT FIXED) · PAGE 14</span>
   <div class="kicker">Board 3 · Institutional changes</div>
   <h1>Rooms that moved</h1>
-  <p class="lede" style="margin-bottom:5mm">Most rooms on campus have had more than one home. Find them on the map on the screen.</p>
+  <p class="lede" style="margin-bottom:5mm">The library has had two homes, and a third is coming. Follow these rooms on the map on the screen.</p>
   <div class="grid grow" style="grid-template-columns: 1fr 1fr 1fr; gap:4mm; margin-bottom:6mm">
     <figure><div class="ph"><img src="../raw/photos/37_saranga-hall-entrance-former-library.jpeg" alt=""></div><figcaption><b>Saranga Hall,</b> the first library.</figcaption></figure>
     <figure><div class="ph"><img src="img/04-crop.jpg" alt=""></div><figcaption><b>The guest house:</b> its old sign says "Mess &amp; Lounge".</figcaption></figure>
@@ -596,7 +626,7 @@ figcaption b { color: var(--ink); }
   </svg>
   <div class="grid g2 grow" style="gap:4mm">
     <figure><div class="ph"><img src="img/05-crop.jpg" alt=""></div><figcaption><b>OBH in the early years,</b> with a young banyan.</figcaption></figure>
-    <div class="add">Add: Navjeevan at OBH today<small>This morning's photo.</small></div>
+    <div class="slot" style=""><img src="img/add/navjeevan.jpg" alt="" onerror="this.parentNode.classList.add('missing')"><div class="add">Add: Navjeevan at OBH today<small>This morning's photo: <code>boards/img/add/navjeevan.jpg</code></small></div></div>
   </div>
   <div class="src"><b>Sources:</b> interview with SLN Shastry (2026); still from IIIT's 20-year video (photo 05). We don't know the year of the road widening yet.</div>
 </section>
@@ -613,7 +643,7 @@ figcaption b { color: var(--ink); }
   </div>
   <p style="margin-bottom:5mm">Same name, one letter apart. Was the tree named after the mascot, or the other way round? <b>We don't know yet.</b></p>
   <div class="grid g3 grow" style="gap:3mm; margin-bottom:3mm">
-    <div class="add">Add: Jagruthi today</div>
+    <div class="slot" style=""><img src="img/add/jagruthi.jpg" alt="" onerror="this.parentNode.classList.add('missing')"><div class="add">Add: Jagruthi today<small><code>boards/img/add/jagruthi.jpg</code></small></div></div>
     <figure><div class="ph"><img src="../raw/photos/26_framed-photo-banyan-meditation.jpeg" alt=""></div><figcaption>A framed photo of someone meditating under a campus banyan.</figcaption></figure>
     <figure><div class="ph"><img src="../raw/photos/49_neem-tree-pgdit-2002.jpeg" alt=""></div><figcaption>A neem planted by the PGDIT-2002 students.</figcaption></figure>
   </div>
@@ -623,6 +653,60 @@ figcaption b { color: var(--ink); }
 
 <!-- ============ ENTRY: flashcards (filled from site/data/quiz.js) ============ -->
 <div id="flashcards"></div>
+
+<!-- ============ 21. ENTRY QR CARD ============ -->
+<section class="sheet a4 entry qrcard">
+  <span class="tag">ENTRY · A4 · PAGE 21</span>
+  <div class="kicker">Entry · Do you know your institute?</div>
+  <h1>Take the full quiz on your phone</h1>
+  <p class="lede" style="margin:0">8 questions. Try it now, and again after the exhibit.</p>
+  <img class="qr-big" src="img/qr-quiz.svg" alt="QR code for the quiz">
+  <div class="url">saha264.github.io/iiith-popup-museum/#/quiz</div>
+  <div class="more">
+    <img src="img/qr-site.svg" alt="QR code for the exhibit website">
+    <div><h2 style="font-size:1.2em; margin-bottom:1.5mm">The whole exhibit, on your phone</h2>
+      <p style="margin:0; font-size:.9em">The map, the timeline, all seven interviews and the archive of old documents.</p>
+      <div class="url" style="margin-top:2mm">saha264.github.io/iiith-popup-museum</div></div>
+  </div>
+</section>
+
+<!-- ============ 22-24. OPTIONAL BOARD HEADERS (A4 landscape) ============ -->
+<section class="sheet a4l b1 hdr">
+  <span class="tag">B1 TOP · A4 LANDSCAPE · OPTIONAL · PAGE 22</span>
+  <div class="hdr-text">
+    <div class="hdr-num">1</div>
+    <div class="kicker">Board 1 · 1998 to 2002</div>
+    <h1>Setting the scene</h1>
+    <p class="hdr-q">Where do you start a college when you don't have a building?</p>
+    <div class="hdr-screen"><b>On the screen</b><span>Old photos of the campus in its first years.</span></div>
+  </div>
+  <figure><div class="ph"><img src="img/01-crop.jpg" alt=""></div><figcaption>The early main gate: "Indian Institute of Information Technology".</figcaption></figure>
+  <div class="src"><b>Source:</b> still from IIIT's 20-year video (photo 01).</div>
+</section>
+<section class="sheet a4l b2 hdr">
+  <span class="tag">B2 TOP · A4 LANDSCAPE · OPTIONAL · PAGE 23</span>
+  <div class="hdr-text">
+    <div class="hdr-num">2</div>
+    <div class="kicker">Board 2</div>
+    <h1>The IIIT Way</h1>
+    <p class="hdr-q">Borrow, share, take back, build your own. Spot the pattern on every sheet.</p>
+    <div class="hdr-screen"><b>On the screen</b><span>How the buildings grew, seen from above, oldest to newest.</span></div>
+  </div>
+  <figure><div class="ph"><img src="../raw/photos/19_corporate-schools-collage.jpeg" alt=""></div><figcaption>Company school labs on campus: IBM, Oracle, Motorola and Cisco.</figcaption></figure>
+  <div class="src"><b>Sources:</b> team photos (19); interview with Prof. P. J. Narayanan (2026).</div>
+</section>
+<section class="sheet a4l b3 hdr">
+  <span class="tag">B3 TOP · A4 LANDSCAPE · OPTIONAL · PAGE 24</span>
+  <div class="hdr-text">
+    <div class="hdr-num">3</div>
+    <div class="kicker">Board 3</div>
+    <h1>Institutional changes</h1>
+    <p class="hdr-q">Rooms, records, even trees: what moved, and what changed?</p>
+    <div class="hdr-screen"><b>On the screen</b><span>The map: the 2002 plan fading into today's campus. Pick a journey.</span></div>
+  </div>
+  <figure><div class="ph contain" style="background:#fff"><img src="../raw/photos/50_layout-plan-2002-62-acres.jpeg" alt=""></div><figcaption>The 2002 layout plan: 62 acres.</figcaption></figure>
+  <div class="src"><b>Source:</b> campus layout plan (2002), via SLN Shastry.</div>
+</section>
 
 <script>window.M = {};</script>
 <script src="../site/data/sources.js"></script>
@@ -641,7 +725,7 @@ figcaption b { color: var(--ink); }
       card.className = "fc";
       card.innerHTML = (k ? '<span class="scissors">&#9986;</span>' : '') +
         '<div class="kicker">Do you know your institute? · Question ' + n + ' of ' + Q.length + '</div>' +
-        '<div class="add qr">QR code<small>all the questions</small></div>' +
+        '<div class="qr"><img src="img/qr-quiz.svg" alt="QR code for the quiz">All 8 on your phone</div>' +
         '<h2 style="max-width:78%">' + q.q + '</h2>' +
         '<ol>' + q.options.map(function (o, j) { return '<li><span>' + String.fromCharCode(97 + j) + '</span>' + o + '</li>'; }).join("") + '</ol>' +
         '<div class="ans"><b>Answer: ' + String.fromCharCode(97 + q.answer) + ') ' + q.options[q.answer] + '.</b> ' + (q.explain || "") + ' <i>Source: ' + src(q.sources) + '</i></div>';

@@ -36,7 +36,7 @@
   var BOARDS = [
     { kicker: "Entry", title: "Entry table", color: "#B07D16", screen: null, routes: ["quiz", "start"],
       lead: "Hand each visitor 1 or 2 flashcards, so about four people can play at once. Then point to the QR code for the full quiz on their phone.",
-      sheets: [["p.17-20", "Quiz flashcards, Q1 to Q8. The answer is printed upside down at the bottom of each card."]] },
+      sheets: [["p.17-20", "Quiz flashcards, Q1 to Q8. The answer is printed upside down at the bottom of each card, and each card has the quiz QR code."], ["p.21", "QR card: a big QR to the full quiz, a small one to the whole website. If a QR doesn't scan, type saha264.github.io/iiith-popup-museum."]] },
     { kicker: "Board 1", title: "Setting the scene (1998 to 2002)", color: "#A9502C", screen: "board1", routes: ["photos", "timeline"],
       sheets: [["p.3 A3", "Gachibowli in 1998: a village with one road in. 6 companies at Cyber Towers, about 1,000 by 2007-08."],
         ["p.4 A4", "Borrowed buildings: IIIT started in two government buildings it was lent. Only two floors of Nilgiri were in use."],
