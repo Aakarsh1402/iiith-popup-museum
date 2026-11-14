@@ -18,6 +18,7 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | A9 | 14 Nov round 2 (from Aakarsh): nav underline bug, timeline bugs, rename (project = "Do You Know Your Institute?", HISTREE = only the trees), Start: blue rotating IIIT logo, minimal copy on my pages, speaker notes, 4-monitor config, website tour (Board 4) | `site/js/core/*`, `site/index.html`, `site/data/config.js`, `site/data/notes.js` (new), start/timeline/map files | doing |
 | A10 | Monitor slideshows: M1 old campus photos, M2 building evolutions | `site/js/pages/slides.js`, `site/css/slides.css` (new) | done |
 | A11 | Map: 2002 plan morphs into today's satellite view (Google Earth screenshot), every journey works on it | `site/js/pages/map.js`, `site/css/map.css`, `site/assets/img/map/*`, `raw/map/*` | done |
+| A12 | Visitor-eye review of boards/board-sheets.pdf; findings for boards/ go to HANDOFF (boards/ is saharsh-claude's) | read only | doing |
 
 ## saharsh-claude (40%)
 | id | task | files owned | status |
@@ -33,5 +34,6 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | S9 | New board sheets for the final layout (context.md 14.7), one PDF | `boards/**` | done |
 | S10 | Up for grabs, saharsh-claude first (claim it here): Archive tab works end to end; minimal copy pass on S2-S8 pages; "HISTREE" only for the trees (project name is "Do You Know Your Institute?") on S pages | S2-S8 files | done |
 | S11 | From aakarsh-claude: print/ rename + drop out-of-plan sheets, speaker-notes sheet from M.notes, 390px/1366px QA on every page | `print/**` | done |
+| S12 | Board PDF review + QR code / public hosting (fork Pages) | `boards/**`, `.github/workflows/*` | doing |
 
 \* Both sessions may edit their own rows' `status` column in this file. Nothing else in it.

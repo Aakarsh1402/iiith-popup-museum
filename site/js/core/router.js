@@ -82,7 +82,7 @@
       current = { page: page, route: p.route, params: p.params, query: p.query, hash: location.hash };
       try { page.render(app, ctx); } catch (e) { console.error("[router] render failed", e); app.appendChild(M.ui.el("div", { class: "wrap stub" }, M.ui.el("p", null, "Something went wrong on this page."))); }
       document.title = (page.title ? page.title + " | " : "") + "Do You Know Your Institute?";
-      window.scrollTo(0, 0);
+      try { window.scrollTo({ top: 0, left: 0, behavior: "instant" }); } catch (e) { window.scrollTo(0, 0); }
       try { app.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
       R._emit();   // after the swap, so the nav marks the page that is actually showing
     }

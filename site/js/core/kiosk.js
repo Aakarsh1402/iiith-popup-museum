@@ -1,5 +1,5 @@
 /* kiosk.js: per-monitor screens, idle reset + playlists, keyboard shortcuts. Owner: aakarsh-claude (A2).
-   index.html?screen=history#/...  (query BEFORE the hash). Screens live in M.config.screens. */
+   index.html?screen=board1#/...  (query BEFORE the hash). Screens live in M.config.screens. */
 (function () {
   "use strict";
   var M = (window.M = window.M || {});

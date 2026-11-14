@@ -26,8 +26,8 @@ This file is the single source of truth for everyone (humans and Claude Code age
 ## 2. Big theme
 
 ### Title
-**HISTREE: How IIIT Put Down Its Own Roots**
-Subtitle / umbrella: **Do You Know Your Institute?** (keep this, it's the approved theme name and is on the posters)
+**Do You Know Your Institute?** (the approved theme name, on the posters; from 14 Nov it is the name of the whole project)
+**HISTREE** is now only the trees part: the history of the campus trees (Board 3 right, `#/histree`). Don't use it for the whole project.
 
 ### The argument in one paragraph (visitor-facing draft)
 IIIT's logo is a banyan, and its mascot, Jagruti, is a banyan too. A banyan often starts life on another tree, then sends down roots of its own until it stands by itself. IIIT grew the same way. It started in borrowed government buildings, with borrowed teachers from the University of Hyderabad and company-run schools in its classrooms. Over 25 years it took those spaces back, built its own, lent a building to the state and got it back, and grew its own people. Even its trees were moved here from somewhere else.
@@ -426,7 +426,7 @@ Who does what:
 Boards 1 to 3 are printed boards with a monitor each. Board 4 has no printed panels: it is a monitor. Section 4 still applies to every sheet (plain voice, a source line at the bottom, no em dashes). Print in colour where photos are involved. Cardboard backing + foam tape.
 
 ### 14.1 Entry (Table 1)
-- Mostly as discussed before. Title board: "HISTREE: How IIIT Put Down Its Own Roots" / "Do You Know Your Institute?" / the 2-line argument / QR code / "Team CakedUp, UPDH, 14 Nov 2026".
+- Mostly as discussed before. Title board: "Do You Know Your Institute?" (the project name; "HISTREE" is only the trees part, Aakarsh 14 Nov) / the 2-line argument / QR code / "Team CakedUp, UPDH, 14 Nov 2026".
 - **Quiz flashcards:** about 8 cards, one question per card. Use the 8 questions in `site/data/quiz.js`, with the same order and options. Each visitor gets 1 or 2 cards, so about 4 visitors can play at once. Put the answer on the back, or the host reads it out. Size: TODO(team), A5 suggested.
 - **QR code to the extended quiz:** visitors scan it to play all the questions on their phone (`#/quiz`). The site has 8 questions now. TODO(team): do we want a 9th?
 - **The QR code needs the site online.** GitHub Pages is not on for the repo yet, and only the repo owner (Aakarsh) can switch it on. TODO(team): before it goes public, confirm the interview consent covers putting full transcripts on a public website.

@@ -1,6 +1,6 @@
 # IMPLEMENTATION_PLAN.md: exhibit website v1
 
-Website for the "HISTREE / Do You Know Your Institute?" pop-up museum. Read `context.md` first: it holds every fact, source, conflict and the physical plan. This file says how to build the site.
+Website for the "Do You Know Your Institute?" pop-up museum (HISTREE = the trees page only, renamed 14 Nov). Read `context.md` first: it holds every fact, source, conflict and the physical plan. This file says how to build the site.
 
 ---
 
@@ -229,7 +229,7 @@ M.config = {
   }
 };
 ```
-Monitor plan: **3 monitors** = `?screen=history` (between Boards 1 and 2), `?screen=map` (Board 3), `?screen=evidence` (Board 4, facing the exit wall). **2 monitors** = `?screen=left` and `?screen=right`. Phones scan the entry QR for `#/quiz` (needs GitHub Pages, section 13). Every page must also work with plain mouse browsing, because visitors will click around on all screens.
+Monitor plan (updated 14 Nov): **4 monitors**, one per board: `?screen=board1` (old photos slideshow), `board2` (buildings time-lapse), `board3` (map), `board4` (How we know + website tour). Phones scan the entry QR for `#/quiz` (needs GitHub Pages, section 13). Every page must also work with plain mouse browsing, because visitors will click around on all screens.
 
 ### 4.5 Shared UI (`ui.js`), documented in `site/js/core/README.md`
 - `M.ui.el(tag, attrs, ...children)`: tiny DOM builder (sets text via textContent, never innerHTML for data strings).

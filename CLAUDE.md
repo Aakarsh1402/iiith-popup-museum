@@ -1,6 +1,6 @@
 # CLAUDE.md: rules for every Claude (and human) working in this repo
 
-This repo is the website for Team CakedUp's UPDH pop-up museum "HISTREE: How IIIT Put Down Its Own Roots" (exhibition: Saturday 14 Nov 2026). Several people run their own Claude Code sessions on it at the same time. Those sessions cannot see each other, so **the repo is the only shared channel**. Follow this file exactly.
+This repo is the website for Team CakedUp's UPDH pop-up museum "Do You Know Your Institute?" (exhibition: Saturday 14 Nov 2026). Several people run their own Claude Code sessions on it at the same time. Those sessions cannot see each other, so **the repo is the only shared channel**. Follow this file exactly.
 
 ## 1. Read first (in this order)
 1. This file.
