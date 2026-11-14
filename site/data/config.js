@@ -16,7 +16,7 @@ M.config = {
     board2: { label: "Monitor 2: Board 2, The IIIT Way", short: "the buildings", home: "#/buildings",
               playlist: [ { route: "#/buildings", secs: 0 } ] },
     board3: { label: "Monitor 3: Board 3, Institutional changes", short: "the map", home: "#/map?autoplay=1",
-              playlist: [ { route: "#/map?autoplay=1", secs: 240 }, { route: "#/histree", secs: 45 } ] },
+              playlist: [ { route: "#/map?autoplay=1", secs: 0 } ] },
     board4: { label: "Monitor 4: Board 4, How we know", short: "how we know", home: "#/how-we-know?autoplay=1", tour: true,
               playlist: [ { route: "#/how-we-know?autoplay=1", secs: 0 } ] },
     entry:  { label: "Entry (spare screen)", short: "the start", home: "#/start" }

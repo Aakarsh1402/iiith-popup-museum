@@ -52,8 +52,10 @@
   }
   function onIdle() {
     if (!screen) return;
-    if (M.tour && M.tour.active()) M.tour.stop();
+    if (M.tour && M.tour.active()) { resetIdle(); return; }   // a guide talking over one step: keep the tour
     if (M.tour) M.tour.toggleNotes(false);
+    var list = screen.playlist || [];
+    if (list.length === 1 && location.hash === list[0].route) { while (M.ui.closeTop()) { /* just close panels */ } return; }
     playIndex = -1;
     playNext();
   }

@@ -108,6 +108,8 @@ html.look-v2 .sheet-bar { background: var(--paper-2); }
 html.look-v2 .sheet-body > * { animation: none; }
 
 /* ---------- start ---------- */
+html.look-v2 .start { overflow: visible; }
+html.look-v2 .start .coin-stage { --size: min(26vw, 40vh, 500px); }
 html.look-v2 .start .enter { animation: none; }
 html.look-v2 .start .coin-wrap.enter { animation: start-in 900ms var(--ease-out) both; }
 html.look-v2 .start-kicker { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--ink-2); gap: 0; }

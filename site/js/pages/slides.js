@@ -30,11 +30,13 @@
   /* Board 2. Satellite sequences, in the order context.md 14.3 gives. Frames come from places.js `sequence`. */
   var BUILD_PLACES = [
     { id: "nab", name: "New Academic Block", line: "Going up where the first batch lived in 1998." },
-    { id: "bakul", name: "Bakul Nivas", line: "A newer hostel, built on open land." },
-    { id: "felicity", name: "Felicity ground", line: "An open ground that got courts." },
+    { id: "bakul", name: "Bakul Nivas", line: "Seen from above while it was built." },
+    { id: "felicity", name: "Felicity ground", line: "The Felicity ground, seen from above." },
     { id: "amphitheatre", name: "Amphitheatre", line: "The amphitheatre and the basketball court." }
   ];
 
+  // black video bars on the 20-year-video stills: [top %, bottom %] to crop away
+  var CROP = { "img-01": [14.4, 5.1], "img-02": [13.4, 12.6], "img-03": [13.0, 12.5], "img-04": [13.0, 12.6], "img-05": [12.9, 12.5], "img-07": [6.5, 0] };
   var FILE_SIZES = { "ximg-01.jpg": [550, 324], "ximg-02.jpg": [550, 324], "ximg-05.jpg": [173, 209], "ximg-06.jpg": [524, 425], "ximg-07.jpg": [499, 431] };
 
   var S = null;
@@ -42,12 +44,14 @@
   /** {src, w, h} for an image id from images.js or a plain file path. */
   function pic(x) {
     var im = U.image(x);
-    if (im) return { src: im.file, w: im.w || 1600, h: im.h || 1000 };
+    if (im) return { src: im.file, w: im.w || 1600, h: im.h || 1000, crop: CROP[x] || null };
     var sz = FILE_SIZES[x.split("/").pop()] || [1600, 1000];
     return { src: x, w: sz[0], h: sz[1] };
   }
   function imgNode(p, extra) {
-    var st = { "--ar": (p.w / p.h).toFixed(4), "--nw": Math.round(p.w * 2.2) + "px" };
+    var keep = p.crop ? 1 - (p.crop[0] + p.crop[1]) / 100 : 1;
+    var st = { "--ar": (p.w / (p.h * keep)).toFixed(4), "--nw": Math.round(p.w * 2.2) + "px" };
+    if (p.crop) st.objectViewBox = "inset(" + p.crop[0] + "% 0 " + p.crop[1] + "% 0)";
     Object.keys(extra || {}).forEach(function (k) { st[k] = extra[k]; });
     return el("div", { class: "sl-img" }, el("img", { src: p.src, alt: "", draggable: "false", style: st }));
   }
@@ -187,7 +191,7 @@
         el("div", { class: "sl-pips" }, Array.apply(null, { length: item.n }).map(function (_, j) {
           return el("i", { class: j < item.k ? "done" : (j === item.k ? "now" : "") });
         })),
-        el("p", { class: "sl-src" }, "Satellite screenshots, oldest to newest. Frame " + (item.k + 1) + " of " + item.n + ".")));
+        el("p", { class: "sl-src" }, "Google Earth screenshots, oldest to newest. Frame " + (item.k + 1) + " of " + item.n + ".")));
     return node;
   }
 

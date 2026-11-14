@@ -30,9 +30,7 @@
     S.t = U.clamp(t, 0, 1);
     var e = S.t * S.t * (3 - 2 * S.t);
     S.planImg.style.opacity = (1 - e).toFixed(3);
-    var r = (S.t * 150).toFixed(1);
-    var m = S.t >= 1 ? "none" : "radial-gradient(circle at 50% 55%, #000 " + Math.max(0, r - 18) + "%, transparent " + r + "%)";
-    S.nowImg.style.webkitMaskImage = m; S.nowImg.style.maskImage = m;
+    S.nowImg.style.opacity = e.toFixed(3);
     var isNow = S.t > 0.5;
     if (S.root.classList.contains("is-now") !== isNow) { S.root.classList.toggle("is-now", isNow); updateBadge(); }
     S.morphRange.value = String(Math.round(S.t * 100));
@@ -334,7 +332,8 @@
       places.forEach(function (p) {
         var r = geom(p); if (!r) return;
         var lab = el("button", { class: "map-label " + eraClass(p), type: "button", dataset: { id: p.id }, on: { click: function () { clearJourney(); openPlace(p.id); } } }, p.name.replace(/ \(.*\)$/, ""));
-        S.overlay.appendChild(lab); S.labels.push({ id: p.id, el: lab, at: { x: r.x + r.w / 2, y: r.y } });
+        if (p.labelBelow) lab.classList.add("below");
+        S.overlay.appendChild(lab); S.labels.push({ id: p.id, el: lab, at: { x: r.x + r.w / 2, y: p.labelBelow ? r.y + r.h : r.y } });
       });
       var badge = el("div", { class: "map-badge" }, el("b", null, ""), el("span", null, ""));
       S.badge = badge;

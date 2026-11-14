@@ -70,7 +70,7 @@ M.events = [
 
   { id: "e-1998-servers", year: 1998, era: "founding", sort: 10,
     title: "IIIT runs its own servers in Nilgiri",
-    summary: "Nilgiri had IIIT's first server room. The institute bought its own hardware and hosted its own email on Zimbra.",
+    summary: "Nilgiri had IIIT's first server room. The institute bought its own hardware and hosted its own email (later on Zimbra, then Microsoft).",
     body: "Students helped run the systems alongside the IT staff. Email later moved to Microsoft. The Nilgiri servers are still running in 2026, while the server room moves to the IT wing in Vindhya.",
     category: ["operations"], places: ["nilgiri"], people: [], sources: ["S-PJN"], confidence: "single", images: [], featured: false },
 

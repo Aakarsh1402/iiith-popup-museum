@@ -69,15 +69,20 @@
     return navBtn;
   };
 
-  document.addEventListener("keydown", function (e) {
+  // capture phase on window, so a clicker's PageDown drives the tour and never reaches a page's own key handler
+  window.addEventListener("keydown", function (e) {
     if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
     var t = e.target, tag = t && t.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable)) return;
+    var stepKey = e.key === "PageDown" || e.key === "]" || e.key === "PageUp" || e.key === "[";
+    if (bar && stepKey) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (e.key === "PageDown" || e.key === "]") T.next(); else T.prev();
+      return;
+    }
     if (e.key === "t" || e.key === "T") { if (bar) T.stop(); else T.start(); updateBtn(); }
     else if (e.key === "n" || e.key === "N") T.toggleNotes();
-    else if (bar && (e.key === "PageDown" || e.key === "]")) { e.preventDefault(); T.next(); }
-    else if (bar && (e.key === "PageUp" || e.key === "[")) { e.preventDefault(); T.prev(); }
-  });
+  }, true);
 
   // keep the note in step with the page; the router calls this after every swap
   M.router.onChange(renderNote);

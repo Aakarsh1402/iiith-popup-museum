@@ -68,7 +68,10 @@ mask = mask.filter(ImageFilter.GaussianBlur(10))
 wa = np.asarray(warped).astype(float); ma = np.asarray(mask).astype(float)[..., None] / 255.0
 num = np.stack([ndimage.gaussian_filter(wa[..., c] * ma[..., 0], 60) for c in range(3)], 2)
 den = ndimage.gaussian_filter(ma[..., 0], 60)[..., None]
-ext = num / np.maximum(den, 1e-4) * 0.55
+ext = num / np.maximum(den, 1e-4)
+paper = np.array([236, 239, 235], float)              # the map stage background (look.css --paper-2)
+far = np.clip(ndimage.distance_transform_edt(ma[..., 0] < 0.5) / 90.0, 0, 1)[..., None]
+ext = ext * 0.35 * (1 - far) + paper * (0.65 + 0.35 * far) if True else ext
 out = wa * ma + ext * (1 - ma)
 Image.fromarray(np.clip(out, 0, 255).astype(np.uint8)).save(OUT, quality=90, optimize=True, progressive=True)
 print("wrote", OUT, (W, H))
