@@ -72,7 +72,7 @@
     alert: "M12 3l10 18H2zM12 10v5M12 18h.01"
   };
   UI.icon = function (name, cls) {
-    var s = UI.svg("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: cls || null });
+    var s = UI.svg("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: "i-" + name + (cls ? " " + cls : "") });
     s.appendChild(UI.svg("path", { d: ICONS[name] || ICONS.close }));
     if (name === "play") s.firstChild.setAttribute("fill", "currentColor");
     return s;

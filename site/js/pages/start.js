@@ -35,7 +35,7 @@
       var HOLD = opts.hold || 3600, SPIN = opts.spin || 1900;
       var angle = opts.startBack ? 180 : 0, base = angle, tx = 0, ty = 0, ttx = 0, tty = 0;
       var mode = reduce ? "still" : "auto", autoT = 0, last = performance.now(), raf = 0, resumeTimer = 0;
-      var vel = 0, dragX = 0, moved = 0, cancelTween = null, visible = true;
+      var vel = 0, dragX = 0, moved = 0, cancelTween = null, visible = true, spinV = opts.turntable || 0;
 
       function nearestFace(a) { return Math.round(a / 180) * 180; }
       function goTo(target, dur) {
@@ -52,13 +52,17 @@
       }
       function frame(now) {
         var dt = Math.min(64, now - last); last = now;
-        if (mode === "auto") {
+        if (mode === "auto" && opts.turntable) {
+          spinV += ((opts.turntable || 0.02) - spinV) * Math.min(1, dt / 600);   // ease back to cruising speed
+          angle += spinV * dt;
+        } else if (mode === "auto") {
           autoT += dt;
           var cyc = HOLD + SPIN, k = autoT % cyc, n = Math.floor(autoT / cyc);
           angle = base + n * 180 + (k < HOLD ? 0 : 180 * U.easeInOutCubic((k - HOLD) / SPIN));
         } else if (mode === "inertia") {
           angle += vel * dt / 16; vel *= Math.pow(0.94, dt / 16);
-          if (Math.abs(vel) < 0.35) goTo(nearestFace(angle + vel * 6), 700);
+          if (opts.turntable && Math.abs(vel / 16) <= Math.abs(opts.turntable) * 1.5) { spinV = vel / 16; mode = "auto"; }
+          else if (!opts.turntable && Math.abs(vel) < 0.35) goTo(nearestFace(angle + vel * 6), 700);
         }
         var wob = reduce ? 0 : 1, t = now / 1000;
         tx += (ttx - tx) * 0.08; ty += (tty - ty) * 0.08;
@@ -99,7 +103,7 @@
       function onUp() {
         if (mode !== "drag") return;
         stage.classList.remove("dragging");
-        if (moved < 5) { goTo(nearestFace(angle) + 180, 1000); return; }
+        if (moved < 5) { if (opts.turntable) { vel = 22; mode = "inertia"; return; } goTo(nearestFace(angle) + 180, 1000); return; }
         mode = reduce ? "idle" : "inertia";
         if (reduce) goTo(nearestFace(angle), 1);
       }
@@ -235,7 +239,7 @@
         ticker());
       root.appendChild(section);
       coinApi = M.coin.create(coinHost, { faces: ["assets/img/iiit-badge.png", "assets/img/iiit-badge.png"], flat: true, caption: false, hint: false,
-        hold: 2600, spin: 2400, label: "IIIT Hyderabad's logo in a round badge. Drag to spin it." });
+        turntable: 0.03, label: "IIIT Hyderabad's logo in a round badge, turning. Drag or click to spin it." });
       var redraw = function (anim) { drawRoots(section.querySelector(".roots"), rootsSvg, coinApi.el, cards, anim); };
       // draw once the entrance animation has placed everything
       var t1 = setTimeout(function () { redraw(true); rootsDrawn = true; }, 650);

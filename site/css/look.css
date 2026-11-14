@@ -1,0 +1,202 @@
+/* look.css: the "drawing office" look (14 Nov, the un-AI-slop pass). Owner: aakarsh-claude.
+   Loaded last; every rule is scoped to html.look-v2, which js/look.js sets unless the URL has ?look=classic.
+   So ?look=classic shows the old look, and git tag look-v1-before-unslop has the old files.
+
+   Why: the old look was the default "tasteful AI" cluster (cream ground + terracotta accent + high-contrast serif,
+   tracked all-caps mono eyebrows, middle-dot meta strings, arrows on buttons, coloured left-stripe cards, the same
+   rounded card + soft shadow everywhere, fade-up on every block). See Anthropic's frontend-design skill and
+   github.com/funboy322/avoid-ai-design (catalog SD1, SD4, T2, T5, K2, K4, CP3, M1).
+
+   Direction, taken from the subject: the 2002 layout plan and the office that drew it.
+   - Ground: plan white #F6F7F4 (cool, not cream). Surfaces: white.
+   - Ink: IIIT logo navy #10305A for headings, #1B2A3F for text.
+   - Accent: the logo's green rule / the plan's tree stamps (#2F6B3B, light #7FA86A).
+   - Plan blue #2C5DA8 for links and buildings. Red ink #B3261E only for "sources disagree" and corrections,
+     like the handwritten notes on the plan.
+   - Type: Archivo (variable width) set narrow and heavy, like the plan's lettering; Atkinson Hyperlegible for
+     reading. No monospace: dates and counts use Archivo with tabular figures.
+   - Structure: plain rules and a few real borders, square-ish corners, shadows only on things that float. */
+
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap;
+  src: url('../assets/fonts/Archivo-normal-100_900-wdth62_125.woff2') format('woff2'); }
+
+html.look-v2 {
+  --paper: #F6F7F4;
+  --paper-2: #ECEFEB;
+  --paper-3: #DCE1DC;
+  --card: #FFFFFF;
+  --ink: #1B2A3F;
+  --ink-2: #46556B;
+  --ink-3: #6A7686;
+  --rule: #CDD4DC;
+  --navy: #10305A;
+  --banyan: #2F6B3B;
+  --banyan-deep: #1F4A28;
+  --leaf: #7FA86A;
+  --soil: #2C5DA8;
+  --soil-deep: #1E4580;
+  --ochre: #7FA86A;
+  --ochre-ink: #7A5A0A;
+  --slate: #4A6274;
+  --plum: #7D4E86;
+  --teal: #1E7A80;
+  --ok: #2F6B3B;
+  --warn: #B3261E;
+  --warn-ink: #9C2119;
+  --todo: #7B8794;
+  --night: #0E1A2B;
+  --c-land: #9A7414;
+  --font-display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+  --font-mono: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius: 4px;
+  --radius-sm: 3px;
+  --shadow-1: none;
+  --shadow-2: 0 2px 10px rgba(16, 48, 90, .10), 0 10px 30px rgba(16, 48, 90, .10);
+  --shadow-3: 0 8px 28px rgba(16, 48, 90, .16), 0 24px 70px rgba(16, 48, 90, .16);
+  --grain: none;
+}
+
+/* ---------- base ---------- */
+html.look-v2 body { background: var(--paper); background-image: none; font-stretch: 100%; font-size: 1.02rem; }
+html.look-v2 body * { text-transform: none !important; letter-spacing: 0 !important; }
+html.look-v2 ::selection { background: rgba(127, 168, 106, .35); }
+html.look-v2 :focus-visible { outline-color: var(--soil); }
+html.look-v2 a:hover { color: var(--soil-deep); }
+html.look-v2 body h1, html.look-v2 body h2, html.look-v2 body h3, html.look-v2 body h4 {
+  font-family: var(--font-display); font-stretch: 80%; font-weight: 750; font-variation-settings: normal; color: var(--navy); letter-spacing: -0.005em !important; }
+html.look-v2 body h1 { font-weight: 800; line-height: 1; }
+html.look-v2 body h3 { font-weight: 700; font-stretch: 85%; }
+html.look-v2 .mono, html.look-v2 .kicker { font-family: var(--font-display); font-variant-numeric: tabular-nums; }
+html.look-v2 .kicker { font-size: 1rem; font-weight: 700; font-stretch: 85%; color: var(--ink-2); }
+html.look-v2 .lede { color: var(--ink-2); }
+
+/* rubber stamps stay in capitals: that's what a file stamp looks like */
+html.look-v2 body .stamp { text-transform: uppercase !important; letter-spacing: .06em !important; font-family: var(--font-display); font-stretch: 75%; font-weight: 800; }
+
+/* ---------- nav ---------- */
+html.look-v2 #nav { background: rgba(246, 247, 244, .92); border-bottom: 1px solid var(--rule); }
+html.look-v2 .brand b { font-family: var(--font-display); font-stretch: 78%; font-weight: 800; color: var(--navy); font-size: 1.32rem; }
+html.look-v2 .brand small { font-family: var(--font-body); font-size: .72rem; color: var(--ink-3); margin-top: 0; }
+html.look-v2 .brand img { filter: none; }
+html.look-v2 .nav-links a { font-size: .9rem; color: var(--ink-2); border-radius: 4px; }
+html.look-v2 .nav-links a[aria-current="page"] { color: var(--navy); }
+html.look-v2 .nav-links a[aria-current="page"]::after { background: var(--navy); height: 3px; bottom: .25rem; border-radius: 0; }
+html.look-v2 .nav-tour { border-radius: 4px; border-color: var(--rule); background: #fff; }
+
+/* ---------- controls ---------- */
+html.look-v2 .btn { border-radius: 4px; font-family: var(--font-display); font-stretch: 85%; font-weight: 700; font-size: 1rem; background: var(--navy); border-color: var(--navy); color: #fff; }
+html.look-v2 .btn:hover { transform: none; box-shadow: none; background: #183F72; color: #fff; }
+html.look-v2 .btn--ghost { background: transparent; color: var(--navy); border-color: var(--navy); }
+html.look-v2 .btn--ghost:hover { background: rgba(16, 48, 90, .06); color: var(--navy); }
+html.look-v2 .btn--green { background: var(--banyan); border-color: var(--banyan); }
+html.look-v2 .btn--green:hover { background: var(--banyan-deep); }
+html.look-v2 .btn .i-arrow-right, html.look-v2 .root-card .go { display: none; }
+html.look-v2 .icon-btn:hover { transform: none; }
+html.look-v2 .chip { border-radius: 4px; font-weight: 700; }
+html.look-v2 .chip:hover { transform: none; }
+html.look-v2 .badge { border-radius: 3px; font-family: var(--font-body); font-size: .74rem; }
+html.look-v2 .badge:hover { transform: none; }
+html.look-v2 .source-line, html.look-v2 .fig figcaption .credit, html.look-v2 .popover .url { font-family: var(--font-body); }
+
+/* ---------- cards: flat, bordered, no lift, no stripe ---------- */
+html.look-v2 .card { border-radius: 4px; box-shadow: none; }
+html.look-v2 .card.clickable:hover { transform: none; box-shadow: none; border-color: var(--navy); }
+html.look-v2 .card.clickable:hover .card-img img, html.look-v2 .fig-btn:hover img { transform: none; }
+html.look-v2 .sheet { border-left: 1px solid var(--rule); }
+html.look-v2 .sheet-bar { background: var(--paper-2); }
+html.look-v2 .sheet-body > * { animation: none; }
+
+/* ---------- start ---------- */
+html.look-v2 .start .enter { animation: none; }
+html.look-v2 .start .coin-wrap.enter { animation: start-in 900ms var(--ease-out) both; }
+html.look-v2 .start-kicker { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--ink-2); gap: 0; }
+html.look-v2 .start-kicker span + span::before { content: ", "; display: inline; width: auto; height: auto; margin: 0; background: none; border-radius: 0; }
+html.look-v2 .start-title { font-family: var(--font-display); font-stretch: 72%; font-weight: 850; line-height: .95; max-width: 9ch; color: var(--navy);
+  background: none; -webkit-text-fill-color: currentColor; font-size: clamp(3.2rem, 6.4vw, 7.4rem); }
+html.look-v2 .start-arg { font-size: clamp(1.1rem, 1.25vw, 1.4rem); color: var(--ink); max-width: 38ch; }
+html.look-v2 .coin-wrap::before { display: none; }
+html.look-v2 .roots-svg path { stroke: var(--navy); opacity: .5; }
+html.look-v2 .roots-svg path.thin { opacity: .22; }
+html.look-v2 .roots-grid { gap: 0; border-top: 2px solid var(--navy); }
+html.look-v2 .root-card { background: transparent; border: 0; border-right: 1px solid var(--rule); border-radius: 0; box-shadow: none; backdrop-filter: none; padding: 1rem 1.3rem 1.2rem; }
+html.look-v2 .root-card:last-child { border-right: 0; }
+html.look-v2 .root-card::before { display: none; }
+html.look-v2 .root-card:hover { transform: none; box-shadow: none; background: #fff; }
+html.look-v2 .root-card .num { font-family: var(--font-display); font-stretch: 85%; font-size: 1rem; font-weight: 700; color: var(--c); }
+html.look-v2 .root-card h3 { font-size: clamp(1.4rem, 1.8vw, 2rem); }
+html.look-v2 .root-card p { font-size: 1rem; }
+html.look-v2 .root-card:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+html.look-v2 .ticker { background: #fff; color: var(--ink); border-radius: 0; box-shadow: none; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--rule); }
+html.look-v2 .ticker-label { font-family: var(--font-display); font-stretch: 80%; font-size: 1.3rem; font-weight: 800; color: var(--navy); border-right-color: var(--rule); }
+html.look-v2 .ticker-text { font-family: var(--font-display); font-stretch: 88%; font-weight: 600; color: var(--ink); }
+html.look-v2 .ticker .badge { --c: var(--ink-2); background: var(--paper-2); border-color: var(--rule); color: var(--ink-2); }
+html.look-v2 .ticker .icon-btn { background: #fff; border-color: var(--rule); color: var(--navy); }
+html.look-v2 .ticker-bar { background: var(--banyan); }
+html.look-v2 .ticker-thumb { border-radius: 3px; background: var(--paper-2); }
+
+/* ---------- timeline ---------- */
+html.look-v2 .tl-card { border-radius: 3px; box-shadow: none; }
+html.look-v2 .tl-card:hover { box-shadow: var(--shadow-2); }
+html.look-v2 .tl-card-stripe { display: none; }
+html.look-v2 .tl-card { padding-left: .7rem; }
+html.look-v2 .tl-date { font-family: var(--font-display); font-stretch: 85%; font-size: .78rem; filter: none; color: var(--ink-2); }
+html.look-v2 .tl-date::before { content: ''; display: inline-block; width: .55em; height: .55em; border-radius: 50%; background: var(--c); margin-right: .4em; vertical-align: .05em; }
+html.look-v2 .tl-title { font-family: var(--font-display); font-stretch: 88%; font-weight: 700; color: var(--navy); }
+html.look-v2 .tl-era-label b { font-family: var(--font-display); font-stretch: 78%; font-weight: 800; opacity: .9; }
+html.look-v2 .tl-era-label span, html.look-v2 .tl-tick span { font-family: var(--font-display); }
+html.look-v2 .tl-era-btn { border-radius: 4px; }
+html.look-v2 .tl-era-btn:hover { transform: none; box-shadow: none; }
+html.look-v2 .tl-era-btn b { font-family: var(--font-display); font-stretch: 82%; font-weight: 800; }
+html.look-v2 .tl-track { background: #fff; }
+/* era bands: quiet tints from the new palette (the band colours are inline styles from timeline.js) */
+html.look-v2 .tl-era-band:nth-child(1), html.look-v2 .tl-mini-era:nth-child(1) { background: rgba(106, 118, 134, .07) !important; }
+html.look-v2 .tl-era-band:nth-child(2), html.look-v2 .tl-mini-era:nth-child(2) { background: rgba(44, 93, 168, .07) !important; }
+html.look-v2 .tl-era-band:nth-child(3), html.look-v2 .tl-mini-era:nth-child(3) { background: rgba(154, 116, 20, .07) !important; }
+html.look-v2 .tl-era-band:nth-child(4), html.look-v2 .tl-mini-era:nth-child(4) { background: rgba(47, 107, 59, .08) !important; }
+html.look-v2 .tl-era-band:nth-child(5), html.look-v2 .tl-mini-era:nth-child(5) { background: rgba(16, 48, 90, .07) !important; }
+html.look-v2 .tl-era-band:nth-child(6), html.look-v2 .tl-mini-era:nth-child(6) { background: rgba(106, 118, 134, .07) !important; }
+html.look-v2 .tl-mini { border-radius: 3px; }
+html.look-v2 .tl-mini-brush { border-radius: 2px; border-color: var(--navy); }
+html.look-v2 .tl-hint { border-radius: 4px; background: var(--navy); }
+html.look-v2 .tl-flag { font-family: var(--font-body); }
+html.look-v2 .tl-ev.contested .tl-card { background: #FFF5F4; }
+
+/* ---------- map ---------- */
+html.look-v2 .map-rail { background: #fff; }
+html.look-v2 .map-stage { background: var(--paper-2); }
+html.look-v2 .rail-btn { border-radius: 4px; }
+html.look-v2 .rail-btn:hover { transform: none; }
+html.look-v2 .rail-btn.on { box-shadow: inset 3px 0 0 var(--c); }
+html.look-v2 .map-label { border-radius: 3px; background: #fff; font-family: var(--font-display); font-stretch: 85%; font-size: .82rem; }
+html.look-v2 .map-label:hover, html.look-v2 .map-label.hover { background: var(--navy); color: #fff; }
+html.look-v2 .map-badge, html.look-v2 .map-compass, html.look-v2 .map-morph { background: #fff; border-radius: 4px; box-shadow: var(--shadow-2); }
+html.look-v2 .map-compass { border-radius: 50%; color: var(--navy); }
+html.look-v2 .map-compass svg { color: var(--navy); }
+html.look-v2 .morph-btn { border-radius: 3px; font-family: var(--font-display); font-stretch: 85%; }
+html.look-v2 .morph-btn.on { background: var(--navy); }
+html.look-v2 .jr-marker { font-family: var(--font-display); font-weight: 800; }
+
+/* ---------- slideshows (black on purpose: the monitors) ---------- */
+html.look-v2 .slides { background: #000; }
+html.look-v2 body[data-page="photos"], html.look-v2 body[data-page="buildings"] { background: #000; }
+html.look-v2 .sl-head b { font-family: var(--font-display); font-stretch: 80%; font-weight: 800; font-size: clamp(1rem, 1.2vw, 1.5rem); color: #fff; }
+html.look-v2 .sl-head span { font-family: var(--font-body); font-size: clamp(.85rem, .9vw, 1.1rem); color: rgba(255, 255, 255, .55); }
+html.look-v2 .sl-text { font-family: var(--font-display); font-stretch: 88%; font-weight: 600; }
+html.look-v2 .sl-src { font-family: var(--font-body); font-size: clamp(.75rem, .8vw, 1rem); color: rgba(255, 255, 255, .5); }
+html.look-v2 .sl-place h2 { color: #fff; font-stretch: 75%; }
+html.look-v2 .sl-place .sl-src { font-size: clamp(.8rem, .85vw, 1.05rem); }
+html.look-v2 .sl-progress i, html.look-v2 .sl-pips i.now { background: var(--leaf); }
+html.look-v2 .sl-pips i.done { background: rgba(127, 168, 106, .5); }
+html.look-v2 .sl-count { font-family: var(--font-display); }
+
+/* ---------- tour + speaker notes ---------- */
+html.look-v2 .tour-bar { border-radius: 6px; background: rgba(14, 26, 43, .96); }
+html.look-v2 .tour-kicker { font-family: var(--font-body); color: var(--leaf); font-size: .8rem; }
+html.look-v2 .tour-title { font-family: var(--font-display); font-stretch: 80%; font-weight: 800; }
+html.look-v2 .tour-dots button.on, html.look-v2 .tour-dots button.done { background: var(--leaf); }
+html.look-v2 .speaker-note { border-radius: 4px; }
+html.look-v2 .sn-head { font-family: var(--font-body); }
+
+/* ---------- kiosk chrome ---------- */
+html.look-v2 .kiosk-pill { border-radius: 4px; }
