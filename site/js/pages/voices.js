@@ -96,8 +96,9 @@
 
   /* ---------- index ---------- */
   function sortedPeople() { return (M.people || []).slice().sort(function (a, b) { return (a.joined || 9999) - (b.joined || 9999); }); }
-  /* Headshots from public profiles (INAE, IIIT website, IIIT blog). Anyone not listed shows initials. */
-  var PHOTOS = { "P-PJN": "assets/img/people/P-PJN.jpg", "P-RAJAN": "assets/img/people/P-RAJAN.jpg", "P-SLN": "assets/img/people/P-SLN.jpg" };
+  /* Headshots: public profiles (INAE, IIIT website and blog, LinkedIn for Prabhakar); Gopi's from the team. Anyone not listed shows initials. */
+  var PHOTOS = {};
+  ["P-GOPI", "P-SLN", "P-PJN", "P-MURALI", "P-RAJAN", "P-PRAB", "P-SRIDHAR"].forEach(function (id) { PHOTOS[id] = "assets/img/people/" + id + ".jpg"; });
   function avatar(p, size) {
     var a = UI.avatar(p, size);
     if (p.color) a.style.setProperty("--c", p.color);
@@ -144,7 +145,7 @@
       ring,
       el("h2", { class: "voices-sub" }, "When they arrived"),
       strip,
-      el("p", { class: "voices-credit muted small" }, "Photos of Prof. Narayanan, Prof. Rajan and SLN Shastry are from their public profiles (INAE, the IIIT website, the IIIT blog). Everyone else is shown by initials."),
+      el("p", { class: "voices-credit muted small" }, "Photos of Prof. Narayanan, Prof. Rajan, SLN Shastry, G. Muralidhar, Prabhakar M and Sridhar Kora are from their public profiles (INAE, the IIIT website and blog, LinkedIn)."),
       el("details", { class: "callout voices-howto" },
         el("summary", null, "How to read these interviews"),
         el("p", null, "Most texts are write-ups of the recordings, not word for word. Prof. Narayanan's came as a polished write-up, so we never quote its wording as his. Prof. Rajan's is notes from an automatic transcript. Where we cut a line, the text says so."))))));
