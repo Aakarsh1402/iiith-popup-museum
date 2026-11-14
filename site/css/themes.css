@@ -1,0 +1,56 @@
+/* themes.css: white colour schemes built on IIIT's navy (#0B3563, from raw/brand/iiit-logo-official.jpg). Owner: saharsh-claude.
+   js/theme.js puts data-theme on <html>. "paper" is the original beige in base.css, so it needs no rules here.
+   Each theme only swaps the shared tokens; the few spots that hard-code beige are fixed at the bottom. */
+
+/* 1. IIIT navy: white, navy as the main colour, a warm orange accent */
+:root[data-theme="navy"] {
+  --paper: #FFFFFF; --paper-2: #F1F4F8; --paper-3: #DFE6EF; --card: #FFFFFF;
+  --ink: #0E1A2B; --ink-2: #46546A; --ink-3: #6E7B8F; --rule: #D5DDE7;
+  --banyan: #0B3563; --banyan-deep: #072748; --leaf: #6FA85A;
+  --soil: #C2410C; --soil-deep: #9A330A; --ochre: #D99A0B; --ochre-ink: #8C5E00;
+  --slate: #2F6DB5; --plum: #6B4FA0; --teal: #11807F; --ok: #237A4B; --night: #0A1A30;
+  --c-land: #A8740B;
+}
+
+/* 2. Navy and banyan: white, navy text and labels, the logo's green for trees and buttons */
+:root[data-theme="banyan"] {
+  --paper: #FFFFFF; --paper-2: #F2F6F1; --paper-3: #DFE8DC; --card: #FFFFFF;
+  --ink: #0B2545; --ink-2: #44546B; --ink-3: #6C7A8C; --rule: #D6DED5;
+  --banyan: #2E6B3E; --banyan-deep: #1E4A2A; --leaf: #8DBF6A;
+  --soil: #0B3563; --soil-deep: #072748; --ochre: #C8962B; --ochre-ink: #7E5A0E;
+  --slate: #2F6DB5; --plum: #6B4E71; --teal: #2D7A78; --ok: #2E6B3E; --night: #0B1F38;
+  --c-buildings: #B4532A;
+}
+
+/* 3. Sky: cool off-white, navy, a bright sky blue and coral */
+:root[data-theme="sky"] {
+  --paper: #F7FAFD; --paper-2: #EAF1F9; --paper-3: #D6E3F2; --card: #FFFFFF;
+  --ink: #0B2545; --ink-2: #3E5573; --ink-3: #667C97; --rule: #CCDAEA;
+  --banyan: #0B3563; --banyan-deep: #06213F; --leaf: #3FA796;
+  --soil: #C23B30; --soil-deep: #9E2E25; --ochre: #E58E1A; --ochre-ink: #94590A;
+  --slate: #2B7BD6; --plum: #7357C7; --teal: #0E8F9B; --ok: #1F7A55; --night: #0B2545;
+}
+
+/* shared fixes for every white theme */
+:root[data-theme="navy"], :root[data-theme="banyan"], :root[data-theme="sky"] {
+  --shadow-1: 0 1px 2px rgba(11, 37, 69, .07), 0 2px 8px rgba(11, 37, 69, .05);
+}
+:root[data-theme="navy"] body, :root[data-theme="banyan"] body { background-image: none; }
+:root[data-theme="sky"] body { background-image: radial-gradient(1200px 700px at 85% -10%, rgba(43, 123, 214, .08), transparent 60%); }
+:root[data-theme="navy"] #nav, :root[data-theme="banyan"] #nav, :root[data-theme="sky"] #nav { background: color-mix(in srgb, var(--paper) 88%, transparent); }
+:root[data-theme="navy"] .sheet-bar, :root[data-theme="banyan"] .sheet-bar, :root[data-theme="sky"] .sheet-bar,
+:root[data-theme="navy"] .arc-bar, :root[data-theme="banyan"] .arc-bar, :root[data-theme="sky"] .arc-bar,
+:root[data-theme="navy"] .map-rail, :root[data-theme="banyan"] .map-rail, :root[data-theme="sky"] .map-rail { background: color-mix(in srgb, var(--paper-2) 70%, transparent); }
+:root[data-theme="navy"] .way-rail, :root[data-theme="banyan"] .way-rail, :root[data-theme="sky"] .way-rail { background: color-mix(in srgb, var(--paper) 94%, transparent); }
+:root[data-theme="navy"] .tl-track, :root[data-theme="banyan"] .tl-track, :root[data-theme="sky"] .tl-track { background: linear-gradient(180deg, transparent 70%, color-mix(in srgb, var(--paper-2) 60%, transparent)); }
+
+/* the picker (only with ?themes in the URL, for the team to compare) */
+.theme-picker { position: fixed; left: 12px; bottom: 12px; z-index: 900; display: flex; gap: 6px; align-items: center; padding: 6px 8px; border-radius: 999px; background: #fff; border: 1px solid #ccd; box-shadow: 0 4px 18px rgba(0, 0, 0, .18); font: 600 12px/1 system-ui, sans-serif; color: #223; }
+.theme-picker button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #ccd; background: #fff; border-radius: 999px; padding: 5px 10px; cursor: pointer; font: inherit; color: inherit; }
+.theme-picker button[aria-pressed="true"] { border-color: #0B3563; box-shadow: inset 0 0 0 1px #0B3563; }
+.theme-picker i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0, 0, 0, .15); }
+:root[data-theme="navy"] .root-card, :root[data-theme="banyan"] .root-card, :root[data-theme="sky"] .root-card,
+:root[data-theme="navy"] .map-badge, :root[data-theme="banyan"] .map-badge, :root[data-theme="sky"] .map-badge,
+:root[data-theme="navy"] .map-compass, :root[data-theme="banyan"] .map-compass, :root[data-theme="sky"] .map-compass { background: color-mix(in srgb, var(--card) 92%, transparent); }
+:root[data-theme="navy"] .map-stage, :root[data-theme="banyan"] .map-stage, :root[data-theme="sky"] .map-stage { background: var(--paper-2); }
+:root[data-theme="navy"] .start-title, :root[data-theme="banyan"] .start-title, :root[data-theme="sky"] .start-title { background: linear-gradient(180deg, var(--ink) 55%, var(--banyan) 100%); -webkit-background-clip: text; background-clip: text; }
