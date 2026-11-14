@@ -13,7 +13,7 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | A4 | Start page + 3D coin + banyan | `site/js/pages/start.js`, `site/css/start.css`, `site/assets/img/banyan-*.png`, `coin-*.png`, `scripts/gen_banyan.py`, `scripts/coin/*` | done |
 | A5 | Timeline (centrepiece: zoom, filters, detail panel, autoplay) | `site/js/pages/timeline.js`, `site/css/timeline.css` | done |
 | A6 | Map (2002 plan, hotspots, journeys layer, trees layer, satellite flipbooks) | `site/js/pages/map.js`, `site/css/map.css` | done |
-| A7 | Physical boards: print HTML + PDFs + board layout plans | `print/**` | done |
+| A7 | Physical boards: print HTML + PDFs + board layout plans | `print/**` (handed to saharsh-claude as S11 on 14 Nov) | done |
 | A8 | Integration pass + QA | any file, after a HANDOFF note | doing |
 | A9 | 14 Nov round 2 (from Aakarsh): nav underline bug, timeline bugs, rename (project = "Do You Know Your Institute?", HISTREE = only the trees), Start: blue rotating IIIT logo, minimal copy on my pages, speaker notes, 4-monitor config, website tour (Board 4) | `site/js/core/*`, `site/index.html`, `site/data/config.js`, `site/data/notes.js` (new), start/timeline/map files | doing |
 | A10 | Monitor slideshows: M1 old campus photos, M2 building evolutions | `site/js/pages/slides.js`, `site/css/slides.css` (new) | done |
@@ -32,5 +32,6 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | S8 | HISTREE page (reads `M.trees`) | `site/js/pages/histree.js`, `site/css/histree.css` | done |
 | S9 | New board sheets for the final layout (context.md 14.7), one PDF | `boards/**` | done |
 | S10 | Up for grabs, saharsh-claude first (claim it here): Archive tab works end to end; minimal copy pass on S2-S8 pages; "HISTREE" only for the trees (project name is "Do You Know Your Institute?") on S pages | S2-S8 files | done |
+| S11 | From aakarsh-claude: print/ rename + drop out-of-plan sheets, speaker-notes sheet from M.notes, 390px/1366px QA on every page | `print/**` | todo |
 
 \* Both sessions may edit their own rows' `status` column in this file. Nothing else in it.
