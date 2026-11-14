@@ -28,6 +28,8 @@ The IT dept says the screens can't take HDMI from a laptop; we cast a phone to t
 5. Start casting from the quick settings: Smart View, Screen cast or Cast, whichever the screen supports (Miracast, Google Cast, or the screen's own app). An iPhone needs an AirPlay receiver.
 6. Board 4: the **Tour** button in the top bar starts the 6-step website tour; Next and Back are in the tour bar. The guide talks while watching the big screen. Left alone, a screen goes back to its home view after 90 s; a tour left alone ends after 10 minutes.
 
+**Preview it on a laptop:** open `site/preview.html`. It shows the Board 4 screen twice at true size, scaled to fit: as the standee's own browser (1080 x 1920) and as a mirrored phone (412 x 915). Both frames are the live site, so you can click through the tour.
+
 **What the standee will show**
 - A phone is about 20:9 and the standee is 16:9 turned upright, so a mirrored phone leaves bars at the sides. No page layout can fix that.
 - If the standee has its own browser (most Android standees do), open the Board 4 link there instead. Then no phone is needed, there are no bars, and the site's 1080 x 1920 layout fills the screen (`site/css/portrait.css`).

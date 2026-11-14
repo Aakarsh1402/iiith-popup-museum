@@ -50,7 +50,7 @@ const shot = async (file) => { const r = await send("Page.captureScreenshot", { 
 await send("Runtime.enable"); await send("Page.enable");
 await send("Emulation.setDeviceMetricsOverride", { width: W, height: H, deviceScaleFactor: 1, mobile: W < 700 });
 if (args.includes("--touch")) await send("Emulation.setTouchEmulationEnabled", { enabled: true, maxTouchPoints: 5 });   // phone: (hover: none), (pointer: coarse)
-await send("Page.navigate", { url: `file://${ROOT}/site/index.html${query}${route}` });
+await send("Page.navigate", { url: `file://${ROOT}/site/${process.env.PAGE || "index.html"}${query}${route}` });
 await sleep(wait);
 if (stepsFile) {
   for (const s of JSON.parse(fs.readFileSync(stepsFile, "utf8"))) {

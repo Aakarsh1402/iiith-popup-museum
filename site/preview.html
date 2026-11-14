@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Board 4 standee preview</title>
+  <!-- preview.html: see the Board 4 vertical screen on a laptop. Owner: aakarsh-claude (A13).
+       Both frames run the real site (index.html?screen=board4) at true size, scaled down to fit this window. Not linked from the site. -->
+  <style>
+    html, body { margin: 0; height: 100%; background: #1b1a17; color: #eee; font: 14px/1.4 system-ui, sans-serif; }
+    .row { display: flex; gap: 32px; justify-content: center; align-items: flex-start; padding: 16px 20px 0; box-sizing: border-box; height: 100%; }
+    figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    figcaption { font-weight: 600; text-align: center; }
+    figcaption small { display: block; font-weight: 400; opacity: .65; }
+    .screen { position: relative; background: #000; outline: 6px solid #333; border-radius: 6px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, .5); }
+    .screen iframe { position: absolute; border: 0; transform-origin: 0 0; background: #fff; }
+    .hint { position: fixed; left: 0; right: 0; bottom: 6px; text-align: center; font-size: 12px; opacity: .55; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <figure>
+      <div class="screen" id="s1"><iframe id="f1" src="index.html?screen=board4" width="1080" height="1920" title="Standee, own browser"></iframe></div>
+      <figcaption>Standee opens the link itself<small>1080 x 1920, no phone needed</small></figcaption>
+    </figure>
+    <figure>
+      <div class="screen" id="s2"><iframe id="f2" src="index.html?screen=board4" width="412" height="915" title="Phone mirrored to the standee"></iframe></div>
+      <figcaption>A phone mirrored to the standee<small>412 x 915 phone screen, bars at the sides</small></figcaption>
+    </figure>
+  </div>
+  <p class="hint">Click inside a frame to use it (Tour button, cards, map). Keys like T work after clicking into a frame.</p>
+  <script>
+    (function () {
+      var frames = [["s1", "f1", 1080, 1920], ["s2", "f2", 412, 915]];
+      function fit() {
+        var H = Math.max(300, innerHeight - 100), W = H * 9 / 16;   // the standee is a 16:9 screen turned upright
+        frames.forEach(function (a) {
+          var s = document.getElementById(a[0]), f = document.getElementById(a[1]);
+          var k = Math.min(W / a[2], H / a[3]);
+          s.style.width = W + "px"; s.style.height = H + "px";
+          f.style.transform = "scale(" + k + ")";
+          f.style.left = ((W - a[2] * k) / 2) + "px"; f.style.top = ((H - a[3] * k) / 2) + "px";
+        });
+      }
+      addEventListener("resize", fit); fit();
+    })();
+  </script>
+</body>
+</html>
