@@ -1,6 +1,6 @@
 /* slides.js: the two monitor slideshows. Owner: aakarsh-claude (A10).
    #/photos     Board 1: old photos of the campus, one or two per slide (four for the Nilgiri court signs), black background, crossfade every 7.5 s (10 s for the four).
-   #/buildings  Board 2: satellite sequences of buildings going up, oldest to newest, with the place name on screen.
+   #/buildings  Board 2: SLN Shastry's 1997 videos of Nilgiri being built, then satellite sequences of buildings going up, oldest to newest, with the place name on screen.
    Both play on their own forever. A mouse nudge never stops them; arrows / the buttons step, Space pauses.
    Two image buffers + img.decode() before each fade, so it can loop for hours without a flash. */
 (function () {
@@ -31,7 +31,12 @@
   ];
 
   /* Board 2. Satellite sequences, in the order context.md 14.3 gives. Frames come from places.js `sequence`. */
+  var VID = "assets/video/";
   var BUILD_PLACES = [
+    { id: "nilgiri-1997", name: "Nilgiri", line: "1997 Nilgiri construction videos, courtesy SLN Shastry.",
+      // WhatsApp copies of SLN Shastry's tapes (14 Nov): 1920 x 992 with the 4:3 picture in the middle, so the black side bars are cropped off
+      videos: [{ src: VID + "nilgiri-1997-1.mp4", ms: 16659 }, { src: VID + "nilgiri-1997-2.mp4", ms: 22312 }, { src: VID + "nilgiri-1997-3.mp4", ms: 16048 }],
+      crop: "inset(0.4% 16.2% 2.6% 16.2%)", ar: 1.349 },
     { id: "nab", name: "New Academic Block", line: "Going up where the first batch lived in 1998." },
     { id: "bakul", name: "Bakul Nivas", line: "Seen from above while it was built." },
     { id: "felicity", name: "Felicity ground", line: "The Felicity ground, seen from above." },
@@ -61,8 +66,14 @@
 
   function decodeAll(node) {
     var imgs = Array.prototype.slice.call(node.querySelectorAll("img"));
-    return Promise.all(imgs.map(function (i) { return i.decode ? i.decode().catch(function () {}) : Promise.resolve(); }));
+    var vids = Array.prototype.slice.call(node.querySelectorAll("video"));
+    return Promise.all(imgs.map(function (i) { return i.decode ? i.decode().catch(function () {}) : Promise.resolve(); }).concat(vids.map(function (v) {
+      // first frame ready, or give up after 5 s so a bad file never stalls the loop
+      return new Promise(function (res) { if (v.readyState >= 2) return res(); v.addEventListener("loadeddata", res, { once: true }); v.addEventListener("error", res, { once: true }); setTimeout(res, 5000); });
+    })));
   }
+  function vids(node) { return node ? Array.prototype.slice.call(node.querySelectorAll("video")) : []; }
+  function release(node) { vids(node).forEach(function (v) { v.pause(); v.removeAttribute("src"); v.load(); }); }
 
   /* ---------- shared player ---------- */
   function player(opts) {
@@ -83,8 +94,9 @@
         st.busy = false;
         void node.offsetWidth;
         node.classList.add("on");
+        vids(node).forEach(function (v) { v.currentTime = 0; if (!st.paused) v.play().catch(function () {}); });
         var old = st.cur; st.cur = node; st.i = idx;
-        if (old) { old.classList.remove("on"); old.classList.add("leaving"); setTimeout(function () { old.remove(); }, 1700); }
+        if (old) { old.classList.remove("on"); old.classList.add("leaving"); setTimeout(function () { release(old); old.remove(); }, 1700); }
         if (opts.onShow) opts.onShow(item, idx);
         schedule(opts.dur(item));
       });
@@ -103,10 +115,11 @@
       index: function () { return st.i; },
       toggle: function () {
         st.paused = !st.paused;
+        vids(st.cur).forEach(function (v) { if (st.paused) v.pause(); else v.play().catch(function () {}); });
         if (st.paused) clearTimeout(st.timer); else schedule(Math.max(1500, st.ms - (performance.now() - st.t0)));
         return st.paused;
       },
-      stop: function () { clearTimeout(st.timer); cancelAnimationFrame(st.raf); }
+      stop: function () { clearTimeout(st.timer); cancelAnimationFrame(st.raf); release(st.cur); }
     };
   }
 
@@ -176,6 +189,10 @@
   function buildingItems() {
     var items = [];
     BUILD_PLACES.forEach(function (bp) {
+      if (bp.videos) {
+        bp.videos.forEach(function (v, k) { items.push({ place: bp, video: v, k: k, n: bp.videos.length, first: k === 0, last: k === bp.videos.length - 1 }); });
+        return;
+      }
       var pl = U.place(bp.id); if (!pl) return;
       var seq = (pl.sequence || []).filter(function (id) { return U.image(id); });
       seq.forEach(function (id, k) {
@@ -185,16 +202,26 @@
     return items;
   }
   function buildFrame(item) {
-    var p = pic(item.img); p.w = p.w || 1600;
+    var fig;
+    if (item.video) {
+      var vst = { "--ar": String(item.place.ar), "--nw": "4000px" };
+      if (item.place.crop) vst.objectViewBox = item.place.crop;
+      fig = el("div", { class: "sl-fig one vid" }, el("div", { class: "sl-img" },
+        el("video", { src: item.video.src, muted: true, playsinline: true, preload: "auto", disablePictureInPicture: true, style: vst })));
+      fig.querySelector("video").muted = true;   // the attribute alone doesn't count for autoplay in every Chrome
+    } else {
+      var p = pic(item.img); p.w = p.w || 1600;
+      fig = el("div", { class: "sl-fig one sat" }, imgNode(p));
+    }
     var node = el("div", { class: ["sl-slide", "sl-frame", item.first ? "first" : ""] },
-      el("div", { class: "sl-fig one sat" }, imgNode(p)),
+      fig,
       el("div", { class: "sl-place" },
         el("h2", null, item.place.name),
         el("p", null, item.place.line),
         el("div", { class: "sl-pips" }, Array.apply(null, { length: item.n }).map(function (_, j) {
           return el("i", { class: j < item.k ? "done" : (j === item.k ? "now" : "") });
         })),
-        el("p", { class: "sl-src" }, "Google Earth screenshots, oldest to newest. Frame " + (item.k + 1) + " of " + item.n + ".")));
+        el("p", { class: "sl-src" }, item.video ? "Video " + (item.k + 1) + " of " + item.n + "." : "Google Earth screenshots, oldest to newest. Frame " + (item.k + 1) + " of " + item.n + ".")));
     return node;
   }
 
@@ -203,9 +230,9 @@
     render: function (root) {
       S = { cleanup: [] };
       var items = buildingItems();
-      var c = chrome(root, "buildings", "How buildings grew", "Satellite views over the years");
+      var c = chrome(root, "buildings", "How buildings grew", "Videos and satellite views over the years");
       var p = player({ stage: c.stage, progress: c.progress, items: items, build: buildFrame,
-        dur: function (it) { return it.last ? 5200 : (it.first ? 4200 : 2800); },
+        dur: function (it) { return it.video ? it.video.ms : it.last ? 5200 : (it.first ? 4200 : 2800); },
         onShow: function (it) {
           var placeNo = BUILD_PLACES.indexOf(it.place) + 1;
           c.count.textContent = placeNo + " / " + BUILD_PLACES.length;

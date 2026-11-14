@@ -29,7 +29,7 @@ Aakarsh asked for a lot of changes overnight and said not to wait for answers. T
 - **Board 2 (`#/buildings`)**: NAB (6 frames), Bakul Nivas (4), Felicity ground (4), amphitheatre (2), each in the order of the photo numbers, which I took as oldest to newest.
   - No years are shown, because only one frame has a readable date.
   - Frames are zoomed in a little to push Google's map labels to the edges. Some labels may still show; they're credited as Google Earth screenshots.
-  - About 60 s per loop.
+  - Since 14 Nov afternoon it starts with SLN Shastry's three 1997 videos of Nilgiri being built (55 s, muted, black side bars cropped off), so a loop is now about 115 s.
 - On the monitors (kiosk mode) the slideshows hide the nav and the mouse cursor. A mouse nudge never stops them; Space pauses.
 
 ## Map

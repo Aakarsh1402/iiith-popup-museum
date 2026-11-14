@@ -285,6 +285,7 @@ These go on Board 4 and the `#/how-we-know` page. Each card: question, the compe
 - SLN Shastry: an unfinished government building, lent to IIIT. [S-SLN]
 - Our take: both can be true (a building meant for the court, not finished). Phase 2 research (IIIT blog) also says Nilgiri and Vindhya were built as the district court and collectorate.
 - Team photos (added 14 Nov 2026, `raw/nilgiri-court/`): hand-written paper signs taped up inside Nilgiri, reading "Bar Association (F.F)", "Court Hall 7", "Library (F.F)" and "Govt Pleader (F.F) 1". Aakarsh: they show what was to go into Nilgiri while it was being built as a court. They back the "meant for the court" reading. On the Board 1 slideshow (#/photos, slide 5). Exact origin of the photos: TODO(team).
+- Videos (added 14 Nov 2026, `site/assets/video/nilgiri-1997-1..3.mp4`, sent on WhatsApp): three short videos of Nilgiri under construction in 1997, courtesy SLN Shastry (16 s, 22 s, 16 s). They fit SLN's account of an unfinished building. First on the Board 2 slideshow (#/buildings). [S-SLN]
 
 **C4. How many students per computer?**
 - PJN: 3 B.Tech students per workstation, 5 M.Tech students per workstation; first-years couldn't bring a PC. [S-PJN]
