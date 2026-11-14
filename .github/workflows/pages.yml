@@ -1,0 +1,52 @@
+# pages.yml: publishes site/ as the public website (GitHub Pages). Owner: saharsh-claude (S12).
+# The main repo needs admin rights to turn Pages on, so the site is served from a fork on Saharsh's account:
+#   https://saha264.github.io/iiith-popup-museum/   (the quiz QR code points at #/quiz on it)
+# The job only runs in that fork, so nothing happens in the main repo. Each run first pulls the main repo's
+# newest commits into the fork, so the live site follows main within about 15 minutes, with no manual step.
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.repository == 'Saha264/iiith-popup-museum'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Pull in the main repo's newest commits
+        id: sync
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          type=$(gh api -X POST "repos/${{ github.repository }}/merge-upstream" -f branch=main --jq .merge_type || echo error)
+          echo "merge: $type"
+          if [ "$type" = "none" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/checkout@v4
+        if: steps.sync.outputs.changed == 'true'
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+        if: steps.sync.outputs.changed == 'true'
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.sync.outputs.changed == 'true'
+        with:
+          path: site
+      - id: deployment
+        if: steps.sync.outputs.changed == 'true'
+        uses: actions/deploy-pages@v4
