@@ -1,0 +1,87 @@
+/* portrait.css: the vertical screen for Board 4 (a standee fed by casting a phone, or a portrait monitor) and touch-only kiosk controls.
+   Owner: aakarsh-claude (A13). Loaded last, after look.css. Landscape layouts are untouched: every layout rule here sits under
+   (orientation: portrait). Phone portrait (<= 900 px) already has the stacked phone layout; this file only fixes what a tall
+   screen needs on top of it. A portrait monitor (>= 901 px wide, e.g. 1080 x 1920) gets bigger type and the phone-style menu. */
+
+/* ---------- touch kiosk controls (any orientation): a phone has no F or T key ---------- */
+.nav-fs { display: inline-flex; align-items: center; gap: .35rem; flex: none; margin-left: .4rem; padding: .4rem .8rem; min-height: 38px; border-radius: 999px;
+  border: 1px solid var(--rule); background: var(--card); font-size: .8rem; font-weight: 700; color: var(--ink-2); }
+.nav-fs svg { width: 14px; height: 14px; color: var(--banyan); }
+.nav-fs[hidden] { display: none; }
+html.look-v2 .nav-fs { border-radius: 4px; background: #fff; }
+@media (max-width: 900px) {
+  /* brand | Tour | Full screen | menu */
+  body.kiosk.tour-screen .nav-tour { display: inline-flex; order: 1; min-height: 44px; padding: .4rem .75rem; }
+  body.kiosk .nav-fs { order: 2; min-height: 44px; min-width: 44px; justify-content: center; padding: .4rem; }
+  body.kiosk .nav-fs span { display: none; }
+  body.kiosk .nav-toggle { order: 3; margin-left: .35rem; }
+  body.kiosk .nav-links { order: 4; }
+  /* the title wraps onto two lines instead of being cut to "Do you k..." next to the extra buttons */
+  body.kiosk .brand b { white-space: normal; overflow: visible; text-overflow: clip; font-size: .92rem; line-height: 1.05; max-width: 8.5rem; }
+}
+
+/* ---------- every portrait screen ---------- */
+@media (orientation: portrait) {
+  /* Map: the map on top, the journey list under it. An open journey or place is a bottom sheet that starts where the map
+     ends, so the path stays in view (map.js fits the path into the uncovered part). */
+  .map-page { display: flex; flex-direction: column; height: auto; overflow: visible; }
+  .map-stage { order: -1; flex: none; height: 52vh; }
+  .map-rail { border-right: 0; border-top: 1px solid var(--rule); max-height: none; overflow: visible; }
+  body[data-page="map"] .sheet { top: auto; left: 0; right: 0; bottom: 0; width: 100%; min-width: 0; height: calc(48vh - var(--nav-h));
+    border-left: 0; border-top: 1px solid var(--rule); border-radius: 14px 14px 0 0; transform: translateY(104%); }
+  body[data-page="map"] .sheet.open { transform: none; }
+  body.touring .sheet-body { padding-bottom: 11rem; }   /* the tour bar sits over the sheet's bottom edge */
+
+  /* Slideshows (#/photos, #/buildings): stack instead of side by side, so photos use the height */
+  .sl-head { flex-direction: column; gap: .2rem; }
+  .sl-foot { top: auto; bottom: 1.6vh; right: 4vw; }
+  .sl-ctrl { opacity: 1; }
+  .sl-fig { inset: 9vh 3vw 24vh; }
+  .sl-fig.two { flex-direction: column; --cols: 1; }
+  .sl-fig.two .sl-img img { width: min(100cqw, calc(50cqh * var(--ar, 1.6) - 1.2vw * var(--ar, 1.6)), var(--nw, 4000px)); }
+  .sl-cap { bottom: 7vh; }
+  .slides[data-kind="buildings"] .sl-fig { inset: 8vh 3vw 32vh; }
+  .sl-place { left: 4vw; right: 4vw; top: auto; bottom: 7vh; width: auto; transform: none; }
+  body.touring .sl-cap, body.touring .sl-place { bottom: calc(7vh + 8rem); }
+}
+
+/* ---------- portrait monitor or standee (>= 901 px wide, e.g. 1080 x 1920) ---------- */
+@media (orientation: portrait) and (min-width: 901px) {
+  /* type scales with the screen width: 1080 px wide -> about 23 px, a 2160 px 4K panel -> about 46 px */
+  html { font-size: clamp(18px, 2.15vw, 48px); }
+  :root { --gutter: 4.5vw; }
+
+  /* the phone-style menu: ten links don't fit across 1080 px at this size */
+  .brand { min-width: 0; flex: 1 1 auto; }
+  .brand > span { min-width: 0; }
+  .brand small { display: none; }
+  .nav-toggle { display: inline-flex; flex: none; order: 3; margin-left: .4rem; }
+  .nav-tour { order: 1; }
+  .nav-fs { order: 2; }
+  .nav-links { order: 4; position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: .5rem var(--gutter) 1rem;
+    background: var(--paper); border-bottom: 1px solid var(--rule); box-shadow: var(--shadow-2); transform: translateY(-110%); transition: transform var(--t-med) var(--ease-out); z-index: -1; }
+  .nav-links.open { transform: none; }
+  .nav-links a { font-size: 1.05rem; border-radius: 8px; padding: .7rem .6rem; }
+  .nav-links a .key { display: none; }
+  .nav-links a[aria-current="page"]::after { left: .7rem; right: auto; width: 2rem; }
+
+  /* How we know (Board 4's home): one card per row, so each card's accounts get room side by side */
+  .hwk-flips, .hwk-proof, .hwk-chain { grid-template-columns: 1fr; }
+  .hwk-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* the map's journey list in two columns under the map */
+  .rail-list { grid-template-columns: 1fr 1fr; column-gap: 1rem; }
+
+  /* tour bar: full width, readable from a few metres */
+  .tour-bar { width: calc(100vw - 2 * var(--gutter)); bottom: 2vh; padding: 1.2rem 1.4rem 1.2rem 1.6rem; }
+  .tour-title { font-size: 1.45rem; }
+  .tour-text { font-size: 1rem; }
+  .tour-dots button { width: 14px; height: 14px; }
+  body.touring #app { padding-bottom: 10rem; }
+
+  /* big "Back to ..." pill */
+  .kiosk-pill { right: var(--gutter); bottom: 2vh; min-height: 3rem; font-size: 1rem; }
+
+  /* the quiz start screen sits in the middle of the screen, not in its top corner */
+  .quiz-start { min-height: calc(100vh - var(--nav-h) - 8rem); justify-content: center; }
+}

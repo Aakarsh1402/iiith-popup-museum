@@ -21,11 +21,10 @@
     nav.appendChild(el("div", { class: "wrap nav-inner" },
       el("a", { class: "brand", href: "#/start", "aria-label": "Do You Know Your Institute? Home" }, M.ui.banyanMark(),
         el("span", null, el("b", null, "Do you know your institute?"), el("small", null, "IIIT Hyderabad, 1998 to today"))),
-      toggle, links, M.tour ? M.tour.navButton() : null));
+      toggle, links, M.tour ? M.tour.navButton() : null, M.kiosk.fullscreenButton()));
     links.addEventListener("click", function () { links.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); });
     function mark() {
-      var r = M.router.current(); var route = r ? r.route : "start";
-      Array.prototype.forEach.call(links.querySelectorAll("a"), function (a) {
+      var r = M.router.current(); var route = r ? r.route : "start";      Array.prototype.forEach.call(links.querySelectorAll("a"), function (a) {
         if (a.dataset.route === route) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
       });
     }

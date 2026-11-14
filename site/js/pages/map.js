@@ -48,15 +48,21 @@
   }
   function toScreen(p) { var st = S.zp.state(); return { x: st.x + p.x * st.s, y: st.y + p.y * st.s }; }
 
-  /** Fly so a plan rectangle sits in the part of the map that the side panel doesn't cover. maxK caps zoom (times the fit scale). */
+  /** The open panel, if it covers the map from the right (landscape) and not from the bottom (portrait, see portrait.css). */
+  function sideSheetRect() {
+    if (!S || !S.sheet || !S.sheet.isOpen()) return null;
+    var r = S.sheet.el.getBoundingClientRect();
+    return r.width < window.innerWidth * 0.9 ? r : null;
+  }
+  /** Fly so a plan rectangle sits in the part of the map that the panel doesn't cover. maxK caps zoom (times the fit scale). */
   function focusVisible(x, y, w, h, pad, maxK) {
-    var hr = S.host.getBoundingClientRect();
-    var sheetW = S.sheet && S.sheet.isOpen() ? S.sheet.el.getBoundingClientRect().width : 0;
-    var vw = Math.max(240, Math.min(hr.width, window.innerWidth - sheetW - hr.left));
+    var hr = S.host.getBoundingClientRect(), side = sideSheetRect(), vw = hr.width, vh = hr.height;
+    if (side) vw = Math.max(240, Math.min(hr.width, side.left - hr.left));
+    else if (S.sheet && S.sheet.isOpen()) vh = Math.max(200, Math.min(hr.height, S.sheet.el.getBoundingClientRect().top - hr.top));   // bottom sheet
     var fit = Math.min((hr.width - 32) / IMG_W, (hr.height - 32) / IMG_H);
-    var s = Math.min(vw / (w * (1 + 2 * pad)), hr.height / (h * (1 + 2 * pad)));
+    var s = Math.min(vw / (w * (1 + 2 * pad)), vh / (h * (1 + 2 * pad)));
     s = U.clamp(s, fit, fit * (maxK || 2.4));
-    S.zp.zoomTo(s, vw / 2 - (x + w / 2) * s, hr.height / 2 - (y + h / 2) * s, true);
+    S.zp.zoomTo(s, vw / 2 - (x + w / 2) * s, vh / 2 - (y + h / 2) * s, true);
   }
 
   /* ---------- overlay (labels and markers stay crisp, not scaled) ---------- */
@@ -380,7 +386,7 @@
       S.host = host;
       S.sheet = M.ui.sheet({ onClose: function () { closePlace(); if (S.journeyId) clearJourney(); setHash(); } });
       S.zp = M.ui.zoomPan(host, content, { contentW: IMG_W, contentH: IMG_H, maxScale: 5, padding: 16, onChange: placeOverlay,
-        insetRight: function () { return S && S.sheet && S.sheet.isOpen() ? S.sheet.el.getBoundingClientRect().width : 0; } });
+        insetRight: function () { var r = sideSheetRect(); return r ? r.width : 0; } });
       S.timers.push(function () { S.zp.destroy(); });
       var onResize = U.debounce(placeOverlay, 60);
       window.addEventListener("resize", onResize);

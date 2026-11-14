@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // cdp.mjs: drive headless Chrome in real time (animations run), evaluate JS, take screenshots. No dependencies (Node 22).
-// Usage: node scripts/cdp.mjs '<hash route>' out.png [--size 1920x1080] [--wait 2500] [--eval "js"] [--steps file.json] [--reduce]
+// Usage: node scripts/cdp.mjs '<hash route>' out.png [--size 1920x1080] [--wait 2500] [--eval "js"] [--steps file.json] [--reduce] [--touch]
 //   --steps: JSON array of {wait: ms} | {eval: "js"} | {shot: "file.png"} | {click: "css selector"} | {key: "ArrowRight"}
 import { spawn } from "node:child_process";
 import fs from "node:fs";
@@ -49,6 +49,7 @@ const shot = async (file) => { const r = await send("Page.captureScreenshot", { 
 
 await send("Runtime.enable"); await send("Page.enable");
 await send("Emulation.setDeviceMetricsOverride", { width: W, height: H, deviceScaleFactor: 1, mobile: W < 700 });
+if (args.includes("--touch")) await send("Emulation.setTouchEmulationEnabled", { enabled: true, maxTouchPoints: 5 });   // phone: (hover: none), (pointer: coarse)
 await send("Page.navigate", { url: `file://${ROOT}/site/index.html${query}${route}` });
 await sleep(wait);
 if (stepsFile) {

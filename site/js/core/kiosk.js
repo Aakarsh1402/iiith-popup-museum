@@ -93,17 +93,38 @@
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable)) return;
     var k = e.key;
     if (k === "Escape") { M.ui.closeTop(); return; }
-    if (k === "f" || k === "F") {
-      if (!document.fullscreenElement) { var d = document.documentElement; (d.requestFullscreen || d.webkitRequestFullscreen || function () {}).call(d); }
-      else (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-      return;
-    }
+    if (k === "f" || k === "F") { K.toggleFullscreen(); return; }
     if (k === "h" || k === "H") { M.router.go(K.homeRoute()); return; }
     if (/^[0-9]$/.test(k)) {
       var pages = K.navPages(), idx = k === "0" ? 9 : (+k - 1);
       if (pages[idx]) { e.preventDefault(); M.router.go("#/" + (pages[idx].route || pages[idx].id)); }
     }
   }
+  /* ---------- fullscreen + wake lock (for a phone cast to a screen: no keyboard, and the phone must not sleep) ---------- */
+  function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  K.toggleFullscreen = function () {
+    var d = document.documentElement;
+    try {
+      if (!fsElement()) { var p = (d.requestFullscreen || d.webkitRequestFullscreen || function () {}).call(d, { navigationUI: "hide" }); if (p && p.catch) p.catch(function () {}); }
+      else (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } catch (e) { /* not allowed here (e.g. iPhone Safari): use Add to Home Screen instead */ }
+  };
+  /** A "Full screen" button for kiosk screens on touch devices (phones have no F key). Hidden on laptops and once fullscreen. */
+  K.fullscreenButton = function () {
+    var canFs = document.fullscreenEnabled || document.webkitFullscreenEnabled;
+    var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    if (!screen || !canFs || !touch) return null;
+    var b = M.ui.el("button", { type: "button", class: "nav-fs", "aria-label": "Full screen", title: "Full screen (F)", on: { click: K.toggleFullscreen } }, M.ui.icon("expand"), M.ui.el("span", null, "Full screen"));
+    function sync() { b.hidden = !!fsElement(); }
+    document.addEventListener("fullscreenchange", sync); document.addEventListener("webkitfullscreenchange", sync);
+    return b;
+  };
+  var wakeLock = null;
+  function keepAwake() {
+    if (!screen || !navigator.wakeLock || document.visibilityState !== "visible" || wakeLock) return;
+    navigator.wakeLock.request("screen").then(function (l) { wakeLock = l; l.addEventListener("release", function () { wakeLock = null; }); }).catch(function () { /* refused (battery saver, insecure origin): set the phone's screen timeout instead */ });
+  }
+
   /** Pages in the top nav: M.config.nav (list of routes) if set, else every page with nav: true by navOrder. */
   K.navPages = function () {
     var order = M.config && M.config.nav;
@@ -117,6 +138,10 @@
     if (screen) {
       document.body.classList.add("kiosk");
       if (screen.tour) document.body.classList.add("tour-screen");
+      // keep a phone (or a TV browser) from going to sleep while it drives a screen; the lock drops when the tab is hidden, so take it again
+      keepAwake();
+      document.addEventListener("visibilitychange", keepAwake);
+      window.addEventListener("pointerdown", keepAwake, { passive: true });
       // arm the idle timer only once someone touches it (or if it opened somewhere other than home),
       // so a screen that starts on its home view doesn't restart itself 90 s later
       if (location.hash !== screen.home) resetIdle();
