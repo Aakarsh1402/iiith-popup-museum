@@ -78,6 +78,16 @@ figcaption b { color: var(--ink); }
 .slot.missing > img { display: none; }
 .slot.missing > .add { display: flex; }
 .add code { font: 700 .95em/1 var(--mono); text-transform: none; background: #fff; padding: .3mm 1mm; border-radius: .6mm; }
+/* print-ready copy (boards/build.sh makes board-sheets-print.pdf with ?final): empty photo slots close up */
+.final .slot.missing { display: none; }
+.final .box.grow:has(> .slot.missing) { flex: 0 0 auto; }
+.final .grid.g2:has(> .slot.missing) { grid-template-columns: 1fr; }
+.final .grid.g3:has(> .slot.missing) { grid-template-columns: 1fr 1fr; }
+.final .grid.g2:has(> .slot.missing ~ .slot.missing), .final .grid.g2:has(> .slot.missing + .slot.missing) { display: none; }
+/* a small cue that points visitors at the board's monitor */
+.cue { display: inline-flex; align-items: center; gap: .55em; align-self: flex-start; border: .4mm solid var(--ac); border-radius: 99px; padding: .3em .85em .3em .6em; font-size: .78em; margin: 0 0 4mm; }
+.cue svg { width: 1.3em; height: 1.3em; flex: none; }
+.cue b { font: 700 .78em/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--ac); }
 .draft { position: absolute; top: 9mm; left: 50%; transform: translateX(-50%) rotate(-2deg); border: .8mm solid var(--todo); color: var(--todo); font: 700 11pt/1 var(--mono); letter-spacing: .1em; padding: 2mm 4mm; background: #fff; z-index: 2; }
 
 .grid { display: grid; gap: 4mm; }
@@ -307,6 +317,7 @@ figcaption b { color: var(--ink); }
     <div class="bigline"><div class="big">6</div><p>companies at Cyber Towers in 1998.</p></div>
     <div class="bigline"><div class="big">~1,000</div><p>in the IT corridor by <span style="white-space:nowrap">2007-08.</span> <span class="who">Rajan</span></p></div>
   </div>
+  <div class="cue" style="margin-top:6mm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><b>On the screen</b>More old photos of the campus.</div>
   <div class="src"><b>Sources:</b> interviews with Mr. Gopi and Prof. K. S. Rajan (2026); stills from IIIT's 20-year video (photos 01, 02, 04).</div>
 </section>
 
@@ -402,7 +413,8 @@ figcaption b { color: var(--ink); }
 <section class="sheet a3 b2">
   <span class="tag">B2 MIDDLE · A3 · PAGE 8</span>
   <div class="kicker">Board 2 · The IIIT Way</div>
-  <h1 style="margin-bottom:.35em">Borrow, share, take back, build your own</h1>
+  <h1 style="margin-bottom:.3em">Borrow, share, take back, build your own</h1>
+  <div class="cue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><b>On the screen</b>Watch the buildings grow, seen from above.</div>
   <div class="way">
     <div class="way-step">
       <div><div class="way-word">Borrow<span>1998</span></div><p class="way-text">IIIT started in government buildings lent by the state: Vindhya and Nilgiri.</p></div>
@@ -708,7 +720,7 @@ figcaption b { color: var(--ink); }
   <div class="src"><b>Source:</b> campus layout plan (2002), via SLN Shastry.</div>
 </section>
 
-<script>window.M = {};</script>
+<script>window.M = {}; if (/[?&]final\b/.test(location.search)) document.body.classList.add("final");</script>
 <script src="../site/data/sources.js"></script>
 <script src="../site/data/quiz.js"></script>
 <script>

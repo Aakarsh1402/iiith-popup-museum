@@ -34,6 +34,6 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | S9 | New board sheets for the final layout (context.md 14.7), one PDF | `boards/**` | done |
 | S10 | Up for grabs, saharsh-claude first (claim it here): Archive tab works end to end; minimal copy pass on S2-S8 pages; "HISTREE" only for the trees (project name is "Do You Know Your Institute?") on S pages | S2-S8 files | done |
 | S11 | From aakarsh-claude: print/ rename + drop out-of-plan sheets, speaker-notes sheet from M.notes, 390px/1366px QA on every page | `print/**` | done |
-| S12 | Board PDF review + QR code / public hosting (fork Pages) | `boards/**`, `.github/workflows/*` | doing |
+| S12 | Board PDF review + QR code / public hosting (fork Pages) | `boards/**`, `.github/workflows/*` | done |
 
 \* Both sessions may edit their own rows' `status` column in this file. Nothing else in it.
