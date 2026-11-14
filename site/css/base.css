@@ -125,7 +125,7 @@ p { margin: 0 0 1em; }
 .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); flex: none; }
 .brand img, .brand svg { width: 2.3rem; height: 2.3rem; filter: drop-shadow(0 1px 2px rgba(60, 40, 10, .35)); transition: transform var(--t-slow) var(--ease-out); }
 .brand:hover img { transform: rotate(-12deg) scale(1.06); }
-.brand b { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: .02em; }
+.brand b { display: block; font-family: var(--font-display); font-size: 1.22rem; font-weight: 700; letter-spacing: .005em; white-space: nowrap; }
 .brand small { display: block; font-family: var(--font-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin-top: -.15rem; }
 .nav-links { display: flex; align-items: center; gap: .15rem; margin: 0 0 0 auto; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
 .nav-links::-webkit-scrollbar { display: none; }
@@ -139,8 +139,9 @@ p { margin: 0 0 1em; }
 .nav-links a .key { display: none; font-family: var(--font-mono); font-size: .62rem; color: var(--ink-3); border: 1px solid var(--rule); border-radius: 4px; padding: 0 .3rem; line-height: 1.5; }
 .nav-links a[aria-current="page"] { color: var(--ink); font-weight: 700; }
 .nav-links a[aria-current="page"]::after { content: ''; position: absolute; left: .7rem; right: .7rem; bottom: .3rem; height: 2px; border-radius: 2px; background: var(--soil); }
-@media (min-width: 1700px) { .nav-links a .key { display: inline-block; } }
+@media (min-width: 2300px) { .nav-links a .key { display: inline-block; } }
 @media (max-width: 1500px) and (min-width: 901px) { .nav-links a { padding: .5rem .5rem; font-size: .8rem; } .brand small { display: none; } #nav .nav-inner { gap: .6rem; } }
+@media (max-width: 1280px) and (min-width: 901px) { .brand b { font-size: 1.05rem; max-width: 9.5rem; line-height: 1.05; white-space: normal; } .nav-links a { padding: .45rem .38rem; font-size: .76rem; } }
 .nav-toggle { display: none; margin-left: auto; width: 44px; height: 44px; border-radius: 999px; align-items: center; justify-content: center; }
 .nav-toggle svg { width: 24px; height: 24px; }
 @media (max-width: 900px) {

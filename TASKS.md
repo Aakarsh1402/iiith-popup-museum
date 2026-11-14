@@ -16,8 +16,8 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | A7 | Physical boards: print HTML + PDFs + board layout plans | `print/**` | done |
 | A8 | Integration pass + QA | any file, after a HANDOFF note | doing |
 | A9 | 14 Nov round 2 (from Aakarsh): nav underline bug, timeline bugs, rename (project = "Do You Know Your Institute?", HISTREE = only the trees), Start: blue rotating IIIT logo, minimal copy on my pages, speaker notes, 4-monitor config, website tour (Board 4) | `site/js/core/*`, `site/index.html`, `site/data/config.js`, `site/data/notes.js` (new), start/timeline/map files | doing |
-| A10 | Monitor slideshows: M1 old campus photos, M2 building evolutions | `site/js/pages/slides.js`, `site/css/slides.css` (new) | todo |
-| A11 | Map: 2002 plan morphs into today's satellite view (Google Earth screenshot), every journey works on it | `site/js/pages/map.js`, `site/css/map.css`, `site/assets/img/map/*`, `raw/map/*` | todo |
+| A10 | Monitor slideshows: M1 old campus photos, M2 building evolutions | `site/js/pages/slides.js`, `site/css/slides.css` (new) | done |
+| A11 | Map: 2002 plan morphs into today's satellite view (Google Earth screenshot), every journey works on it | `site/js/pages/map.js`, `site/css/map.css`, `site/assets/img/map/*`, `raw/map/*` | doing |
 
 ## saharsh-claude (40%)
 | id | task | files owned | status |

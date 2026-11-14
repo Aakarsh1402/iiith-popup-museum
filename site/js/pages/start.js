@@ -1,5 +1,6 @@
-/* start.js: Start page with the 3D HISTREE coin, the four roots and the fun-fact ticker. Owner: aakarsh-claude (A4).
-   M.coin.create(host, opts) is reusable on other pages: returns {flip(), destroy()}. */
+/* start.js: Start page with the turning IIIT badge, the four roots (one per board) and the fun-fact ticker. Owner: aakarsh-claude (A4).
+   M.coin.create(host, opts) is reusable on other pages: returns {flip(), destroy()}.
+   opts.faces = [frontSrc, backSrc] swaps the images; opts.flat = true gives a thin painted edge instead of metal. */
 (function () {
   "use strict";
   var M = window.M, el = M.ui.el, svg = M.ui.svg, U = M.util;
@@ -9,20 +10,21 @@
     create: function (host, opts) {
       opts = opts || {};
       var reduce = U.prefersReducedMotion();
-      var stage = el("div", { class: "coin-stage", role: "img", tabindex: "0",
-        "aria-label": "A coin. One side shows IIIT's banyan logo, the other our HISTREE banyan. Drag to spin it, or click to flip." });
+      var faces = opts.faces || ["assets/img/coin-front.png", "assets/img/coin-back.png"];
+      var stage = el("div", { class: ["coin-stage", opts.flat ? "coin--flat" : ""], role: "img", tabindex: "0",
+        "aria-label": opts.label || "A coin. One side shows IIIT's banyan logo, the other the HISTREE banyan. Drag to spin it, or click to flip." });
       if (opts.size) stage.style.setProperty("--size", opts.size);
       var coin = el("div", { class: "coin" });
       var edge = el("div", { class: "coin-edge" });
-      var LAYERS = 24;
+      var LAYERS = opts.flat ? 10 : 24;
       for (var i = 0; i < LAYERS; i++) {
-        var z = -0.036 + 0.072 * i / (LAYERS - 1);
+        var th = opts.flat ? 0.014 : 0.036, z = -th + 2 * th * i / (LAYERS - 1);
         edge.appendChild(el("i", { style: { transform: "translateZ(calc(var(--size) * " + z.toFixed(4) + "))" } }));
       }
       var glintF = el("div", { class: "coin-glint" }), glintB = el("div", { class: "coin-glint" });
       coin.appendChild(edge);
-      coin.appendChild(el("div", { class: "coin-face front" }, el("img", { src: "assets/img/coin-front.png", alt: "", draggable: "false" }), glintF));
-      coin.appendChild(el("div", { class: "coin-face back" }, el("img", { src: "assets/img/coin-back.png", alt: "", draggable: "false" }), glintB));
+      coin.appendChild(el("div", { class: "coin-face front" }, el("img", { src: faces[0], alt: "", draggable: "false" }), glintF));
+      coin.appendChild(el("div", { class: "coin-face back" }, el("img", { src: faces[1], alt: "", draggable: "false" }), glintB));
       var shadow = el("div", { class: "coin-shadow" });
       var caption = el("div", { class: "coin-caption" }, "IIIT's logo");
       stage.appendChild(coin); stage.appendChild(shadow);
@@ -70,7 +72,7 @@
         glintF.style.setProperty("--glint-o", o); glintB.style.setProperty("--glint-o", o);
         shadow.style.setProperty("--sh", (0.22 + 0.78 * Math.abs(Math.cos(ry * Math.PI / 180))).toFixed(3));
         var showingFront = Math.abs(rel) <= 90;
-        if (caption._f !== showingFront) { caption._f = showingFront; caption.textContent = (showingFront ? "Front: IIIT's banyan logo" : "Back: our HISTREE banyan") + (opts.hint === false ? "" : ". Drag to spin"); }
+        if (caption._f !== showingFront) { caption._f = showingFront; caption.textContent = (showingFront ? "Front: IIIT's banyan logo" : "Back: the HISTREE banyan") + (opts.hint === false ? "" : ". Drag to spin"); }
         if (visible) raf = requestAnimationFrame(frame); else raf = 0;
       }
 
@@ -126,14 +128,14 @@
 
   /* ======================= page ======================= */
   var ROOTS = [
-    { n: "Board 1", title: "Borrowed ground", href: "#/timeline?era=founding", color: "var(--soil)",
-      text: "Old government buildings, a diploma on trust and bunk beds inside Vindhya. 1998 to 2002." },
-    { n: "Board 2", title: "Borrowed branches", href: "#/way", color: "var(--ochre-ink)",
-      text: "Company schools in the classrooms, a building lent to the state, and taking it all back." },
-    { n: "Board 3", title: "Moving rooms", href: "#/map", color: "var(--banyan)",
-      text: "The library has moved twice. Follow rooms around the 2002 campus plan." },
+    { n: "Board 1", title: "Setting the scene", href: "#/photos", color: "var(--soil)",
+      text: "1998 to 2002: borrowed buildings and a diploma on trust." },
+    { n: "Board 2", title: "The IIIT Way", href: "#/way", color: "var(--ochre-ink)",
+      text: "Borrow, share, take back, build your own." },
+    { n: "Board 3", title: "Institutional changes", href: "#/map", color: "var(--banyan)",
+      text: "Rooms that moved, trees that moved, files that went online." },
     { n: "Board 4", title: "How we know", href: "#/how-we-know", color: "var(--slate)",
-      text: "Seven interviews. Where memories disagree, and the place where we got it wrong." }
+      text: "Where memories disagree, and how we checked." }
   ];
 
   var timers = [], coinApi = null, offResize = null, rootsDrawn = false;
@@ -196,7 +198,7 @@
     var box = el("div", { class: "ticker enter", style: { "--d": "700ms" },
       on: { pointerenter: function () { paused = true; clearTimeout(t); bar.style.transition = "none"; },
             pointerleave: function () { paused = false; show(idx); } } },
-      el("div", { class: "ticker-label" }, "Did you know?", el("b", null, (M.facts || []).length + " facts")),
+      el("div", { class: "ticker-label" }, "Did you know?"),
       stage,
       el("div", { class: "ticker-ctrl" },
         el("button", { class: "icon-btn", "aria-label": "Previous fact", on: { click: function () { show(idx - 1); } } }, M.ui.icon("chevron-left")),
@@ -212,32 +214,28 @@
     render: function (root) {
       var cfg = M.config;
       var coinHost = el("div", { class: "coin-wrap enter", style: { "--d": "150ms" } });
-      var quizNote = cfg.quizUrl ? "Scan the QR code on the entry board to take the quiz on your phone." : "Ask a guide for a quiz card, or tap Quiz above.";
       var cards = ROOTS.map(function (r, i) {
         return el("a", { class: "root-card enter", href: r.href, style: { "--c": r.color, "--d": (900 + i * 120) + "ms" } },
           el("span", { class: "num" }, r.n), el("h3", null, r.title), el("p", null, r.text),
-          el("span", { class: "go" }, "Explore", M.ui.icon("arrow-right")));
+          el("span", { class: "go" }, M.ui.icon("arrow-right")));
       });
       var rootsSvg = svg("svg", { class: "roots-svg", "aria-hidden": "true" });
       var section = el("section", { class: "page start wrap" },
         el("div", { class: "start-hero" },
           el("div", { class: "start-copy" },
-            el("div", { class: "start-kicker enter", style: { "--d": "0ms" } }, el("span", null, cfg.subtitle), el("span", null, cfg.team), el("span", null, "UPDH 2026")),
-            el("h1", { class: "start-title enter", style: { "--d": "80ms" } }, "HISTREE"),
-            el("p", { class: "start-sub enter", style: { "--d": "180ms" } }, "How IIIT put down its own roots"),
+            el("div", { class: "start-kicker enter", style: { "--d": "0ms" } }, el("span", null, "IIIT Hyderabad"), el("span", null, "1998 to today")),
+            el("h1", { class: "start-title enter", style: { "--d": "80ms" } }, "Do you know your institute?"),
             el("p", { class: "start-arg enter", style: { "--d": "300ms" } },
-              "IIIT's logo is a banyan. A banyan often starts out leaning on another tree, then drops roots of its own until it can stand by itself. ",
-              el("strong", null, "IIIT grew the same way."),
-              " It began in borrowed government buildings, with borrowed teachers and company schools in its classrooms. Over 25 years it took those spaces back and built its own."),
+              "IIIT started in borrowed buildings and slowly put down its own roots, like the banyan on its logo."),
             el("div", { class: "start-cta enter", style: { "--d": "420ms" } },
-              el("a", { class: "btn btn--green", href: "#/timeline" }, "Walk the timeline", M.ui.icon("arrow-right")),
-              el("a", { class: "btn btn--ghost", href: "#/quiz" }, "Take the quiz"),
-              el("span", { class: "note" }, quizNote))),
+              el("a", { class: "btn btn--green", href: "#/quiz" }, "Take the quiz", M.ui.icon("arrow-right")),
+              el("a", { class: "btn btn--ghost", href: "#/timeline" }, "See the timeline"))),
           coinHost),
         el("div", { class: "roots" }, rootsSvg, el("div", { class: "roots-grid" }, cards)),
         ticker());
       root.appendChild(section);
-      coinApi = M.coin.create(coinHost);
+      coinApi = M.coin.create(coinHost, { faces: ["assets/img/iiit-badge.png", "assets/img/iiit-badge.png"], flat: true, caption: false, hint: false,
+        hold: 2600, spin: 2400, label: "IIIT Hyderabad's logo in a round badge. Drag to spin it." });
       var redraw = function (anim) { drawRoots(section.querySelector(".roots"), rootsSvg, coinApi.el, cards, anim); };
       // draw once the entrance animation has placed everything
       var t1 = setTimeout(function () { redraw(true); rootsDrawn = true; }, 650);

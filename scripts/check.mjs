@@ -61,6 +61,7 @@ for (const e of arr(M.events)) {
   if (wc(e.summary) > 30) warn(`${w}: summary ${wc(e.summary)} words (> 30)`);
   if (wc(e.body) > 120) warn(`${w}: body ${wc(e.body)} words (> 120)`);
 }
+for (const [k, n] of Object.entries((M.notes && M.notes.pages) || {})) if ((n.sources || []).length) checkSources(`notes ${k}`, n.sources);
 for (const f of arr(M.facts)) { checkSources(`facts ${f.id}`, f.sources); if (f.image) checkImages(`facts ${f.id}`, [f.image]); if (f.eventId && !events.has(f.eventId)) err(`facts ${f.id}: unknown event ${f.eventId}`); }
 for (const p of arr(M.places)) { checkSources(`places ${p.id}`, p.sources); checkImages(`places ${p.id}`, p.images); checkImages(`places ${p.id}`, p.sequence); for (const j of arr(p.journeys)) if (!journeys.has(j)) err(`places ${p.id}: unknown journey ${j}`); }
 for (const j of arr(M.journeys)) for (const [k, s] of arr(j.stops).entries()) { const w = `journeys ${j.id} stop ${k + 1}`; checkSources(w, s.sources); if (s.place && !places.has(s.place)) err(`${w}: unknown place ${s.place}`); if (s.image) checkImages(w, [s.image]); }

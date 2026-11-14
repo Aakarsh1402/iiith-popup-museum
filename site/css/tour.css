@@ -1,0 +1,31 @@
+/* tour.css: Board 4 website tour bar + speaker notes. Owner: aakarsh-claude (A9). */
+.nav-tour { display: inline-flex; align-items: center; gap: .35rem; flex: none; margin-left: .4rem; padding: .4rem .8rem; min-height: 38px; border-radius: 999px; border: 1px solid var(--rule); background: var(--card); font-size: .8rem; font-weight: 700; color: var(--ink-2); }
+.nav-tour svg { width: 12px; height: 12px; color: var(--banyan); }
+.nav-tour:hover, .nav-tour[aria-pressed="true"] { border-color: var(--banyan); color: var(--banyan); }
+body.kiosk:not(.tour-screen) .nav-tour { display: none; }
+
+.tour-bar { position: fixed; z-index: 400; left: 50%; bottom: 1.2rem; transform: translateX(-50%); width: min(1100px, calc(100vw - 2rem));
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; align-items: center; padding: 1rem 1.2rem 1rem 1.5rem;
+  border-radius: 18px; background: rgba(38, 36, 31, .94); color: var(--paper); box-shadow: 0 20px 60px rgba(0, 0, 0, .35); backdrop-filter: blur(10px); }
+.tour-bar.swap .tour-main { animation: tour-in 500ms var(--ease-out) both; }
+@keyframes tour-in { from { opacity: 0; transform: translateY(8px); } }
+.tour-kicker { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ochre); }
+.tour-title { font-family: var(--font-display); font-size: clamp(1.3rem, 1.8vw, 2rem); font-weight: 600; line-height: 1.15; margin: .15rem 0 .2rem; }
+.tour-text { font-size: clamp(.92rem, 1vw, 1.1rem); color: rgba(244, 238, 226, .78); }
+.tour-side { display: flex; flex-direction: column; align-items: flex-end; gap: .7rem; }
+.tour-dots { display: flex; gap: .3rem; }
+.tour-dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(244, 238, 226, .2); padding: 0; min-height: 0; }
+.tour-dots button.done { background: rgba(201, 150, 46, .55); }
+.tour-dots button.on { background: var(--ochre); transform: scale(1.25); }
+.tour-btns { display: flex; gap: .5rem; align-items: center; }
+.tour-bar .icon-btn { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .18); color: var(--paper); }
+.tour-bar .icon-btn:disabled { opacity: .35; }
+body.touring .kiosk-pill { display: none; }
+body.touring #app { padding-bottom: 7rem; }
+
+.speaker-note { position: fixed; z-index: 410; right: 1.2rem; bottom: 1.2rem; width: min(30rem, calc(100vw - 2.4rem)); padding: .9rem 1.1rem 1rem; border-radius: 14px;
+  background: #FFF6CF; color: #2b2410; border: 1px solid #E9D488; box-shadow: var(--shadow-3); font-size: .95rem; line-height: 1.5; animation: tour-in 400ms var(--ease-out) both; }
+.speaker-note.with-tour { bottom: calc(1.2rem + 9rem); }
+.speaker-note p { margin: .35rem 0 0; }
+.sn-head { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: #8a6d12; }
+@media (max-width: 760px) { .tour-bar { grid-template-columns: 1fr; gap: .8rem; } .tour-side { align-items: stretch; } }

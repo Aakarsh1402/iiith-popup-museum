@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- Renders the round IIIT badge (flat, logo blue) for the Start page. Used by scripts/badge/render.sh. Not part of the site. -->
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Fraunces'; font-weight: 300 800; src: url('../../site/assets/fonts/Fraunces-normal-300_800.woff2') format('woff2'); }
+  html, body { margin: 0; background: transparent; }
+  svg { display: block; width: 1200px; height: 1200px; }
+  text { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144; font-weight: 560; }
+</style></head>
+<body>
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <mask id="tree" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000">
+      <image href="../../site/assets/img/iiit-tree-mask.png" x="215" y="285" width="570" height="343"/>
+    </mask>
+    <path id="top" d="M 160.5 696 A 392 392 0 1 1 839.5 696"/>
+    <path id="bot" d="M 97.8 646.4 A 428 428 0 0 0 902.2 646.4"/>
+    <radialGradient id="paper" cx="45%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F4F8"/>
+    </radialGradient>
+  </defs>
+  <!-- outer ring in the logo's navy -->
+  <circle cx="500" cy="500" r="496" fill="#0E2F5B"/>
+  <circle cx="500" cy="500" r="482" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2"/>
+  <circle cx="500" cy="500" r="340" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2"/>
+  <!-- inner field -->
+  <circle cx="500" cy="500" r="330" fill="url(#paper)"/>
+  <circle cx="500" cy="500" r="318" fill="none" stroke="#0E2F5B" stroke-width="3"/>
+  <!-- the logo's banyan, in the logo's navy -->
+  <rect x="0" y="0" width="1000" height="1000" fill="#0E2F5B" mask="url(#tree)"/>
+  <!-- the thin green rule from the logo -->
+  <line x1="372" y1="664" x2="628" y2="664" stroke="#7FA86A" stroke-width="3"/>
+  <text x="500" y="722" text-anchor="middle" font-size="40" fill="#0E2F5B" letter-spacing="19">IIIT</text>
+  <!-- rim text -->
+  <text font-size="41" fill="#FFFFFF" letter-spacing="3.4"><textPath href="#top" startOffset="50%" text-anchor="middle">INTERNATIONAL INSTITUTE OF INFORMATION TECHNOLOGY</textPath></text>
+  <text font-size="46" fill="#FFFFFF" letter-spacing="24"><textPath href="#bot" startOffset="50%" text-anchor="middle">HYDERABAD</textPath></text>
+  <circle cx="171" cy="769" r="7" fill="#FFFFFF" fill-opacity=".8"/>
+  <circle cx="829" cy="769" r="7" fill="#FFFFFF" fill-opacity=".8"/>
+</svg>
+</body></html>

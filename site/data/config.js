@@ -1,25 +1,24 @@
 /* config.js: site settings and the monitor screens. Owner: aakarsh-claude (A2). See IMPLEMENTATION_PLAN.md 4.4. */
 window.M = window.M || {};
 M.config = {
-  title: "HISTREE", subtitle: "Do You Know Your Institute?",
-  tagline: "How IIIT Put Down Its Own Roots",
+  title: "Do You Know Your Institute?", subtitle: "IIIT Hyderabad, 1998 to today",
   team: "Team CakedUp", course: "UPDH, IIIT Hyderabad", date: "14 November 2026",
   idleSeconds: 90,
   quizUrl: null,        // set when hosted (GitHub Pages); while null the site says "Ask a guide for a quiz card"
-  comicImages: false,   // true once scans exist in assets/comic/panel-1.jpg ... panel-4.jpg
   mapAlign: { scale: 1, rotateDeg: 180, x: 0, y: 0 },
-  // 2 or 3 monitors. After idleSeconds with no input a screen goes to playlist[0], stays `secs`, then moves on, looping.
+  // Top nav, in board order (Start is the logo; Then and now stays reachable from the tour and the quiz).
+  nav: ["timeline", "photos", "way", "buildings", "map", "histree", "how-we-know", "voices", "archive", "quiz"],
+  // 4 monitors, one per board (context.md 14). Open site/index.html?screen=board1 (etc.) on each laptop, press F.
+  // After idleSeconds with no input a screen goes back to playlist[0]; with more than one item it moves on after `secs`.
   screens: {
-    history:  { label: "Monitor 1: Boards 1 and 2", short: "the timeline", home: "#/timeline?autoplay=1",
-                playlist: [ { route: "#/timeline?autoplay=1", secs: 150 }, { route: "#/way?autoplay=1", secs: 120 } ] },
-    map:      { label: "Monitor 2: Board 3", short: "the map", home: "#/map?autoplay=1",
-                playlist: [ { route: "#/map?autoplay=1", secs: 180 }, { route: "#/histree", secs: 40 } ] },
-    evidence: { label: "Monitor 3: Board 4 and exit", short: "how we know", home: "#/how-we-know?autoplay=1",
-                playlist: [ { route: "#/how-we-know?autoplay=1", secs: 120 }, { route: "#/voices", secs: 40 }, { route: "#/ending", secs: 60 } ] },
-    left:     { label: "Monitor A: Boards 1 and 2", short: "the timeline", home: "#/timeline?autoplay=1",
-                playlist: [ { route: "#/timeline?autoplay=1", secs: 150 }, { route: "#/way?autoplay=1", secs: 120 } ] },
-    right:    { label: "Monitor B: Boards 3 and 4", short: "the map", home: "#/map?autoplay=1",
-                playlist: [ { route: "#/map?autoplay=1", secs: 150 }, { route: "#/how-we-know?autoplay=1", secs: 120 }, { route: "#/ending", secs: 50 } ] },
-    entry:    { label: "Entry", short: "the start", home: "#/start" }
+    board1: { label: "Monitor 1: Board 1, Setting the scene", short: "the old photos", home: "#/photos",
+              playlist: [ { route: "#/photos", secs: 0 } ] },
+    board2: { label: "Monitor 2: Board 2, The IIIT Way", short: "the buildings", home: "#/buildings",
+              playlist: [ { route: "#/buildings", secs: 0 } ] },
+    board3: { label: "Monitor 3: Board 3, Institutional changes", short: "the map", home: "#/map?autoplay=1",
+              playlist: [ { route: "#/map?autoplay=1", secs: 240 }, { route: "#/histree", secs: 45 } ] },
+    board4: { label: "Monitor 4: Board 4, How we know", short: "how we know", home: "#/how-we-know?autoplay=1", tour: true,
+              playlist: [ { route: "#/how-we-know?autoplay=1", secs: 0 } ] },
+    entry:  { label: "Entry (spare screen)", short: "the start", home: "#/start" }
   }
 };

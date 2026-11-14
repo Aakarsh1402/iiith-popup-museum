@@ -1,0 +1,71 @@
+/* slides.css: monitor slideshows (#/photos, #/buildings). Owner: aakarsh-claude (A10). */
+.slides { position: relative; height: calc(100vh - var(--nav-h)); background: #0b0b0a; color: #f4eee2; overflow: hidden; cursor: none; }
+.slides.awake { cursor: default; }
+body.kiosk[data-page="photos"] #nav, body.kiosk[data-page="buildings"] #nav { display: none; }
+body.kiosk[data-page="photos"] .slides, body.kiosk[data-page="buildings"] .slides { height: 100vh; }
+body[data-page="photos"], body[data-page="buildings"] { background: #0b0b0a; }
+
+.sl-stage { position: absolute; inset: 0; }
+.sl-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1500ms cubic-bezier(.4, 0, .2, 1); }
+.sl-slide.on { opacity: 1; }
+.sl-slide.leaving { opacity: 0; }
+
+/* photos: one or two images, big, letterboxed on black, slow drift */
+/* each image is sized to fit its share of the frame exactly (container units), and never blown up past 2.2x */
+.sl-fig { position: absolute; inset: 8vh 4vw 16vh; display: flex; gap: 2.4vw; align-items: center; justify-content: center; container-type: size; --cols: 1; }
+.sl-fig.two { --cols: 2; }
+.sl-img { flex: none; display: grid; place-items: center; overflow: hidden; border-radius: 3px; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); }
+.sl-img img { display: block; aspect-ratio: var(--ar, 1.6); height: auto; user-select: none; transform-origin: 50% 50%;
+  width: min(calc((100cqw - (var(--cols) - 1) * 2.4vw) / var(--cols)), calc(100cqh * var(--ar, 1.6)), var(--nw, 4000px)); }
+.sl-slide.on .sl-img img { animation: kb 9500ms linear both; }
+@keyframes kb { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.055) translate(var(--kb-x, 1%), var(--kb-y, 0)); } }
+.sl-cap { position: absolute; left: 4vw; right: 4vw; bottom: 4.2vh; display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap; }
+.sl-text { margin: 0; font-family: var(--font-display); font-size: clamp(1.3rem, 2.1vw, 2.6rem); line-height: 1.2; font-weight: 500; max-width: 46ch; font-variation-settings: 'opsz' 72;
+  opacity: 0; transform: translateY(12px); transition: opacity 900ms 500ms var(--ease-out), transform 900ms 500ms var(--ease-out); }
+.sl-src { margin: 0; font-family: var(--font-mono); font-size: clamp(.62rem, .7vw, .85rem); letter-spacing: .08em; text-transform: uppercase; color: rgba(244, 238, 226, .5);
+  opacity: 0; transition: opacity 900ms 800ms; }
+.sl-slide.on .sl-text { opacity: 1; transform: none; }
+.sl-slide.on .sl-src { opacity: 1; }
+
+/* header + footer chrome */
+.sl-head { position: absolute; left: 4vw; top: 2.2vh; display: flex; align-items: baseline; gap: 1rem; z-index: 3; pointer-events: none; }
+.sl-head b { font-family: var(--font-mono); font-size: clamp(.7rem, .8vw, .95rem); letter-spacing: .18em; text-transform: uppercase; color: var(--ochre); font-weight: 600; }
+.sl-head span { font-family: var(--font-mono); font-size: clamp(.62rem, .7vw, .85rem); letter-spacing: .12em; text-transform: uppercase; color: rgba(244, 238, 226, .45); }
+.sl-foot { position: absolute; right: 4vw; top: 2vh; display: flex; align-items: center; gap: 1rem; z-index: 3; }
+.sl-count { font-size: clamp(.7rem, .8vw, .95rem); color: rgba(244, 238, 226, .6); letter-spacing: .1em; }
+.sl-progress { width: clamp(80px, 9vw, 180px); height: 2px; background: rgba(244, 238, 226, .15); border-radius: 2px; overflow: hidden; }
+.sl-progress i { display: block; height: 100%; background: var(--ochre); transform-origin: 0 50%; transform: scaleX(0); }
+.slides.paused .sl-progress i { background: rgba(244, 238, 226, .4); }
+.sl-ctrl { display: flex; gap: .4rem; opacity: 0; transition: opacity var(--t-med); }
+.slides.awake .sl-ctrl, .slides.paused .sl-ctrl, .sl-ctrl:focus-within { opacity: 1; }
+.sl-btn { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #f4eee2; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16); }
+.sl-btn:hover { background: rgba(255, 255, 255, .18); }
+.sl-btn svg { width: 18px; height: 18px; }
+
+/* buildings: satellite frames crossfade in place, so it reads as a time-lapse */
+.slides[data-kind="buildings"] .sl-slide { transition-duration: 1100ms; }
+.slides[data-kind="buildings"] .sl-fig { inset: 3vh 30vw 3vh 3vw; }
+.sl-fig.sat .sl-img { border-radius: 6px; }
+.slides[data-kind="buildings"] .sl-slide.on .sl-img img { animation: none; }
+.sl-place { position: absolute; right: 3vw; top: 50%; width: 24vw; transform: translateY(-50%); }
+.sl-place h2 { font-size: clamp(1.8rem, 3.2vw, 4rem); line-height: 1.02; margin: 0 0 .5rem; color: #fff; }
+.sl-place p { margin: 0; font-size: clamp(.95rem, 1.15vw, 1.4rem); color: rgba(244, 238, 226, .75); line-height: 1.45; }
+.sl-place .sl-src { margin-top: 1.2rem; opacity: 1; }
+.sl-pips { display: flex; gap: .45rem; margin-top: 1.6rem; }
+.sl-pips i { flex: 1; max-width: 3.4rem; height: 4px; border-radius: 2px; background: rgba(244, 238, 226, .18); }
+.sl-pips i.done { background: rgba(201, 150, 46, .6); }
+.sl-pips i.now { background: var(--ochre); }
+/* the place text only animates in on the first frame of a place; later frames keep it still */
+.sl-frame .sl-place { opacity: 1; }
+.sl-frame.first .sl-place h2, .sl-frame.first .sl-place > p:first-of-type { animation: place-in 1000ms var(--ease-out) both; }
+.sl-frame.first .sl-place > p:first-of-type { animation-delay: 150ms; }
+@keyframes place-in { from { opacity: 0; transform: translateY(16px); } }
+.slides[data-kind="buildings"] .sl-slide:not(.first) .sl-place { transition: none; }
+
+@media (max-width: 900px) {
+  .sl-fig { inset: 8vh 3vw 24vh; }
+  .sl-fig.two { flex-direction: column; --cols: 1; }
+  .slides[data-kind="buildings"] .sl-fig { inset: 8vh 3vw 34vh; }
+  .sl-place { left: 4vw; right: 4vw; top: auto; bottom: 4vh; width: auto; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .sl-slide.on .sl-img img { animation: none; } .sl-slide { transition-duration: 300ms; } }

@@ -52,6 +52,8 @@
   }
   function onIdle() {
     if (!screen) return;
+    if (M.tour && M.tour.active()) M.tour.stop();
+    if (M.tour) M.tour.toggleNotes(false);
     playIndex = -1;
     playNext();
   }
@@ -99,7 +101,10 @@
       if (pages[idx]) { e.preventDefault(); M.router.go("#/" + (pages[idx].route || pages[idx].id)); }
     }
   }
+  /** Pages in the top nav: M.config.nav (list of routes) if set, else every page with nav: true by navOrder. */
   K.navPages = function () {
+    var order = M.config && M.config.nav;
+    if (order) return order.map(function (r) { return M.router.pageFor("#/" + r); }).filter(Boolean);
     return Object.keys(M.pages).map(function (k) { return M.pages[k]; }).filter(function (p) { return p.nav; })
       .sort(function (a, b) { return (a.navOrder || 99) - (b.navOrder || 99); });
   };
@@ -108,6 +113,7 @@
     document.addEventListener("keydown", onKey);
     if (screen) {
       document.body.classList.add("kiosk");
+      if (screen.tour) document.body.classList.add("tour-screen");
       resetIdle();
       M.router.onChange(updatePill);
       // Start the playlist timer straight away if we open on the home route.
