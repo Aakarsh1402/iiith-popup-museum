@@ -14,9 +14,10 @@ body[data-page="photos"], body[data-page="buildings"] { background: #0b0b0a; }
 /* each image is sized to fit its share of the frame exactly (container units), and never blown up past 2.2x */
 .sl-fig { position: absolute; inset: 8vh 4vw 16vh; display: flex; gap: 2.4vw; align-items: center; justify-content: center; container-type: size; --cols: 1; }
 .sl-fig.two { --cols: 2; }
+.sl-fig.four { --cols: 4; inset-inline: 2.5vw; }   /* four photos in one row (Nilgiri court signs) */
 .sl-img { flex: none; display: grid; place-items: center; overflow: hidden; border-radius: 3px; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); }
 .sl-img img { display: block; aspect-ratio: var(--ar, 1.6); height: auto; user-select: none; transform-origin: 50% 50%;
-  width: min(calc((100cqw - (var(--cols) - 1) * 2.4vw) / var(--cols)), calc(100cqh * var(--ar, 1.6)), var(--nw, 4000px)); }
+  width: min(calc((100cqw - (var(--cols) - 1) * 2.4vw) / var(--cols)), calc((100cqh - (var(--rows, 1) - 1) * 2.4vw) / var(--rows, 1) * var(--ar, 1.6)), var(--nw, 4000px)); }
 .sl-slide.on .sl-img img { animation: kb 9500ms linear both; }
 @keyframes kb { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.055) translate(var(--kb-x, 1%), var(--kb-y, 0)); } }
 .sl-cap { position: absolute; left: 4vw; right: 4vw; bottom: 4.2vh; display: flex; align-items: baseline; gap: 1.6rem; flex-wrap: wrap; }
@@ -72,6 +73,7 @@ body.touring .sl-fig { bottom: 22vh; }
   .sl-cap { bottom: 9vh; }
   .sl-fig { inset: 10vh 3vw 26vh; }
   .sl-fig.two { flex-direction: column; --cols: 1; }
+  .sl-fig.four { --cols: 2; --rows: 2; flex-wrap: wrap; align-content: center; }
   .slides[data-kind="buildings"] .sl-fig { inset: 8vh 3vw 34vh; }
   .sl-place { left: 4vw; right: 4vw; top: auto; bottom: 10vh; width: auto; transform: none; }
 }

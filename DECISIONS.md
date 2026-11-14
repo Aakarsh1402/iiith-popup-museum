@@ -25,7 +25,7 @@ Aakarsh asked for a lot of changes overnight and said not to wait for answers. T
 - **Board 1 (`#/photos`)**: every captioned old photo of the campus we have. That's photos 01-08 and 19 plus the five campus photos printed in the prospectus. The two portraits from the prospectus are left out.
   - Small prospectus photos are paired two to a slide so they aren't blown up. Nothing is shown at more than 2.2x its real size.
   - The black video bars on the 20-year-video stills are cropped off.
-  - 11 slides at 7.5 s each, about 82 s per loop.
+  - 12 slides, about 93 s per loop: 11 at 7.5 s, and slide 5 (added 14 Nov afternoon) shows four signs from Nilgiri's court days in one row for 10 s. On a phone they show as a 2 x 2 grid.
 - **Board 2 (`#/buildings`)**: NAB (6 frames), Bakul Nivas (4), Felicity ground (4), amphitheatre (2), each in the order of the photo numbers, which I took as oldest to newest.
   - No years are shown, because only one frame has a readable date.
   - Frames are zoomed in a little to push Google's map labels to the edges. Some labels may still show; they're credited as Google Earth screenshots.

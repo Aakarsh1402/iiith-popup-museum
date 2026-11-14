@@ -1,5 +1,5 @@
 /* slides.js: the two monitor slideshows. Owner: aakarsh-claude (A10).
-   #/photos     Board 1: old photos of the campus, one (or two) per slide, black background, crossfade every 7.5 s.
+   #/photos     Board 1: old photos of the campus, one or two per slide (four for the Nilgiri court signs), black background, crossfade every 7.5 s (10 s for the four).
    #/buildings  Board 2: satellite sequences of buildings going up, oldest to newest, with the place name on screen.
    Both play on their own forever. A mouse nudge never stops them; arrows / the buttons step, Space pauses.
    Two image buffers + img.decode() before each fade, so it can loop for hours without a flash. */
@@ -10,6 +10,7 @@
   var PROSP = "assets/docs/prospectus/img/";
   var VIDEO = "From IIITH's 20-year video";
   var PROSP_SRC = "IIIT prospectus, around 2001";
+  var COURT = "assets/img/nilgiri-court/";   // paper signs inside Nilgiri from its court days (team photos, 14 Nov; originals in raw/nilgiri-court/)
 
   /* Board 1. Every captioned old photo of the campus we have. Order: the land, the first buildings, the first batch,
      the prospectus years, the first graduates. Captions are cut down from images.js / documents.js. */
@@ -18,6 +19,8 @@
     { imgs: ["img-01"], text: "The early main gate. The sign says \"Indian Institute of Information Technology\".", src: VIDEO },
     { imgs: ["img-04"], text: "The guest house from above, on bare red soil. Its sign says \"Guest House, Mess & Lounge\".", src: VIDEO },
     { imgs: ["img-05"], text: "OBH, with a banyan that was still young.", src: VIDEO },
+    { files: [COURT + "1-bar-association.jpg", COURT + "2-court-hall-7.jpg", COURT + "3-library.jpg", COURT + "4-govt-pleader.jpg"], ms: 10000,
+      text: "Signs from when Nilgiri was being built as a court.", src: "Team photo archive" },
     { imgs: ["img-07"], text: "Inauguration of the first batch of GDIT students.", src: VIDEO },
     { imgs: ["img-03"], text: "An early classroom.", src: VIDEO },
     { imgs: ["img-08"], text: "A full classroom listening to a panel.", src: VIDEO },
@@ -37,7 +40,7 @@
 
   // black video bars on the 20-year-video stills: [top %, bottom %] to crop away
   var CROP = { "img-01": [14.4, 5.1], "img-02": [13.4, 12.6], "img-03": [13.0, 12.5], "img-04": [13.0, 12.6], "img-05": [12.9, 12.5], "img-07": [6.5, 0] };
-  var FILE_SIZES = { "ximg-01.jpg": [550, 324], "ximg-02.jpg": [550, 324], "ximg-05.jpg": [173, 209], "ximg-06.jpg": [524, 425], "ximg-07.jpg": [499, 431] };
+  var FILE_SIZES = { "1-bar-association.jpg": [1000, 750], "2-court-hall-7.jpg": [1000, 750], "3-library.jpg": [1000, 750], "4-govt-pleader.jpg": [1000, 750], "ximg-01.jpg": [550, 324], "ximg-02.jpg": [550, 324], "ximg-05.jpg": [173, 209], "ximg-06.jpg": [524, 425], "ximg-07.jpg": [499, 431] };
 
   var S = null;
 
@@ -148,7 +151,7 @@
   /* ---------- Board 1: photos ---------- */
   function buildPhoto(item, i) {
     var pics = (item.imgs || []).concat(item.files || []).map(pic);
-    var fig = el("div", { class: ["sl-fig", pics.length > 1 ? "two" : "one"] }, pics.map(function (p, k) {
+    var fig = el("div", { class: ["sl-fig", pics.length > 2 ? "four" : pics.length > 1 ? "two" : "one"] }, pics.map(function (p, k) {
       return imgNode(p, { "--kb-x": ((i + k) % 2 ? -1.5 : 1.5) + "%", "--kb-y": ((i % 3) - 1) + "%" });
     }));
     return el("div", { class: "sl-slide" }, fig,
@@ -161,7 +164,7 @@
       S = { cleanup: [] };
       var c = chrome(root, "photos", "Setting the scene", "IIIT in its early years");
       var p = player({ stage: c.stage, progress: c.progress, items: PHOTO_SLIDES, build: buildPhoto,
-        dur: function () { return 7500; },
+        dur: function (it) { return it.ms || 7500; },
         onShow: function (item, i) { c.count.textContent = (i + 1) + " / " + PHOTO_SLIDES.length; } });
       wire(c, p);
       p.go(0);
