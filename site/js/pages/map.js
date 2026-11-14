@@ -48,6 +48,11 @@
   }
   function toScreen(p) { var st = S.zp.state(); return { x: st.x + p.x * st.s, y: st.y + p.y * st.s }; }
 
+  /** Portrait: the panel opens under the map, so if the visitor had scrolled down the journey list, bring the map back into view. */
+  function revealStage() {
+    if (!window.matchMedia || !window.matchMedia("(orientation: portrait)").matches || window.scrollY < 2) return;
+    try { window.scrollTo({ top: 0, behavior: U.prefersReducedMotion() ? "auto" : "smooth" }); } catch (e) { window.scrollTo(0, 0); }
+  }
   /** The open panel, if it covers the map from the right (landscape) and not from the bottom (portrait, see portrait.css). */
   function sideSheetRect() {
     if (!S || !S.sheet || !S.sheet.isOpen()) return null;
@@ -57,8 +62,9 @@
   /** Fly so a plan rectangle sits in the part of the map that the panel doesn't cover. maxK caps zoom (times the fit scale). */
   function focusVisible(x, y, w, h, pad, maxK) {
     var hr = S.host.getBoundingClientRect(), side = sideSheetRect(), vw = hr.width, vh = hr.height;
-    if (side) vw = Math.max(240, Math.min(hr.width, side.left - hr.left));
-    else if (S.sheet && S.sheet.isOpen()) vh = Math.max(200, Math.min(hr.height, S.sheet.el.getBoundingClientRect().top - hr.top));   // bottom sheet
+    // sizes only, never the panel's position: it is still sliding in (transform) when this runs
+    if (side) vw = Math.max(240, Math.min(hr.width, window.innerWidth - side.width - hr.left));
+    else if (S.sheet && S.sheet.isOpen()) vh = Math.max(200, Math.min(hr.height, window.innerHeight - S.sheet.el.getBoundingClientRect().height - Math.max(0, hr.top)));   // bottom sheet
     var fit = Math.min((hr.width - 32) / IMG_W, (hr.height - 32) / IMG_H);
     var s = Math.min(vw / (w * (1 + 2 * pad)), vh / (h * (1 + 2 * pad)));
     s = U.clamp(s, fit, fit * (maxK || 2.4));
@@ -133,6 +139,7 @@
     S.sheet.setBar([el("span", { class: "mono small muted" }, "Moving rooms")]);
     S.sheet.setContent(placeContent(p));
     S.sheet.open();
+    revealStage();
     var g = geom(p);
     if (p.after2002 && S.t < 0.5) morphTo(1, 1600);
     else if (p.hideNow && S.t > 0.5) morphTo(0, 1600);
@@ -230,6 +237,7 @@
               M.ui.sourceBadges(s.sources, { compact: true }))));
       }))));
     S.sheet.open();
+    revealStage();
     S.openId = null;
     if (S.pendingFocus) { var f = S.pendingFocus; S.pendingFocus = null; requestAnimationFrame(function () { if (S) focusVisible(f[0], f[1], f[2], f[3], 0.45, 1.9); }); }
     if (fromUser !== false) setHash();

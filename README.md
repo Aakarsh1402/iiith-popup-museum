@@ -22,7 +22,7 @@ The IT dept says the screens can't take HDMI from a laptop; we cast a phone to t
 
 **Each phone, before casting**
 1. Plug it into a charger or power bank. Turn on Do Not Disturb (notifications show up on the big screen too) and turn off battery saver.
-2. Lock the rotation: portrait for the Board 4 standee, landscape for the Board 1-3 monitors.
+2. Lock the rotation: portrait for the Board 4 standee, landscape for the Board 1-3 monitors. (Checked at phone landscape size: both slideshows fill the screen; the Board 3 map works but is tight, so if that screen has its own browser, open the link there.)
 3. Open the screen link in Chrome and tap **Full screen** in the top bar. That button only shows on touch screens; the address bar disappears once it's tapped. On an iPhone use Share > Add to Home Screen and open it from the icon instead (iPhones can't go full screen from a web page).
 4. The page keeps the phone awake while it's open (only on the https site). Still set the screen timeout to the longest option as a backup.
 5. Start casting from the quick settings: Smart View, Screen cast or Cast, whichever the screen supports (Miracast, Google Cast, or the screen's own app). An iPhone needs an AirPlay receiver.

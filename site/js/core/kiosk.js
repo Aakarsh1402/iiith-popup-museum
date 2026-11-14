@@ -112,7 +112,8 @@
   /** A "Full screen" button for kiosk screens on touch devices (phones have no F key). Hidden on laptops and once fullscreen. */
   K.fullscreenButton = function () {
     var canFs = document.fullscreenEnabled || document.webkitFullscreenEnabled;
-    var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    // some Android phones report (hover: hover), so also count any touch input; a touchscreen laptop gets the button too, which is harmless
+    var touch = navigator.maxTouchPoints > 0 || (window.matchMedia && (window.matchMedia("(any-pointer: coarse)").matches || window.matchMedia("(hover: none)").matches));
     if (!screen || !canFs || !touch) return null;
     var b = M.ui.el("button", { type: "button", class: "nav-fs", "aria-label": "Full screen", title: "Full screen (F)", on: { click: K.toggleFullscreen } }, M.ui.icon("expand"), M.ui.el("span", null, "Full screen"));
     function sync() { b.hidden = !!fsElement(); }
