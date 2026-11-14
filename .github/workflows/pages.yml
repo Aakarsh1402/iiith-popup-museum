@@ -2,7 +2,9 @@
 # The main repo needs admin rights to turn Pages on, so the site is served from a fork on Saharsh's account:
 #   https://saha264.github.io/iiith-popup-museum/   (the quiz QR code points at #/quiz on it)
 # The job only runs in that fork, so nothing happens in the main repo. Each run first pulls the main repo's
-# newest commits into the fork, so the live site follows main within about 15 minutes, with no manual step.
+# newest commits into the fork. GitHub skips most scheduled runs on the fork, so the schedule below is only a backup:
+# Saharsh's laptop runs a 5-minute timer (iiith-site-sync) that fast-forwards the fork, and that push starts this job.
+# Either way the live site follows main within about 5 minutes, with no manual step.
 name: Publish site
 
 on:
@@ -10,7 +12,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
