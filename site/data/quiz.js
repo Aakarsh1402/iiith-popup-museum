@@ -5,7 +5,7 @@ M.quiz = {
   title: "Do you know your institute?",
   intro: "8 questions. Try it now, and again after the exhibit.",
   questions: [
-    { id: "q1", q: "Where were the first classes held in 1998?",
+    { id: "q1", q: "In 1998, which building held the classrooms, labs and office on just two floors?",
       options: ["Himalaya", "Nilgiri", "Vindhya", "The guest house"], answer: 1,
       explain: "Only the first two floors of Nilgiri were in use. The one big hall, SH-1, was next door in Vindhya.",
       sources: ["S-PJN"], eventId: "e-1998-start" },

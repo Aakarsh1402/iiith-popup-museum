@@ -39,7 +39,7 @@
     var hl = pros && pros.highlights && pros.highlights[0];
     root.appendChild(el("section", { class: "page arc" }, el("div", { class: "wrap" }, el("div", { class: "page-pad" },
       el("header", { class: "arc-hero" },
-        el("div", { class: "kicker" }, "Board 4 / Archive"),
+        el("div", { class: "kicker" }, "Archive"),
         el("h1", null, "The archive"),
         el("p", { class: "lede" }, "Everything we found. Open a document to read it and zoom in.")),
       el("aside", { class: "arc-contribute" },

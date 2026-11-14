@@ -23,7 +23,7 @@ M.way = {
       sources: ["S-PROSP", "S-LAYOUT2002", "S-GOPI", "S-PJN", "S-BLOGCORP"], verifiedId: "V5" },
 
     { id: "stayed", kicker: "1998 to 2001", title: "The school principal who became a professor",
-      body: "Mr. Gopi told us that Prof. Govindarajulu came with IBM and stayed on as full-time faculty. We checked. The c.2001 prospectus lists him as Principal of the IBM School of Enterprise Wide Computing from January 1998 to October 2000, then Professor at IIIT from November 2001. A Ping article and the librarian both put him at the heart of the early library. Three sources, one story.",
+      body: "Mr. Gopi told us that Prof. Govindarajulu came with IBM and stayed on as full-time faculty. We checked. The c.2001 prospectus lists him as Principal of the IBM School of Enterprise Wide Computing from January 1998 to October 2000, then Professor at IIIT from November 2001. A Ping article and the librarian both put him at the centre of the early library.",
       visual: "evidence",
       sources: ["S-GOPI", "S-PROSP", "S-PING", "S-MURALI"], verifiedId: "V3" },
 
@@ -39,7 +39,7 @@ M.way = {
       todo: "TODO(team): Himalaya construction years (not in any source yet)." },
 
     { id: "landlord", kicker: "Early 2010s", title: "IIIT the landlord",
-      body: "IIIT did not only borrow. An undated floor-space survey, probably from the early 2010s, lists spaces IIIT leased out inside its own buildings. The tenants included RGUKT, TalentSprint, the State Bank of Hyderabad, Xerox and Milk & Water. Together they took up 67,118 sq ft. One space, Prudhvi, sat empty.",
+      body: "IIIT also rented space out. An undated floor-space survey, probably from the early 2010s, lists spaces IIIT leased out inside its own buildings. The tenants included RGUKT, TalentSprint, the State Bank of Hyderabad, Xerox and Milk & Water. Together they took up 67,118 sq ft. One space, Prudhvi, sat empty.",
       visual: "leased",
       docs: [ { doc: "floorplans", page: 27, label: "Floor-plan file, p.27: the leased spaces table" } ],
       sources: ["S-FLOORPLANS"],
@@ -115,7 +115,7 @@ M.way = {
   /* The "own" chapter: icon list. icon is a key the page maps to a small inline SVG. */
   own: [
     { icon: "server", when: "1998", title: "Its own server room", text: "IIIT bought its own server hardware for Nilgiri. Students helped run the systems. Those servers are still on, while the server room moves to Vindhya.", sources: ["S-PJN"] },
-    { icon: "mail", when: "1998", title: "Its own email", text: "Email ran on IIIT's own servers (Zimbra) before moving to Microsoft. Students were @gdit.iiit.net, faculty @iiit.net.", sources: ["S-PJN"] },
+    { icon: "mail", when: "1998", title: "Its own email", text: "Email ran on IIIT's own servers (later on Zimbra) before moving to Microsoft. Students were @gdit.iiit.net, faculty @iiit.net.", sources: ["S-PJN"] },
     { icon: "files", when: "2017", title: "From paper files to IMS", text: "Hostel rooms moved into IMS first. Office work followed, one process at a time. Some records stay on paper for audit rules.", sources: ["S-PRAB", "S-RAJAN"] },
     { icon: "online", when: "2020", title: "Fully online", text: "During COVID, classes and exams moved to CodeTantra. Sridhar Kora says IIIT was the first in Hyderabad to go fully online.", sources: ["S-SRIDHAR"] },
     { icon: "water", when: "After 2018", title: "Hot water that lasts", text: "Solar heaters and then geysers couldn't keep up. After a visit to BITS Pilani Hyderabad, the hostel team put in heat pumps.", sources: ["S-SRIDHAR"] }
@@ -125,7 +125,7 @@ M.way = {
   civil: [
     { label: "Prospectus, c.2001", text: "\"M.Tech in IT for Building Sciences (for architects and civil engineers)\"", sources: ["S-PROSP"], doc: "prospectus", page: 2 },
     { label: "Prospectus, c.2001", text: "A research centre called \"Intelligent Buildings\".", sources: ["S-PROSP"], doc: "prospectus", page: 6 },
-    { label: "Floor-space survey, early 2010s", text: "EERC, Vindhya 1st floor: a CASE Lab, a Material Testing Lab and a models display hall.", sources: ["S-FLOORPLANS"], doc: "floorplans", page: 9 },
+    { label: "Floor-space survey, early 2010s", text: "EERC, Vindhya 1st floor, with a CASE Lab.", sources: ["S-FLOORPLANS"], doc: "floorplans", page: 9 },
     { label: "Floor-space survey, early 2010s", text: "CBS, the Building Science Lab, Vindhya B2.", sources: ["S-FLOORPLANS"], doc: "floorplans", page: 8 }
   ]
 };

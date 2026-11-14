@@ -127,7 +127,7 @@
     var ring = el("div", { class: "voices-ring" },
       el("div", { class: "voices-ring-line", "aria-hidden": "true" }),
       el("header", { class: "voices-ring-centre" },
-        el("div", { class: "kicker" }, "Board 4 / Voices"),
+        el("div", { class: "kicker" }, "Voices"),
         el("h1", null, (n <= 10 ? NUM[n].charAt(0).toUpperCase() + NUM[n].slice(1) : n) + " people told us their IIIT"),
         el("p", { class: "lede" }, "Most of this exhibit started as something one of them remembered."),
         el("p", { class: "voices-consent" }, UI.icon("check"), "Everyone here agreed to be recorded and quoted.")),

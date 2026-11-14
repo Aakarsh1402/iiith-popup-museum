@@ -44,7 +44,7 @@
     var s = sheet("a2p", "Entry", "Title board (print at A2, or scale up to 2 x 3 ft)", C.b1, "title-board");
     var roots = [["Board 1", "Setting the scene", C.b1], ["Board 2", "The IIIT Way", C.b2], ["Board 3", "Institutional changes", C.b3], ["Board 4", "How we know", C.b4]];
     add(s, [
-      el("div", { class: "top" }, el("div", { class: "kick" }, "A pop-up museum by Team CakedUp"), el("img", { class: "coin-img", src: "../site/assets/img/coin-back.png", alt: "" })),
+      el("div", { class: "top" }, el("div", { class: "kick" }, "A pop-up museum by Team CakedUp"), el("img", { class: "coin-img", src: "../site/assets/img/iiit-badge.png", alt: "" })),
       el("h1", { class: "title-long" }, "Do You Know Your Institute?"),
       el("div", { class: "sub" }, "How IIIT put down its own roots"),
       el("p", { class: "arg" }, "IIIT's logo is a banyan. A banyan often starts out leaning on another tree, then drops roots of its own until it can stand by itself. ", el("b", null, "IIIT grew the same way."), " It began in borrowed government buildings, with borrowed teachers and company schools in its classrooms. Over 25 years it took those spaces back and built its own."),

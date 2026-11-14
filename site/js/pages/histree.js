@@ -8,7 +8,7 @@
 
   function photos(t, ratio) {
     var ids = (t.photos || []).filter(function (id) { return U.image(id); });
-    if (!ids.length) return el("div", { class: "photo-tile ht-photo-coming" }, UI.icon("tree"), el("span", null, "Photo coming on 14 Nov"));
+    if (!ids.length) return null;   // no photo yet: show nothing rather than a placeholder
     return el("div", { class: "ht-photos" }, ids.map(function (id) { return UI.imageFigure(id, { gallery: ids, ratio: ratio || "4/3" }); }));
   }
 

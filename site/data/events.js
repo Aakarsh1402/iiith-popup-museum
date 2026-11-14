@@ -191,7 +191,7 @@ M.events = [
   { id: "e-2001-govindarajulu", year: 2001, dateLabel: "1998 to 2001", era: "founding", sort: 5,
     title: "The IBM school's principal becomes an IIIT professor",
     summary: "Prof. R. Govindarajulu ran the IBM school on campus from 1998 to 2000. In November 2001 he became a professor at IIIT.",
-    body: "Mr. Gopi told us someone \"from IBM\" stayed on as faculty. The prospectus has his full career. Ping! and Muralidhar both place him at the centre of the early library. Three sources, one story.",
+    body: "Mr. Gopi told us someone \"from IBM\" stayed on as faculty. The prospectus has his full career. Ping! and Muralidhar both place him at the centre of the early library.",
     category: ["people"], places: ["vindhya"], people: [], sources: ["S-GOPI", "S-PROSP", "S-PING", "S-MURALI"], confidence: "corroborated", images: [], featured: false },
 
   { id: "e-2002-plan", year: 2002, era: "founding", sort: 1,
