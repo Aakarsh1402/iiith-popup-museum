@@ -86,10 +86,13 @@
       imgs.forEach(function (im, k) { im.classList.toggle("on", k === i); });
       range.value = String(i); label.textContent = (i + 1) + " / " + ids.length;
     }
-    function play() { stop(); playBtn.replaceChildren(M.ui.icon("pause")); timer = setInterval(function () { show(i + 1); }, 1400); S.timers.push(function () { clearInterval(timer); }); }
+    // only the flipbook on screen runs: a replaced panel stops its own timer, so autoplay can't pile up hidden intervals
+    function play() { stop(); playBtn.replaceChildren(M.ui.icon("pause")); timer = setInterval(function () { if (!stage.isConnected) { stop(); return; } show(i + 1); }, 1400); }
     function stop() { clearInterval(timer); timer = 0; playBtn.replaceChildren(M.ui.icon("play")); }
+    if (S.fbStop) S.fbStop();
+    S.fbStop = stop;
     show(0);
-    if (!U.prefersReducedMotion()) setTimeout(play, 600);
+    if (!U.prefersReducedMotion()) setTimeout(function () { if (S && stage.isConnected) play(); }, 600);
     return el("div", { class: "fb" }, stage, el("div", { class: "fb-ctrl" }, playBtn, range, label), note ? el("p", { class: "fb-note" }, note) : null);
   }
 
@@ -382,6 +385,7 @@
       var onResize = U.debounce(placeOverlay, 60);
       window.addEventListener("resize", onResize);
       S.timers.push(function () { window.removeEventListener("resize", onResize); });
+      S.timers.push(function () { if (S.fbStop) S.fbStop(); });
       if (M.kiosk.dev) devPicker(content);
 
       var t = setTimeout(function () {

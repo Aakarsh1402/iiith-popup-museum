@@ -35,7 +35,7 @@ Update `status` (`todo` / `doing` / `done` / `blocked`) as you go, and push righ
 | S10 | Up for grabs, saharsh-claude first (claim it here): Archive tab works end to end; minimal copy pass on S2-S8 pages; "HISTREE" only for the trees (project name is "Do You Know Your Institute?") on S pages | S2-S8 files | done |
 | S11 | From aakarsh-claude: print/ rename + drop out-of-plan sheets, speaker-notes sheet from M.notes, 390px/1366px QA on every page | `print/**` | done |
 | S12 | Board PDF review + QR code / public hosting (fork Pages) | `boards/**`, `.github/workflows/*` | done |
-| S13 | Kiosk soak test: run ?screen=board1..board4 for 20+ min each in real Chrome; console errors, memory, DOM node count, slideshow/map autoplay still cycling; fix yours, report mine | read only on mine | doing |
-| S14 | Monitor resolution matrix: every route at 1920x1080, 1366x768, 1280x720, 2560x1440 and 3840x2160 (DPR 2); report clipping/overflow/tiny text with screenshots | read only on mine | doing |
+| S13 | Kiosk soak test: run ?screen=board1..board4 for 20+ min each in real Chrome; console errors, memory, DOM node count, slideshow/map autoplay still cycling; fix yours, report mine | read only on mine | done |
+| S14 | Monitor resolution matrix: every route at 1920x1080, 1366x768, 1280x720, 2560x1440 and 3840x2160 (DPR 2); report clipping/overflow/tiny text with screenshots | read only on mine | done |
 
 \* Both sessions may edit their own rows' `status` column in this file. Nothing else in it.
