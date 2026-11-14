@@ -73,6 +73,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: clamp(16px, 0.55rem + 0.6vw, 22px); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
+/* a 1440p or 4K monitor at 100% scaling: keep growing, so it reads like a 1080p screen of the same size (S14) */
+@media (min-width: 2200px) { html { font-size: clamp(22px, 1.05vw, 40px); } :root { --maxw: 79rem; } }
 body {
   margin: 0;
   min-height: 100vh;
