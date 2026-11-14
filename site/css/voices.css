@@ -1,6 +1,5 @@
 /* voices.css: Voices index, person pages, transcript reader. Owner: saharsh-claude (S3). Prefix .voices- */
 
-.voices-hero { max-width: 64rem; }
 .voices-consent { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-mono); font-size: .8rem; color: var(--ok); border: 1.5px solid currentColor; border-radius: 999px; padding: .35rem .9rem; }
 .voices-consent svg { width: 16px; height: 16px; }
 .voices-sub { font-size: 1.1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--ink-2); margin: 2.6rem 0 .6rem; font-weight: 600; }
@@ -16,25 +15,55 @@
 .voices-strip-pin .lbl { font-size: .78rem; font-weight: 700; white-space: nowrap; color: var(--c); }
 .voices-strip-pin:hover .lbl { text-decoration: underline; }
 
-/* person grid */
-.voices-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: 1.2rem; }
-.voices-card {
-  --c: var(--plum);
-  display: flex; gap: 1.1rem; align-items: flex-start; padding: 1.3rem 1.3rem 1.2rem;
-  background: var(--card); border: 1px solid var(--rule); border-top: 5px solid var(--c); border-radius: 12px; box-shadow: var(--shadow-1);
-  color: inherit; text-decoration: none; transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
+/* the ring of interviewees (index first view) */
+.voices-ring {
+  --S: min(54rem, calc(100vh - var(--nav-h) - 4.5rem), calc(100vw - 2 * var(--gutter, 1rem) - 1rem));
+  --R: calc(var(--S) * .43); --av: calc(var(--S) * .15);
+  position: relative; width: var(--S); height: var(--S); margin: calc(var(--S) * .01) auto calc(var(--S) * .07);
 }
-.voices-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); color: inherit; }
-.voices-card-body { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
-.voices-card h3 { margin: 0; font-size: 1.45rem; }
+.voices-ring-line { position: absolute; left: 50%; top: 50%; width: calc(var(--R) * 2); height: calc(var(--R) * 2); transform: translate(-50%, -50%); border-radius: 50%; border: 2px dashed var(--rule); }
+.voices-ring-centre { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: calc(var(--S) * .48); text-align: center; display: flex; flex-direction: column; align-items: center; gap: calc(var(--S) * .012); }
+.voices-ring-centre h1 { font-size: calc(var(--S) * .05); margin: 0; }
+.voices-ring-centre .lede { font-size: calc(var(--S) * .025); margin: 0; max-width: 24ch; }
+.voices-ring-centre .voices-consent { font-size: calc(var(--S) * .015); white-space: nowrap; }
+.voices-ring-list { list-style: none; margin: 0; padding: 0; }
+.voices-ring-item { position: absolute; left: calc(50% + var(--x) * var(--R)); top: calc(50% + var(--y) * var(--R)); transform: translate(-50%, calc(var(--av) * -.5)); width: calc(var(--av) * 1.7); }
+.voices-ring-link { display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center; color: var(--ink); text-decoration: none; }
+.voices-ring-link .avatar { border: 4px solid var(--c); box-shadow: 0 0 0 5px var(--paper), var(--shadow-2); font-size: calc(var(--av) * .3); transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out); }
+.avatar--photo { background: var(--paper-2); overflow: hidden; }
+.voices-ring-name { font-family: var(--font-display); font-weight: 650; font-size: calc(var(--S) * .025); line-height: 1.1; }
+.voices-ring-years { font-size: calc(var(--S) * .015); color: var(--c); }
+.voices-ring-link:hover .avatar, .voices-ring-link:focus-visible .avatar { transform: scale(1.07); box-shadow: 0 0 0 5px var(--paper), 0 0 0 8px var(--c), var(--shadow-2); }
+.voices-ring-link:hover .voices-ring-name { text-decoration: underline; }
+@media (prefers-reduced-motion: no-preference) {
+  .voices-ring-line { animation: voices-spin-in 1100ms var(--ease-out) both; }
+  .voices-ring-item { animation: voices-pop 600ms var(--ease-out) both; animation-delay: calc(250ms + var(--i) * 90ms); }
+  .voices-ring-centre { animation: voices-fade 700ms ease both; }
+}
+@keyframes voices-spin-in { from { opacity: 0; transform: translate(-50%, -50%) rotate(-40deg) scale(.9); } }
+@keyframes voices-pop { from { opacity: 0; scale: .7; } }
+@keyframes voices-fade { from { opacity: 0; } }
+.voices-credit { margin: -1.2rem 1.5rem 0; }
+@media (max-width: 760px) {
+  .voices-ring { --S: auto; --av: 5.5rem; width: auto; height: auto; }
+  .voices-ring-line { display: none; }
+  .voices-ring-centre { position: static; transform: none; width: auto; margin-bottom: 1.6rem; gap: .6rem; }
+  .voices-ring-centre h1 { font-size: 2.3rem; }
+  .voices-ring-centre .lede { font-size: 1.05rem; }
+  .voices-ring-centre .voices-consent { font-size: .75rem; white-space: normal; }
+  .voices-ring-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem .8rem; }
+  .voices-ring-item { position: static; transform: none; width: auto; }
+  .voices-ring-name { font-size: 1.05rem; }
+  .voices-ring-years { font-size: .7rem; }
+  .voices-credit { margin-top: 0; }
+}
+
 .voices-years { align-self: flex-start; font-size: .7rem; color: var(--c, var(--ink-2)); border: 1px solid currentColor; border-radius: 4px; padding: .05rem .4rem; }
 .voices-role { margin: 0; color: var(--ink-2); font-size: .92rem; }
 .voices-role--big { font-size: 1.1rem; }
-.voices-one { margin: .2rem 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; line-height: 1.35; }
-.voices-count-ev { font-size: .7rem; color: var(--ink-3); margin-top: .4rem; }
 .voices-more { display: inline-flex; align-items: center; gap: .35rem; margin-top: .5rem; font-size: .72rem; color: var(--soil); }
 .voices-more svg { width: 14px; height: 14px; transition: transform var(--t-fast); }
-.voices-card:hover .voices-more svg, .voices-mini:hover .voices-more svg { transform: translateX(3px); }
+.voices-mini:hover .voices-more svg { transform: translateX(3px); }
 .voices-howto { margin-top: 2.4rem; max-width: 70ch; }
 .voices-howto h3 { margin-bottom: .4rem; }
 .voices-howto p { margin: 0; }
@@ -101,3 +130,4 @@
 .voices-tr-toggle { margin: .2rem 0 1rem; }
 .voices-howto > summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; }
 .voices-howto > p { margin: .6rem 0 0; }
+.voices-ring-centre .voices-consent svg { width: 1.3em; height: 1.3em; }

@@ -96,7 +96,18 @@
 
   /* ---------- index ---------- */
   function sortedPeople() { return (M.people || []).slice().sort(function (a, b) { return (a.joined || 9999) - (b.joined || 9999); }); }
-  function avatar(p, size) { var a = UI.avatar(p, size); if (p.color) a.style.setProperty("--c", p.color); return a; }
+  /* Headshots from public profiles (INAE, IIIT website, IIIT blog). Anyone not listed shows initials. */
+  var PHOTOS = { "P-PJN": "assets/img/people/P-PJN.jpg", "P-RAJAN": "assets/img/people/P-RAJAN.jpg", "P-SLN": "assets/img/people/P-SLN.jpg" };
+  function avatar(p, size) {
+    var a = UI.avatar(p, size);
+    if (p.color) a.style.setProperty("--c", p.color);
+    if (PHOTOS[p.id] && !a.querySelector("img")) {
+      a.textContent = "";
+      a.classList.add("avatar--photo");
+      a.appendChild(el("img", { src: PHOTOS[p.id], alt: "", on: { error: function () { a.classList.remove("avatar--photo"); a.textContent = p.initials || "?"; } } }));
+    }
+    return a;
+  }
   var NUM = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 
   function renderIndex(root) {
@@ -112,28 +123,28 @@
           el("span", { class: "dot" }), el("span", { class: "stem" }), el("span", { class: "lbl" }, p.name));
       }));
 
-    var grid = el("div", { class: "voices-grid" }, people.map(function (p) {
-      var evs = U.eventsForPerson(p.id).length;
-      return el("a", { class: "voices-card", href: U.href("voices", p.id), style: { "--c": p.color || "var(--plum)" } },
-        avatar(p, "4.4rem"),
-        el("div", { class: "voices-card-body" },
-          el("span", { class: "voices-years mono" }, p.years),
-          el("h3", null, p.name),
-          el("p", { class: "voices-role" }, p.role),
-          el("p", { class: "voices-one" }, p.oneLine),
-          evs ? el("span", { class: "voices-count-ev mono" }, evs + " moments on the timeline") : null,
-          el("span", { class: "voices-more mono" }, "Read the interview", UI.icon("arrow-right"))));
-    }));
-
-    root.appendChild(el("section", { class: "page voices" }, el("div", { class: "wrap" }, el("div", { class: "page-pad" },
-      el("header", { class: "voices-hero" },
+    /* the ring: everyone we interviewed, in the order they arrived, clockwise from the top */
+    var ring = el("div", { class: "voices-ring" },
+      el("div", { class: "voices-ring-line", "aria-hidden": "true" }),
+      el("header", { class: "voices-ring-centre" },
         el("div", { class: "kicker" }, "Board 4 / Voices"),
         el("h1", null, (n <= 10 ? NUM[n].charAt(0).toUpperCase() + NUM[n].slice(1) : n) + " people told us their IIIT"),
         el("p", { class: "lede" }, "Most of this exhibit started as something one of them remembered."),
         el("p", { class: "voices-consent" }, UI.icon("check"), "Everyone here agreed to be recorded and quoted.")),
+      el("ul", { class: "voices-ring-list" }, people.map(function (p, i) {
+        var ang = (-90 + i * 360 / n) * Math.PI / 180;
+        return el("li", { class: "voices-ring-item", style: { "--x": Math.cos(ang).toFixed(4), "--y": Math.sin(ang).toFixed(4), "--i": i, "--c": p.color || "var(--plum)" } },
+          el("a", { class: "voices-ring-link", href: U.href("voices", p.id) },
+            avatar(p, "var(--av)"),
+            el("span", { class: "voices-ring-name" }, p.name),
+            el("span", { class: "voices-ring-years mono" }, p.years)));
+      })));
+
+    root.appendChild(el("section", { class: "page voices" }, el("div", { class: "wrap" }, el("div", { class: "page-pad" },
+      ring,
       el("h2", { class: "voices-sub" }, "When they arrived"),
       strip,
-      grid,
+      el("p", { class: "voices-credit muted small" }, "Photos of Prof. Narayanan, Prof. Rajan and SLN Shastry are from their public profiles (INAE, the IIIT website, the IIIT blog). Everyone else is shown by initials."),
       el("details", { class: "callout voices-howto" },
         el("summary", null, "How to read these interviews"),
         el("p", null, "Most texts are write-ups of the recordings, not word for word. Prof. Narayanan's came as a polished write-up, so we never quote its wording as his. Prof. Rajan's is notes from an automatic transcript. Where we cut a line, the text says so."))))));
@@ -272,8 +283,6 @@
     st.root.textContent = "";
     if (params && params[0]) renderPerson(st.root, params[0], query || {});
     else { renderIndex(st.root); requestAnimationFrame(layoutStrip); }
-    if (st.io) st.io.disconnect();
-    st.io = UI.reveal(st.root.querySelectorAll(".voices-card"), 50);
   }
 
   M.pages.voices = {
