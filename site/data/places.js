@@ -1,5 +1,8 @@
 /* places.js: map places. Owner: aakarsh-claude (A3/A6).
    hotspot.plan2002 = rectangle in PERCENT of assets/map/plan-2002.jpg (x, y = top-left). North points down on that plan.
+   hotspot.now = polygon [[x, y], ...] in the same percent frame, for places built after 2002. assets/map/now-aligned.jpg is
+   today's satellite view warped into the plan's frame (scripts/map/align_satellite.py prints these polygons).
+   hideNow: true = only shown on the 2002 view (something newer stands there now).
    Tune with index.html?dev=1#/map (click-drag on the map prints {x, y, w, h}). Places built after 2002 have plan2002: null. */
 window.M = window.M || {};
 M.places = [
@@ -29,11 +32,11 @@ M.places = [
     summary: "The one women's hostel on the 2002 plan. Around 2001 the prospectus says two men's hostels and one women's hostel had about 700 single rooms.",
     images: [], journeys: ["sleep"], sources: ["S-LAYOUT2002", "S-PROSP"] },
   { id: "faculty-quarters", name: "Faculty Quarters", aka: ["\"Faculty Quaters\" (sic) on the 2002 plan"],
-    hotspot: { plan2002: { x: 57.5, y: 56.5, w: 16.5, h: 7.5 }, now: null },
+    hotspot: { plan2002: { x: 57.5, y: 56.5, w: 16.5, h: 7.5 }, now: null }, hideNow: true,
     summary: "Faculty lived next to the hostels and ate with students until 2010. Odd detail: this 2002 plan already shows a block with this name.",
     images: [], journeys: [], sources: ["S-PJN", "S-LAYOUT2002"] },
   { id: "playground", name: "Play grounds", aka: ["\"Play Ground\" with a dais"],
-    hotspot: { plan2002: { x: 31, y: 56.8, w: 25.5, h: 6.3 }, now: null },
+    hotspot: { plan2002: { x: 31, y: 56.8, w: 25.5, h: 6.3 }, now: null }, hideNow: true,
     summary: "Two play grounds and a dais on the 2002 plan. Convocations used to happen on the football ground under tarpaulin tents.",
     images: [], journeys: [], sources: ["S-LAYOUT2002", "S-PRAB"] },
   { id: "substation", name: "Substation", aka: ["\"Substation\" and \"APSEB Control Room\""],
@@ -47,21 +50,21 @@ M.places = [
 
   /* built after 2002 (or not drawn on the plan) */
   { id: "himalaya", name: "Himalaya", aka: ["Blocks A, C, D and the Kohli Research Block", "Bodh Bhawan (SLN Shastry)"],
-    hotspot: { plan2002: null, now: null }, after2002: true,
+    hotspot: { plan2002: null, now: [[40.0, 57.0], [56.5, 57.0], [56.5, 64.5], [40.0, 64.5]] }, after2002: true,
     summary: "Built on a 22 crore loan, paid off in six of ten years. Block C was IIIT's own; A came with TalentSprint, KRB with TCS, and D was T-Hub from 2015 to 2022.",
     images: [], journeys: ["block-d", "block-a", "cricket", "big-hall"], sources: ["S-PJN", "S-NEWS-THUB", "S-PRAB", "S-SLN"] },
   { id: "nab", name: "New Academic Block (NAB)", aka: ["The old Collector's bungalow site"],
-    hotspot: { plan2002: null, now: null }, after2002: true,
+    hotspot: { plan2002: null, now: [[72.2, 60.0], [64.2, 68.1], [57.6, 61.1], [65.6, 52.9]] }, after2002: true,
     summary: "Going up now, on the spot where the first batch lived in 1998. The library and the big lecture halls will move here.",
     images: ["img-09", "img-10", "img-11", "img-12", "img-13", "img-14"], journeys: ["library", "big-hall", "sleep"],
     sequence: ["img-09", "img-10", "img-11", "img-12", "img-13", "img-14"], sources: ["S-PJN", "S-MURALI", "S-PHOTOS"] },
   { id: "bakul", name: "Bakul Nivas", aka: [],
-    hotspot: { plan2002: null, now: null }, after2002: true,
+    hotspot: { plan2002: null, now: [[85.7, 80.6], [76.5, 90.0], [70.2, 83.3], [79.3, 73.9]] }, after2002: true,
     summary: "A newer hostel. Navjeevan the banyan stopped here on its way from the main road to OBH. The satellite screenshots show it being built.",
     images: ["img-33", "img-34", "img-35", "img-36"], journeys: ["navjeevan"],
     sequence: ["img-33", "img-34", "img-35", "img-36"], sources: ["S-SLN", "S-PHOTOS"] },
   { id: "felicity", name: "Felicity ground", aka: [],
-    hotspot: { plan2002: null, now: null }, after2002: true,
+    hotspot: { plan2002: null, now: [[84.4, 47.3], [76.4, 53.0], [73.6, 41.2], [84.2, 37.5]] }, after2002: true,
     summary: "A gate near the Felicity ground once led to the stadium, where people queued for the swimming pool.",
     images: ["img-15", "img-16", "img-17", "img-18"], journeys: [],
     sequence: ["img-15", "img-16", "img-17", "img-18"], sources: ["S-PRAB", "S-PHOTOS"] },

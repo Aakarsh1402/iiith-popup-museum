@@ -351,7 +351,8 @@
     function bound(s) {
       var r = host.getBoundingClientRect(), cw = W * s.s, ch = H * s.s;
       // small content may slide (e.g. out from under a side panel) but at least half of it stays in view
-      if (cw <= r.width) s.x = U.clamp(s.x, -cw * 0.45, r.width - cw * 0.55); else s.x = U.clamp(s.x, r.width - cw - pad, pad);
+      var inR = opts.insetRight ? opts.insetRight() || 0 : 0;   // e.g. a side panel covering the right edge: allow panning past it
+      if (cw <= r.width) s.x = U.clamp(s.x, -cw * 0.45 - inR, r.width - cw * 0.55); else s.x = U.clamp(s.x, r.width - cw - pad - inR, pad);
       if (ch <= r.height) s.y = U.clamp(s.y, -ch * 0.45, r.height - ch * 0.55); else s.y = U.clamp(s.y, r.height - ch - pad, pad);
       return s;
     }

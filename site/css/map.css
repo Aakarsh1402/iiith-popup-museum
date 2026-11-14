@@ -1,4 +1,4 @@
-/* map.css: Board 3 map. Owner: aakarsh-claude (A6). */
+/* map.css: Board 3 map (2002 plan morphing into today). Owner: aakarsh-claude (A6, A11). */
 
 .map-page { height: calc(100vh - var(--nav-h)); display: grid; grid-template-columns: minmax(300px, 22rem) minmax(0, 1fr); overflow: hidden; }
 .map-rail { overflow-y: auto; padding: 1.3rem 1.3rem 2rem clamp(1rem, 2vw, 2rem); border-right: 1px solid var(--rule); background: rgba(234, 225, 207, .35); scrollbar-width: thin; }
@@ -19,6 +19,21 @@
 .map-host { position: absolute; inset: 0; }
 .map-content { box-shadow: 0 10px 40px rgba(38, 36, 31, .18); background: #fff; }
 .map-img { width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
+.map-img.now, .map-img.plan { position: absolute; inset: 0; }
+.map-img.plan { mix-blend-mode: multiply; will-change: opacity; }
+.map-img.now { will-change: mask-image; }
+/* era-only hotspots and labels: newer buildings show on today's view, gone ones on the 2002 view */
+.hot, .map-label { transition: opacity 500ms var(--ease-out), fill var(--t-fast), stroke var(--t-fast), background var(--t-fast), color var(--t-fast), scale var(--t-fast) var(--ease-out); }
+.map-page:not(.is-now) .now-only, .map-page.is-now .then-only { opacity: 0 !important; pointer-events: none; }
+.map-page.is-now .hot { fill: rgba(255, 255, 255, .06); stroke: rgba(255, 255, 255, .85); }
+.map-page.is-now .hot:hover, .map-page.is-now .hot:focus-visible { fill: rgba(201, 150, 46, .3); stroke: #FFE7A8; }
+.map-page.is-now .hot.sel { fill: rgba(47, 93, 58, .3); stroke: #9fe0ae; }
+.map-page.is-now .map-content { box-shadow: 0 10px 40px rgba(0, 0, 0, .35); }
+.map-morph { position: absolute; left: 50%; top: 1rem; transform: translateX(-50%); z-index: 4; display: flex; align-items: center; gap: .6rem; padding: .35rem .45rem; border-radius: 999px;
+  background: rgba(251, 248, 241, .95); border: 1px solid var(--rule); box-shadow: var(--shadow-2); }
+.morph-btn { padding: .4rem .85rem; min-height: 36px; border-radius: 999px; font-size: .82rem; font-weight: 700; color: var(--ink-2); white-space: nowrap; transition: background var(--t-fast), color var(--t-fast); }
+.morph-btn.on { background: var(--ink); color: var(--paper); }
+.morph-range { width: clamp(90px, 12vw, 220px); accent-color: var(--banyan); }
 .map-svg { position: absolute; left: 0; top: 0; overflow: visible; }
 .hot { fill: rgba(169, 80, 44, .06); stroke: rgba(169, 80, 44, .75); stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; cursor: pointer; transition: fill var(--t-fast), stroke var(--t-fast); }
 .hot:hover, .hot:focus-visible { fill: rgba(201, 150, 46, .22); stroke: var(--soil); stroke-dasharray: none; outline: none; }

@@ -1,5 +1,6 @@
-/* map.js: Board 3, "Moving rooms". The 2002 layout plan with hotspots, room journeys, trees and satellite flipbooks.
-   Owner: aakarsh-claude (A6). Routes: #/map, #/map/<placeId>, #/map?journey=<id>, #/map?layer=trees, ?autoplay=1, ?dev=1 picker. */
+/* map.js: Board 3, "Moving rooms". The 2002 layout plan morphing into today's satellite view (warped into the plan's frame,
+   so every hotspot, journey and label stays put), room journeys, trees and satellite flipbooks.
+   Owner: aakarsh-claude (A6, A11). Routes: #/map, #/map/<placeId>, #/map?journey=<id>, ?layer=trees, ?view=2002, ?autoplay=1, ?dev=1. */
 (function () {
   "use strict";
   var M = window.M, el = M.ui.el, svg = M.ui.svg, U = M.util;
@@ -10,9 +11,42 @@
   var APPROX = { "main-road": { x: 50, y: 89.5 } };
 
   function rectPx(h) { return { x: h.x / 100 * IMG_W, y: h.y / 100 * IMG_H, w: h.w / 100 * IMG_W, h: h.h / 100 * IMG_H }; }
-  function centerPx(place) {
-    var h = place && place.hotspot && place.hotspot.plan2002; if (!h) return null;
-    var r = rectPx(h); return { x: r.x + r.w / 2, y: r.y + r.h / 2 };
+  function polyPx(n) { return n.map(function (q) { return { x: q[0] / 100 * IMG_W, y: q[1] / 100 * IMG_H }; }); }
+  /** Where a place sits on the map: the 2002 rectangle, or the polygon traced on today's view. */
+  function geom(place) {
+    var hs = place && place.hotspot; if (!hs) return null;
+    if (hs.plan2002) { var r = rectPx(hs.plan2002); r.poly = null; r.now = false; return r; }
+    if (hs.now) {
+      var pts = polyPx(hs.now), xs = pts.map(function (q) { return q.x; }), ys = pts.map(function (q) { return q.y; });
+      var x0 = Math.min.apply(null, xs), y0 = Math.min.apply(null, ys);
+      return { x: x0, y: y0, w: Math.max.apply(null, xs) - x0, h: Math.max.apply(null, ys) - y0, poly: pts, now: true };
+    }
+    return null;
+  }
+  function centerPx(place) { var g = geom(place); return g ? { x: g.x + g.w / 2, y: g.y + g.h / 2 } : null; }
+
+  /* ---------- 2002 plan <-> today ---------- */
+  function setMorph(t) {
+    S.t = U.clamp(t, 0, 1);
+    var e = S.t * S.t * (3 - 2 * S.t);
+    S.planImg.style.opacity = (1 - e).toFixed(3);
+    var r = (S.t * 150).toFixed(1);
+    var m = S.t >= 1 ? "none" : "radial-gradient(circle at 50% 55%, #000 " + Math.max(0, r - 18) + "%, transparent " + r + "%)";
+    S.nowImg.style.webkitMaskImage = m; S.nowImg.style.maskImage = m;
+    var isNow = S.t > 0.5;
+    if (S.root.classList.contains("is-now") !== isNow) { S.root.classList.toggle("is-now", isNow); updateBadge(); }
+    S.morphRange.value = String(Math.round(S.t * 100));
+  }
+  function updateBadge() {
+    var now = S.t > 0.5;
+    S.badge.firstChild.textContent = now ? "Today" : "Layout plan, 2002";
+    S.badge.lastChild.textContent = now ? "Google Earth screenshot, lined up with the plan. North is down." : "62 acres. From SLN Shastry. North is down.";
+    S.morphBtns[0].classList.toggle("on", !now); S.morphBtns[1].classList.toggle("on", now);
+  }
+  function morphTo(target, dur) {
+    if (S.cancelMorph) S.cancelMorph();
+    if (U.prefersReducedMotion() || dur === 0) { setMorph(target); return; }
+    S.cancelMorph = U.tween({ from: S.t, to: target, duration: dur || 2200, ease: U.easeInOutCubic, onUpdate: setMorph, onDone: function () { S.cancelMorph = null; } });
   }
   function toScreen(p) { var st = S.zp.state(); return { x: st.x + p.x * st.s, y: st.y + p.y * st.s }; }
 
@@ -66,7 +100,7 @@
     var gallery = (p.images || []).filter(function (id) { return U.image(id) && (!p.sequence || p.sequence.indexOf(id) < 0); });
     var js = (p.journeys || []).map(function (id) { return U.byId(M.journeys, id); }).filter(Boolean);
     return el("div", { class: "map-detail" },
-      el("div", { class: "kicker" }, p.after2002 ? "Not on the 2002 plan" : "On the 2002 plan"),
+      el("div", { class: "kicker" }, p.after2002 ? "Built after 2002" : "On the 2002 plan"),
       el("h2", null, p.name),
       (p.aka || []).length ? el("p", { class: "map-aka mono" }, p.aka.join(" | ")) : null,
       el("p", { class: "map-sum" }, p.summary),
@@ -89,11 +123,13 @@
     S.hotEls.forEach(function (h) { h.el.classList.toggle("sel", h.id === id); });
     S.labels.forEach(function (l) { l.el.classList.toggle("sel", l.id === id); });
     S.railPlaces.forEach(function (b) { b.classList.toggle("on", b.dataset.id === id); });
-    S.sheet.setBar([el("span", { class: "mono small muted" }, "Board 3: Moving rooms")]);
+    S.sheet.setBar([el("span", { class: "mono small muted" }, "Moving rooms")]);
     S.sheet.setContent(placeContent(p));
     S.sheet.open();
-    var h = p.hotspot && p.hotspot.plan2002;
-    if (h && opts.fly !== false) { var r = rectPx(h); requestAnimationFrame(function () { if (S) focusVisible(r.x, r.y, r.w, r.h, 0.9, 2.6); }); }
+    var g = geom(p);
+    if (p.after2002 && S.t < 0.5) morphTo(1, 1600);
+    else if (p.hideNow && S.t > 0.5) morphTo(0, 1600);
+    if (g && opts.fly !== false) requestAnimationFrame(function () { if (S) focusVisible(g.x, g.y, g.w, g.h, 0.9, 2.6); });
     if (!opts.silent) setHash();
   }
   function closePlace() {
@@ -128,6 +164,8 @@
     clearJourney();
     S.journeyId = id;
     S.root.classList.add("has-journey");
+    var needsNow = j.stops.some(function (s) { var pl = s.place && U.place(s.place); return pl && pl.after2002; });
+    if (needsNow && S.t < 0.5) morphTo(1, 1600);
     S.railJourneys.forEach(function (b) { b.classList.toggle("on", b.dataset.id === id); });
     // points for stops that are on the plan (merge repeated places)
     var pts = [], seen = {};
@@ -172,7 +210,7 @@
       el("div", { class: "kicker" }, "Journey"),
       el("h2", null, j.title),
       el("ol", { class: "jr-steps" }, j.stops.map(function (s, i) {
-        var pl = s.place ? U.place(s.place) : null, onPlan = pl && pl.hotspot && pl.hotspot.plan2002;
+        var pl = s.place ? U.place(s.place) : null;
         return el("li", { class: "jr-step", style: { "--d": (i * 110) + "ms" } },
           el("span", { class: "jr-num" }, String(i + 1)),
           el("div", { class: "jr-body" },
@@ -181,7 +219,7 @@
             el("p", null, s.text),
             s.image && U.image(s.image) ? M.ui.imageFigure(s.image, { caption: false, ratio: "16/9" }) : null,
             el("div", { class: "jr-foot" },
-              pl ? el("button", { class: "tl-chip-link", type: "button", on: { click: function () { openPlace(pl.id); } } }, M.ui.icon("pin"), pl.name + (onPlan ? "" : " (not on the 2002 plan)")) : null,
+              pl ? el("button", { class: "tl-chip-link", type: "button", on: { click: function () { openPlace(pl.id); } } }, M.ui.icon("pin"), pl.name) : null,
               M.ui.sourceBadges(s.sources, { compact: true }))));
       }))));
     S.sheet.open();
@@ -199,12 +237,17 @@
     S.treeMarkers.forEach(function (m) { m.el.remove(); }); S.treeMarkers = [];
     if (!on) { placeOverlay(); return; }
     var road = { x: APPROX["main-road"].x / 100 * IMG_W, y: APPROX["main-road"].y / 100 * IMG_H };
-    var obh = centerPx(U.place("obh"));
-    S.treeLayer.appendChild(svg("path", { d: "M" + road.x + " " + road.y + " C " + (road.x + 260) + " " + (road.y - 180) + " " + (obh.x + 80) + " " + (obh.y + 300) + " " + obh.x + " " + (obh.y + 40), class: "tree-path" }));
-    [{ at: road, t: "Navjeevan, move 1: the main road (approximate)" }, { at: { x: obh.x, y: obh.y + 40 }, t: "Navjeevan now, at OBH (move 3). Move 2, Bakul Nivas, isn't on this plan." }].forEach(function (m) {
+    var bakul = centerPx(U.place("bakul")), obh = centerPx(U.place("obh"));
+    var obhPin = { x: obh.x, y: obh.y + 40 };
+    S.treeLayer.appendChild(svg("path", { d: smoothPath([road, bakul, obhPin]), class: "tree-path" }));
+    [{ at: road, t: "1. The main road (about here)" }, { at: bakul, t: "2. Bakul Nivas" }, { at: obhPin, t: "3. OBH, where Navjeevan stands now" }].forEach(function (m) {
       var n = el("div", { class: "tree-pin" }, M.ui.icon("tree"), el("span", null, m.t));
       S.overlay.appendChild(n); S.treeMarkers.push({ el: n, at: m.at }); S.markers.push({ el: n, at: m.at });
     });
+    if (S.t < 0.5) morphTo(1, 1600);
+    var tx = [road.x, bakul.x, obhPin.x], ty = [road.y, bakul.y, obhPin.y];
+    var bx = Math.min.apply(null, tx), by = Math.min.apply(null, ty);
+    requestAnimationFrame(function () { if (S) focusVisible(bx, by, Math.max.apply(null, tx) - bx, Math.max.apply(null, ty) - by, 0.25, 1.6); });
     placeOverlay();
   }
 
@@ -212,6 +255,7 @@
     var q = {};
     if (S.journeyId) q.journey = S.journeyId;
     if (S.trees) q.layer = "trees";
+    if (S.t < 0.5) q.view = "2002";
     var h = "#/map" + (S.openId ? "/" + S.openId : "") + U.buildQuery(q);
     if (location.hash !== h) { S.selfNav = true; location.hash = h; }
   }
@@ -238,16 +282,16 @@
   /* ---------- autoplay (kiosk) ---------- */
   function startAutoplay() {
     stopAutoplay();
-    var seq = [];
-    ["library", "sleep", "eat", "vindhya-rooms", "big-hall", "guest-house"].forEach(function (id) { seq.push({ j: id, ms: 11000 }); });
-    ["guest-house", "nilgiri", "vindhya", "obh"].forEach(function (id) { seq.push({ p: id, ms: 8000 }); });
-    seq.splice(3, 0, { p: "nab", ms: 9000 });
+    var seq = [{ morph: 0, ms: 4500 }, { morph: 1, ms: 5000 }];
+    ["library", "navjeevan", "sleep", "big-hall", "cricket", "eat", "block-d", "vindhya-rooms", "guest-house"].forEach(function (id) { seq.push({ j: id, ms: 11000 }); });
+    ["nab", "himalaya", "bakul", "nilgiri", "vindhya", "obh"].forEach(function (id) { seq.push({ p: id, ms: 8000 }); });
     var i = 0;
     S.autoplay = true;
     function step() {
       if (!S || !S.autoplay) return;
       var s = seq[i % seq.length]; i++;
-      if (s.j) selectJourney(s.j, false); else { clearJourney(); openPlace(s.p, { silent: true }); }
+      if (s.morph != null) { clearJourney(); while (M.ui.closeTop()) { /* close the panel */ } S.zp.fit(true); morphTo(s.morph, 2600); }
+      else if (s.j) selectJourney(s.j, false); else { clearJourney(); openPlace(s.p, { silent: true }); }
       S.autoTimer = setTimeout(step, s.ms);
     }
     S.autoTimer = setTimeout(step, 1200);
@@ -264,38 +308,48 @@
       var places = M.places || [];
 
       // map content: image + svg overlay in plan pixels
-      var img = el("img", { src: "assets/map/plan-2002.jpg", alt: "Layout plan of IIIT Gachibowli, 62 acres, 2002. North points down.", draggable: "false", class: "map-img" });
+      var img = el("img", { src: "assets/map/plan-2002.jpg", alt: "Layout plan of IIIT Gachibowli, 62 acres, 2002. North points down.", draggable: "false", class: "map-img plan" });
+      var nowImg = el("img", { src: "assets/map/now-aligned.jpg", alt: "Today's satellite view of the campus, turned to match the 2002 plan.", draggable: "false", class: "map-img now" });
+      S.planImg = img; S.nowImg = nowImg; S.t = 0;
       var svgEl = svg("svg", { class: "map-svg", viewBox: "0 0 " + IMG_W + " " + IMG_H, width: IMG_W, height: IMG_H });
       var hotLayer = svg("g", { class: "hot-layer" });
       S.pathLayer = svg("g", { class: "path-layer" });
       S.treeLayer = svg("g", { class: "tree-layer" });
       svgEl.appendChild(hotLayer); svgEl.appendChild(S.treeLayer); svgEl.appendChild(S.pathLayer);
+      function eraClass(p) { return p.after2002 ? "now-only" : (p.hideNow ? "then-only" : ""); }
       places.forEach(function (p) {
-        var h = p.hotspot && p.hotspot.plan2002; if (!h) return;
-        var r = rectPx(h);
-        var g = svg("rect", { x: r.x, y: r.y, width: r.w, height: r.h, rx: 6, class: "hot", tabindex: "0", role: "button", "aria-label": p.name });
+        var r = geom(p); if (!r) return;
+        var g = r.poly
+          ? svg("polygon", { points: r.poly.map(function (q) { return q.x.toFixed(1) + "," + q.y.toFixed(1); }).join(" "), class: "hot " + eraClass(p), tabindex: "0", role: "button", "aria-label": p.name })
+          : svg("rect", { x: r.x, y: r.y, width: r.w, height: r.h, rx: 6, class: "hot " + eraClass(p), tabindex: "0", role: "button", "aria-label": p.name });
         g.addEventListener("click", function () { clearJourney(); openPlace(p.id); });
         g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); clearJourney(); openPlace(p.id); } });
         g.addEventListener("pointerenter", function () { S.root.querySelector('.map-label[data-id="' + p.id + '"]').classList.add("hover"); });
         g.addEventListener("pointerleave", function () { S.root.querySelector('.map-label[data-id="' + p.id + '"]').classList.remove("hover"); });
         hotLayer.appendChild(g); S.hotEls.push({ id: p.id, el: g });
       });
-      var content = el("div", { class: "map-content", style: { width: IMG_W + "px", height: IMG_H + "px" } }, img, svgEl);
+      var content = el("div", { class: "map-content", style: { width: IMG_W + "px", height: IMG_H + "px" } }, nowImg, img, svgEl);
       var host = el("div", { class: "map-host" });
       S.overlay = el("div", { class: "map-overlay" });
       places.forEach(function (p) {
-        var h = p.hotspot && p.hotspot.plan2002; if (!h) return;
-        var r = rectPx(h);
-        var lab = el("button", { class: "map-label", type: "button", dataset: { id: p.id }, on: { click: function () { clearJourney(); openPlace(p.id); } } }, p.name.replace(/ \(.*\)$/, ""));
+        var r = geom(p); if (!r) return;
+        var lab = el("button", { class: "map-label " + eraClass(p), type: "button", dataset: { id: p.id }, on: { click: function () { clearJourney(); openPlace(p.id); } } }, p.name.replace(/ \(.*\)$/, ""));
         S.overlay.appendChild(lab); S.labels.push({ id: p.id, el: lab, at: { x: r.x + r.w / 2, y: r.y } });
       });
-      var badge = el("div", { class: "map-badge" }, el("b", null, "Campus layout plan, 2002 (62 acres)"), el("span", null, "From SLN Shastry. North points down, as on the original."));
+      var badge = el("div", { class: "map-badge" }, el("b", null, ""), el("span", null, ""));
+      S.badge = badge;
+      S.morphRange = el("input", { type: "range", min: "0", max: "100", value: "0", class: "morph-range", "aria-label": "Fade between the 2002 plan and today",
+        on: { input: function () { if (S.cancelMorph) S.cancelMorph(); stopAutoplay(); setMorph(+S.morphRange.value / 100); }, change: function () { setHash(); } } });
+      S.morphBtns = [
+        el("button", { type: "button", class: "morph-btn", on: { click: function () { stopAutoplay(); morphTo(0); setTimeout(function () { if (S) setHash(); }, 50); } } }, "2002 plan"),
+        el("button", { type: "button", class: "morph-btn", on: { click: function () { stopAutoplay(); morphTo(1); setTimeout(function () { if (S) setHash(); }, 50); } } }, "Today")];
+      var morphCtl = el("div", { class: "map-morph" }, S.morphBtns[0], S.morphRange, S.morphBtns[1]);
       var compass = el("div", { class: "map-compass", title: "North points down on this plan" }, el("span", null, "N"), M.ui.icon("arrow-right"));
       var zoomCtl = el("div", { class: "zp-controls" },
         el("button", { class: "icon-btn", "aria-label": "Zoom in", on: { click: function () { S.zp.zoomBy(1.5); } } }, M.ui.icon("plus")),
         el("button", { class: "icon-btn", "aria-label": "Zoom out", on: { click: function () { S.zp.zoomBy(1 / 1.5); } } }, M.ui.icon("minus")),
         el("button", { class: "icon-btn", "aria-label": "Fit the whole plan", on: { click: function () { S.zp.fit(true); } } }, M.ui.icon("fit")));
-      var stage = el("div", { class: "map-stage" }, host, S.overlay, badge, compass, zoomCtl);
+      var stage = el("div", { class: "map-stage" }, host, S.overlay, morphCtl, badge, compass, zoomCtl);
 
       // left rail
       var jList = el("div", { class: "rail-list" }, (M.journeys || []).map(function (j) {
@@ -309,20 +363,22 @@
         S.railPlaces.push(b); return b;
       }));
       places.filter(function (p) { return !p.after2002; }).forEach(function () {});
-      S.treeBtn = el("button", { class: "chip", type: "button", "aria-pressed": "false", style: { "--c": "var(--banyan)" }, on: { click: function () { setTrees(!S.trees); setHash(); } } }, M.ui.icon("tree"), "HISTREE trees layer");
+      S.treeBtn = el("button", { class: "chip", type: "button", "aria-pressed": "false", style: { "--c": "var(--banyan)" }, on: { click: function () { setTrees(!S.trees); setHash(); } } }, M.ui.icon("tree"), "HISTREE: where Navjeevan moved");
       var rail = el("aside", { class: "map-rail" },
         el("div", { class: "kicker" }, "Board 3"),
         el("h1", null, "Moving rooms"),
-        el("p", { class: "map-intro" }, "This plan of the campus is from 2002. SLN Shastry gave it to us. Click a building to see what happened there, or pick a journey to watch a room move around campus."),
+        el("p", { class: "map-intro" }, "The 2002 campus plan, lined up with today. Pick a journey, or click a building."),
         el("h3", { class: "rail-h" }, "Journeys"), jList,
         el("h3", { class: "rail-h" }, "Built after 2002"), aList,
         el("div", { class: "rail-foot" }, S.treeBtn));
 
       S.root = el("section", { class: "page map-page" }, rail, stage);
+      setMorph(0); updateBadge();
       root.appendChild(S.root);
       S.host = host;
       S.sheet = M.ui.sheet({ onClose: function () { closePlace(); if (S.journeyId) clearJourney(); setHash(); } });
-      S.zp = M.ui.zoomPan(host, content, { contentW: IMG_W, contentH: IMG_H, maxScale: 5, padding: 16, onChange: placeOverlay });
+      S.zp = M.ui.zoomPan(host, content, { contentW: IMG_W, contentH: IMG_H, maxScale: 5, padding: 16, onChange: placeOverlay,
+        insetRight: function () { return S && S.sheet && S.sheet.isOpen() ? S.sheet.el.getBoundingClientRect().width : 0; } });
       S.timers.push(function () { S.zp.destroy(); });
       var onResize = U.debounce(placeOverlay, 60);
       window.addEventListener("resize", onResize);
@@ -332,6 +388,11 @@
       var t = setTimeout(function () {
         if (!S) return;
         placeOverlay();
+        // the plan first, then it turns into today (unless the link asks for the 2002 view)
+        if (q.view !== "2002" && !q.journey && !ctx.params[0] && q.layer !== "trees") {
+          var tm = setTimeout(function () { if (S && !S.cancelMorph && S.t === 0) morphTo(1, 2800); }, U.prefersReducedMotion() ? 0 : 1300);
+          S.timers.push(function () { clearTimeout(tm); });
+        }
         if (q.layer === "trees") setTrees(true);
         if (ctx.params[0]) openPlace(ctx.params[0], { silent: true });
         else if (q.journey) selectJourney(q.journey, false);
@@ -344,12 +405,15 @@
       if (S.selfNav) { S.selfNav = false; return; }
       if (params[0] && params[0] !== S.openId) { clearJourney(); openPlace(params[0], { silent: true }); }
       else if (!params[0] && query.journey && query.journey !== S.journeyId) selectJourney(query.journey, false);
+      else if (!params[0] && !query.journey && (S.journeyId || S.openId)) { clearJourney(); S.openId = null; S.sheet.close(true); closePlace(); }
       if ((query.layer === "trees") !== S.trees) setTrees(query.layer === "trees");
       if (query.autoplay === "1" && !S.autoplay) startAutoplay();
+      if (query.view === "2002" && S.t > 0.5) morphTo(0);
     },
     destroy: function () {
       if (!S) return;
       stopAutoplay();
+      if (S.cancelMorph) S.cancelMorph();
       S.timers.forEach(function (f) { f(); });
       if (S.sheet) S.sheet.destroy();
       S = null;
